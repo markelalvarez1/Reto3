@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCD Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container">
+            <a>Bilbao SKP</a>
+            <nav>
+                <ul>
+                    <li><a href="#">Jugar</a></li>
+                    <li><a href="#">Cupones</a></li>
+                    <li><a href="#">Opiniones</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <button class="btn-primary">Iniciar sesión</button>
+                <button class="btn-secondary">Registrar</button>
+                <button class="btn-secondary">English</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <h1>TÍTULO</h1>
+            <p>Texto descriptivo que explica el propósito de esta página web y proporciona información relevante para los visitantes.</p>
+            <button class="btn-primary">BOTÓN</button>
+        </div>
+    </section>
+
+    <!-- Opinion Section -->
+    <section class="opinions">
+        <div class="container">
+            <h2>Opiniones de Nuestros Usuarios</h2>
+            <div class="opinion-cards">
+                <div class="opinion-card">
+                    <h3>OPINIÓN</h3>
+                    <p>Contenido de la opinión o testimonio que destaca aspectos positivos. Esta experiencia ha sido realmente satisfactoria y recomendable.</p>
+                </div>
+                <div class="opinion-card">
+                    <h3>OPINIÓN</h3>
+                    <p>Contenido de la opinión o testimonio que destaca aspectos positivos. El servicio superó mis expectativas en todos los aspectos.</p>
+                </div>
+                <div class="opinion-card">
+                    <h3>OPINIÓN</h3>
+                    <p>Contenido de la opinión o testimonio que destaca aspectos positivos. Definitivamente volveré a utilizar este servicio en el futuro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="#"><img src="https://via.placeholder.com/30x30" alt="Instagram"></a>
+                    <a href="#"><img src="https://via.placeholder.com/30x30" alt="TikTok"></a>
+                    <a href="#"><img src="https://via.placeholder.com/30x30" alt="X"></a>
+                </div>
+                <div class="footer-text">
+                    <p>Información de Contacto</p>
+                    <p class="copyright">© 2025 Todos los derechos reservados</p>
+                </div>
+                <div class="footer-logos">
+                    <img class="diputacion" src="https://via.placeholder.com/120x40" alt="Diputación">
+                    <img class="logo" src="https://via.placeholder.com/100x50" alt="DCD Logo">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
