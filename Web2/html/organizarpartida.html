@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizar Partida</title>
+    <link rel="stylesheet" href="../css/stylesorganizarpartida.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container">
+            <a href="index.html">Bilbao SKP</a>
+            <nav>
+                <ul>
+                    <li><a href="jugar.html">Jugar</a></li>
+                    <li><a href="#">Cupones</a></li>
+                    <li><a href="index.html#opinions">Opiniones</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Ranking</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <button class="btn-primary"><a href="iniciosesion.html">Iniciar sesión</a></button>
+                <button class="btn-secondary"><a href="registro.html">Registrar</a></button>
+                <button class="btn-tertiary">English</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main>
+        <div class="container organize-game-container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="dashboard.html" class="sidebar-link">
+                                <i class='bx bx-user'></i>
+                                <span>Menu del perfil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ranking.html" class="sidebar-link">
+                                <i class='bx bx-trophy'></i>
+                                <span>Ranking</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="organizar-partida.html" class="sidebar-link active">
+                                <i class='bx bx-calendar'></i>
+                                <span>Organizar Partida</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="cupones.html" class="sidebar-link">
+                                <i class='bx bx-ticket'></i>
+                                <span>Obtener cupones</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="sidebar-link logout">
+                                <i class='bx bx-log-out'></i>
+                                <span>Cerrar sesión</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Contenido de Organizar Partida -->
+            <div class="organize-content">
+                <div class="page-header">
+                    <h1>Organizar Partida</h1>
+                    <p>Crea una nueva partida e invita a tus amigos a jugar</p>
+                </div>
+
+                <div class="organize-grid">
+                    <!-- Formulario para crear partida -->
+                    <div class="block create-game-block">
+                        <h2>Crear Nueva Partida</h2>
+                        
+                        <form class="game-form">
+                            <div class="form-group">
+                                <label for="game-title">Título de la partida</label>
+                                <input type="text" id="game-title" placeholder="Ej: Partida amistosa viernes" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="game-date">Fecha y hora</label>
+                                    <div class="input-icon">
+                                        <i class='bx bx-calendar'></i>
+                                        <input type="text" id="game-date" placeholder="Selecciona fecha y hora" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="game-duration">Duración (horas)</label>
+                                    <div class="input-icon">
+                                        <i class='bx bx-time'></i>
+                                        <input type="number" id="game-duration" min="1" max="8" value="2" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="game-type">Tipo de juego</label>
+                                <select id="game-type" required>
+                                    <option value="" disabled selected>Selecciona un tipo de juego</option>
+                                    <option value="casual">Casual - Para principiantes</option>
+                                    <option value="intermediate">Intermedio - Jugadores con experiencia</option>
+                                    <option value="competitive">Competitivo - Nivel avanzado</option>
+                                    <option value="tournament">Torneo - Formato eliminatorio</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="max-players">Número máximo de jugadores</label>
+                                <div class="player-selector">
+                                    <button type="button" class="player-btn decrease">-</button>
+                                    <input type="number" id="max-players" min="2" max="12" value="4" readonly>
+                                    <button type="button" class="player-btn increase">+</button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="game-description">Descripción (opcional)</label>
+                                <textarea id="game-description" rows="3" placeholder="Añade detalles sobre la partida..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="private-game">
+                                    <span class="checkmark"></span>
+                                    Partida privada (solo por invitación)
+                                </label>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="secondary-button">Cancelar</button>
+                                <button type="submit" class="primary-button">Crear Partida</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Bloque de información y consejos -->
+                    <div class="info-section">
+                        <!-- Mis partidas -->
+                        <div class="block my-games-block">
+                            <div class="block-header">
+                                <h2>Mis Partidas</h2>
+                                <a href="#" class="view-all-link">Ver todas</a>
+                            </div>
+                            
+                            <div class="games-list">
+                                <div class="game-card">
+                                    <div class="game-date">
+                                        <span class="day">15</span>
+                                        <span class="month">JUN</span>
+                                    </div>
+                                    <div class="game-info">
+                                        <h3>Torneo de verano</h3>
+                                        <p><i class='bx bx-time'></i> 18:00 - 20:30</p>
+                                        <p><i class='bx bx-group'></i> 8/8 jugadores</p>
+                                    </div>
+                                    <div class="game-status completed">
+                                        <span>Completada</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="game-card">
+                                    <div class="game-date">
+                                        <span class="day">22</span>
+                                        <span class="month">JUN</span>
+                                    </div>
+                                    <div class="game-info">
+                                        <h3>Partida amistosa</h3>
+                                        <p><i class='bx bx-time'></i> 17:30 - 19:30</p>
+                                        <p><i class='bx bx-group'></i> 3/6 jugadores</p>
+                                    </div>
+                                    <div class="game-status upcoming">
+                                        <span>Próxima</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Consejos -->
+                        <div class="block tips-block">
+                            <h2>Consejos para organizadores</h2>
+                            
+                            <div class="tips-list">
+                                <div class="tip-item">
+                                    <div class="tip-icon">
+                                        <i class='bx bx-bulb'></i>
+                                    </div>
+                                    <div class="tip-content">
+                                        <h3>Planifica con tiempo</h3>
+                                        <p>Crea la partida con al menos 48 horas de antelación para dar tiempo a que se unan los jugadores.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="tip-item">
+                                    <div class="tip-icon">
+                                        <i class='bx bx-user-voice'></i>
+                                    </div>
+                                    <div class="tip-content">
+                                        <h3>Comunica las reglas</h3>
+                                        <p>Asegúrate de que todos los participantes conocen las reglas y el formato de la partida.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="tip-item">
+                                    <div class="tip-icon">
+                                        <i class='bx bx-medal'></i>
+                                    </div>
+                                    <div class="tip-content">
+                                        <h3>Incentivos</h3>
+                                        <p>Ofrece pequeños premios o reconocimientos para hacer la partida más emocionante.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-scontent">
+                <div class="social-links">
+                    <a href="https://www.instagram.com/dcdevelopment_" target="_blank"><img class="IG" src="../Img/igb.png" alt="Instagram"></a>
+                    <a href="https://www.tiktok.com/@digitalcraftdevel" target="_blank"><img class="TK" src="../Img/tiktokb.png" alt="TikTok"></a>
+                    <a href="https://x.com/Dcdevelopment_" target="_blank"><img  class="X" src="../Img/Xb.png" alt="X"></a>
+                </div>
+                <div class="footer-text">
+                    <a href="contacto.html"><p>Información de Contacto</p></a>
+                    <p class="copyright">© 2025 Todos los derechos reservados</p>
+                </div>
+                <div class="footer-logos">
+                    <a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank"> <img class="diputacion" src="../Img/DiputacionBZK.png" alt="Diputación"></a>
+                    <a href="../../Pagina/castellano/index.html" target="_blank"> <img class="logo" src="../Img/DCDlogo.png" alt="DCD Logo"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        // Script para el comportamiento del header al hacer scroll
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Inicializar selector de fecha y hora
+        flatpickr("#game-date", {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i",
+            minDate: "today",
+            time_24hr: true
+        });
+        
+        // Controles para el selector de número de jugadores
+        document.querySelector('.player-btn.decrease').addEventListener('click', function() {
+            const input = document.getElementById('max-players');
+            if (parseInt(input.value) > parseInt(input.min)) {
+                input.value = parseInt(input.value) - 1;
+            }
+        });
+        
+        document.querySelector('.player-btn.increase').addEventListener('click', function() {
+            const input = document.getElementById('max-players');
+            if (parseInt(input.value) < parseInt(input.max)) {
+                input.value = parseInt(input.value) + 1;
+            }
+        });
+    </script>
+</body>
+</html>

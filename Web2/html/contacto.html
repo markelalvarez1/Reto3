@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="icon" href="../Img/baldosa.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/stylescontacto.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <a href="../Index.html">Bilbao SKP</a>
+            <nav>
+                <ul>
+                    <li><a href="jugar.html">Jugar</a></li>
+                    <li><a href="gestion.html">Gestión</a></li>
+                    <li><a href="../index.html#opinions">Opiniones</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="ranking.html">Ranking</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <button class="btn-primary"><a href="#">Iniciar sesión</a></button>
+                <button class="btn-secondary"><a href="registro.html">Registrar</a></button>
+                <button class="btn-tertiary">English</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="contact-content">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h2>Envíanos un mensaje</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Asunto</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Enviar mensaje</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h2>Información de contacto</h2>
+                    <div class="info-item">
+                        <h3>Dirección</h3>
+                        <p>Poza Lizentziatuaren Kalea, 31, Abando, 48011 Bilbo</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Teléfono</h3>
+                        <p>+34 94 123 123</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Email</h3>
+                        <p>dcdigitalcraftdevelopment@gmail.com</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Horario</h3>
+                        <p>Lunes a Viernes: 8:00 - 14:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-scontent">
+                <div class="social-links">
+                    <a href="https://www.instagram.com/dcdevelopment_" target="_blank"><img class="IG" src="../Img/igb.png" alt="Instagram"></a>
+                    <a href="https://www.tiktok.com/@digitalcraftdevel" target="_blank"><img class="TK" src="../Img/tiktokb.png" alt="TikTok"></a>
+                    <a href="https://x.com/Dcdevelopment_" target="_blank"><img  class="X" src="../Img/Xb.png" alt="X"></a>
+                </div>
+                <div class="footer-text">
+                    <a href="#"><p>Información de Contacto</p></a>
+                    <p class="copyright">© 2025 Todos los derechos reservados</p>
+                </div>
+                <div class="footer-logos">
+                    <a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank"> <img class="diputacion" src="../Img/DiputacionBZK.png" alt="Diputación"></a>
+                    <a href="../../Pagina/castellano/index.html" target="_blank"> <img class="logo" src="../Img/DCDlogo.png" alt="DCD Logo"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger-menu');
+        const navContainer = document.querySelector('.nav-container');
+        const body = document.body;
+
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navContainer.classList.toggle('active');
+            body.classList.toggle('menu-open');
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.');
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>

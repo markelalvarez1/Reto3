@@ -1,0 +1,796 @@
+body{
+    font-family: 'Nunito', sans-serif;
+    color: #000;
+}
+
+/* Main Content Styles */
+main {
+    padding: 3rem 0;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 2.5em;
+    margin-top: 5rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1b19a5;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1.125rem;
+    color: #64748b;
+    max-width: 37.5em; /* 600px */
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.grid-cols-3 {
+    grid-template-columns: 2fr 1fr;
+}
+
+/* Cards */
+.card {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    border: 0.0625em solid #e2e8f0; /* 1px */
+    box-shadow: 0 0.25em 0.375em -0.0625em rgba(0, 0, 0, 0.1), 0 0.125em 0.25em -0.0625em rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    margin: 2rem;
+}
+
+.card-header {
+    padding: 1.5rem;
+    border-bottom: 0.0625em solid #e2e8f0; /* 1px */
+    background: linear-gradient(to right, #f8fafc, #f1f5f9);
+}
+
+.card-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+
+.card-description {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-footer {
+    padding: 1.5rem;
+    border-top: 0.0625em solid #e2e8f0; /* 1px */
+    text-align: center;
+}
+
+/* Methodology Card */
+.methodology-card {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    border: 0.0625em solid #e2e8f0; /* 1px */
+    box-shadow: 0 0.25em 0.375em -0.0625em rgba(0, 0, 0, 0.1), 0 0.125em 0.25em -0.0625em rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+    text-align: center;
+    width: 74.4rem;
+}
+
+.methodology-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.methodology-steps {
+    margin-bottom: 1rem;
+}
+
+/* Ranking List */
+.ranking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.ranking-item {
+    display: flex;
+    align-items: center;
+    padding: 0.875em 1em; /* 14px 16px */
+    border-radius: 0.5rem;
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.ranking-item:hover {
+    background-color: #f1f5f9;
+    transform: translateY(-0.125em); /* 2px */
+}
+
+.ranking-item .rank {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1b19a5;
+    width: 2em; /* 32px */
+    text-align: center;
+}
+
+.ranking-item:nth-child(1) .rank {
+    color: gold;
+}
+
+.ranking-item:nth-child(2) .rank {
+    color: silver;
+}
+
+.ranking-item:nth-child(3) .rank {
+    color: #cd7f32; /* bronze */
+}
+
+.participant-info {
+    flex: 1;
+}
+
+.participant-name {
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 0.25em; /* 4px */
+}
+
+.participant-location {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.score {
+    font-weight: 700;
+    color: #0f172a;
+    margin-right: 1em; /* 16px */
+}
+
+.trend {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.375em 0.75em; /* 6px 12px */
+    border-radius: 1.5625em; /* 25px */
+}
+
+.trend-up {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.trend-steady {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.trend-down {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+/* Tabs */
+.tabs {
+    width: 100%;
+}
+
+.tabs-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #f1f5f9;
+    padding: 0.25rem;
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+}
+
+.tab-trigger {
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #64748b;
+    background: none;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-trigger.active {
+    background-color: #ffffff;
+    color: #1b19a5;
+    box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.05); /* 1px 2px */
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Region Stats */
+.region-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1em; /* 16px */
+}
+
+.region-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75em; /* 12px */
+}
+
+.region-name {
+    width: 5em; /* 80px */
+    font-weight: 600;
+    color: #0f172a;
+    font-size: 0.875rem;
+}
+
+.region-bar-container {
+    flex: 1;
+    height: 0.5em; /* 8px */
+    background-color: #e2e8f0;
+    border-radius: 1em; /* 16px */
+    overflow: hidden;
+}
+
+.region-bar {
+    height: 100%;
+    background-color: #1b19a5;
+    border-radius: 1em; /* 16px */
+}
+
+.region-score {
+    font-weight: 600;
+    color: #0f172a;
+    font-size: 0.875rem;
+}
+
+/* Events List */
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1em; /* 16px */
+}
+
+.event-item {
+    display: flex;
+    gap: 1em; /* 16px */
+    padding-bottom: 1em; /* 16px */
+    border-bottom: 0.0625em solid #e2e8f0; /* 1px */
+}
+
+.event-item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.event-date {
+    font-weight: 700;
+    color: #1b19a5;
+    font-size: 0.875rem;
+    background-color: rgba(27, 25, 165, 0.1);
+    padding: 0.375em 0.75em; /* 6px 12px */
+    border-radius: 0.25em; /* 4px */
+    text-align: center;
+    white-space: nowrap;
+}
+
+.event-details {
+    flex: 1;
+}
+
+.event-title {
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 0.25em; /* 4px */
+}
+
+.event-location {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+/* Instruction Steps */
+.instruction-step {
+    background-color: #f8fafc;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+.instruction-step:last-child {
+    margin-bottom: 0;
+}
+
+/* Button */
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #1b19a5;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0f0e73;
+    transform: translateY(-0.125em); /* 2px */
+}
+
+.text-link {
+    color: #1b19a5;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+/* Main Responsive Styles */
+@media (max-width: 36em) { /* 576px */
+    .ranking-item {
+        flex-wrap: wrap;
+    }
+   
+    .rank {
+        margin-bottom: 0.5em; /* 8px */
+    }
+   
+    .participant-info {
+        width: 100%;
+        margin-bottom: 0.5em; /* 8px */
+    }
+}
+/* Footer */
+footer {
+    background-color: #000;
+    color: white;
+    padding: 3.125em 0; /* 50px */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: nowrap; 
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1em;
+}
+
+.IG {
+    width: 2.5em !important; /* 40px */
+    height: auto !important;
+}
+
+.TK {
+    width: 2.5em !important; /* 40px */
+    height: auto !important;
+}
+
+.X {
+    width: 2.5em !important; /* 40px */
+    height: auto !important;
+}
+
+.diputacion {
+    width: 5em !important; /* 80px */
+    height: auto !important;
+}
+
+.social-links a {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.social-links a:hover {
+    opacity: 1;
+}
+
+.social-links img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.footer-text {
+    text-align: center;
+    margin: 0 auto;
+    width: auto; 
+}
+
+.footer-scontent {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+
+.footer-text .copyright {
+    margin-top: 0.625em; /* 10px */
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-logos {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-end;
+    width: auto; 
+}
+
+.footer-logos .diputacion {
+    height: 2.5rem;
+}
+
+.footer-logos .logo {
+    height: 2.5rem;
+}
+
+.footer-logos {
+    gap: 1.5rem;
+}
+
+.footer-logos .diputacion {
+    height: 2.5rem;
+}
+
+.footer-logos .logo {
+    height: 2.5rem;
+}
+
+@media (max-width: 62em) { /* 992px */
+    .hero h1 {
+        font-size: 3rem;
+        letter-spacing: 0.5rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 48em) { /* 768px */
+    #main-header .container {
+        flex-direction: column;
+        gap: 0.9375em; /* 15px */
+    }
+    
+    #main-header nav ul {
+        gap: 0.9375em; /* 15px */
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+        letter-spacing: 0.3rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 1.875em; /* 30px */
+    }
+    
+    .footer-text {
+        order: 2;
+    }
+    
+    .social-links {
+        order: 1;
+    }
+    
+    .footer-logos {
+        order: 3;
+    }
+}
+
+@media (max-width: 36em) { /* 576px */
+    #main-header {
+        position: relative;
+        background-color: #000;
+    }
+    
+    #main-header.scrolled {
+        background-color: #000;
+    }
+    
+    #main-header.scrolled .container > a {
+        color: white;
+    }
+    
+    #main-header.scrolled nav ul li a {
+        color: white;
+    }
+    
+    #main-header.scrolled .btn-secondary {
+        color: white;
+        border-color: white;
+    }
+    
+    #main-header nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    #main-header .header-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .hero {
+        height: auto;
+        padding: 6.25em 0; /* 100px */
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+        letter-spacing: 0.2rem;
+    }
+    
+    .opinion-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Estilos generales que afectan al header */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 100em; /* 1600px */
+    margin: 0 auto;
+    padding: 0 1.25em; /* 20px */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* Estilos de botones usados en el header */
+.btn-primary {
+    background-color: #1b19a5;
+    color: white;
+    border: none;
+    padding: 0.625em 1.25em; /* 10px 20px */
+    border-radius: 0.25em; /* 4px */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0f0e73;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 0.0625em solid white; /* 1px */
+    padding: 0.625em 1.25em; /* 10px 20px */
+    border-radius: 0.25em; /* 4px */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-tertiary {
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 0.625em 1.25em; /* 10px 20px */
+    border-radius: 0.25em; /* 4px */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+.btn-tertiary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos específicos del header */
+#main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.25em 0; /* 20px */
+    transition: all 0.3s ease;
+    background-color: #000000;
+}
+
+#main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#main-header .container > a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+    cursor: pointer; 
+}
+
+#main-header .container > a:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#main-header nav ul {
+    display: flex;
+    gap: 1.875em; /* 30px */
+    margin-left: 13rem;
+}
+
+#main-header nav ul li a {
+    color: white;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+#main-header nav ul li a:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#main-header .header-buttons {
+    display: flex;
+    gap: 0.625em; /* 10px */
+}
+
+/* Estilos para el header cuando se hace scroll */
+#main-header.scrolled {
+    background-color: white;
+    box-shadow: 0 0.125em 0.625em rgba(0, 0, 0, 0.1); /* 2px 10px */
+    padding: 0.625em 0; /* 10px */
+}
+
+#main-header.scrolled .container > a {
+    color: #212529;
+}
+
+#main-header.scrolled .container > a:hover {
+    color: #1b19a5;
+}
+
+#main-header.scrolled nav ul li a {
+    color: #212529;
+}
+
+#main-header.scrolled nav ul li a:hover {
+    color: #0f0e73;
+}
+
+#main-header.scrolled .btn-secondary {
+    color: #212529;
+    border-color: #212529;
+}
+
+#main-header.scrolled .btn-secondary:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+#main-header.scrolled .btn-tertiary {
+    color: #212529;
+    border-color: #212529;
+}
+
+#main-header.scrolled .btn-tertiary:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Media queries que afectan al header */
+@media (max-width: 48em) { /* 768px */
+    #main-header .container {
+        flex-direction: column;
+        gap: 0.9375em; /* 15px */
+    }
+    
+    #main-header nav ul {
+        gap: 0.9375em; /* 15px */
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 36em) { /* 576px */
+    #main-header {
+        position: relative;
+        background-color: #000;
+    }
+    
+    #main-header.scrolled {
+        background-color: #000;
+    }
+    
+    #main-header.scrolled .container > a {
+        color: white;
+    }
+    
+    #main-header.scrolled nav ul li a {
+        color: white;
+    }
+    
+    #main-header.scrolled .btn-secondary {
+        color: white;
+        border-color: white;
+    }
+    
+    #main-header nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    #main-header .header-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
