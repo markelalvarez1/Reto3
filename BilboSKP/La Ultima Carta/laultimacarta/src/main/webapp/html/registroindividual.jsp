@@ -1,5 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,7 @@
 <body>
     <header id="main-header">
         <div class="container">
-            <a href="../Index.html" class="logo">Bilbao SKP</a>
+            <a href="../Index.html" class="logo"><fmt:message key="logo_bilbao_skp" /></a>
 
             <div class="hamburger-menu">
                 <div class="hamburger-icon">
@@ -97,7 +98,7 @@
                     <p class="copyright"><fmt:message key="footer_derechos" /></p>
                 </div>
                 <div class="footer-logos">
-                    <a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank"> <img class="diputacion" src="../Img/DiputacionBZK.png" alt="DiputaciÃ³n"></a>
+                    <a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank"> <img class="diputacion" src="../Img/DiputacionBZK.png" alt="Diputación"></a>
                     <a href="../../Pagina/castellano/index.html" target="_blank"> <img class="logo" src="../Img/DCDlogo.png" alt="DCD Logo"></a>
                 </div>
             </div>
@@ -133,3 +134,4 @@
     </script>
 </body>
 </html>
+

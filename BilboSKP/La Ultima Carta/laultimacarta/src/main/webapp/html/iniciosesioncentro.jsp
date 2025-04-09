@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><fmt:message key="formulario_registro_titulo" /></title>
+    <title>Inicio Sesión Centro</title>
     <link rel="icon" href="../Img/baldosa.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/stylesregistro.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
     <header id="main-header">
         <div class="container">
             <a href="../Index.html" class="logo">Bilbao SKP</a>
-
+            
             <div class="hamburger-menu">
                 <div class="hamburger-icon">
                     <span></span>
@@ -20,21 +20,21 @@
                     <span></span>
                 </div>
             </div>
-
+            
             <div class="nav-container">
                 <nav>
                     <ul>
-                        <li><a href="jugar.html"><fmt:message key="menu_jugar" /></a></li>
-                        <li><a href="gestion.html"><fmt:message key="menu_gestion" /></a></li>
-                        <li><a href="../index.html#opinions"><fmt:message key="menu_opiniones" /></a></li>
-                        <li><a href="contacto.html"><fmt:message key="menu_contacto" /></a></li>
-                        <li><a href="ranking.html"><fmt:message key="menu_ranking" /></a></li>
+                        <li><a href="jugar.html">Jugar</a></li>
+                        <li><a href="gestion.html">Gestión</a></li>
+                        <li><a href="../index.html#opinions">Opiniones</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="ranking.html">Ranking</a></li>
                     </ul>
                 </nav>
                 <div class="header-buttons">
-                    <button class="btn-primary"><a href="inicioeleccion.html"><fmt:message key="boton_iniciar" /></a></button>
-                    <button class="btn-secondary"><a href="registroeleccion.html"><fmt:message key="boton_registrar" /></a></button>
-                    <button class="btn-tertiary"><fmt:message key="boton_english" /></button>
+                    <button class="btn-primary"><a href="inicioeleccion.html">Iniciar sesión</a></button>
+                    <button class="btn-secondary"><a href="registroeleccion.html">Registrar</a></button>
+                    <button class="btn-tertiary">English</button>
                 </div>
             </div>
         </div>
@@ -43,46 +43,31 @@
     <main>
         <div class="container">
             <div class="form-container">
-                <h1><fmt:message key="formulario_registro_titulo" /></h1>
-
+                <h1>Inicio de sesión</h1>
+        
                 <div class="form-content">
                     <div id="individual-form" class="form-fields">
                         <div class="form-group">
-                            <label for="name"><fmt:message key="form_nombre" /></label>
-                            <input type="text" id="name" name="name" placeholder="<fmt:message key='placeholder_nombre' />">
+                            <label for="school-cif">CIF</label>
+                            <input type="text" id="school-cif" name="school-cif" placeholder="Ej: B12345678">
                         </div>
 
                         <div class="form-group">
-                            <label for="dni"><fmt:message key="form_dni" /></label>
-                            <input type="text" id="dni" name="dni" placeholder="<fmt:message key='placeholder_dni' />"> 
+                            <label for="school-username">Usuario administrador del centro</label>
+                            <input type="text" id="school-username" name="school-username" placeholder="Introduce tu nombre de usuario">
                         </div>
-
+                        
                         <div class="form-group">
-                            <label for="email"><fmt:message key="form_email" /></label>
-                            <input type="email" id="email" name="email" placeholder="<fmt:message key='placeholder_email' />">
+                            <label for="school-password">Contraseña</label>
+                            <input type="password" id="school-password" name="school-password" placeholder="Introduce tu contraseña">
                         </div>
-
-                        <div class="form-group">
-                            <label for="password"><fmt:message key="form_contrasena" /></label>
-                            <input type="password" id="password" name="password" placeholder="<fmt:message key='placeholder_contrasena' />">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="repeat-password"><fmt:message key="form_repetir_contrasena" /></label>
-                            <input type="password" id="repeat-password" name="repeat-password" placeholder="<fmt:message key='placeholder_repetir_contrasena' />">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone"><fmt:message key="form_telefono" /></label>
-                            <input type="tel" id="phone" name="phone" placeholder="<fmt:message key='placeholder_telefono' />">
-                        </div>
-
-                        <button class="submit-btn"><fmt:message key="boton_enviar" /></button>
+                      
+                        <button class="submit-btn">ENVIAR</button>
                     </div>
                 </div>
             </div>
         </div>
-    </main>    
+    </main>
 
     <footer>
         <div class="container">
@@ -90,11 +75,11 @@
                 <div class="social-links">
                     <a href="https://www.instagram.com/dcdevelopment_" target="_blank"><img class="IG" src="../Img/igb.png" alt="Instagram"></a>
                     <a href="https://www.tiktok.com/@digitalcraftdevel" target="_blank"><img class="TK" src="../Img/tiktokb.png" alt="TikTok"></a>
-                    <a href="https://x.com/Dcdevelopment_" target="_blank"><img class="X" src="../Img/Xb.png" alt="X"></a>
+                    <a href="https://x.com/Dcdevelopment_" target="_blank"><img  class="X" src="../Img/Xb.png" alt="X"></a>
                 </div>
                 <div class="footer-text">
-                    <a href="contacto.html"><p><fmt:message key="footer_contacto" /></p></a>
-                    <p class="copyright"><fmt:message key="footer_derechos" /></p>
+                    <a href="contacto.html"><p>Información de Contacto</p></a>
+                    <p class="copyright">© 2025 Todos los derechos reservados</p>
                 </div>
                 <div class="footer-logos">
                     <a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank"> <img class="diputacion" src="../Img/DiputacionBZK.png" alt="Diputación"></a>

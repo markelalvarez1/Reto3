@@ -1,9 +1,9 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Seleccione su tipo de registro para Bilbao SKP - Individual o Centro Escolar">
     <title><fmt:message key="seleccion_registro_titulo" /></title>
     <link rel="icon" href="../Img/baldosa.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/stylesregistroeleccion.css">
@@ -94,8 +94,8 @@
                     <p class="copyright"><fmt:message key="footer_derechos" /></p>
                 </div>
                 <div class="footer-logos">
-                    <a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank" aria-label="DiputaciÃ³n"> 
-                        <img class="diputacion" src="../Img/DiputacionBZK.png" alt="DiputaciÃ³n">
+                    <a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank" aria-label="Diputación"> 
+                        <img class="diputacion" src="../Img/DiputacionBZK.png" alt="Diputación">
                     </a>
                     <a href="../../Pagina/castellano/index.html" target="_blank" aria-label="DCD Logo"> 
                         <img class="logo" src="../Img/DCDlogo.png" alt="DCD Logo">

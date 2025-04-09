@@ -17,8 +17,8 @@ public class EmailService {
 
 	 // PARA CONFIGURAR LA CONTRASE�A ESPECIAL PARA ESTE CORREO ACCEDER A
 	 // https://myaccount.google.com/security 
-	 private final String remitente = "unai.carbajo95@gmail.com"; // Aqui correo que va a enviar el mensaje
-     private final String password = "amqwazcpxcxzniyk";  // Contrase�a configurada desde Google (No es la contrase�a del correo)
+	 private final String remitente = "dcraftdevelopment@gmail.com"; // Aqui correo que va a enviar el mensaje
+     private final String password = "uacqktobqxkphlca";  // Contrase�a configurada desde Google (No es la contrase�a del correo)
      
      public boolean enviarCorreoVerificacion(Usuario u) {
     	

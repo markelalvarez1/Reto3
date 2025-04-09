@@ -1,9 +1,10 @@
+<%@ include file="/WEB-INF/includes/idioma.jsp" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><fmt:message key="formulario_registro_titulo" /></title>
+    <title><fmt:message key="registro_centro_titulo" /></title>
     <link rel="icon" href="../Img/baldosa.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/stylesregistro.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -11,7 +12,7 @@
 <body>
     <header id="main-header">
         <div class="container">
-            <a href="../Index.html" class="logo">Bilbao SKP</a>
+            <a href="../Index.html" class="logo"><fmt:message key="logo_bilbao_skp" /></a>
 
             <div class="hamburger-menu">
                 <div class="hamburger-icon">
@@ -77,14 +78,43 @@
                             <input type="tel" id="phone" name="phone" placeholder="<fmt:message key='placeholder_telefono' />">
                         </div>
 
-                        <button class="submit-btn"><fmt:message key="boton_enviar" /></button>
-                    </div>
+	                    <div class="form-group">
+                            <label for="school-name"><fmt:message key="form_nombre_centro" /></label>
+                            <input type="text" id="school-name" name="school-name" placeholder="<fmt:message key='placeholder_nombre' />">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="school-cif"><fmt:message key="form_cif_centro" /></label>
+                            <input type="text" id="school-cif" name="school-cif" placeholder="<fmt:message key='placeholder_dni' />">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="school-address"><fmt:message key="form_direccion_centro" /></label>
+                            <input type="text" id="school-address" name="school-address" placeholder="<fmt:message key='placeholder_email' />">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="school-city"><fmt:message key="form_ciudad_centro" /></label>
+                            <input type="text" id="school-city" name="school-city" placeholder="<fmt:message key='placeholder_telefono' />">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="school-students"><fmt:message key="form_numero_alumnos" /></label>
+                            <input type="number" id="school-students" name="school-students" placeholder="<fmt:message key='placeholder_nombre' />">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="school-education-stage"><fmt:message key="form_etapa_educativa" /></label>
+                            <input type="text" id="school-education-stage" name="school-education-stage" placeholder="<fmt:message key='placeholder_dni' />">
+                        </div>
+	
+	                    <button class="submit-btn"><fmt:message key="boton_enviar" /></button>
                 </div>
             </div>
         </div>
     </main>    
 
-    <footer>
+ 	<footer>
         <div class="container">
             <div class="footer-scontent">
                 <div class="social-links">
@@ -97,7 +127,7 @@
                     <p class="copyright"><fmt:message key="footer_derechos" /></p>
                 </div>
                 <div class="footer-logos">
-                    <a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank"> <img class="diputacion" src="../Img/DiputacionBZK.png" alt="DiputaciÃ³n"></a>
+                    <a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank"> <img class="diputacion" src="../Img/DiputacionBZK.png" alt="Diputación"></a>
                     <a href="../../Pagina/castellano/index.html" target="_blank"> <img class="logo" src="../Img/DCDlogo.png" alt="DCD Logo"></a>
                 </div>
             </div>

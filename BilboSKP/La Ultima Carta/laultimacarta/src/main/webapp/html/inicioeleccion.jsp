@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Seleccione su tipo de registro para Bilbao SKP - Individual o Centro Escolar">
-    <title><fmt:message key="seleccion_registro_titulo" /></title>
+    <title>Selección Inicio</title>
     <link rel="icon" href="../Img/baldosa.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/stylesregistroeleccion.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -25,17 +25,17 @@
             <div class="nav-container">
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="jugar.html"><fmt:message key="menu_jugar" /></a></li>
-                        <li><a href="gestion.html"><fmt:message key="menu_gestion" /></a></li>
-                        <li><a href="../index.html#opinions"><fmt:message key="menu_opiniones" /></a></li>
-                        <li><a href="contacto.html"><fmt:message key="menu_contacto" /></a></li>
-                        <li><a href="ranking.html"><fmt:message key="menu_ranking" /></a></li>
+                        <li><a href="jugar.html">Jugar</a></li>
+                        <li><a href="gestion.html">Gestión</a></li>
+                        <li><a href="../index.html#opinions">Opiniones</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="ranking.html">Ranking</a></li>
                     </ul>
                 </nav>
                 <div class="header-buttons">
-                    <a href="inicioeleccion.html" class="btn-primary"><fmt:message key="boton_iniciar" /></a>
-                    <a href="#" class="btn-secondary"><fmt:message key="boton_registrar" /></a>
-                    <button class="btn-tertiary"><fmt:message key="boton_english" /></button>
+                    <a href="#" class="btn-primary">Iniciar sesión</a>
+                    <a href="registroeleccion.html" class="btn-secondary">Registrar</a>
+                    <button class="btn-tertiary">English</button>
                 </div>
             </div>
         </div>
@@ -43,10 +43,10 @@
 
     <main class="registration-selection">
         <div class="container">
-            <h1 class="page-title"><fmt:message key="seleccion_registro_titulo" /></h1>
+            <h1 class="page-title">SELECCIONA EL TIPO DE INICIO DE SESIÓN</h1>
             
             <div class="registration-options">
-                <a href="registroindividual.html" class="registration-option">
+                <a href="iniciosesionindividual.html" class="registration-option">
                     <div class="registration-box">
                         <div class="icon-container">
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -54,12 +54,12 @@
                                 <circle cx="12" cy="7" r="4"></circle>
                             </svg>
                         </div>
-                        <h2><fmt:message key="registro_individual_titulo" /></h2>
-                        <p class="option-description"><fmt:message key="registro_individual_descripcion" /></p>
+                        <h2>Inicio Individual</h2>
+                        <p class="option-description">Para usuarios individuales que desean iniciar sesión</p>
                     </div>
                 </a>
                 
-                <a href="registrocentro.html" class="registration-option">
+                <a href="iniciosesioncentro.html" class="registration-option">
                     <div class="registration-box">
                         <div class="icon-container">
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -67,8 +67,8 @@
                                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
                             </svg>
                         </div>
-                        <h2><fmt:message key="registro_centro_titulo" /></h2>
-                        <p class="option-description"><fmt:message key="registro_centro_descripcion" /></p>
+                        <h2>Inicio de Centro Escolar</h2>
+                        <p class="option-description">Para centros educativos que desean iniciar sesión</p>
                     </div>
                 </a>
             </div>
@@ -90,8 +90,8 @@
                     </a>
                 </div>
                 <div class="footer-text">
-                    <a href="contacto.html"><fmt:message key="footer_contacto" /></a>
-                    <p class="copyright"><fmt:message key="footer_derechos" /></p>
+                    <a href="contacto.html">Información de Contacto</a>
+                    <p class="copyright">© 2025 Bilbao SKP. Todos los derechos reservados</p>
                 </div>
                 <div class="footer-logos">
                     <a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank" aria-label="Diputación"> 

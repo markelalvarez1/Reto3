@@ -67,13 +67,12 @@ public class UsuarioService {
 			}
 			u.setId(usuarioId);
 
-			int suscripcionId = suscripcionService.crearSuscripcion(u, con);
-			if (suscripcionId == 0) {
+			Suscripcion s = suscripcionService.crearSuscripcion(u, con);
+			if (s == null) {
 				con.rollback();
 				return false;
 			}
-			Suscripcion s = new Suscripcion();
-			s.setId(suscripcionId);
+			u.setSuscripcion(s);
 			
 			if(u.getRol().getId() == 2) {
 				if(!emailService.enviarCorreoVerificacion(u)) {
