@@ -15,14 +15,12 @@ import com.bilbaoSKP.laultimacarta.model.Usuario;
 public class UsuarioService {
 	UsuarioDAO usuarioDAO;
 	SuscripcionService suscripcionService;
-	CuponService cuponService;
 	EmailService emailService;
 
 	public UsuarioService() {
 		super();
 		usuarioDAO = new UsuarioDAO();
 		suscripcionService = new SuscripcionService();
-		cuponService = new CuponService();
 		emailService = new EmailService();
 	}
 
@@ -34,11 +32,16 @@ public class UsuarioService {
 		String correo = request.getParameter("correo");
 		String contrasena = request.getParameter("contrasena");
 		String telefono = request.getParameter("telefono");
+		String tipoSuscripcion = request.getParameter("tiposuscripcion");
 
 		if (!validarCampos(rol, nombre, apellidos, dni, correo, contrasena, telefono)) {
 			return false;
 		}
 
+		if(!validarTelefono(telefono, request)) {
+			return false;
+		}
+		
 		Usuario u = new Usuario();
 		Rol r = new Rol();
 		u.setNombre(nombre);
@@ -67,18 +70,17 @@ public class UsuarioService {
 			}
 			u.setId(usuarioId);
 
-			Suscripcion s = suscripcionService.crearSuscripcion(u, con);
+			int tipoSuscripcionID = Integer.parseInt(tipoSuscripcion);
+			Suscripcion s = suscripcionService.crearSuscripcion(u, tipoSuscripcionID, con);
 			if (s == null) {
 				con.rollback();
 				return false;
 			}
 			u.setSuscripcion(s);
-			
-			if(u.getRol().getId() == 2) {
-				if(!emailService.enviarCorreoVerificacion(u)) {
-					con.rollback();
-					return false;
-				}
+
+			if (!emailService.enviarCorreoVerificacion(u)) {
+				con.rollback();
+				return false;
 			}
 
 			con.commit();
@@ -88,19 +90,42 @@ public class UsuarioService {
 					con.rollback();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
-				}	
+				}
 			}
 			e.printStackTrace();
 			return false;
 		} finally {
 			if (con != null) {
-	            try {
-	                con.setAutoCommit(true);
-	                AccesoBD.closeConnection(null, null, con);
-	            } catch (SQLException e) {
-	                e.printStackTrace();
-	            }
-	        }
+				try {
+					con.setAutoCommit(true);
+					AccesoBD.closeConnection(null, null, con);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return true;
+	}
+
+	public boolean registrarCentro(HttpServletRequest request, HttpServletResponse response) {
+		String rol = request.getParameter("rol");
+		String nombre = request.getParameter("nombre");
+		String apellidos = request.getParameter("apellidos");
+		String dni = request.getParameter("dni");
+		String correo = request.getParameter("correo");
+		String contrasena = request.getParameter("contrasena");
+		String telefono = request.getParameter("telefono");
+		
+		return true;
+		
+	}
+	
+	private boolean validarTelefono(String telefono, HttpServletRequest request) {
+		try {
+			int tlf = Integer.parseInt(request.getParameter("telefono")) ;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
 		return true;
 	}

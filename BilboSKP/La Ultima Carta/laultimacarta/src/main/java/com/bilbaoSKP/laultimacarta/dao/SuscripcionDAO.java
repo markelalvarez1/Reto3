@@ -11,7 +11,7 @@ import com.bilbaoSKP.laultimacarta.model.Usuario;
 
 public class SuscripcionDAO {
 
-	public Suscripcion crearSuscripcion(Usuario u, Connection conexion) {
+	public Suscripcion crearSuscripcion(Usuario u, int tipoSuscripcion, Connection conexion) {
 		Connection con = conexion;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -19,13 +19,13 @@ public class SuscripcionDAO {
 		try {
 			String sql = "INSERT INTO suscripcion (usuario_id, fechaInicio, estado, codigoacceso, suscripcion_tipo_id) "
 					+ "VALUES (?, ?, ?, ?, ?)";
-			s = Suscripcion.nuevaSuscripcion();
+			s = Suscripcion.nuevaSuscripcion(tipoSuscripcion);
 			ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, u.getId());
 			ps.setDate(2, Date.valueOf(s.getFechaInicio()));
 			ps.setString(3, s.getEstado());
 			ps.setString(4, s.getCodigoAcceso());
-			ps.setInt(5, 1);
+			ps.setInt(5, s.getTipoSuscripcionID());
 			
 			ps.execute();
 			rs = ps.getGeneratedKeys();

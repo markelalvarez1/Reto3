@@ -14,9 +14,9 @@ public class SuscripcionService {
 		suscripcionDAO = new SuscripcionDAO();
 	}
 
-	public Suscripcion crearSuscripcion(Usuario u, Connection conexion) {
+	public Suscripcion crearSuscripcion(Usuario u, int tipoSuscripcion, Connection conexion) {
 		// TODO Auto-generated method stub
-		return suscripcionDAO.crearSuscripcion(u,conexion);
+		return suscripcionDAO.crearSuscripcion(u, tipoSuscripcion, conexion);
 	}
 
-}
+} 

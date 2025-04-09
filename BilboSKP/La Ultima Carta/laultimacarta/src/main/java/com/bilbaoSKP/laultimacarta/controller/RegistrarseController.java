@@ -13,8 +13,8 @@ import com.bilbaoSKP.laultimacarta.model.Usuario;
 import com.bilbaoSKP.laultimacarta.service.UsuarioService;
 
 
-@WebServlet("/index")
-public class IndexController extends HttpServlet {
+@WebServlet("/registrarse")
+public class RegistrarseController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	UsuarioService usuarioService;
 	
@@ -31,6 +31,7 @@ public class IndexController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (usuarioService.registrarUsuario(request, response)) {
+			//Todo correcto, enviamos a la pagina indicando que le hemos enviado un correo de verificacion
 			response.sendRedirect("index");
 		} else {
 			// Lanzamos error

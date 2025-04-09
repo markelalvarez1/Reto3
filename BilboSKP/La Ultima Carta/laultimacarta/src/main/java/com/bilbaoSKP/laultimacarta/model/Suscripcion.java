@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Suscripcion {
 
-	private int id;
+	private int id, tipoSuscripcionID;
 	private LocalDate fechaInicio;
 	private String estado, codigoAcceso;
 	private List<Cupon> cupones;
@@ -41,14 +41,22 @@ public class Suscripcion {
 	public void setCodigoAcceso(String codigoAcceso) {
 		this.codigoAcceso = codigoAcceso;
 	}
+	public int getTipoSuscripcionID() {
+		return tipoSuscripcionID;
+	}
+	public void setTipoSuscripcionID(int tipoSuscripcionID) {
+		this.tipoSuscripcionID = tipoSuscripcionID;
+	}
 	
-	public static Suscripcion nuevaSuscripcion() {
+	public static Suscripcion nuevaSuscripcion(int tipoSuscripcionID) {
 		Suscripcion s = new Suscripcion();
 		s.setEstado("pendiente");
 		s.setFechaInicio(LocalDate.now());
 		s.setCodigoAcceso(generarCodigoAcceso());
+		s.setTipoSuscripcionID(tipoSuscripcionID);
 		return s;
 	}
+	
 	private static String generarCodigoAcceso() {
 		String codigo = "";
 		Random ramon = new Random();
