@@ -1,109 +1,121 @@
+<%@ include file="/WEB-INF/includes/idioma.jsp"%>
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Seleccione su tipo de registro para Bilbao SKP - Individual o Centro Escolar">
-    <title>Selección Inicio</title>
+    <title><fmt:message key="seleccioninicio_titulo"/></title>
     <link rel="icon" href="../Img/baldosa.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/stylesregistroeleccion.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header id="main-header">
-        <div class="container">
-            <a href="../Index.html" class="logo">Bilbao SKP</a>
-            
-            <div class="hamburger-menu">
-                <div class="hamburger-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-            
-            <div class="nav-container">
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="jugar.html">Jugar</a></li>
-                        <li><a href="gestion.html">Gestión</a></li>
-                        <li><a href="../index.html#opinions">Opiniones</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                        <li><a href="ranking.html">Ranking</a></li>
-                    </ul>
-                </nav>
-                <div class="header-buttons">
-                    <a href="#" class="btn-primary">Iniciar sesión</a>
-                    <a href="registroeleccion.html" class="btn-secondary">Registrar</a>
-                    <button class="btn-tertiary">English</button>
-                </div>
-            </div>
-        </div>
-    </header>
+			<div class="container">
+				<a href="../Index.jsp" class="logo"><fmt:message
+						key="logo_bilbao_skp" /></a>
+	
+				<div class="hamburger-menu">
+					<div class="hamburger-icon">
+						<span></span> <span></span> <span></span>
+					</div>
+				</div>
+	
+				<div class="nav-container">
+					<nav>
+						<ul>
+							<li><a href="jugar.jsp"><fmt:message key="menu_jugar" /></a></li>
+							<li><a href="gestion.jsp"><fmt:message
+										key="menu_gestion" /></a></li>
+							<li><a href="../Index.jsp#opinions"><fmt:message
+										key="menu_opiniones" /></a></li>
+							<li><a href="contacto.jsp"><fmt:message
+										key="menu_contacto" /></a></li>
+							<li><a href="ranking.jsp"><fmt:message key="menu_ranking" /></a></li>
+						</ul>
+					</nav>
+					<div class="header-buttons">
+						<button class="btn-primary">
+							<a href="inicioeleccion.jsp"><fmt:message key="boton_iniciar" /></a>
+						</button>
+						<button class="btn-secondary">
+							<a href="registroeleccion.jsp"><fmt:message
+									key="boton_registrar" /></a>
+						</button>
+						<button class="btn-tertiary">
+							<fmt:message key="boton_english" />
+						</button>
+					</div>
+				</div>
+			</div>
+	</header>
+	
+	<main class="registration-selection">
+	    <div class="container">
+	        <h1 class="page-title"><fmt:message key="seleccion_tipo_inicio_sesion" /></h1>
+	        
+	        <div class="registration-options">
+	            <a href="iniciosesionindividual.html" class="registration-option">
+	                <div class="registration-box">
+	                    <div class="icon-container">
+	                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+	                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+	                            <circle cx="12" cy="7" r="4"></circle>
+	                        </svg>
+	                    </div>
+	                    <h2><fmt:message key="inicio_individual" /></h2>
+	                    <p class="option-description"><fmt:message key="descripcion_inicio_individual" /></p>
+	                </div>
+	            </a>
+	            
+	            <a href="iniciosesioncentro.html" class="registration-option">
+	                <div class="registration-box">
+	                    <div class="icon-container">
+	                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+	                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+	                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+	                        </svg>
+	                    </div>
+	                    <h2><fmt:message key="inicio_centro_escolar" /></h2>
+	                    <p class="option-description"><fmt:message key="descripcion_inicio_centro" /></p>
+	                </div>
+	            </a>
+	        </div>
+	    </div>
+	</main>
 
-    <main class="registration-selection">
-        <div class="container">
-            <h1 class="page-title">SELECCIONA EL TIPO DE INICIO DE SESIÓN</h1>
-            
-            <div class="registration-options">
-                <a href="iniciosesionindividual.html" class="registration-option">
-                    <div class="registration-box">
-                        <div class="icon-container">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </div>
-                        <h2>Inicio Individual</h2>
-                        <p class="option-description">Para usuarios individuales que desean iniciar sesión</p>
-                    </div>
-                </a>
-                
-                <a href="iniciosesioncentro.html" class="registration-option">
-                    <div class="registration-box">
-                        <div class="icon-container">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                            </svg>
-                        </div>
-                        <h2>Inicio de Centro Escolar</h2>
-                        <p class="option-description">Para centros educativos que desean iniciar sesión</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </main>  
 
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="social-links">
-                    <a href="https://www.instagram.com/dcdevelopment_" target="_blank" aria-label="Instagram">
-                        <img class="IG" src="../Img/igb.png" alt="Instagram">
-                    </a>
-                    <a href="https://www.tiktok.com/@digitalcraftdevel" target="_blank" aria-label="TikTok">
-                        <img class="TK" src="../Img/tiktokb.png" alt="TikTok">
-                    </a>
-                    <a href="https://x.com/Dcdevelopment_" target="_blank" aria-label="X">
-                        <img class="X" src="../Img/Xb.png" alt="X">
-                    </a>
-                </div>
-                <div class="footer-text">
-                    <a href="contacto.html">Información de Contacto</a>
-                    <p class="copyright">© 2025 Bilbao SKP. Todos los derechos reservados</p>
-                </div>
-                <div class="footer-logos">
-                    <a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank" aria-label="Diputación"> 
-                        <img class="diputacion" src="../Img/DiputacionBZK.png" alt="Diputación">
-                    </a>
-                    <a href="../../Pagina/castellano/index.html" target="_blank" aria-label="DCD Logo"> 
-                        <img class="logo" src="../Img/DCDlogo.png" alt="DCD Logo">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
+			<div class="container">
+				<div class="footer-scontent">
+					<div class="social-links">
+						<a href="https://www.instagram.com/dcdevelopment_" target="_blank"><img
+							class="IG" src="../Img/igb.png" alt="Instagram"></a> <a
+							href="https://www.tiktok.com/@digitalcraftdevel" target="_blank"><img
+							class="TK" src="../Img/tiktokb.png" alt="TikTok"></a> <a
+							href="https://x.com/Dcdevelopment_" target="_blank"><img
+							class="X" src="../Img/Xb.png" alt="X"></a>
+					</div>
+					<div class="footer-text">
+						<a href="contacto.jsp"><p>
+								<fmt:message key="footer_contacto" />
+							</p></a>
+						<p class="copyright">
+							<fmt:message key="footer_derechos" />
+						</p>
+					</div>
+					<div class="footer-logos">
+						<a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank">
+							<img class="diputacion" src="../Img/DiputacionBZK.png"
+							alt="Diputaci�n">
+						</a> <a href="../../Pagina/castellano/index.html" target="_blank">
+							<img class="logo" src="../Img/DCDlogo.png" alt="DCD Logo">
+						</a>
+					</div>
+				</div>
+			</div>
+	</footer>
 
     <script>
         // Header scroll effect

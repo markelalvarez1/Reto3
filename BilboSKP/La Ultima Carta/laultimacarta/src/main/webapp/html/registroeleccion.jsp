@@ -12,7 +12,7 @@
 <body>
     <header id="main-header">
         <div class="container">
-            <a href="../Index.html" class="logo">Bilbao SKP</a>
+            <a href="../Index.jsp" class="logo">Bilbao SKP</a>
             
             <div class="hamburger-menu">
                 <div class="hamburger-icon">
@@ -25,15 +25,15 @@
             <div class="nav-container">
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="jugar.html"><fmt:message key="menu_jugar" /></a></li>
-                        <li><a href="gestion.html"><fmt:message key="menu_gestion" /></a></li>
-                        <li><a href="../index.html#opinions"><fmt:message key="menu_opiniones" /></a></li>
-                        <li><a href="contacto.html"><fmt:message key="menu_contacto" /></a></li>
-                        <li><a href="ranking.html"><fmt:message key="menu_ranking" /></a></li>
+                        <li><a href="jugar.jsp"><fmt:message key="menu_jugar" /></a></li>
+                        <li><a href="gestion.jsp"><fmt:message key="menu_gestion" /></a></li>
+                        <li><a href="../Index.jsp#opinions"><fmt:message key="menu_opiniones" /></a></li>
+                        <li><a href="contacto.jsp"><fmt:message key="menu_contacto" /></a></li>
+                        <li><a href="ranking.jsp"><fmt:message key="menu_ranking" /></a></li>
                     </ul>
                 </nav>
                 <div class="header-buttons">
-                    <a href="inicioeleccion.html" class="btn-primary"><fmt:message key="boton_iniciar" /></a>
+                    <a href="inicioeleccion.jsp" class="btn-primary"><fmt:message key="boton_iniciar" /></a>
                     <a href="#" class="btn-secondary"><fmt:message key="boton_registrar" /></a>
                     <button class="btn-tertiary"><fmt:message key="boton_english" /></button>
                 </div>
@@ -90,7 +90,7 @@
                     </a>
                 </div>
                 <div class="footer-text">
-                    <a href="contacto.html"><fmt:message key="footer_contacto" /></a>
+                    <a href="contacto.jsp"><fmt:message key="footer_contacto" /></a>
                     <p class="copyright"><fmt:message key="footer_derechos" /></p>
                 </div>
                 <div class="footer-logos">

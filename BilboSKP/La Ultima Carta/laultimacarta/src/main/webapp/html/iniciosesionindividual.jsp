@@ -1,88 +1,113 @@
+<%@ include file="/WEB-INF/includes/idioma.jsp"%>
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio Sesi贸n Individual</title>
+    <title><fmt:message key="iniciarsesionindividual_titulo"/></title>
     <link rel="icon" href="../Img/baldosa.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/stylesregistro.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header id="main-header">
-        <div class="container">
-            <a href="../Index.html" class="logo">Bilbao SKP</a>
-            
-            <div class="hamburger-menu">
-                <div class="hamburger-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-            
-            <div class="nav-container">
-                <nav>
-                    <ul>
-                        <li><a href="jugar.html">Jugar</a></li>
-                        <li><a href="gestion.html">Gesti贸n</a></li>
-                        <li><a href="../index.html#opinions">Opiniones</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                        <li><a href="ranking.html">Ranking</a></li>
-                    </ul>
-                </nav>
-                <div class="header-buttons">
-                    <button class="btn-primary"><a href="inicioeleccion.html">Iniciar sesi贸n</a></button>
-                    <button class="btn-secondary"><a href="registroeleccion.html">Registrar</a></button>
-                    <button class="btn-tertiary">English</button>
-                </div>
-            </div>
-        </div>
-    </header>
+	<header id="main-header">
+			<div class="container">
+				<a href="../Index.jsp" class="logo"><fmt:message
+						key="logo_bilbao_skp" /></a>
+	
+				<div class="hamburger-menu">
+					<div class="hamburger-icon">
+						<span></span> <span></span> <span></span>
+					</div>
+				</div>
+	
+				<div class="nav-container">
+					<nav>
+						<ul>
+							<li><a href="jugar.jsp"><fmt:message key="menu_jugar" /></a></li>
+							<li><a href="gestion.jsp"><fmt:message
+										key="menu_gestion" /></a></li>
+							<li><a href="../Index.jsp#opinions"><fmt:message
+										key="menu_opiniones" /></a></li>
+							<li><a href="contacto.jsp"><fmt:message
+										key="menu_contacto" /></a></li>
+							<li><a href="ranking.jsp"><fmt:message key="menu_ranking" /></a></li>
+						</ul>
+					</nav>
+					<div class="header-buttons">
+						<button class="btn-primary">
+							<a href="inicioeleccion.jsp"><fmt:message key="boton_iniciar" /></a>
+						</button>
+						<button class="btn-secondary">
+							<a href="registroeleccion.jsp"><fmt:message
+									key="boton_registrar" /></a>
+						</button>
+						<button class="btn-tertiary">
+							<fmt:message key="boton_english" />
+						</button>
+					</div>
+				</div>
+			</div>
+	</header>
 
-    <main>
-        <div class="container">
-            <div class="form-container">
-                <h1>Inicio de sesi贸n</h1>
-                
-                <div class="form-content">
-                    <div id="individual-form" class="form-fields">
-                        <div class="form-group">
-                            <label for="username">Email</label>
-                            <input type="email" id="email" name="email" placeholder="ejemplo@correo.com">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="password">Contrase帽a</label>
-                            <input type="password" id="password" name="password" placeholder="Introduce tu contrase帽a">
-                        </div>
-                      
-                        <button class="submit-btn">ENVIAR</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+
+	<main>
+	    <div class="container">
+	        <div class="form-container">
+	            <h1><fmt:message key="inicio_sesion" /></h1>
+	            
+	            <div class="form-content">
+	                <div id="individual-form" class="form-fields">
+	                    <div class="form-group">
+	                        <label for="email"><fmt:message key="correo_electronico" /></label>
+	                        <input type="email" id="email" name="email" placeholder="<fmt:message key='placeholder_email' />">
+	                    </div>
+	                    
+	                    <div class="form-group">
+	                        <label for="password"><fmt:message key="contrasena" /></label>
+	                        <input type="password" id="password" name="password" placeholder="<fmt:message key='placeholder_contrasena' />">
+	                    </div>
+	                  
+	                    <button class="submit-btn">
+	                        <fmt:message key="boton_enviar" />
+	                    </button>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</main>
+
 
     <footer>
-        <div class="container">
-            <div class="footer-scontent">
-                <div class="social-links">
-                    <a href="https://www.instagram.com/dcdevelopment_" target="_blank"><img class="IG" src="../Img/igb.png" alt="Instagram"></a>
-                    <a href="https://www.tiktok.com/@digitalcraftdevel" target="_blank"><img class="TK" src="../Img/tiktokb.png" alt="TikTok"></a>
-                    <a href="https://x.com/Dcdevelopment_" target="_blank"><img  class="X" src="../Img/Xb.png" alt="X"></a>
-                </div>
-                <div class="footer-text">
-                    <a href="contacto.html"><p>Informaci贸n de Contacto</p></a>
-                    <p class="copyright">漏 2025 Todos los derechos reservados</p>
-                </div>
-                <div class="footer-logos">
-                    <a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank"> <img class="diputacion" src="../Img/DiputacionBZK.png" alt="Diputaci贸n"></a>
-                    <a href="../../Pagina/castellano/index.html" target="_blank"> <img class="logo" src="../Img/DCDlogo.png" alt="DCD Logo"></a>
-                </div>
-            </div>
-        </div>
-    </footer>
+			<div class="container">
+				<div class="footer-scontent">
+					<div class="social-links">
+						<a href="https://www.instagram.com/dcdevelopment_" target="_blank"><img
+							class="IG" src="../Img/igb.png" alt="Instagram"></a> <a
+							href="https://www.tiktok.com/@digitalcraftdevel" target="_blank"><img
+							class="TK" src="../Img/tiktokb.png" alt="TikTok"></a> <a
+							href="https://x.com/Dcdevelopment_" target="_blank"><img
+							class="X" src="../Img/Xb.png" alt="X"></a>
+					</div>
+					<div class="footer-text">
+						<a href="contacto.jsp"><p>
+								<fmt:message key="footer_contacto" />
+							</p></a>
+						<p class="copyright">
+							<fmt:message key="footer_derechos" />
+						</p>
+					</div>
+					<div class="footer-logos">
+						<a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank">
+							<img class="diputacion" src="../Img/DiputacionBZK.png"
+							alt="Diputaci髇">
+						</a> <a href="../../Pagina/castellano/index.html" target="_blank">
+							<img class="logo" src="../Img/DCDlogo.png" alt="DCD Logo">
+						</a>
+					</div>
+				</div>
+			</div>
+	</footer>
 
     <script>
         window.addEventListener('scroll', function() {

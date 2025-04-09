@@ -34,7 +34,7 @@ public class EmailService {
              message.setFrom(new InternetAddress(remitente));
              message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(u.getCorreo()));
              message.setSubject("Correo de verificaci�n");
-             String html = "<h1>Codigo de verificación</h1><p>Tu codigo de verificaci�n es : " + u.getSuscripcion().getCodigoAcceso() + "</p>";
+             String html = "<h1>Codigo de verificación</h1><p>Tu codigo de verificación es : " + u.getSuscripcion().getCodigoAcceso() + "</p>";
              message.setContent(html, "text/html");
 
              // 4. Enviar el mensaje

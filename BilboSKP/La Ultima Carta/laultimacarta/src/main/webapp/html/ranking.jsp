@@ -14,7 +14,7 @@
 <body>
 	<header id="main-header">
 		<div class="container">
-			<a href="../Index.html" class="logo"><fmt:message
+			<a href="../Index.jsp" class="logo"><fmt:message
 					key="logo_bilbao_skp" /></a>
 
 			<div class="hamburger-menu">
@@ -26,22 +26,22 @@
 			<div class="nav-container">
 				<nav>
 					<ul>
-						<li><a href="jugar.html"><fmt:message key="menu_jugar" /></a></li>
-						<li><a href="gestion.html"><fmt:message
+						<li><a href="jugar.jsp"><fmt:message key="menu_jugar" /></a></li>
+						<li><a href="gestion.jsp"><fmt:message
 									key="menu_gestion" /></a></li>
-						<li><a href="../index.html#opinions"><fmt:message
+						<li><a href="../index.jsp#opinions"><fmt:message
 									key="menu_opiniones" /></a></li>
-						<li><a href="contacto.html"><fmt:message
+						<li><a href="contacto.jsp"><fmt:message
 									key="menu_contacto" /></a></li>
 						<li><a href="#"><fmt:message key="menu_ranking" /></a></li>
 					</ul>
 				</nav>
 				<div class="header-buttons">
 					<button class="btn-primary">
-						<a href="inicioeleccion.html"><fmt:message key="boton_iniciar" /></a>
+						<a href="inicioeleccion.jsp"><fmt:message key="boton_iniciar" /></a>
 					</button>
 					<button class="btn-secondary">
-						<a href="registroeleccion.html"><fmt:message
+						<a href="registroeleccion.jsp"><fmt:message
 								key="boton_registrar" /></a>
 					</button>
 					<button class="btn-tertiary">
@@ -369,7 +369,7 @@
 						class="X" src="../Img/Xb.png" alt="X"></a>
 				</div>
 				<div class="footer-text">
-					<a href="contacto.html"><p>
+					<a href="contacto.jsp"><p>
 							<fmt:message key="footer_contacto" />
 						</p></a>
 					<p class="copyright">

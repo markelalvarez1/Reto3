@@ -12,7 +12,7 @@
 <body>
     <header id="main-header">
         <div class="container">
-            <a href="../Index.html" class="logo"><fmt:message key="logo_bilbao_skp" /></a>
+            <a href="../Index.jsp" class="logo"><fmt:message key="logo_bilbao_skp" /></a>
 
             <div class="hamburger-menu">
                 <div class="hamburger-icon">
@@ -25,16 +25,16 @@
             <div class="nav-container">
                 <nav>
                     <ul>
-                        <li><a href="jugar.html"><fmt:message key="menu_jugar" /></a></li>
-                        <li><a href="gestion.html"><fmt:message key="menu_gestion" /></a></li>
-                        <li><a href="../index.html#opinions"><fmt:message key="menu_opiniones" /></a></li>
-                        <li><a href="contacto.html"><fmt:message key="menu_contacto" /></a></li>
-                        <li><a href="ranking.html"><fmt:message key="menu_ranking" /></a></li>
+                        <li><a href="jugar.jsp"><fmt:message key="menu_jugar" /></a></li>
+                        <li><a href="gestion.jsp"><fmt:message key="menu_gestion" /></a></li>
+                        <li><a href="../Index.jsp#opinions"><fmt:message key="menu_opiniones" /></a></li>
+                        <li><a href="contacto.jsp"><fmt:message key="menu_contacto" /></a></li>
+                        <li><a href="ranking.jsp"><fmt:message key="menu_ranking" /></a></li>
                     </ul>
                 </nav>
                 <div class="header-buttons">
-                    <button class="btn-primary"><a href="inicioeleccion.html"><fmt:message key="boton_iniciar" /></a></button>
-                    <button class="btn-secondary"><a href="registroeleccion.html"><fmt:message key="boton_registrar" /></a></button>
+                    <button class="btn-primary"><a href="inicioeleccion.jsp"><fmt:message key="boton_iniciar" /></a></button>
+                    <button class="btn-secondary"><a href="registroeleccion.jsp"><fmt:message key="boton_registrar" /></a></button>
                     <button class="btn-tertiary"><fmt:message key="boton_english" /></button>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                     <a href="https://x.com/Dcdevelopment_" target="_blank"><img class="X" src="../Img/Xb.png" alt="X"></a>
                 </div>
                 <div class="footer-text">
-                    <a href="contacto.html"><p><fmt:message key="footer_contacto" /></p></a>
+                    <a href="contacto.jsp"><p><fmt:message key="footer_contacto" /></p></a>
                     <p class="copyright"><fmt:message key="footer_derechos" /></p>
                 </div>
                 <div class="footer-logos">

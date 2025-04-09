@@ -26,16 +26,16 @@
             <div class="nav-container">
                 <nav>
                     <ul>
-                        <li><a href="html/jugar.html"><fmt:message key="menu_jugar" /></a></li>
-                        <li><a href="html/gestion.html"><fmt:message key="menu_gestion" /></a></li>
+                        <li><a href="html/jugar.jsp"><fmt:message key="menu_jugar" /></a></li>
+                        <li><a href="html/gestion.jsp"><fmt:message key="menu_gestion" /></a></li>
                         <li><a href="#opinions"><fmt:message key="menu_opiniones" /></a></li>
-                        <li><a href="html/contacto.html"><fmt:message key="menu_contacto" /></a></li>
-                        <li><a href="html/ranking.html"><fmt:message key="menu_ranking" /></a></li>
+                        <li><a href="html/contacto.jsp"><fmt:message key="menu_contacto" /></a></li>
+                        <li><a href="html/ranking.jsp"><fmt:message key="menu_ranking" /></a></li>
                     </ul>
                 </nav>
                 <div class="header-buttons">
-                    <button class="btn-primary"><a href="html/inicioeleccion.html"><fmt:message key="boton_iniciar" /></a></button>
-                    <button class="btn-secondary"><a href="html/registroeleccion.html"><fmt:message key="boton_registrar" /></a></button>
+                    <button class="btn-primary"><a href="html/inicioeleccion.jsp"><fmt:message key="boton_iniciar" /></a></button>
+                    <button class="btn-secondary"><a href="html/registroeleccion.jsp"><fmt:message key="boton_registrar" /></a></button>
                     <button class="btn-tertiary"><fmt:message key="boton_english" /></button>
                 </div>
             </div>
@@ -51,7 +51,7 @@
         <div class="container">
             <h1><fmt:message key="ultima_carta" /></h1>
             <p><fmt:message key="descripcion_ultima_carta" /></p>
-            <button class="btn-primary"><a href="html/jugar.html"><fmt:message key="jugar" /></a></button>
+            <button class="btn-primary"><a href="html/jugar.jsp"><fmt:message key="menu_jugar" /></a></button>
         </div>
     </section>
 
@@ -93,7 +93,7 @@
                     <a href="https://x.com/Dcdevelopment_" target="_blank"><img class="X" src="Img/Xb.png" alt="X"></a>
                 </div>
                 <div class="footer-text">
-                    <a href="html/contacto.html"><p><fmt:message key="footer_contacto" /></p></a>
+                    <a href="html/contacto.jsp"><p><fmt:message key="footer_contacto" /></p></a>
                     <p class="copyright"><fmt:message key="footer_derechos" /></p>
                 </div>
                 <div class="footer-logos">
