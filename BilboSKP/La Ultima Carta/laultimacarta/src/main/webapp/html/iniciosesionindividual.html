@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio Sesión Individual</title>
+    <link rel="icon" href="../Img/baldosa.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/stylesregistro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <a href="../Index.html" class="logo">Bilbao SKP</a>
+            
+            <div class="hamburger-menu">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <div class="nav-container">
+                <nav>
+                    <ul>
+                        <li><a href="jugar.html">Jugar</a></li>
+                        <li><a href="gestion.html">Gestión</a></li>
+                        <li><a href="../index.html#opinions">Opiniones</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="ranking.html">Ranking</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <button class="btn-primary"><a href="inicioeleccion.html">Iniciar sesión</a></button>
+                    <button class="btn-secondary"><a href="registroeleccion.html">Registrar</a></button>
+                    <button class="btn-tertiary">English</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="form-container">
+                <h1>Inicio de sesión</h1>
+                
+                <div class="form-content">
+                    <div id="individual-form" class="form-fields">
+                        <div class="form-group">
+                            <label for="username">Email</label>
+                            <input type="email" id="email" name="email" placeholder="ejemplo@correo.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input type="password" id="password" name="password" placeholder="Introduce tu contraseña">
+                        </div>
+                      
+                        <button class="submit-btn">ENVIAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-scontent">
+                <div class="social-links">
+                    <a href="https://www.instagram.com/dcdevelopment_" target="_blank"><img class="IG" src="../Img/igb.png" alt="Instagram"></a>
+                    <a href="https://www.tiktok.com/@digitalcraftdevel" target="_blank"><img class="TK" src="../Img/tiktokb.png" alt="TikTok"></a>
+                    <a href="https://x.com/Dcdevelopment_" target="_blank"><img  class="X" src="../Img/Xb.png" alt="X"></a>
+                </div>
+                <div class="footer-text">
+                    <a href="contacto.html"><p>Información de Contacto</p></a>
+                    <p class="copyright">© 2025 Todos los derechos reservados</p>
+                </div>
+                <div class="footer-logos">
+                    <a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank"> <img class="diputacion" src="../Img/DiputacionBZK.png" alt="Diputación"></a>
+                    <a href="../../Pagina/castellano/index.html" target="_blank"> <img class="logo" src="../Img/DCDlogo.png" alt="DCD Logo"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.hamburger-menu').addEventListener('click', function() {
+                this.classList.toggle('active');
+                document.querySelector('.nav-container').classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', function() {
+                    document.querySelector('.hamburger-menu').classList.remove('active');
+                    document.querySelector('.nav-container').classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
