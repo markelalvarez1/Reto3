@@ -44,7 +44,9 @@
 									key="boton_registrar" /></a>
 						</button>
 						<button class="btn-tertiary">
-							<fmt:message key="boton_english" />
+						    <a href="?lang=${sessionScope.lang eq 'en' ? 'es' : 'en'}">
+						        <fmt:message key="boton_idioma" />
+						    </a>
 						</button>
 					</div>
 				</div>
@@ -56,7 +58,7 @@
 	        <h1 class="page-title"><fmt:message key="seleccion_tipo_inicio_sesion" /></h1>
 	        
 	        <div class="registration-options">
-	            <a href="iniciosesionindividual.html" class="registration-option">
+	            <a href="iniciosesionindividual.jsp" class="registration-option">
 	                <div class="registration-box">
 	                    <div class="icon-container">
 	                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -69,7 +71,7 @@
 	                </div>
 	            </a>
 	            
-	            <a href="iniciosesioncentro.html" class="registration-option">
+	            <a href="iniciosesioncentro.jsp" class="registration-option">
 	                <div class="registration-box">
 	                    <div class="icon-container">
 	                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">

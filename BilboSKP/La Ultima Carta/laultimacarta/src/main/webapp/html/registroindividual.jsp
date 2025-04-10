@@ -1,9 +1,12 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ include file="/WEB-INF/includes/idioma.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulario de Registro - Bilbao SKP">
+    <meta name="keywords" content="registro, usuario, Bilbao, SKP">
+    <meta name="author" content="DC Development">
     <title><fmt:message key="formulario_registro_titulo" /></title>
     <link rel="icon" href="../Img/baldosa.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/stylesregistro.css">
@@ -13,7 +16,6 @@
     <header id="main-header">
         <div class="container">
             <a href="../Index.jsp" class="logo"><fmt:message key="logo_bilbao_skp" /></a>
-
             <div class="hamburger-menu">
                 <div class="hamburger-icon">
                     <span></span>
@@ -21,7 +23,6 @@
                     <span></span>
                 </div>
             </div>
-
             <div class="nav-container">
                 <nav>
                     <ul>
@@ -35,7 +36,11 @@
                 <div class="header-buttons">
                     <button class="btn-primary"><a href="inicioeleccion.jsp"><fmt:message key="boton_iniciar" /></a></button>
                     <button class="btn-secondary"><a href="registroeleccion.jsp"><fmt:message key="boton_registrar" /></a></button>
-                    <button class="btn-tertiary"><fmt:message key="boton_english" /></button>
+                    <button class="btn-tertiary">
+                        <a href="?lang=${sessionScope.lang eq 'en' ? 'es' : 'en'}">
+                            <fmt:message key="boton_idioma" />
+                        </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -45,40 +50,41 @@
         <div class="container">
             <div class="form-container">
                 <h1><fmt:message key="formulario_registro_titulo" /></h1>
-
                 <div class="form-content">
                     <div id="individual-form" class="form-fields">
-                        <div class="form-group">
-                            <label for="name"><fmt:message key="form_nombre" /></label>
-                            <input type="text" id="name" name="name" placeholder="<fmt:message key='placeholder_nombre' />">
-                        </div>
+                        <form action="#" method="POST">
+                            <div class="form-group">
+                                <label for="name"><fmt:message key="form_nombre" /></label>
+                                <input type="text" id="name" name="name" placeholder="<fmt:message key='placeholder_nombre' />" aria-label="Nombre" required>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="dni"><fmt:message key="form_dni" /></label>
-                            <input type="text" id="dni" name="dni" placeholder="<fmt:message key='placeholder_dni' />"> 
-                        </div>
+                            <div class="form-group">
+                                <label for="dni"><fmt:message key="form_dni" /></label>
+                                <input type="text" id="dni" name="dni" placeholder="<fmt:message key='placeholder_dni' />" aria-label="DNI" required pattern="[A-Z0-9]{8}[A-Z]{1}">
+                            </div>
 
-                        <div class="form-group">
-                            <label for="email"><fmt:message key="form_email" /></label>
-                            <input type="email" id="email" name="email" placeholder="<fmt:message key='placeholder_email' />">
-                        </div>
+                            <div class="form-group">
+                                <label for="email"><fmt:message key="form_email" /></label>
+                                <input type="email" id="email" name="email" placeholder="<fmt:message key='placeholder_email' />" aria-label="Correo electrónico" required>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="password"><fmt:message key="form_contrasena" /></label>
-                            <input type="password" id="password" name="password" placeholder="<fmt:message key='placeholder_contrasena' />">
-                        </div>
+                            <div class="form-group">
+                                <label for="password"><fmt:message key="form_contrasena" /></label>
+                                <input type="password" id="password" name="password" placeholder="<fmt:message key='placeholder_contrasena' />" aria-label="Contraseña" required>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="repeat-password"><fmt:message key="form_repetir_contrasena" /></label>
-                            <input type="password" id="repeat-password" name="repeat-password" placeholder="<fmt:message key='placeholder_repetir_contrasena' />">
-                        </div>
+                            <div class="form-group">
+                                <label for="repeat-password"><fmt:message key="form_repetir_contrasena" /></label>
+                                <input type="password" id="repeat-password" name="repeat-password" placeholder="<fmt:message key='placeholder_repetir_contrasena' />" aria-label="Repetir contraseña" required>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="phone"><fmt:message key="form_telefono" /></label>
-                            <input type="tel" id="phone" name="phone" placeholder="<fmt:message key='placeholder_telefono' />">
-                        </div>
+                            <div class="form-group">
+                                <label for="phone"><fmt:message key="form_telefono" /></label>
+                                <input type="tel" id="phone" name="phone" placeholder="<fmt:message key='placeholder_telefono' />" aria-label="Teléfono" required pattern="\d{9}">
+                            </div>
 
-                        <button class="submit-btn"><fmt:message key="boton_enviar" /></button>
+                            <button type="submit" class="submit-btn"><fmt:message key="boton_enviar" /></button>
+                        </form>
                     </div>
                 </div>
             </div>

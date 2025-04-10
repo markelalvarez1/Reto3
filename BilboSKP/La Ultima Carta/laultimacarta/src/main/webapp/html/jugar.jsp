@@ -43,7 +43,9 @@
 									key="boton_registrar" /></a>
 						</button>
 						<button class="btn-tertiary">
-							<fmt:message key="boton_english" />
+						    <a href="?lang=${sessionScope.lang eq 'en' ? 'es' : 'en'}">
+						        <fmt:message key="boton_idioma" />
+						    </a>
 						</button>
 					</div>
 				</div>
