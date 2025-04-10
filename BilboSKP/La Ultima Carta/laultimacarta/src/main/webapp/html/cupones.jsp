@@ -1,397 +1,483 @@
+<%@ include file="/WEB-INF/includes/idioma.jsp"%>
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cupones</title>
-    <link rel="icon" href="../Img/baldosa.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/stylescupones.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><fmt:message key="cupones_titulo" /></title>
+<link rel="icon" href="../Img/baldosa.png" type="image/x-icon">
+<link rel="stylesheet" href="../css/stylescupones.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"
+	rel="stylesheet">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+	rel='stylesheet'>
 </head>
 <body>
-    <header id="main-header">
-        <div class="container">
-            <a href="../Index.html" class="logo">Bilbao SKP</a>
-            
-            <div class="hamburger-menu">
-                <div class="hamburger-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-            
-            <div class="nav-container">
-                <nav>
-                    <ul>
-                        <li><a href="jugar.html">Jugar</a></li>
-                        <li><a href="gestion.html">Gesti贸n</a></li>
-                        <li><a href="../index.html#opinions">Opiniones</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                        <li><a href="ranking.html">Ranking</a></li>
-                    </ul>
-                </nav>
-                <div class="header-buttons">
-                    <button class="btn-primary"><a href="inicioeleccion.html">Iniciar sesi贸n</a></button>
-                    <button class="btn-secondary"><a href="registroeleccion.html">Registrar</a></button>
-                    <button class="btn-tertiary">English</button>
-                </div>
-            </div>
-        </div>
-    </header>
+	<header id="main-header">
+		<div class="container">
+			<a href="../Index.jsp" class="logo"><fmt:message
+					key="logo_bilbao_skp" /></a>
 
-    <!-- Contenido Principal -->
-    <main>
-        <div class="container coupons-container">
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="menuperfil.html" class="sidebar-link">
-                                <i class='bx bx-user'></i>
-                                <span>Menu del perfil</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="ranking.html" class="sidebar-link">
-                                <i class='bx bx-trophy'></i>
-                                <span>Ranking</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="organizarpartida.html" class="sidebar-link">
-                                <i class='bx bx-calendar'></i>
-                                <span>Organizar Partida</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="cupones.html" class="sidebar-link active">
-                                <i class='bx bx-ticket'></i>
-                                <span>Obtener cupones</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="sidebar-link logout">
-                                <i class='bx bx-log-out'></i>
-                                <span>Cerrar sesi贸n</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+			<div class="hamburger-menu">
+				<div class="hamburger-icon">
+					<span></span> <span></span> <span></span>
+				</div>
+			</div>
 
-            <!-- Contenido de Cupones -->
-            <div class="coupons-content">
-                <div class="page-header">
-                    <h1>Obtener Cupones</h1>
-                    <p>Adquiere y gestiona tus cupones de descuento</p>
-                </div>
+			<div class="nav-container">
+				<nav>
+					<ul>
+						<li><a href="jugar.jsp"><fmt:message key="menu_jugar" /></a></li>
+						<li><a href="gestion.jsp"><fmt:message key="menu_gestion" /></a></li>
+						<li><a href="../Index.jsp#opinions"><fmt:message
+									key="menu_opiniones" /></a></li>
+						<li><a href="contacto.jsp"><fmt:message
+									key="menu_contacto" /></a></li>
+						<li><a href="ranking.jsp"><fmt:message key="menu_ranking" /></a></li>
+					</ul>
+				</nav>
+				<div class="header-buttons">
+					<button class="btn-primary">
+						<a href="inicioeleccion.jsp"><fmt:message key="boton_iniciar" /></a>
+					</button>
+					<button class="btn-secondary">
+						<a href="registroeleccion.jsp"><fmt:message
+								key="boton_registrar" /></a>
+					</button>
+					<button class="btn-tertiary">
+						<a href="?lang=${sessionScope.lang eq 'en' ? 'es' : 'en'}"> <fmt:message
+								key="boton_idioma" />
+						</a>
+					</button>
+				</div>
+			</div>
+		</div>
+	</header>
 
-                <!-- Resumen de puntos y cupones -->
-                <div class="coupons-summary">
-                    <div class="summary-card">
-                        <div class="summary-icon">
-                            <i class='bx bx-coin-stack'></i>
-                        </div>
-                        <div class="summary-info">
-                            <h3>Tus Puntos</h3>
-                            <p class="summary-value">1,250</p>
-                        </div>
-                    </div>
-                    
-                    <div class="summary-card">
-                        <div class="summary-icon">
-                            <i class='bx bx-ticket'></i>
-                        </div>
-                        <div class="summary-info">
-                            <h3>Cupones Activos</h3>
-                            <p class="summary-value">2</p>
-                        </div>
-                    </div>
-                    
-                    <div class="summary-card">
-                        <div class="summary-icon">
-                            <i class='bx bx-gift'></i>
-                        </div>
-                        <div class="summary-info">
-                            <h3>Cupones Canjeados</h3>
-                            <p class="summary-value">7</p>
-                        </div>
-                    </div>
-                </div>
+	<!-- Contenido Principal -->
+	<main>
+		<div class="container coupons-container">
+			<!-- Sidebar -->
+			<div class="sidebar">
+				<nav>
+					<ul>
+						<li><a href="menuperfil.jsp" class="sidebar-link active">
+								<i class='bx bx-user'></i> <span><fmt:message
+										key="menu_perfil" /></span>
+						</a></li>
+						<li><a href="ranking.jsp" class="sidebar-link"> <i
+								class='bx bx-trophy'></i> <span><fmt:message
+										key="menu_ranking" /></span>
+						</a></li>
+						<li><a href="organizarpartida.jsp" class="sidebar-link">
+								<i class='bx bx-calendar'></i> <span><fmt:message
+										key="menu_organizar_partida" /></span>
+						</a></li>
+						<li><a href="cupones.jsp" class="sidebar-link"> <i
+								class='bx bx-ticket'></i> <span><fmt:message
+										key="menu_obtener_cupones" /></span>
+						</a></li>
+						<li><a href="#" class="sidebar-link logout"> <i
+								class='bx bx-log-out'></i> <span><fmt:message
+										key="menu_cerrar_sesion" /></span>
+						</a></li>
+					</ul>
+				</nav>
+			</div>
 
-                <!-- Cupones disponibles -->
-                <div class="block available-coupons">
-                    <div class="block-header">
-                        <h2>Cupones Disponibles</h2>
-                        <div class="filter-dropdown">
-                            <button class="filter-btn">
-                                <i class='bx bx-filter-alt'></i>
-                                Filtrar
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="coupons-grid">
-                        <!-- Cup贸n 1 - destacado -->
-                        <div class="coupon-card featured">
-                           
-                            <div class="coupon-header">
-                                <h3>1 Cup贸n - 15% Descuento</h3>
-                                <div class="coupon-points">300 pts</div>
-                            </div>
-                            <div class="coupon-content">
-                                <p>15% de descuento en tu pr贸xima partida. Aplicable a cualquier d铆a de la semana.</p>
-                                <div class="coupon-details">
-                                    <div class="coupon-detail">
-                                        <i class='bx bx-calendar'></i>
-                                        <span>V谩lido hasta: 30/09/2025</span>
-                                    </div>
-                                    <div class="coupon-detail">
-                                        <i class='bx bx-info-circle'></i>
-                                        <span>1 cup贸n individual</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="coupon-footer">
-                                <button class="primary-button">Obtener Cup贸n</button>
-                            </div>
-                        </div>
-                        
-                        <!-- Cup贸n 5 -->
-                        <div class="coupon-card">
-                            <div class="coupon-header">
-                                <h3>5 Cupones - 10% Descuento</h3>
-                                <div class="coupon-points">1200 pts</div>
-                            </div>
-                            <div class="coupon-content">
-                                <p>Paquete de 5 cupones con 10% de descuento cada uno. Ideal para jugadores frecuentes.</p>
-                                <div class="coupon-details">
-                                    <div class="coupon-detail">
-                                        <i class='bx bx-calendar'></i>
-                                        <span>V谩lido hasta: 31/10/2025</span>
-                                    </div>
-                                    <div class="coupon-detail">
-                                        <i class='bx bx-package'></i>
-                                        <span>Paquete de 5 cupones</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="coupon-footer">
-                                <button class="primary-button">Obtener Paquete</button>
-                            </div>
-                        </div>
-                        
-                        <!-- Cup贸n 15 -->
-                        <div class="coupon-card">
-                            <div class="coupon-header">
-                                <h3>15 Cupones - 20% Descuento</h3>
-                                <div class="coupon-points">3000 pts</div>
-                            </div>
-                            <div class="coupon-content">
-                                <p>Paquete de 15 cupones con 20% de descuento cada uno. La mejor opci贸n para jugadores habituales.</p>
-                                <div class="coupon-details">
-                                    <div class="coupon-detail">
-                                        <i class='bx bx-calendar'></i>
-                                        <span>V谩lido hasta: 15/11/2025</span>
-                                    </div>
-                                    <div class="coupon-detail">
-                                        <i class='bx bx-package'></i>
-                                        <span>Paquete de 15 cupones</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="coupon-footer">
-                                <button class="primary-button">Obtener Paquete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Mis Cupones -->
-                <div class="block my-coupons">
-                    <h2>Mis Cupones</h2>
-                    
-                    <div class="tabs-header">
-                        <button class="tab-btn active" data-tab="active">Activos</button>
-                        <button class="tab-btn" data-tab="used">Utilizados</button>
-                    </div>
-                    
-                    <!-- Cupones activos -->
-                    <div class="tab-content active" id="active-tab">
-                        <div class="my-coupons-list">
-                            <div class="my-coupon-item">
-                                <div class="coupon-left">
-                                    <div class="coupon-icon">
-                                        <i class='bx bx-ticket'></i>
-                                    </div>
-                                    <div class="coupon-info">
-                                        <h3>15% Descuento</h3>
-                                        <div class="coupon-meta">
-                                            <span><i class='bx bx-calendar'></i> V谩lido hasta: 30/09/2025</span>
-                                            <span><i class='bx bx-info-circle'></i> Cup贸n individual</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="coupon-actions">
-                                    <button class="action-btn view-btn">
-                                        <i class='bx bx-show'></i>
-                                        Ver
-                                    </button>
-                                    <button class="action-btn use-btn">
-                                        <i class='bx bx-check'></i>
-                                        Usar
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <div class="my-coupon-item">
-                                <div class="coupon-left">
-                                    <div class="coupon-icon">
-                                        <i class='bx bx-package'></i>
-                                    </div>
-                                    <div class="coupon-info">
-                                        <h3>Paquete 10% Descuento</h3>
-                                        <div class="coupon-meta">
-                                            <span><i class='bx bx-calendar'></i> V谩lido hasta: 31/10/2025</span>
-                                            <span><i class='bx bx-info-circle'></i> 4 cupones restantes</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="coupon-actions">
-                                    <button class="action-btn view-btn">
-                                        <i class='bx bx-show'></i>
-                                        Ver
-                                    </button>
-                                    <button class="action-btn use-btn">
-                                        <i class='bx bx-check'></i>
-                                        Usar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Cupones utilizados -->
-                    <div class="tab-content" id="used-tab">
-                        <div class="my-coupons-list">
-                            <div class="my-coupon-item used">
-                                <div class="coupon-left">
-                                    <div class="coupon-icon">
-                                        <i class='bx bx-package'></i>
-                                    </div>
-                                    <div class="coupon-info">
-                                        <h3>Paquete 10% Descuento</h3>
-                                        <div class="coupon-meta">
-                                            <span><i class='bx bx-calendar'></i> Utilizado: 05/05/2025</span>
-                                            <span><i class='bx bx-info-circle'></i> 1 de 5 cupones</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="coupon-status">
-                                    <span class="status-badge used">Utilizado</span>
-                                </div>
-                            </div>
-                            
-                            <div class="my-coupon-item used">
-                                <div class="coupon-left">
-                                    <div class="coupon-icon">
-                                        <i class='bx bx-ticket'></i>
-                                    </div>
-                                    <div class="coupon-info">
-                                        <h3>15% Descuento</h3>
-                                        <div class="coupon-meta">
-                                            <span><i class='bx bx-calendar'></i> Utilizado: 20/04/2025</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="coupon-status">
-                                    <span class="status-badge used">Utilizado</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Informaci贸n sobre cupones -->
-                <div class="block coupons-info">
-                    <h2>C贸mo Funcionan los Cupones</h2>
-                    
-                    <div class="info-steps">
-                        <div class="info-step">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <h3>Gana Puntos</h3>
-                                <p>Acumula puntos participando en partidas, ganando torneos o completando desaf铆os.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="info-step">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <h3>Adquiere Cupones</h3>
-                                <p>Canjea tus puntos por cupones individuales o paquetes de descuento seg煤n tus necesidades.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="info-step">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <h3>Utiliza tus Cupones</h3>
-                                <p>Presenta tu cup贸n al momento de reservar o durante tu visita para disfrutar de los descuentos.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="info-notes">
-                        <div class="info-note">
-                            <i class='bx bx-info-circle'></i>
-                            <p>Los cupones tienen una fecha de caducidad. Aseg煤rate de utilizarlos antes de que expiren.</p>
-                        </div>
-                        
-                        <div class="info-note">
-                            <i class='bx bx-info-circle'></i>
-                            <p>No se pueden combinar m煤ltiples cupones en una misma partida o reserva.</p>
-                        </div>
-                        
-                        <div class="info-note">
-                            <i class='bx bx-info-circle'></i>
-                            <p>Los paquetes de cupones ofrecen mejor valor que los cupones individuales.</p>
-                        </div>
-                        
-                        <div class="info-note">
-                            <i class='bx bx-info-circle'></i>
-                            <p>Los puntos no utilizados no caducan y se mantienen en tu cuenta.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+			<!-- Contenido de Cupones -->
+			<div class="coupons-content">
+				<div class="page-header">
+					<h1>
+						<fmt:message key="cupones_titulo" />
+					</h1>
+					<p>
+						<fmt:message key="cupones_subtitulo" />
+					</p>
+				</div>
 
-    <footer>
-        <div class="container">
-            <div class="footer-scontent">
-                <div class="social-links">
-                    <a href="https://www.instagram.com/dcdevelopment_" target="_blank"><img class="IG" src="../Img/igb.png" alt="Instagram"></a>
-                    <a href="https://www.tiktok.com/@digitalcraftdevel" target="_blank"><img class="TK" src="../Img/tiktokb.png" alt="TikTok"></a>
-                    <a href="https://x.com/Dcdevelopment_" target="_blank"><img  class="X" src="../Img/Xb.png" alt="X"></a>
-                </div>
-                <div class="footer-text">
-                    <a href="contacto.html"><p>Informaci贸n de Contacto</p></a>
-                    <p class="copyright">漏 2025 Todos los derechos reservados</p>
-                </div>
-                <div class="footer-logos">
-                    <a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank"> <img class="diputacion" src="../Img/DiputacionBZK.png" alt="Diputaci贸n"></a>
-                    <a href="../../Pagina/castellano/index.html" target="_blank"> <img class="logo" src="../Img/DCDlogo.png" alt="DCD Logo"></a>
-                </div>
-            </div>
-        </div>
-    </footer>
+				<!-- Resumen de puntos y cupones -->
+				<div class="coupons-summary">
+					<div class="summary-card">
+						<div class="summary-icon">
+							<i class='bx bx-coin-stack'></i>
+						</div>
+						<div class="summary-info">
+							<h3>
+								<fmt:message key="cupones_puntos" />
+							</h3>
+							<p class="summary-value">1,250</p>
+						</div>
+					</div>
 
-    <script>
+					<div class="summary-card">
+						<div class="summary-icon">
+							<i class='bx bx-ticket'></i>
+						</div>
+						<div class="summary-info">
+							<h3>
+								<fmt:message key="cupones_activos" />
+							</h3>
+							<p class="summary-value">2</p>
+						</div>
+					</div>
+
+					<div class="summary-card">
+						<div class="summary-icon">
+							<i class='bx bx-gift'></i>
+						</div>
+						<div class="summary-info">
+							<h3>
+								<fmt:message key="cupones_canjeados" />
+							</h3>
+							<p class="summary-value">7</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Cupones disponibles -->
+				<div class="block available-coupons">
+					<div class="block-header">
+						<h2>
+							<fmt:message key="cupones_disponibles" />
+						</h2>
+						<div class="filter-dropdown">
+							<button class="filter-btn">
+								<i class='bx bx-filter-alt'></i>
+								<fmt:message key="cupones_filtrar" />
+							</button>
+						</div>
+					</div>
+
+					<div class="coupons-grid">
+						<!-- Cup髇 1 -->
+						<div class="coupon-card featured">
+							<div class="coupon-header">
+								<h3>
+									<fmt:message key="cupon_1_titulo" />
+								</h3>
+								<div class="coupon-points">300 pts</div>
+							</div>
+							<div class="coupon-content">
+								<p>
+									<fmt:message key="cupon_1_descripcion" />
+								</p>
+								<div class="coupon-details">
+									<div class="coupon-detail">
+										<i class='bx bx-calendar'></i> <span><fmt:message
+												key="cupon_1_valido_hasta" /></span>
+									</div>
+									<div class="coupon-detail">
+										<i class='bx bx-info-circle'></i> <span><fmt:message
+												key="cupon_1_tipo" /></span>
+									</div>
+								</div>
+							</div>
+							<div class="coupon-footer">
+								<button class="primary-button">
+									<fmt:message key="cupon_obtener" />
+								</button>
+							</div>
+						</div>
+
+						<!-- Cup髇 5 -->
+						<div class="coupon-card">
+							<div class="coupon-header">
+								<h3>
+									<fmt:message key="cupon_5_titulo" />
+								</h3>
+								<div class="coupon-points">1200 pts</div>
+							</div>
+							<div class="coupon-content">
+								<p>
+									<fmt:message key="cupon_5_descripcion" />
+								</p>
+								<div class="coupon-details">
+									<div class="coupon-detail">
+										<i class='bx bx-calendar'></i> <span><fmt:message
+												key="cupon_5_valido_hasta" /></span>
+									</div>
+									<div class="coupon-detail">
+										<i class='bx bx-package'></i> <span><fmt:message
+												key="cupon_5_tipo" /></span>
+									</div>
+								</div>
+							</div>
+							<div class="coupon-footer">
+								<button class="primary-button">
+									<fmt:message key="cupon_obtener_paquete" />
+								</button>
+							</div>
+						</div>
+
+						<!-- Cup髇 15 -->
+						<div class="coupon-card">
+							<div class="coupon-header">
+								<h3>
+									<fmt:message key="cupon_15_titulo" />
+								</h3>
+								<div class="coupon-points">3000 pts</div>
+							</div>
+							<div class="coupon-content">
+								<p>
+									<fmt:message key="cupon_15_descripcion" />
+								</p>
+								<div class="coupon-details">
+									<div class="coupon-detail">
+										<i class='bx bx-calendar'></i> <span><fmt:message
+												key="cupon_15_valido_hasta" /></span>
+									</div>
+									<div class="coupon-detail">
+										<i class='bx bx-package'></i> <span><fmt:message
+												key="cupon_15_tipo" /></span>
+									</div>
+								</div>
+							</div>
+							<div class="coupon-footer">
+								<button class="primary-button">
+									<fmt:message key="cupon_obtener_paquete" />
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Mis Cupones -->
+				<div class="block my-coupons">
+					<h2>
+						<fmt:message key="miscupones_titulo" />
+					</h2>
+
+					<div class="tabs-header">
+						<button class="tab-btn active" data-tab="active">
+							<fmt:message key="miscupones_activos" />
+						</button>
+						<button class="tab-btn" data-tab="used">
+							<fmt:message key="miscupones_usados" />
+						</button>
+					</div>
+
+					<!-- Cupones activos -->
+					<div class="tab-content active" id="active-tab">
+						<div class="my-coupons-list">
+							<div class="my-coupon-item">
+								<div class="coupon-left">
+									<div class="coupon-icon">
+										<i class='bx bx-ticket'></i>
+									</div>
+									<div class="coupon-info">
+										<h3>
+											<fmt:message key="micupon_15_titulo" />
+										</h3>
+										<div class="coupon-meta">
+											<span><i class='bx bx-calendar'></i> <fmt:message
+													key="micupon_15_valido_hasta" /></span> <span><i
+												class='bx bx-info-circle'></i> <fmt:message
+													key="micupon_15_tipo" /></span>
+										</div>
+									</div>
+								</div>
+								<div class="coupon-actions">
+									<button class="action-btn view-btn">
+										<i class='bx bx-show'></i>
+										<fmt:message key="micupon_ver" />
+									</button>
+									<button class="action-btn use-btn">
+										<i class='bx bx-check'></i>
+										<fmt:message key="micupon_usar" />
+									</button>
+								</div>
+							</div>
+
+							<div class="my-coupon-item">
+								<div class="coupon-left">
+									<div class="coupon-icon">
+										<i class='bx bx-package'></i>
+									</div>
+									<div class="coupon-info">
+										<h3>
+											<fmt:message key="micupon_10_titulo" />
+										</h3>
+										<div class="coupon-meta">
+											<span><i class='bx bx-calendar'></i> <fmt:message
+													key="micupon_10_valido_hasta" /></span> <span><i
+												class='bx bx-info-circle'></i> <fmt:message
+													key="micupon_10_restantes" /></span>
+										</div>
+									</div>
+								</div>
+								<div class="coupon-actions">
+									<button class="action-btn view-btn">
+										<i class='bx bx-show'></i>
+										<fmt:message key="micupon_ver" />
+									</button>
+									<button class="action-btn use-btn">
+										<i class='bx bx-check'></i>
+										<fmt:message key="micupon_usar" />
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Cupones utilizados -->
+					<div class="tab-content" id="used-tab">
+						<div class="my-coupons-list">
+							<div class="my-coupon-item used">
+								<div class="coupon-left">
+									<div class="coupon-icon">
+										<i class='bx bx-package'></i>
+									</div>
+									<div class="coupon-info">
+										<h3>
+											<fmt:message key="micupon_10_titulo" />
+										</h3>
+										<div class="coupon-meta">
+											<span><i class='bx bx-calendar'></i> <fmt:message
+													key="micupon_10_usado" /></span> <span><i
+												class='bx bx-info-circle'></i> <fmt:message
+													key="micupon_10_canjeado" /></span>
+										</div>
+									</div>
+								</div>
+								<div class="coupon-status">
+									<span class="status-badge used"><fmt:message
+											key="micupon_estado_usado" /></span>
+								</div>
+							</div>
+
+							<div class="my-coupon-item used">
+								<div class="coupon-left">
+									<div class="coupon-icon">
+										<i class='bx bx-ticket'></i>
+									</div>
+									<div class="coupon-info">
+										<h3>
+											<fmt:message key="micupon_15_titulo" />
+										</h3>
+										<div class="coupon-meta">
+											<span><i class='bx bx-calendar'></i> <fmt:message
+													key="micupon_15_usado" /></span>
+										</div>
+									</div>
+								</div>
+								<div class="coupon-status">
+									<span class="status-badge used"><fmt:message
+											key="micupon_estado_usado" /></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Informaci髇 sobre cupones -->
+				<div class="block coupons-info">
+					<h2>
+						<fmt:message key="info_titulo" />
+					</h2>
+
+					<div class="info-steps">
+						<div class="info-step">
+							<div class="step-number">1</div>
+							<div class="step-content">
+								<h3>
+									<fmt:message key="info_paso1_titulo" />
+								</h3>
+								<p>
+									<fmt:message key="info_paso1_desc" />
+								</p>
+							</div>
+						</div>
+
+						<div class="info-step">
+							<div class="step-number">2</div>
+							<div class="step-content">
+								<h3>
+									<fmt:message key="info_paso2_titulo" />
+								</h3>
+								<p>
+									<fmt:message key="info_paso2_desc" />
+								</p>
+							</div>
+						</div>
+
+						<div class="info-step">
+							<div class="step-number">3</div>
+							<div class="step-content">
+								<h3>
+									<fmt:message key="info_paso3_titulo" />
+								</h3>
+								<p>
+									<fmt:message key="info_paso3_desc" />
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="info-notes">
+						<div class="info-note">
+							<i class='bx bx-info-circle'></i>
+							<p>
+								<fmt:message key="info_nota1" />
+							</p>
+						</div>
+						<div class="info-note">
+							<i class='bx bx-info-circle'></i>
+							<p>
+								<fmt:message key="info_nota2" />
+							</p>
+						</div>
+						<div class="info-note">
+							<i class='bx bx-info-circle'></i>
+							<p>
+								<fmt:message key="info_nota3" />
+							</p>
+						</div>
+						<div class="info-note">
+							<i class='bx bx-info-circle'></i>
+							<p>
+								<fmt:message key="info_nota4" />
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer>
+		<div class="container">
+			<div class="footer-scontent">
+				<div class="social-links">
+					<a href="https://www.instagram.com/dcdevelopment_" target="_blank"><img
+						class="IG" src="../Img/igb.png" alt="Instagram"></a> <a
+						href="https://www.tiktok.com/@digitalcraftdevel" target="_blank"><img
+						class="TK" src="../Img/tiktokb.png" alt="TikTok"></a> <a
+						href="https://x.com/Dcdevelopment_" target="_blank"><img
+						class="X" src="../Img/Xb.png" alt="X"></a>
+				</div>
+				<div class="footer-text">
+					<a href="contacto.jsp"><p>
+							<fmt:message key="footer_contacto" />
+						</p></a>
+					<p class="copyright">
+						<fmt:message key="footer_derechos" />
+					</p>
+				</div>
+				<div class="footer-logos">
+					<a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank">
+						<img class="diputacion" src="../Img/DiputacionBZK.png"
+						alt="Diputaci髇">
+					</a> <a href="../../Pagina/castellano/index.html" target="_blank">
+						<img class="logo" src="../Img/DCDlogo.png" alt="DCD Logo">
+					</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script>
         // Script para el comportamiento del header al hacer scroll
         window.addEventListener('scroll', function() {
             const header = document.getElementById('main-header');

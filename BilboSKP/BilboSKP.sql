@@ -12,23 +12,6 @@ CREATE TABLE etapaEducativa(
 	nombre VARCHAR (100) NOT NULL
 );
 
-CREATE TABLE centroEscolar(
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	CIF VARCHAR (50) NOT NULL UNIQUE,
-	nombre VARCHAR (100) NOT NULL,
-	telefono VARCHAR (50) NOT NULL,
-	email VARCHAR (100) NOT NULL,
-	numeroAlumnos INT NOT NULL
-);
-
-CREATE TABLE etapaEducativa_centroEscolar(
-	etapaEducativa_id INT,
-	centroEscolar_id INT,
-	PRIMARY KEY (etapaEducativa_id, centroEscolar_id),
-	FOREIGN KEY (etapaEducativa_id) REFERENCES etapaEducativa (id),
-	FOREIGN KEY (centroEscolar_id) REFERENCES centroescolar (id)
-);
-
 CREATE TABLE usuario(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	nombre VARCHAR (100) NOT NULL,
@@ -41,11 +24,23 @@ CREATE TABLE usuario(
 	FOREIGN KEY (rol_id) REFERENCES rol (id)
 );
 
-CREATE TABLE responsable(
-	id_usuario INT NOT NULL,	
-	centroEscolar_id INT NOT NULL,
-	FOREIGN KEY (centroEscolar_id) REFERENCES centroEscolar(id),
+CREATE TABLE centroEscolar(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	CIF VARCHAR (50) NOT NULL UNIQUE,
+	nombre VARCHAR (100) NOT NULL,
+	telefono VARCHAR (50) NOT NULL,
+	correo VARCHAR (100) NOT NULL,
+	numeroAlumnos INT NOT NULL,
+	id_usuario INT NOT NULL,
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+);
+
+CREATE TABLE etapaEducativa_centroEscolar(
+	etapaEducativa_id INT,
+	centroEscolar_id INT,
+	PRIMARY KEY (etapaEducativa_id, centroEscolar_id),
+	FOREIGN KEY (etapaEducativa_id) REFERENCES etapaEducativa (id),
+	FOREIGN KEY (centroEscolar_id) REFERENCES centroescolar (id)
 );
 
 CREATE TABLE clase (
@@ -76,26 +71,19 @@ CREATE TABLE suscripcion (
     fechaInicio DATE NOT NULL,
     estado VARCHAR(50) NOT NULL,
     suscripcion_tipo_id INT NOT NULL,
-    codigoAcceso INT,
+    codigoAcceso VARCHAR (50),
     FOREIGN KEY (suscripcion_tipo_id) REFERENCES suscripcionTipo (id),
     FOREIGN KEY (usuario_id) REFERENCES usuario(id)
-);
-
-CREATE TABLE cupon_tipo (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    tipo VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE cupon (
     id INT AUTO_INCREMENT PRIMARY KEY,
     suscripcion_id INT NOT NULL,
-    cupon_tipo_id INT NOT NULL,
     fechaCompra DATE NOT NULL,
     fechaCaducidad DATE NOT NULL,
     precio DECIMAL(10,2) NOT NULL,
     estado VARCHAR(50) NOT NULL,
-    FOREIGN KEY (suscripcion_id) REFERENCES suscripcion(id),
-    FOREIGN KEY (cupon_tipo_id) REFERENCES cupon_tipo(id)
+    FOREIGN KEY (suscripcion_id) REFERENCES suscripcion(id)
 );
 
 CREATE TABLE escapeRoom (
@@ -131,11 +119,6 @@ VALUES
 ("Admin"),
 ("Usuario"),
 ("Responsable");
-
-INSERT INTO cupon_tipo (tipo)
-VALUES
-("NORMAL"),
-("ESPECIAL");
 
 INSERT INTO suscripciontipo (tipo, precio)
 VALUES
