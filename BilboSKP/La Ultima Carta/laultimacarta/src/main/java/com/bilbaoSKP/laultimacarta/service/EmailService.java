@@ -35,9 +35,7 @@ public class EmailService {
              message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(u.getCorreo()));
              message.setSubject("Correo de verificación");
              String codigoVerificacion = codificador(u);
-             String html = "<h1>Enlace de verificación</h1><p>Gracias por solicitar la suscripción "+ u.getNombre()+"</p>"
-             		+ "<p>Pulsa en el siguiente enlace para verificar tu cuenta</p>"
-             		+ "<a href='localhost:8080/laultimacarta/verificar?codigo="+codigoVerificacion+"' target='_Blank'>Pulsa aqui</a>";
+             String html = crearHtmlVerificacion(u, codigoVerificacion);
              message.setContent(html, "text/html");
 
              // 4. Enviar el mensaje
@@ -78,4 +76,75 @@ public class EmailService {
 		return props;
 	}
 	
+	private String crearHtmlVerificacion(Usuario u, String codigoVerificacion) {
+		String html = "<html>"
+		         + "  <head>"
+		         + "    <meta charset='UTF-8'>"
+		         + "    <style type='text/css'>"
+		         + "      body {"
+		         + "        font-family: Arial, sans-serif;"
+		         + "        background-color: #f4f4f4;"
+		         + "        color: #333;"
+		         + "        margin: 0;"
+		         + "        padding: 0;"
+		         + "      }"
+		         + "      .container {"
+		         + "        max-width: 600px;"
+		         + "        margin: 30px auto;"
+		         + "        background-color: #fff;"
+		         + "        padding: 20px;"
+		         + "        border-radius: 8px;"
+		         + "        box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
+		         + "      }"
+		         + "      .header {"
+		         + "        text-align: center;"
+		         + "        background-color: #4CAF50;"
+		         + "        padding: 20px;"
+		         + "        color: #fff;"
+		         + "        border-radius: 8px 8px 0 0;"
+		         + "      }"
+		         + "      .content {"
+		         + "        margin-top: 20px;"
+		         + "        line-height: 1.6;"
+		         + "      }"
+		         + "      .button {"
+		         + "        display: inline-block;"
+		         + "        background-color: #4CAF50;"
+		         + "        color: #fff;"
+		         + "        padding: 10px 20px;"
+		         + "        text-decoration: none;"
+		         + "        border-radius: 5px;"
+		         + "        font-size: 16px;"
+		         + "        margin-top: 20px;"
+		         + "      }"
+		         + "      .footer {"
+		         + "        font-size: 12px;"
+		         + "        color: #777;"
+		         + "        text-align: center;"
+		         + "        margin-top: 30px;"
+		         + "      }"
+		         + "    </style>"
+		         + "  </head>"
+		         + "  <body>"
+		         + "    <div class='container'>"
+		         + "      <div class='header'>"
+		         + "        <h1>Verificación de Cuenta</h1>"
+		         + "      </div>"
+		         + "      <div class='content'>"
+		         + "        <p>Hola, <strong>" + u.getNombre() + "</strong>!</p>"
+		         + "        <p>Gracias por solicitar la suscripción. Para activar tu cuenta, por favor pulsa el botón de abajo:</p>"
+		         + "        <p style='text-align: center;'>"
+		         + "          <a class='button' href='http://localhost:8080/laultimacarta/verificar?codigo=" + codigoVerificacion + "' target='_blank'>Verificar mi cuenta</a>"  
+		         + "        </p>"
+		         + "        <p>Si no solicitaste esta acción, ignora este correo.</p>"
+		         + "      </div>"
+		         + "      <div class='footer'>"
+		         + "        <p>¿Necesitas ayuda? Contáctanos en <a href='http://localhost:8080/laultimacarta/contacto.jsp'>Contacto</a></p>"
+		         + "        <p>&copy; 2025 BilboSKP. Todos los derechos reservados.</p>"
+		         + "      </div>"
+		         + "    </div>"
+		         + "  </body>"
+		         + "</html>";
+		return html;
+	}
 }

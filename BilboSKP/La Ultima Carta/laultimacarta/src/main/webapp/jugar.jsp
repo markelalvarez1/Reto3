@@ -5,8 +5,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><fmt:message key="jugar_titulo" /></title>
-<link rel="stylesheet" href="../css/stylesjugar.css">
-<link rel="icon" href="../Img/baldosa.png" type="image/x-icon">
+<link rel="stylesheet" href="css/stylesjugar.css">
+<link rel="icon" href="Img/baldosa.png" type="image/x-icon">
 <link
 	href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"
 	rel="stylesheet">
@@ -14,7 +14,7 @@
 <body>
 	<header id="main-header">
 		<div class="container">
-			<a href="../Index.jsp" class="logo"><fmt:message
+			<a href="Index.jsp" class="logo"><fmt:message
 					key="logo_bilbao_skp" /></a>
 
 			<div class="hamburger-menu">
@@ -28,7 +28,7 @@
 					<ul>
 						<li><a href="jugar.jsp"><fmt:message key="menu_jugar" /></a></li>
 						<li><a href="gestion.jsp"><fmt:message key="menu_gestion" /></a></li>
-						<li><a href="../Index.jsp#opinions"><fmt:message
+						<li><a href="Index.jsp#opinions"><fmt:message
 									key="menu_opiniones" /></a></li>
 						<li><a href="contacto.jsp"><fmt:message
 									key="menu_contacto" /></a></li>
@@ -286,11 +286,11 @@
 			<div class="footer-scontent">
 				<div class="social-links">
 					<a href="https://www.instagram.com/dcdevelopment_" target="_blank"><img
-						class="IG" src="../Img/igb.png" alt="Instagram"></a> <a
+						class="IG" src="Img/igb.png" alt="Instagram"></a> <a
 						href="https://www.tiktok.com/@digitalcraftdevel" target="_blank"><img
-						class="TK" src="../Img/tiktokb.png" alt="TikTok"></a> <a
+						class="TK" src="Img/tiktokb.png" alt="TikTok"></a> <a
 						href="https://x.com/Dcdevelopment_" target="_blank"><img
-						class="X" src="../Img/Xb.png" alt="X"></a>
+						class="X" src="Img/Xb.png" alt="X"></a>
 				</div>
 				<div class="footer-text">
 					<a href="contacto.jsp"><p>
@@ -302,10 +302,10 @@
 				</div>
 				<div class="footer-logos">
 					<a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank">
-						<img class="diputacion" src="../Img/DiputacionBZK.png"
+						<img class="diputacion" src="Img/DiputacionBZK.png"
 						alt="Diputación">
 					</a> <a href="../../Pagina/castellano/index.html" target="_blank">
-						<img class="logo" src="../Img/DCDlogo.png" alt="DCD Logo">
+						<img class="logo" src="Img/DCDlogo.png" alt="DCD Logo">
 					</a>
 				</div>
 			</div>

@@ -29,14 +29,14 @@ public class UsuarioService {
 	}
 
 	public boolean registrarUsuario(HttpServletRequest request, HttpServletResponse response) {
-		String rol = request.getParameter("rol");
 		String nombre = request.getParameter("nombre");
 		String apellidos = request.getParameter("apellidos");
 		String dni = request.getParameter("dni");
 		String correo = request.getParameter("correo");
 		String contrasena = request.getParameter("contrasena");
 		String telefono = request.getParameter("telefono");
-		String tipoSuscripcion = request.getParameter("tiposuscripcion");
+		String rol = request.getParameter("rol");
+		String tipoSuscripcion = request.getParameter("tipoSuscripcion");
 
 		if (!validarCampos(rol, nombre, apellidos, dni, correo, contrasena, telefono)) {
 			return false;
@@ -103,14 +103,14 @@ public class UsuarioService {
 	}
 
 	public boolean registrarCentro(HttpServletRequest request, HttpServletResponse response) {
-		String rol = request.getParameter("rol");
 		String nombre = request.getParameter("nombre");
 		String apellidos = request.getParameter("apellidos");
 		String dni = request.getParameter("dni");
 		String correo = request.getParameter("correo");
 		String contrasena = request.getParameter("contrasena");
 		String telefono = request.getParameter("telefono");
-		String tipoSuscripcion = request.getParameter("tiposuscripcion");
+		String rol = request.getParameter("rol");
+		String tipoSuscripcion = request.getParameter("tipoSuscripcion");
 
 		String cif = request.getParameter("cif");
 		String nombreCentro = request.getParameter("nombreCentro");
@@ -120,6 +120,7 @@ public class UsuarioService {
 
 		// Manejamos errores por datos incorrectos del usuario
 		if (!validarCampos(rol, nombre, apellidos, dni, correo, contrasena, telefono)) {
+			System.out.println("Fallo datos user");
 			return false;
 		}
 		if (!validarTelefono(telefono)) {
@@ -128,6 +129,7 @@ public class UsuarioService {
 
 		// Manejamos errores por datos incorrectos del centro escolar
 		if (!validarCampos(cif, nombreCentro, telefonoCentro, correoCentro, numeroAlumnos)) {
+			System.out.println("Fallo datos centro");
 			return false;
 		}
 		if (!validarTelefono(telefonoCentro)) {
@@ -137,6 +139,8 @@ public class UsuarioService {
 		Connection con = null;
 		try {
 			con = AccesoBD.getConnection();
+			con.setAutoCommit(false);
+			
 			Responsable r = (Responsable) crearUsuario(rol, nombreCentro, apellidos, dni, correoCentro, contrasena,
 					telefonoCentro);
 
@@ -187,7 +191,13 @@ public class UsuarioService {
 	
 	private Usuario crearUsuario(String rol, String nombre, String apellidos, String dni, String correo,
 			String contrasena, String telefono) {
-		Usuario u = new Usuario();
+		Usuario u;
+		if(Integer.parseInt(rol) == 2 ) {
+			u = new Usuario();
+		} else {
+			u = new Responsable();
+		}
+		
 		Rol r = new Rol();
 		u.setNombre(nombre);
 		u.setApellidos(apellidos);
@@ -223,7 +233,7 @@ public class UsuarioService {
 
 	private boolean validarCampos(String... strings) {
 		for (String campo : strings) {
-			if (campo.isEmpty()) {
+			if (campo == null || campo.isEmpty()) {
 				return false;
 			}
 		}

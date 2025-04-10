@@ -35,14 +35,14 @@
 				<!-- Navigation Menu -->
 				<nav>
 					<ul>
-						<li><a href="html/jugar.jsp"><fmt:message
+						<li><a href="jugar.jsp"><fmt:message
 									key="menu_jugar" /></a></li>
-						<li><a href="html/gestion.jsp"><fmt:message
+						<li><a href="gestion.jsp"><fmt:message
 									key="menu_gestion" /></a></li>
 						<li><a href="#opinions"><fmt:message key="menu_opiniones" /></a></li>
-						<li><a href="html/contacto.jsp"><fmt:message
+						<li><a href="contacto.jsp"><fmt:message
 									key="menu_contacto" /></a></li>
-						<li><a href="html/ranking.jsp"><fmt:message
+						<li><a href="ranking.jsp"><fmt:message
 									key="menu_ranking" /></a></li>
 					</ul>
 				</nav>
@@ -50,11 +50,11 @@
 				<!-- Header Buttons -->
 				<div class="header-buttons">
 					<button class="btn-primary">
-						<a href="html/inicioeleccion.jsp"><fmt:message
+						<a href="inicioeleccion.jsp"><fmt:message
 								key="boton_iniciar" /></a>
 					</button>
 					<button class="btn-secondary">
-						<a href="html/registroeleccion.jsp"><fmt:message
+						<a href="registroeleccion.jsp"><fmt:message
 								key="boton_registrar" /></a>
 					</button>
 					<button class="btn-tertiary">
@@ -82,7 +82,7 @@
 				<fmt:message key="descripcion_ultima_carta" />
 			</p>
 			<button class="btn-primary">
-				<a href="html/jugar.jsp"><fmt:message key="menu_jugar" /></a>
+				<a href="jugar.jsp"><fmt:message key="menu_jugar" /></a>
 			</button>
 		</div>
 	</section>
@@ -147,7 +147,7 @@
 
 				<!-- Footer Text and Links -->
 				<div class="footer-text">
-					<a href="html/contacto.jsp"><p>
+					<a href="contacto.jsp"><p>
 							<fmt:message key="footer_contacto" />
 						</p></a>
 					<p class="copyright">

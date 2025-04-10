@@ -4,11 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description"
-	content="Seleccione su tipo de registro para Bilbao SKP - Individual o Centro Escolar">
-<title><fmt:message key="seleccioninicio_titulo" /></title>
-<link rel="icon" href="../Img/baldosa.png" type="image/x-icon">
-<link rel="stylesheet" href="../css/stylesregistroeleccion.css">
+<title><fmt:message key="seleccion_registro_titulo" /></title>
+<link rel="icon" href="Img/baldosa.png" type="image/x-icon">
+<link rel="stylesheet" href="css/stylesregistroeleccion.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap"
 	rel="stylesheet">
@@ -16,7 +14,7 @@
 <body>
 	<header id="main-header">
 		<div class="container">
-			<a href="../Index.jsp" class="logo"><fmt:message
+			<a href="Index.jsp" class="logo"><fmt:message
 					key="logo_bilbao_skp" /></a>
 
 			<div class="hamburger-menu">
@@ -30,7 +28,7 @@
 					<ul>
 						<li><a href="jugar.jsp"><fmt:message key="menu_jugar" /></a></li>
 						<li><a href="gestion.jsp"><fmt:message key="menu_gestion" /></a></li>
-						<li><a href="../Index.jsp#opinions"><fmt:message
+						<li><a href="Index.jsp#opinions"><fmt:message
 									key="menu_opiniones" /></a></li>
 						<li><a href="contacto.jsp"><fmt:message
 									key="menu_contacto" /></a></li>
@@ -58,46 +56,46 @@
 	<main class="registration-selection">
 		<div class="container">
 			<h1 class="page-title">
-				<fmt:message key="seleccion_tipo_inicio_sesion" />
+				<fmt:message key="seleccion_registro_titulo" />
 			</h1>
 
 			<div class="registration-options">
-				<a href="iniciosesionindividual.jsp" class="registration-option">
+				<a href="registroindividual.jsp" class="registration-option">
 					<div class="registration-box">
 						<div class="icon-container">
 							<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
 								viewBox="0 0 24 24" fill="none" stroke="currentColor"
 								stroke-width="1.5" stroke-linecap="round"
 								stroke-linejoin="round">
-	                            <path
+                                <path
 									d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-	                            <circle cx="12" cy="7" r="4"></circle>
-	                        </svg>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
 						</div>
 						<h2>
-							<fmt:message key="inicio_individual" />
+							<fmt:message key="registro_individual_titulo" />
 						</h2>
 						<p class="option-description">
-							<fmt:message key="descripcion_inicio_individual" />
+							<fmt:message key="registro_individual_descripcion" />
 						</p>
 					</div>
-				</a> <a href="iniciosesioncentro.jsp" class="registration-option">
+				</a> <a href="registrocentro.jsp" class="registration-option">
 					<div class="registration-box">
 						<div class="icon-container">
 							<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
 								viewBox="0 0 24 24" fill="none" stroke="currentColor"
 								stroke-width="1.5" stroke-linecap="round"
 								stroke-linejoin="round">
-	                            <path
+                                <path
 									d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-	                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-	                        </svg>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
 						</div>
 						<h2>
-							<fmt:message key="inicio_centro_escolar" />
+							<fmt:message key="registro_centro_titulo" />
 						</h2>
 						<p class="option-description">
-							<fmt:message key="descripcion_inicio_centro" />
+							<fmt:message key="registro_centro_descripcion" />
 						</p>
 					</div>
 				</a>
@@ -105,32 +103,33 @@
 		</div>
 	</main>
 
-
 	<footer>
 		<div class="container">
-			<div class="footer-scontent">
+			<div class="footer-content">
 				<div class="social-links">
-					<a href="https://www.instagram.com/dcdevelopment_" target="_blank"><img
-						class="IG" src="../Img/igb.png" alt="Instagram"></a> <a
-						href="https://www.tiktok.com/@digitalcraftdevel" target="_blank"><img
-						class="TK" src="../Img/tiktokb.png" alt="TikTok"></a> <a
-						href="https://x.com/Dcdevelopment_" target="_blank"><img
-						class="X" src="../Img/Xb.png" alt="X"></a>
+					<a href="https://www.instagram.com/dcdevelopment_" target="_blank"
+						aria-label="Instagram"> <img class="IG" src="Img/igb.png"
+						alt="Instagram">
+					</a> <a href="https://www.tiktok.com/@digitalcraftdevel"
+						target="_blank" aria-label="TikTok"> <img class="TK"
+						src="Img/tiktokb.png" alt="TikTok">
+					</a> <a href="https://x.com/Dcdevelopment_" target="_blank"
+						aria-label="X"> <img class="X" src="Img/Xb.png" alt="X">
+					</a>
 				</div>
 				<div class="footer-text">
-					<a href="contacto.jsp"><p>
-							<fmt:message key="footer_contacto" />
-						</p></a>
+					<a href="contacto.jsp"><fmt:message key="footer_contacto" /></a>
 					<p class="copyright">
 						<fmt:message key="footer_derechos" />
 					</p>
 				</div>
 				<div class="footer-logos">
-					<a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank">
-						<img class="diputacion" src="../Img/DiputacionBZK.png"
-						alt="Diputación">
-					</a> <a href="../../Pagina/castellano/index.html" target="_blank">
-						<img class="logo" src="../Img/DCDlogo.png" alt="DCD Logo">
+					<a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank"
+						aria-label="Diputación"> <img class="diputacion"
+						src="Img/DiputacionBZK.png" alt="Diputación">
+					</a> <a href="../../Pagina/castellano/index.html" target="_blank"
+						aria-label="DCD Logo"> <img class="logo"
+						src="Img/DCDlogo.png" alt="DCD Logo">
 					</a>
 				</div>
 			</div>
