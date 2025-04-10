@@ -39,5 +39,41 @@ public class SuscripcionDAO {
 		}
 		return s;
 	}
+	
+	public boolean consultarEstadoSuscripcion (int suscripcionId, String codigoAcceso, Connection conexion) {
+		Connection con= conexion;
+		PreparedStatement ps =null;
+		ResultSet rs=null;
+		return false;
+		
+		try {
+			String sql = "SELECT suscripcion COUNT (*) = WHERE"
+			
+		}
+		
+	}
+	
+	
+	public boolean cambiarEstadoSuscripcion(int suscripcionId, int codigoAcceso, Connection conexion) {
+	Connection con = conexion;
+	PreparedStatement ps = null;
+	boolean exito = false;
+	
+	try {
+		String sql ="UPDATE suscripcion set estado = 'activo' WHERE suscripcion_id AND suscripcion_codigoacceso = ?";
+		ps = con.prepareStatement(sql);
+		ps.setString(1, "activa");
+		ps.setInt(2, suscripcionId);
+		
+		int filasActualizadas = ps.executeUpdate();
+		exito = (filasActualizadas > 0);
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}finally {
+		AccesoBD.closeConnection(null, ps, null);
+	}
+	return exito;
 
 }
+	}
