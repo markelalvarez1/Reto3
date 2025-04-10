@@ -204,7 +204,7 @@
 							</div>
 
 							<div class="view-all">
-								<a href="ranking.html"><fmt:message
+								<a href="ranking.jsp"><fmt:message
 										key="ver_ranking_completo" /></a>
 							</div>
 						</div>
