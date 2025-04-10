@@ -76,21 +76,14 @@ CREATE TABLE suscripcion (
     FOREIGN KEY (usuario_id) REFERENCES usuario(id)
 );
 
-CREATE TABLE cupon_tipo (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    tipo VARCHAR(50) NOT NULL
-);
-
 CREATE TABLE cupon (
     id INT AUTO_INCREMENT PRIMARY KEY,
     suscripcion_id INT NOT NULL,
-    cupon_tipo_id INT NOT NULL,
     fechaCompra DATE NOT NULL,
     fechaCaducidad DATE NOT NULL,
     precio DECIMAL(10,2) NOT NULL,
     estado VARCHAR(50) NOT NULL,
-    FOREIGN KEY (suscripcion_id) REFERENCES suscripcion(id),
-    FOREIGN KEY (cupon_tipo_id) REFERENCES cupon_tipo(id)
+    FOREIGN KEY (suscripcion_id) REFERENCES suscripcion(id)
 );
 
 CREATE TABLE escapeRoom (
@@ -126,11 +119,6 @@ VALUES
 ("Admin"),
 ("Usuario"),
 ("Responsable");
-
-INSERT INTO cupon_tipo (tipo)
-VALUES
-("NORMAL"),
-("ESPECIAL");
 
 INSERT INTO suscripciontipo (tipo, precio)
 VALUES
