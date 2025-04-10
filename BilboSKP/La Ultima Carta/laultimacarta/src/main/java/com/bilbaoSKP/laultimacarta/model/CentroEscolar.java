@@ -3,7 +3,7 @@ package com.bilbaoSKP.laultimacarta.model;
 public class CentroEscolar {
 
 	private int id, telefono, numeroAlumnos;
-	private String CIF, nombre, email;
+	private String CIF, nombre, correo;
 	
 	public int getId() {
 		return id;
@@ -35,11 +35,11 @@ public class CentroEscolar {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getEmail() {
-		return email;
+	public String getCorreo() {
+		return correo;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
 	
 }
