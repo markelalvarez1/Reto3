@@ -25,26 +25,28 @@
 				<div class="nav-container">
 					<nav>
 						<ul>
-							<li><a href="jugar.html"><fmt:message key="menu_jugar" /></a></li>
-							<li><a href="gestion.html"><fmt:message
+							<li><a href="jugar.jsp"><fmt:message key="menu_jugar" /></a></li>
+							<li><a href="gestion.jsp"><fmt:message
 										key="menu_gestion" /></a></li>
-							<li><a href="../index.html#opinions"><fmt:message
+							<li><a href="../Index.jsp#opinions"><fmt:message
 										key="menu_opiniones" /></a></li>
-							<li><a href="contacto.html"><fmt:message
+							<li><a href="contacto.jsp"><fmt:message
 										key="menu_contacto" /></a></li>
-							<li><a href="ranking.html"><fmt:message key="menu_ranking" /></a></li>
+							<li><a href="ranking.jsp"><fmt:message key="menu_ranking" /></a></li>
 						</ul>
 					</nav>
 					<div class="header-buttons">
 						<button class="btn-primary">
-							<a href="inicioeleccion.html"><fmt:message key="boton_iniciar" /></a>
+							<a href="inicioeleccion.jsp"><fmt:message key="boton_iniciar" /></a>
 						</button>
 						<button class="btn-secondary">
-							<a href="registroeleccion.html"><fmt:message
+							<a href="registroeleccion.jsp"><fmt:message
 									key="boton_registrar" /></a>
 						</button>
 						<button class="btn-tertiary">
-							<fmt:message key="boton_english" />
+						    <a href="?lang=${sessionScope.lang eq 'en' ? 'es' : 'en'}">
+						        <fmt:message key="boton_idioma" />
+						    </a>
 						</button>
 					</div>
 				</div>
@@ -58,25 +60,25 @@
 	            <nav>
 	                <ul>
 	                    <li>
-	                        <a href="menuperfil.html" class="sidebar-link">
+	                        <a href="menuperfil.jsp" class="sidebar-link">
 	                            <i class='bx bx-user'></i>
 	                            <span><fmt:message key="menu_perfil" /></span>
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a href="ranking.html" class="sidebar-link">
+	                        <a href="ranking.jsp" class="sidebar-link">
 	                            <i class='bx bx-trophy'></i>
 	                            <span><fmt:message key="menu_ranking" /></span>
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a href="organizarpartida.html" class="sidebar-link active">
+	                        <a href="organizarpartida.jsp" class="sidebar-link active">
 	                            <i class='bx bx-calendar'></i>
 	                            <span><fmt:message key="menu_organizar_partida" /></span>
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a href="cupones.html" class="sidebar-link">
+	                        <a href="cupones.jsp" class="sidebar-link">
 	                            <i class='bx bx-ticket'></i>
 	                            <span><fmt:message key="menu_obtener_cupones" /></span>
 	                        </a>

@@ -29,7 +29,7 @@
 						<li><a href="jugar.jsp"><fmt:message key="menu_jugar" /></a></li>
 						<li><a href="gestion.jsp"><fmt:message
 									key="menu_gestion" /></a></li>
-						<li><a href="../index.jsp#opinions"><fmt:message
+						<li><a href="../Index.jsp#opinions"><fmt:message
 									key="menu_opiniones" /></a></li>
 						<li><a href="contacto.jsp"><fmt:message
 									key="menu_contacto" /></a></li>
@@ -45,7 +45,9 @@
 								key="boton_registrar" /></a>
 					</button>
 					<button class="btn-tertiary">
-						<fmt:message key="boton_english" />
+					    <a href="?lang=${sessionScope.lang eq 'en' ? 'es' : 'en'}">
+					        <fmt:message key="boton_idioma" />
+					    </a>
 					</button>
 				</div>
 			</div>

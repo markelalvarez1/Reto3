@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ include file="/WEB-INF/includes/idioma.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,43 +10,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header id="main-header">
-        <div class="container">
-            <a href="../Index.jsp" class="logo">Bilbao SKP</a>
-            
-            <div class="hamburger-menu">
-                <div class="hamburger-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-            
-            <div class="nav-container">
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="jugar.jsp"><fmt:message key="menu_jugar" /></a></li>
-                        <li><a href="gestion.jsp"><fmt:message key="menu_gestion" /></a></li>
-                        <li><a href="../Index.jsp#opinions"><fmt:message key="menu_opiniones" /></a></li>
-                        <li><a href="contacto.jsp"><fmt:message key="menu_contacto" /></a></li>
-                        <li><a href="ranking.jsp"><fmt:message key="menu_ranking" /></a></li>
-                    </ul>
-                </nav>
-                <div class="header-buttons">
-                    <a href="inicioeleccion.jsp" class="btn-primary"><fmt:message key="boton_iniciar" /></a>
-                    <a href="#" class="btn-secondary"><fmt:message key="boton_registrar" /></a>
-                    <button class="btn-tertiary"><fmt:message key="boton_english" /></button>
-                </div>
-            </div>
-        </div>
-    </header>
+<header id="main-header">
+			<div class="container">
+				<a href="../Index.jsp" class="logo"><fmt:message
+						key="logo_bilbao_skp" /></a>
+	
+				<div class="hamburger-menu">
+					<div class="hamburger-icon">
+						<span></span> <span></span> <span></span>
+					</div>
+				</div>
+	
+				<div class="nav-container">
+					<nav>
+						<ul>
+							<li><a href="jugar.jsp"><fmt:message key="menu_jugar" /></a></li>
+							<li><a href="gestion.jsp"><fmt:message
+										key="menu_gestion" /></a></li>
+							<li><a href="../Index.jsp#opinions"><fmt:message
+										key="menu_opiniones" /></a></li>
+							<li><a href="contacto.jsp"><fmt:message
+										key="menu_contacto" /></a></li>
+							<li><a href="ranking.jsp"><fmt:message key="menu_ranking" /></a></li>
+						</ul>
+					</nav>
+					<div class="header-buttons">
+						<button class="btn-primary">
+							<a href="inicioeleccion.jsp"><fmt:message key="boton_iniciar" /></a>
+						</button>
+						<button class="btn-secondary">
+							<a href="registroeleccion.jsp"><fmt:message
+									key="boton_registrar" /></a>
+						</button>
+						<button class="btn-tertiary">
+						    <a href="?lang=${sessionScope.lang eq 'en' ? 'es' : 'en'}">
+						        <fmt:message key="boton_idioma" />
+						    </a>
+						</button>
+					</div>
+				</div>
+			</div>
+	</header>
 
     <main class="registration-selection">
         <div class="container">
             <h1 class="page-title"><fmt:message key="seleccion_registro_titulo" /></h1>
             
             <div class="registration-options">
-                <a href="registroindividual.html" class="registration-option">
+                <a href="registroindividual.jsp" class="registration-option">
                     <div class="registration-box">
                         <div class="icon-container">
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -59,7 +70,7 @@
                     </div>
                 </a>
                 
-                <a href="registrocentro.html" class="registration-option">
+                <a href="registrocentro.jsp" class="registration-option">
                     <div class="registration-box">
                         <div class="icon-container">
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">

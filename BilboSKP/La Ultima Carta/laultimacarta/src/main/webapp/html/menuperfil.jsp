@@ -28,7 +28,7 @@
 							<li><a href="jugar.jsp"><fmt:message key="menu_jugar" /></a></li>
 							<li><a href="gestion.jsp"><fmt:message
 										key="menu_gestion" /></a></li>
-							<li><a href="../index.jsp#opinions"><fmt:message
+							<li><a href="../Index.jsp#opinions"><fmt:message
 										key="menu_opiniones" /></a></li>
 							<li><a href="contacto.jsp"><fmt:message
 										key="menu_contacto" /></a></li>
@@ -44,7 +44,9 @@
 									key="boton_registrar" /></a>
 						</button>
 						<button class="btn-tertiary">
-							<fmt:message key="boton_english" />
+						    <a href="?lang=${sessionScope.lang eq 'en' ? 'es' : 'en'}">
+						        <fmt:message key="boton_idioma" />
+						    </a>
 						</button>
 					</div>
 				</div>
@@ -65,19 +67,19 @@
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a href="ranking.html" class="sidebar-link">
+	                        <a href="ranking.jsp" class="sidebar-link">
 	                            <i class='bx bx-trophy'></i>
 	                            <span><fmt:message key="menu_ranking" /></span>
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a href="organizarpartida.html" class="sidebar-link">
+	                        <a href="organizarpartida.jsp" class="sidebar-link">
 	                            <i class='bx bx-calendar'></i>
 	                            <span><fmt:message key="menu_organizar_partida" /></span>
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a href="cupones.html" class="sidebar-link">
+	                        <a href="cupones.jsp" class="sidebar-link">
 	                            <i class='bx bx-ticket'></i>
 	                            <span><fmt:message key="menu_obtener_cupones" /></span>
 	                        </a>
