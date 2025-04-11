@@ -28,35 +28,13 @@ public class UsuarioService {
 		emailService = new EmailService();
 	}
 
-	public boolean registrarUsuario(HttpServletRequest request, HttpServletResponse response) {
-		String nombre = request.getParameter("nombre");
-		String apellidos = request.getParameter("apellidos");
-		String dni = request.getParameter("dni");
-		String correo = request.getParameter("correo");
-		String contrasena = request.getParameter("contrasena");
-		String telefono = request.getParameter("telefono");
-		String rol = request.getParameter("rol");
-		String tipoSuscripcion = request.getParameter("tipoSuscripcion");
-
-		if (!validarCampos(rol, nombre, apellidos, dni, correo, contrasena, telefono)) {
-			return false;
-		}
-
-		if (!validarTelefono(telefono)) {
-			return false;
-		}
-
-		Usuario u = crearUsuario(rol, nombre, apellidos, dni, correo, contrasena, telefono);
+	public boolean registrarUsuario(Usuario u, String tipoSuscripcion) {
 
 		Connection con = null;
 		try {
 			con = AccesoBD.getConnection();
 
 			con.setAutoCommit(false);
-			if (usuarioDAO.existeUsuario(u, con)) {
-				con.rollback();
-				return false;
-			}
 
 			int usuarioId = usuarioDAO.registrarUsuario(u, con);
 			if (usuarioId == 0) {
@@ -238,6 +216,11 @@ public class UsuarioService {
 			}
 		}
 		return true;
+	}
+
+	public boolean existeUsuario(Usuario u) {
+		// TODO Auto-generated method stub
+		return usuarioDAO.existeUsuario(u);
 	}
 
 }

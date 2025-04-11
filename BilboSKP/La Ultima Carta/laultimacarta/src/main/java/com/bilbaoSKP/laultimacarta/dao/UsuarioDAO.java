@@ -9,8 +9,8 @@ import com.bilbaoSKP.laultimacarta.model.Usuario;
 
 public class UsuarioDAO {
 
-	public boolean existeUsuario(Usuario u, Connection conexion) {
-		Connection con = conexion;
+	public boolean existeUsuario(Usuario u) {
+		Connection con = AccesoBD.getConnection();
 		ResultSet rs = null;
 		PreparedStatement ps = null;
 		

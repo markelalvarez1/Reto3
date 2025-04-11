@@ -29,7 +29,7 @@ public class VerificarController extends HttpServlet {
 		    String idSuscripcion=myArray [0];
 		    String codigoVerificacion=myArray [1];
 		    
-		
+		request.getRequestDispatcher("verificar.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
