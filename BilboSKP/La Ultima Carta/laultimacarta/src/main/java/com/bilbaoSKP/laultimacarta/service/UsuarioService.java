@@ -1,5 +1,6 @@
 package com.bilbaoSKP.laultimacarta.service;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bilbaoSKP.laultimacarta.dao.AccesoBD;
 import com.bilbaoSKP.laultimacarta.dao.UsuarioDAO;
+import com.bilbaoSKP.laultimacarta.dto.RegistroCentroDTO;
+import com.bilbaoSKP.laultimacarta.dto.RegistroUsuarioDTO;
 import com.bilbaoSKP.laultimacarta.model.CentroEscolar;
 import com.bilbaoSKP.laultimacarta.model.Responsable;
 import com.bilbaoSKP.laultimacarta.model.Rol;
@@ -29,8 +32,8 @@ public class UsuarioService {
 		emailService = new EmailService();
 	}
 
-	public boolean registrarUsuario(Usuario u) {
-
+	public boolean registrarUsuario(Usuario u) throws IOException {
+		
 		Connection con = null;
 		try {
 			con = AccesoBD.getConnection();
@@ -80,45 +83,12 @@ public class UsuarioService {
 		return true;
 	}
 
-	public boolean registrarCentro(HttpServletRequest request, HttpServletResponse response) {
-		String nombre = request.getParameter("nombre");
-		String apellidos = request.getParameter("apellidos");
-		String dni = request.getParameter("dni");
-		String correo = request.getParameter("correo");
-		String contrasena = request.getParameter("contrasena");
-		String telefono = request.getParameter("telefono");
-
-		String cif = request.getParameter("cif");
-		String nombreCentro = request.getParameter("nombreCentro");
-		String telefonoCentro = request.getParameter("telefonoCentro");
-		String correoCentro = request.getParameter("correoCentro");
-		String numeroAlumnos = request.getParameter("numeroAlumnos");
-
-		// Manejamos errores por datos incorrectos del usuario
-		if (!validarCampos(nombre, apellidos, dni, correo, contrasena, telefono)) {
-			System.out.println("Fallo datos user");
-			return false;
-		}
-		if (!validarTelefono(telefono)) {
-			return false;
-		}
-
-		// Manejamos errores por datos incorrectos del centro escolar
-		if (!validarCampos(cif, nombreCentro, telefonoCentro, correoCentro, numeroAlumnos)) {
-			System.out.println("Fallo datos centro");
-			return false;
-		}
-		if (!validarTelefono(telefonoCentro)) {
-			return false;
-		}
+	public boolean registrarCentro(Responsable r) throws IOException {
 
 		Connection con = null;
 		try {
 			con = AccesoBD.getConnection();
 			con.setAutoCommit(false);
-			
-			Responsable r = (Responsable) crearUsuario(nombreCentro, apellidos, dni, correoCentro, contrasena,
-					telefonoCentro);
 
 			int idUsuario = usuarioDAO.registrarUsuario(r, con);
 			if (idUsuario == 0) {
@@ -127,8 +97,7 @@ public class UsuarioService {
 			}
 			r.setId(idUsuario);
 
-			CentroEscolar c = crearCentro(cif, nombreCentro, telefonoCentro, correoCentro, numeroAlumnos);
-			if (!centroEscolarService.crearCentroEscolar(c, idUsuario, con)) {
+			if (!centroEscolarService.registrarCentroEscolar(r, con)) {
 				con.rollback();
 				return false;
 			}
@@ -165,8 +134,14 @@ public class UsuarioService {
 	}
 	
 	private Usuario crearUsuario(String nombre, String apellidos, String dni, String correo,
-			String contrasena, String telefono) {
-		Responsable u = new Responsable();
+			String contrasena, String telefono, RolEnum rol) {
+		
+		Usuario u = null;
+		if(rol.getCodigo() == 2) {
+			u = new Usuario();
+		}else {
+			u = new Responsable();
+		}
 		
 		Rol r = new Rol();
 		u.setNombre(nombre);
@@ -175,21 +150,12 @@ public class UsuarioService {
 		u.setTelefono(Integer.parseInt(telefono));
 		u.setCorreo(correo);
 		u.setContrasena(contrasena);
-		r.setId(RolEnum.RESPONSABLE.getCodigo());
+		r.setId(rol.getCodigo());
 		u.setRol(r);
 		return u;
 	}
 
-	private CentroEscolar crearCentro(String cif, String nombreCentro, String telefonoCentro, String correoCentro,
-			String numeroAlumnos) {
-		CentroEscolar centro = new CentroEscolar();
-		centro.setCIF(cif);
-		centro.setCorreo(correoCentro);
-		centro.setNombre(nombreCentro);
-		centro.setNumeroAlumnos(Integer.parseInt(numeroAlumnos));
-		centro.setTelefono(Integer.parseInt(telefonoCentro));
-		return centro;
-	}
+
 
 	private boolean validarTelefono(String telefono) {
 		try {
@@ -215,4 +181,37 @@ public class UsuarioService {
 		return usuarioDAO.existeUsuario(u);
 	}
 
+	private boolean validarContrasena(String contrasena, String repetirContrasena) {
+		if(!contrasena.equals(repetirContrasena)) {
+			return false;
+		}
+		return true;
+	}
+
+	
+	public Usuario validarYCrearUsuario(RegistroUsuarioDTO dto, RolEnum rol) throws Exception {
+	
+	  if (!validarCampos(dto.getNombre(), dto.getApellidos(), dto.getDni(),
+	                dto.getCorreo(), dto.getContrasena(), dto.getRepetirContrasena(), dto.getTelefono())) {
+	            throw new Exception("datoIncorrecto");
+	        }
+	        
+	  if (!validarContrasena(dto.getContrasena(), dto.getRepetirContrasena())) {
+	        	throw new Exception("contrasenaIncorrecta");
+	        }
+	        
+	  if (!validarTelefono(dto.getTelefono())) {
+	        	throw new Exception("telefonoIncorrecto");
+	        }
+
+	  Usuario u = crearUsuario(dto.getNombre(), dto.getApellidos(), dto.getDni(),
+	                dto.getCorreo(), dto.getContrasena(), dto.getTelefono(), rol);
+	       
+	        
+	  if (existeUsuario(u)) {
+	       	throw new Exception("usuarioExiste");
+	     }
+	        
+	    return u;
+	 }
 }

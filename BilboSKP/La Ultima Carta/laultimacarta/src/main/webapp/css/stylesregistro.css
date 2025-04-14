@@ -93,7 +93,9 @@ button {
 .btn-tertiary:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
-
+main{
+	padding-top: 100px;
+}
 /* Header */
 #main-header {
     position: fixed;
@@ -360,14 +362,22 @@ button {
     margin-left: 10rem;
     margin-bottom: 0.5rem;
 }
-
+.section-container{
+  width: 100%;
+  max-width: 1600px;
+  margin:0 auto;
+  padding:0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .form-container {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     padding: 40px;
-    margin-top: 200px;
-    margin-bottom: 127px;
+    margin-top: 50px;
+    margin-bottom: 120px;
     width: 60%;
     margin-left: auto;
     margin-right: auto;
@@ -375,9 +385,9 @@ button {
 
 h1 {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 30px;
+    font-size: 3rem;
     font-weight: 700;
+    
 }
 
 .user-type-selector {
@@ -446,6 +456,79 @@ label {
     margin-bottom: 8px;
     font-weight: 600;
 }
+
+.message-container {
+    padding: 5rem;
+    text-align: center;
+    border-radius: 8px 8px 0px 0px;
+}
+.container-success{
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  width: 50%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+}
+.container-text{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.container-text p{
+	margin: 2rem;
+	font-size: 1.5rem;
+}
+
+.container-text a{
+	width: 40%;
+	margin-bottom: 2rem;
+}
+
+.success-mode {
+    background-color: #28a745;
+    color: white;
+}
+
+.error-mode {
+    background-color: #dc3545;
+    color: white;
+}
+
+.success-btn, .error-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.success-btn {
+    background-color: white;
+    color: #28a745;
+    border: 2px solid #28a745;
+}
+
+.success-btn:hover {
+    background-color: #28a745;
+    color: white;
+}
+
+.error-btn {
+    background-color: white;
+    color: #dc3545;
+    border: 2px solid #dc3545;
+}
+
+.error-btn:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
 
 input {
     width: 100%;

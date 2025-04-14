@@ -31,6 +31,8 @@ CREATE TABLE centroEscolar(
 	telefono VARCHAR (50) NOT NULL,
 	correo VARCHAR (100) NOT NULL,
 	numeroAlumnos INT NOT NULL,
+	ciudad VARCHAR(100) NOT NULL,
+	etapaEducativa VARCHAR (100) NOT NULL,
 	id_usuario INT NOT NULL,
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id)
 );

@@ -11,7 +11,6 @@ public class CuponBienvenida extends Cupon {
 		this.setEstado("disponible");
 		this.setFechaCaducidad(this.getFechaCompra().plusYears(100));
 		this.setPrecio(BigDecimal.ZERO.doubleValue());
-		this.setTipoCupon(TipoCuponEnum.NORMAL.getId());
 	}
 
 	

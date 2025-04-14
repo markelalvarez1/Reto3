@@ -36,7 +36,7 @@ public class PagoExitosoController extends HttpServlet {
 			request.getSession().removeAttribute("tipoSuscripcion");
 			response.sendRedirect("registro?exito=true");
 		} else {
-			response.sendRedirect("formulario.jsp?error=falloRegistro");
+			response.sendRedirect("registro?error=falloRegistro");
 		}
 	}
 
