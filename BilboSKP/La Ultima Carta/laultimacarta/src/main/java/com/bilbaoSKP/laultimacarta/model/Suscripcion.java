@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 
+import com.bilbaoSKP.laultimacarta.model.enums.TipoSuscripcionEnum;
+
 public class Suscripcion {
 
 	private int id, tipoSuscripcionID;
@@ -48,12 +50,20 @@ public class Suscripcion {
 		this.tipoSuscripcionID = tipoSuscripcionID;
 	}
 	
-	public static Suscripcion nuevaSuscripcion(int tipoSuscripcionID) {
+	public static Suscripcion nuevaSuscripcion() {
 		Suscripcion s = new Suscripcion();
 		s.setEstado("pendiente");
 		s.setFechaInicio(LocalDate.now());
 		s.setCodigoAcceso(generarCodigoAcceso());
-		s.setTipoSuscripcionID(tipoSuscripcionID);
+		s.setTipoSuscripcionID(TipoSuscripcionEnum.NORMAL.getCodigo());
+		return s;
+	}
+	
+	public static Suscripcion nuevaSuscripcionGratuita() {
+		Suscripcion s = new Suscripcion();
+		s.setEstado("pendiente");
+		s.setFechaInicio(LocalDate.now());
+		s.setTipoSuscripcionID(TipoSuscripcionEnum.GRATUITA.getCodigo());
 		return s;
 	}
 	

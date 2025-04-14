@@ -24,14 +24,13 @@ public class PagoExitosoController extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Usuario u = (Usuario) request.getSession().getAttribute("usuarioTemporal");
-		String tipoSuscripcion = (String) request.getSession().getAttribute("tipoSuscripcion");
 		
-		if (u == null || tipoSuscripcion == null) {
+		if (u == null) {
 			response.sendRedirect("registro?error=sesionCaducada");
 			return;
 		}
 		
-		boolean exito = usuarioService.registrarUsuario(u, tipoSuscripcion);
+		boolean exito = usuarioService.registrarUsuario(u);
 		if (exito) {
 			request.getSession().removeAttribute("usuarioTemporal");
 			request.getSession().removeAttribute("tipoSuscripcion");

@@ -58,70 +58,87 @@
 		<div class="container">
 			<div class="form-container">
 				<h1>
-					<fmt:message key="formulario_registro_titulo" />
+					<c:choose>
+						<c:when test="${param.exito == 'true'}">
+							<fmt:message key="formulario_registro_exito" />
+						</c:when>
+						<c:otherwise>
+							<fmt:message key="formulario_registro_titulo" />
+						</c:otherwise>
+					</c:choose>
 				</h1>
-				<div class="form-content">
-					<div id="individual-form" class="form-fields">
-						<form action="registro" method="POST">
-							<div class="form-group">
-								<label for="name"><fmt:message key="form_nombre" /></label> <input
-									type="text" id="name" name="nombre"
-									placeholder="<fmt:message key='placeholder_nombre' />"
-									aria-label="Nombre" required>
+				<c:choose>
+					<c:when test="${param.exito == 'true'}">
+						<div class="success-message">
+							<p>
+								<fmt:message key="formulario_registro_exito_mensaje" />
+							</p>
+							<a href="inicio"><fmt:message key="formulario_registro_inicio" /></a>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="form-content">
+							<div id="individual-form" class="form-fields">
+								<form action="registro" method="POST">
+									<fieldset class="user-data">
+										<legend>Datos de acceso</legend>
+										<div class="form-group">
+											<label for="email"><fmt:message key="form_email" /></label>
+											<input type="email" id="email" name="correo"
+												placeholder="<fmt:message key='placeholder_email' />"
+												aria-label="Correo electrónico" required>
+										</div>
+										<div class="form-group">
+											<label for="password"><fmt:message
+													key="form_contrasena" /></label> <input type="password"
+												id="password" name="contrasena"
+												placeholder="<fmt:message key='placeholder_contrasena' />"
+												aria-label="Contraseña" required>
+										</div>
+										<div class="form-group">
+											<label for="repeat-password"><fmt:message
+													key="form_repetir_contrasena" /></label> <input type="password"
+												id="repeat-password" name="repetirContrasena"
+												placeholder="<fmt:message key='placeholder_repetir_contrasena' />"
+												aria-label="Repetir contraseña" required>
+										</div>
+									</fieldset>
+									<fieldset class="personal-data">
+										<legend>Datos personales</legend>
+										<div class="form-group">
+											<label for="name"><fmt:message key="form_nombre" /></label>
+											<input type="text" id="name" name="nombre"
+												placeholder="<fmt:message key='placeholder_nombre' />"
+												aria-label="Nombre" required>
+										</div>
+										<div class="form-group">
+											<label for="apellidos"><fmt:message
+													key="form_apellidos" /></label> <input type="text" id="apellidos"
+												name="apellidos"
+												placeholder="<fmt:message key='placeholder_apellidos' />"
+												aria-label="Apellidos" required>
+										</div>
+										<div class="form-group">
+											<label for="dni"><fmt:message key="form_dni" /></label> <input
+												type="text" id="dni" name="dni" minlength="9" maxlength="9"
+												placeholder="<fmt:message key='placeholder_dni' />"
+												aria-label="DNI" required pattern="[A-Z0-9]{8}[A-Z]{1}">
+										</div>
+										<div class="form-group">
+											<label for="phone"><fmt:message key="form_telefono" /></label>
+											<input type="tel" id="phone" name="telefono"
+												placeholder="<fmt:message key='placeholder_telefono' />"
+												aria-label="Teléfono" required pattern="\d{9}">
+										</div>
+									</fieldset>
+									<button type="submit" class="submit-btn">
+										<fmt:message key="boton_enviar" />
+									</button>
+								</form>
 							</div>
-							<div class="form-group">
-								<label for="name"><fmt:message key="form_nombre" /></label> <input
-									type="text" id="name" name="apellidos"
-									placeholder="<fmt:message key='placeholder_nombre' />"
-									aria-label="Nombre" required>
-							</div>
-
-							<div class="form-group">
-								<label for="dni"><fmt:message key="form_dni" /></label> <input
-									type="text" id="dni" name="dni" minlength="9" maxlength="9"
-									placeholder="<fmt:message key='placeholder_dni' />"
-									aria-label="DNI" required pattern="[A-Z0-9]{8}[A-Z]{1}">
-							</div>
-
-							<div class="form-group">
-								<label for="email"><fmt:message key="form_email" /></label> <input
-									type="email" id="email" name="correo"
-									placeholder="<fmt:message key='placeholder_email' />"
-									aria-label="Correo electrónico" required>
-							</div>
-
-							<div class="form-group">
-								<label for="password"><fmt:message key="form_contrasena" /></label>
-								<input type="password" id="password" name="contrasena"
-									placeholder="<fmt:message key='placeholder_contrasena' />"
-									aria-label="Contraseña" required>
-							</div>
-
-							<div class="form-group">
-								<label for="repeat-password"><fmt:message
-										key="form_repetir_contrasena" /></label> <input type="password"
-									id="repeat-password" name="repetirContrasena"
-									placeholder="<fmt:message key='placeholder_repetir_contrasena' />"
-									aria-label="Repetir contraseña" required>
-							</div>
-
-							<div class="form-group">
-								<label for="phone"><fmt:message key="form_telefono" /></label>
-								<input type="tel" id="phone" name="telefono"
-									placeholder="<fmt:message key='placeholder_telefono' />"
-									aria-label="Teléfono" required pattern="\d{9}">
-							</div>
-							<div class="form-group">
-								<input type="hidden" name="rol" value="2">
-								<input type="hidden" name="tipoSuscripcion" value="1">
-							</div>
-
-							<button type="submit" class="submit-btn">
-								<fmt:message key="boton_enviar" />
-							</button>
-						</form>
-					</div>
-				</div>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</main>

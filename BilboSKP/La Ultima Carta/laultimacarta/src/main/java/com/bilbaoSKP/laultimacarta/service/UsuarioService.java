@@ -13,6 +13,7 @@ import com.bilbaoSKP.laultimacarta.model.Responsable;
 import com.bilbaoSKP.laultimacarta.model.Rol;
 import com.bilbaoSKP.laultimacarta.model.Suscripcion;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
+import com.bilbaoSKP.laultimacarta.model.enums.RolEnum;
 
 public class UsuarioService {
 	UsuarioDAO usuarioDAO;
@@ -28,7 +29,7 @@ public class UsuarioService {
 		emailService = new EmailService();
 	}
 
-	public boolean registrarUsuario(Usuario u, String tipoSuscripcion) {
+	public boolean registrarUsuario(Usuario u) {
 
 		Connection con = null;
 		try {
@@ -43,8 +44,7 @@ public class UsuarioService {
 			}
 			u.setId(usuarioId);
 
-			int tipoSuscripcionID = Integer.parseInt(tipoSuscripcion);
-			Suscripcion s = suscripcionService.crearSuscripcion(u, tipoSuscripcionID, con);
+			Suscripcion s = suscripcionService.crearSuscripcion(u, con);
 			if (s == null) {
 				con.rollback();
 				return false;
@@ -87,8 +87,6 @@ public class UsuarioService {
 		String correo = request.getParameter("correo");
 		String contrasena = request.getParameter("contrasena");
 		String telefono = request.getParameter("telefono");
-		String rol = request.getParameter("rol");
-		String tipoSuscripcion = request.getParameter("tipoSuscripcion");
 
 		String cif = request.getParameter("cif");
 		String nombreCentro = request.getParameter("nombreCentro");
@@ -97,7 +95,7 @@ public class UsuarioService {
 		String numeroAlumnos = request.getParameter("numeroAlumnos");
 
 		// Manejamos errores por datos incorrectos del usuario
-		if (!validarCampos(rol, nombre, apellidos, dni, correo, contrasena, telefono)) {
+		if (!validarCampos(nombre, apellidos, dni, correo, contrasena, telefono)) {
 			System.out.println("Fallo datos user");
 			return false;
 		}
@@ -119,7 +117,7 @@ public class UsuarioService {
 			con = AccesoBD.getConnection();
 			con.setAutoCommit(false);
 			
-			Responsable r = (Responsable) crearUsuario(rol, nombreCentro, apellidos, dni, correoCentro, contrasena,
+			Responsable r = (Responsable) crearUsuario(nombreCentro, apellidos, dni, correoCentro, contrasena,
 					telefonoCentro);
 
 			int idUsuario = usuarioDAO.registrarUsuario(r, con);
@@ -135,8 +133,7 @@ public class UsuarioService {
 				return false;
 			}
 
-			int tipoSuscripcionID = Integer.parseInt(tipoSuscripcion);
-			Suscripcion s = suscripcionService.crearSuscripcion(r, tipoSuscripcionID, con);
+			Suscripcion s = suscripcionService.crearSuscripcion(r, con);
 			if (s == null) {
 				con.rollback();
 				return false;
@@ -167,14 +164,9 @@ public class UsuarioService {
 
 	}
 	
-	private Usuario crearUsuario(String rol, String nombre, String apellidos, String dni, String correo,
+	private Usuario crearUsuario(String nombre, String apellidos, String dni, String correo,
 			String contrasena, String telefono) {
-		Usuario u;
-		if(Integer.parseInt(rol) == 2 ) {
-			u = new Usuario();
-		} else {
-			u = new Responsable();
-		}
+		Responsable u = new Responsable();
 		
 		Rol r = new Rol();
 		u.setNombre(nombre);
@@ -183,7 +175,7 @@ public class UsuarioService {
 		u.setTelefono(Integer.parseInt(telefono));
 		u.setCorreo(correo);
 		u.setContrasena(contrasena);
-		r.setId(Integer.parseInt(rol));
+		r.setId(RolEnum.RESPONSABLE.getCodigo());
 		u.setRol(r);
 		return u;
 	}

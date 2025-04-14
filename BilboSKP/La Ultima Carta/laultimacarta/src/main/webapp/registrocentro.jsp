@@ -55,112 +55,146 @@
 
 	<main>
 		<div class="container">
-			<form method="post" action="registroCentro" class="form-container">
+			<div class="form-container">
 				<h1>
-					<fmt:message key="formulario_registro_titulo" />
+					<c:choose>
+						<c:when test="${param.exito == 'true'}">
+							<fmt:message key="formulario_registro_exito" />
+						</c:when>
+						<c:otherwise>
+							<fmt:message key="formulario_registro_titulo" />
+						</c:otherwise>
+					</c:choose>
 				</h1>
+				<c:choose>
+					<c:when test="${param.exito == 'true'}">
+						<div class="success-message">
+							<p>
+								<fmt:message key="formulario_registro_exito_mensaje" />
+							</p>
+							<a href="inicio"><fmt:message
+									key="formulario_registro_inicio" /></a>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="form-content">
+							<div id="individual-form" class="form-fields">
+								<form action="registroCentro" method="post">
+									<!-- Datos de acceso -->
+									<fieldset class="user-data">
+										<legend>Datos de acceso</legend>
+										<div class="form-group">
+											<label for="email"><fmt:message key="form_email" /></label>
+											<input type="email" id="email" name="correo"
+												placeholder="<fmt:message key='placeholder_email' />"
+												aria-label="Correo electrónico" required>
+										</div>
+										<div class="form-group">
+											<label for="password"><fmt:message
+													key="form_contrasena" /></label> <input type="password"
+												id="password" name="contrasena"
+												placeholder="<fmt:message key='placeholder_contrasena' />"
+												aria-label="Contraseña" required>
+										</div>
+										<div class="form-group">
+											<label for="repeat-password"><fmt:message
+													key="form_repetir_contrasena" /></label> <input type="password"
+												id="repeat-password" name="repetirContrasena"
+												placeholder="<fmt:message key='placeholder_repetir_contrasena' />"
+												aria-label="Repetir contraseña" required>
+										</div>
+									</fieldset>
 
-				<div class="form-content">
-					<div id="individual-form" class="form-fields">
-						<div class="form-group">
-							<label for="name"><fmt:message key="form_nombre" /></label> <input
-								type="text" id="name" name="nombre"
-								placeholder="<fmt:message key='placeholder_nombre' />">
-						</div>
-						<div class="form-group">
-							<label for="name"><fmt:message key="form_nombre" /></label> <input
-								type="text" id="name" name="apellidos"
-								placeholder="<fmt:message key='placeholder_nombre' />">
-						</div>
+									<!-- Datos personales -->
+									<fieldset class="personal-data">
+										<legend>Datos personales</legend>
+										<div class="form-group">
+											<label for="nombre"><fmt:message key="form_nombre" /></label>
+											<input type="text" id="nombre" name="nombre"
+												placeholder="<fmt:message key='placeholder_nombre' />"
+												aria-label="Nombre" required>
+										</div>
+										<div class="form-group">
+											<label for="apellidos"><fmt:message
+													key="form_apellidos" /></label> <input type="text" id="apellidos"
+												name="apellidos"
+												placeholder="<fmt:message key='placeholder_apellidos' />"
+												aria-label="Apellidos" required>
+										</div>
+										<div class="form-group">
+											<label for="dni"><fmt:message key="form_dni" /></label> <input
+												type="text" id="dni" name="dni" minlength="9" maxlength="9"
+												placeholder="<fmt:message key='placeholder_dni' />"
+												aria-label="DNI" required pattern="[A-Z0-9]{8}[A-Z]{1}">
+										</div>
+										<div class="form-group">
+											<label for="phone"><fmt:message key="form_telefono" /></label>
+											<input type="tel" id="phone" name="telefono"
+												placeholder="<fmt:message key='placeholder_telefono' />"
+												aria-label="Teléfono" required pattern="\d{9}">
+										</div>
+									</fieldset>
 
-						<div class="form-group">
-							<label for="dni"><fmt:message key="form_dni" /></label> <input
-								type="text" id="dni" name="dni"
-								placeholder="<fmt:message key='placeholder_dni' />">
-						</div>
+									<!-- Datos del centro educativo -->
+									<fieldset class="school-data">
+										<legend>Datos del centro</legend>
+										<div class="form-group">
+											<label for="school-name"><fmt:message
+													key="form_nombre_centro" /></label> <input type="text"
+												id="school-name" name="nombreCentro"
+												placeholder="<fmt:message key='placeholder_nombre' />"
+												aria-label="Nombre del centro" required>
+										</div>
+										<div class="form-group">
+											<label for="school-cif"><fmt:message
+													key="form_cif_centro" /></label> <input type="text"
+												id="school-cif" name="cif"
+												placeholder="<fmt:message key='placeholder_cif' />"
+												aria-label="CIF del centro" required>
+										</div>
+										<div class="form-group">
+											<label for="school-address1"><fmt:message
+													key="form_correo_centro" /></label> <input type="text"
+												id="school-address1" name="direccionCentro"
+												placeholder="<fmt:message key='placeholder_correo_centro' />"
+												aria-label="Dirección del centro" required>
+										</div>
+										<div class="form-group">
+											<label for="school-city"><fmt:message
+													key="form_ciudad_centro" /></label> <input type="text"
+												id="school-city" name="ciudad"
+												placeholder="<fmt:message key='placeholder_ciudad_centro' />"
+												aria-label="Ciudad del centro" required>
+										</div>
+										<div class="form-group">
+											<label for="school-students"><fmt:message
+													key="form_numero_alumnos" /></label> <input type="number"
+												id="school-students" name="numeroAlumnos"
+												placeholder="<fmt:message key='placeholder_numero_alumnos' />"
+												aria-label="Número de alumnos" required>
+										</div>
+										<div class="form-group">
+											<label for="school-education-stage"><fmt:message
+													key="form_etapa_educativa" /></label> <input type="text"
+												id="school-education-stage" name="etapaEducativa"
+												placeholder="<fmt:message key='placeholder_etapa_educativa' />"
+												aria-label="Etapa educativa" required>
+										</div>
+										<div class="form-group">
+											<input type="hidden" name="rol" value="3"> <input
+												type="hidden" name="tipoSuscripcion" value="2">
+										</div>
+									</fieldset>
 
-						<div class="form-group">
-							<label for="email"><fmt:message key="form_email" /></label> <input
-								type="email" id="email" name="correo"
-								placeholder="<fmt:message key='placeholder_email' />">
+									<button type="submit" class="submit-btn">
+										<fmt:message key="boton_enviar" />
+									</button>
+								</form>
+							</div>
 						</div>
-
-						<div class="form-group">
-							<label for="password"><fmt:message key="form_contrasena" /></label>
-							<input type="password" id="password" name="contrasena"
-								placeholder="<fmt:message key='placeholder_contrasena' />">
-						</div>
-
-						<div class="form-group">
-							<label for="repeat-password"><fmt:message
-									key="form_repetir_contrasena" /></label> <input type="password"
-								id="repeat-password" name="repetirContrasena"
-								placeholder="<fmt:message key='placeholder_repetir_contrasena' />">
-						</div>
-
-						<div class="form-group">
-							<label for="phone"><fmt:message key="form_telefono" /></label> <input
-								type="tel" id="phone" name="telefono"
-								placeholder="<fmt:message key='placeholder_telefono' />">
-						</div>
-
-						<div class="form-group">
-							<label for="school-name"><fmt:message
-									key="form_nombre_centro" /></label> <input type="text"
-								id="school-name" name="nombreCentro"
-								placeholder="<fmt:message key='placeholder_nombre' />">
-						</div>
-
-						<div class="form-group">
-							<label for="school-cif"><fmt:message
-									key="form_cif_centro" /></label> <input type="text" id="school-cif"
-								name="cif" placeholder="<fmt:message key='placeholder_dni' />">
-						</div>
-
-						<div class="form-group">
-							<label for="school-address"><fmt:message
-									key="form_direccion_centro" /></label> <input type="text"
-								id="school-address" name="telefonoCentro"
-								placeholder="<fmt:message key='placeholder_email' />">
-						</div>
-						
-						<div class="form-group">
-							<label for="school-address"><fmt:message
-									key="form_direccion_centro" /></label> <input type="text"
-								id="school-address" name="correoCentro"
-								placeholder="<fmt:message key='placeholder_email' />">
-						</div>
-
-						<div class="form-group">
-							<label for="school-city"><fmt:message
-									key="form_ciudad_centro" /></label> <input type="text"
-								id="school-city" name="ciudad"
-								placeholder="<fmt:message key='placeholder_telefono' />">
-						</div>
-
-						<div class="form-group">
-							<label for="school-students"><fmt:message
-									key="form_numero_alumnos" /></label> <input type="number"
-								id="school-students" name="numeroAlumnos"
-								placeholder="<fmt:message key='placeholder_nombre' />">
-						</div>
-
-						<div class="form-group">
-							<label for="school-education-stage"><fmt:message
-									key="form_etapa_educativa" /></label> <input type="text"
-								id="school-education-stage" name="etapaEducativa"
-								placeholder="<fmt:message key='placeholder_dni' />">
-						</div>
-						<div class="form-group">
-							<input type="hidden" name="rol" value="3"> 
-							<input type="hidden" name="tipoSuscripcion" value="2">
-						</div>
-						<button type="submit" class="submit-btn">
-							<fmt:message key="boton_enviar" />
-						</button>
-					</div>
-				</div>
-			</form>
+					</c:otherwise>
+				</c:choose>
+			</div>
 		</div>
 	</main>
 

@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bilbaoSKP.laultimacarta.service.UsuarioService;
 
-/**
- * Servlet implementation class RegistrarCentroController
- */
 @WebServlet("/registroCentro")
 public class RegistrarCentroController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,7 +30,7 @@ public class RegistrarCentroController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(usuarioService.registrarCentro(request, response)) {
-			response.sendRedirect("Index.jsp");
+			response.sendRedirect("registroCentro?exito=true");
 		} else {
 			
 		}

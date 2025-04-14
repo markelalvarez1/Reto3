@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.bilbaoSKP.laultimacarta.model.Responsable;
 import com.bilbaoSKP.laultimacarta.model.Rol;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
+import com.bilbaoSKP.laultimacarta.model.enums.RolEnum;
 import com.bilbaoSKP.laultimacarta.service.StripeService;
 import com.bilbaoSKP.laultimacarta.service.UsuarioService;
 import com.stripe.model.checkout.Session;
@@ -29,7 +30,10 @@ public class RegistroController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String exito = request.getParameter("exito");
+	    if ("true".equals(exito)) {
+	        request.setAttribute("exito", true);
+	    }
 		request.getRequestDispatcher("registroindividual.jsp").forward(request, response);
 	}
 
@@ -43,15 +47,14 @@ public class RegistroController extends HttpServlet {
 		
 		if (u != null) {
 			request.getSession().setAttribute("usuarioTemporal", u);
-			request.getSession().setAttribute("tipoSuscripcion", request.getParameter("tipoSuscripcion"));
 			
 			try {
 				StripeService stripe = new StripeService();
-				Session stripeSession = stripe.crearSesionDePago();  // Puedes pasar aquí info de tipoSuscripcion si lo necesitas
+				Session stripeSession = stripe.crearSesionDePago();
 				response.sendRedirect(stripeSession.getUrl());
 			} catch (Exception e) {
 				e.printStackTrace();
-				response.sendRedirect("resgistro?error=stripeError");
+				response.sendRedirect("resgistro?error=errorPago");
 			}
 		} else {
 			response.sendRedirect("registro?error=1");
@@ -66,20 +69,25 @@ public class RegistroController extends HttpServlet {
 		String dni = request.getParameter("dni");
 		String correo = request.getParameter("correo");
 		String contrasena = request.getParameter("contrasena");
+		String repetirContrasena = request.getParameter("repetirContrasena");
 		String telefono = request.getParameter("telefono");
-		String rol = request.getParameter("rol");
-
-		if (!validarCampos(nombre, apellidos, dni, correo, contrasena, telefono)) {
+		
+		if (!validarCampos(nombre, apellidos, dni, correo, contrasena, repetirContrasena, telefono)) {
 			response.sendRedirect("registro");
 		}
 
+		if(!validarContrasena(contrasena, repetirContrasena)) {
+			response.sendRedirect("registro");
+		}
+		
 		if (!validarTelefono(telefono)) {
 			response.sendRedirect("registro");
 		}
 
-		Usuario u = crearUsuario(rol, nombre, apellidos, dni, correo, contrasena, telefono);
+		Usuario u = crearUsuario(nombre, apellidos, dni, correo, contrasena, telefono);
 		return u;
 	}
+
 	private boolean validarTelefono(String telefono) {
 		try {
 			int tlf = Integer.parseInt(telefono);
@@ -98,14 +106,17 @@ public class RegistroController extends HttpServlet {
 		}
 		return true;
 	}
-	private Usuario crearUsuario(String rol, String nombre, String apellidos, String dni, String correo,
-			String contrasena, String telefono) {
-		Usuario u;
-		if(Integer.parseInt(rol) == 2 ) {
-			u = new Usuario();
-		} else {
-			u = new Responsable();
+	
+	private boolean validarContrasena(String contrasena, String repetirContrasena) {
+		if(!contrasena.equals(repetirContrasena)) {
+			return false;
 		}
+		return true;
+	}
+	
+	private Usuario crearUsuario(String nombre, String apellidos, String dni, String correo,
+			String contrasena, String telefono) {
+		Usuario u = new Usuario();
 		
 		Rol r = new Rol();
 		u.setNombre(nombre);
@@ -114,7 +125,7 @@ public class RegistroController extends HttpServlet {
 		u.setTelefono(Integer.parseInt(telefono));
 		u.setCorreo(correo);
 		u.setContrasena(contrasena);
-		r.setId(Integer.parseInt(rol));
+		r.setId(RolEnum.USUARIO.getCodigo());
 		u.setRol(r);
 		return u;
 	}
