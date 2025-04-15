@@ -95,7 +95,6 @@
 				</section>
 			</c:when>
 
-
 		<c:otherwise>
 			<section class="section-container">
 				<div class="form-container">

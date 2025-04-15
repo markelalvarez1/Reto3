@@ -123,10 +123,10 @@
 							</div>
 						</div>
 						<div class="card-footer">
-							<button class="button">
+							<a href="descargas/laUltimaCarta.jar" class="button">
 								<span class="icon icon-download" style="color: white;"></span>
 								<fmt:message key="descargar_archivo" />
-							</button>
+							</a>
 							<p class="text-center text-sm text-muted mt-4">
 								<fmt:message key="aceptas_terminos" />
 							</p>
