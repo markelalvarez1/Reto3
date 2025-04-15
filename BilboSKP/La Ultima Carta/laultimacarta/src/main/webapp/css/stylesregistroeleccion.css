@@ -51,13 +51,14 @@ button {
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 0.25em;
+    border-radius: 4px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     transition: background-color 0.3s ease;
     text-align: center;
 }
+
 
 .btn-primary:hover {
     background-color: #0f0e73;
@@ -94,12 +95,6 @@ button {
 
 .btn-tertiary:hover {
     background-color: rgba(255, 255, 255, 0.1);
-}
-
-#main-header .btn-primary,
-#main-header .btn-secondary,
-#main-header .btn-tertiary {
-    font-size: 0.8rem;
 }
 
 .hero .btn-primary {
