@@ -22,23 +22,23 @@
 				</h1>
 
 				<div class="form-content">
-					<div id="individual-form" class="form-fields">
+					<form action="inicioSesion" method="post" id="individual-form" class="form-fields">
 						<div class="form-group">
 							<label for="email"><fmt:message key="correo_electronico" /></label>
-							<input type="email" id="email" name="email"
-								placeholder="<fmt:message key='placeholder_email' />">
+							<input type="email" id="email" name="correo"
+								placeholder="<fmt:message key='placeholder_email' />" required>
 						</div>
 
 						<div class="form-group">
 							<label for="password"><fmt:message key="contrasena" /></label> <input
-								type="password" id="password" name="password"
-								placeholder="<fmt:message key='placeholder_contrasena' />">
+								type="password" id="password" name="contrasena"
+								placeholder="<fmt:message key='placeholder_contrasena' />" required>
 						</div>
 
-						<button class="submit-btn">
+						<button type="submit" class="submit-btn">
 							<fmt:message key="boton_enviar" />
 						</button>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>

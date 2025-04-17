@@ -1,7 +1,7 @@
 <!-- Header Section -->
 <header id="main-header">
 	<div class="container">
-		<a href="Index.jsp" class="logo"><fmt:message key="logo_bilbao_skp" /></a>
+		<a href="inicio" class="logo"><fmt:message key="logo_bilbao_skp" /></a>
 
 		<!-- Hamburger Menu for Mobile -->
 		<div class="hamburger-menu">

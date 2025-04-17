@@ -23,9 +23,9 @@ public class SuscripcionDAO {
 			ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, u.getId());
 			ps.setDate(2, Date.valueOf(s.getFechaInicio()));
-			ps.setString(3, s.getEstado());
+			ps.setString(3, s.getEstado().name());
 			ps.setString(4, s.getCodigoAcceso());
-			ps.setInt(5, s.getTipoSuscripcionID());
+			ps.setInt(5, s.getTipoSuscripcion().getId());
 			
 			ps.execute();
 			rs = ps.getGeneratedKeys();

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bilbaoSKP.laultimacarta.dao.AccesoBD;
 import com.bilbaoSKP.laultimacarta.dao.UsuarioDAO;
+import com.bilbaoSKP.laultimacarta.dto.LoginUsuarioDTO;
 import com.bilbaoSKP.laultimacarta.dto.RegistroCentroDTO;
 import com.bilbaoSKP.laultimacarta.dto.RegistroUsuarioDTO;
 import com.bilbaoSKP.laultimacarta.model.CentroEscolar;
@@ -16,6 +17,7 @@ import com.bilbaoSKP.laultimacarta.model.Responsable;
 import com.bilbaoSKP.laultimacarta.model.Rol;
 import com.bilbaoSKP.laultimacarta.model.Suscripcion;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
+import com.bilbaoSKP.laultimacarta.model.enums.EstadoSuscripcionEnum;
 import com.bilbaoSKP.laultimacarta.model.enums.RolEnum;
 
 public class UsuarioService {
@@ -155,8 +157,6 @@ public class UsuarioService {
 		return u;
 	}
 
-
-
 	private boolean validarTelefono(String telefono) {
 		try {
 			int tlf = Integer.parseInt(telefono);
@@ -188,7 +188,6 @@ public class UsuarioService {
 		return true;
 	}
 
-	
 	public Usuario validarYCrearUsuario(RegistroUsuarioDTO dto, RolEnum rol) throws Exception {
 	
 	  if (!validarCampos(dto.getNombre(), dto.getApellidos(), dto.getDni(),
@@ -214,4 +213,13 @@ public class UsuarioService {
 	        
 	    return u;
 	 }
+
+	public Usuario getUsuario(LoginUsuarioDTO usuarioDTO) throws Exception {
+		Usuario u = usuarioDAO.getUsuario(usuarioDTO);
+		if(!EstadoSuscripcionEnum.ACTIVA.equals(u.getSuscripcion().getEstado())) {
+			throw new Exception("Suscripcion no activa");
+		}
+		
+		return u;
+	}
 }
