@@ -65,7 +65,7 @@
 					<h1>
 						<fmt:message key="formulario_registro_titulo_individual" />
 					</h1>
-					<form action="nuevoRegistroController" method="POST">
+					<form action="registro" method="POST">
 						<fieldset class="user-data">
 						<input type="hidden" name="tipoSuscripcion" value="1">
 							<legend><fmt:message key="datos_acceso"/></legend>

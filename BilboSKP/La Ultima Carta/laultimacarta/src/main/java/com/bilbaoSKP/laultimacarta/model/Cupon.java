@@ -2,31 +2,21 @@ package com.bilbaoSKP.laultimacarta.model;
 
 import java.time.LocalDate;
 
+import com.bilbaoSKP.laultimacarta.model.enums.EstadoCuponEnum;
+
 public class Cupon {
 
-	private int id, tipoCupon;
+	private int id;
 	private LocalDate fechaCompra, fechaCaducidad;
 	private double precio;
-	private String estado;
+	private EstadoCuponEnum estadoCupon;
 	
-	public Cupon() {
-		
-	}
-
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getTipoCupon() {
-		return tipoCupon;
-	}
-
-	public void setTipoCupon(int tipoCupon) {
-		this.tipoCupon = tipoCupon;
 	}
 
 	public LocalDate getFechaCompra() {
@@ -53,13 +43,14 @@ public class Cupon {
 		this.precio = precio;
 	}
 
-	public String getEstado() {
-		return estado;
+	public EstadoCuponEnum getEstadoCupon() {
+		return estadoCupon;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setEstadoCupon(EstadoCuponEnum estadoCupon) {
+		this.estadoCupon = estadoCupon;
 	}
+
 	
 	
 	

@@ -9,9 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bilbaoSKP.laultimacarta.dto.CentroDTO;
+import com.bilbaoSKP.laultimacarta.dto.RegistroDTO;
 import com.bilbaoSKP.laultimacarta.dto.UsuarioDTO;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
 import com.bilbaoSKP.laultimacarta.model.enums.RolEnum;
+import com.bilbaoSKP.laultimacarta.model.enums.TipoSuscripcionEnum;
 import com.bilbaoSKP.laultimacarta.service.StripeService;
 import com.bilbaoSKP.laultimacarta.service.UsuarioService;
 import com.stripe.model.checkout.Session;
@@ -37,31 +40,48 @@ public class RegistroController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RegistroDTO dto = new RegistroDTO();
+		int tipoSuscripcionID = Integer.parseInt(request.getParameter("tipoSuscripcion"));
+		UsuarioDTO usuarioDTO = new UsuarioDTO();
+		CentroDTO dtoCentro = null;
+		usuarioDTO.setNombre(request.getParameter("nombre"));
+		usuarioDTO.setApellidos(request.getParameter("apellidos"));
+		usuarioDTO.setDni(request.getParameter("dni"));
+		usuarioDTO.setCorreo(request.getParameter("correo"));
+		usuarioDTO.setContrasena(request.getParameter("contrasena"));
+		usuarioDTO.setRepetirContrasena(request.getParameter("repetirContrasena"));
+		usuarioDTO.setTelefono(request.getParameter("telefono"));
+		usuarioDTO.setRolID(String.valueOf(RolEnum.USUARIO.getCodigo()));
 		
-        UsuarioDTO dto = new UsuarioDTO();
-        dto.setNombre(request.getParameter("nombre"));
-        dto.setApellidos(request.getParameter("apellidos"));
-        dto.setDni(request.getParameter("dni"));
-        dto.setCorreo(request.getParameter("correo"));
-        dto.setContrasena(request.getParameter("contrasena"));
-        dto.setRepetirContrasena(request.getParameter("repetirContrasena"));
-        dto.setTelefono(request.getParameter("telefono"));
-
-        try {
-            Usuario u = usuarioService.validarYCrearUsuario(dto, RolEnum.USUARIO);
-            request.getSession().setAttribute("usuarioTemporal", u);
-
-            try {
-                StripeService stripe = new StripeService();
-                Session stripeSession = stripe.crearSesionDePago();
-                response.sendRedirect(stripeSession.getUrl());
-            } catch (Exception e) {
-                e.printStackTrace();
-                response.sendRedirect("registro?error=errorPago");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            response.sendRedirect("registro?exito=false");
-        }
-    }
+		dto.setTipoSuscripcionID(tipoSuscripcionID);
+		dto.setUsuarioDTO(usuarioDTO);
+		
+		if(TipoSuscripcionEnum.GRATUITA.getCodigo() == tipoSuscripcionID) {
+			dtoCentro = new CentroDTO();
+			dtoCentro.setCIF(request.getParameter("cif"));
+			dtoCentro.setNombre(request.getParameter("nombreCentro"));
+			dtoCentro.setCorreo(request.getParameter("correoCentro"));
+			dtoCentro.setCiudad(request.getParameter("ciudad"));
+			dtoCentro.setNumeroAlumnos(request.getParameter("numeroAlumnos"));
+			dtoCentro.setTelefono(request.getParameter("telefonoCentro"));
+			dtoCentro.setEtapaEducativa(request.getParameter("etapaEducativa"));
+			dto.getUsuarioDTO().setRolID(String.valueOf(RolEnum.RESPONSABLE.getCodigo()));
+			dto.setCentroDTO(dtoCentro);
+		}
+		try {
+			Session stripeSesion = usuarioService.iniciarRegistro(dto);
+			if(stripeSesion != null) {
+				request.getSession().setAttribute("registroDTO", dto);
+				response.sendRedirect(stripeSesion.getUrl());
+			} else {
+				if(usuarioService.finalizarRegistro(dto)) {
+					response.sendRedirect("registroCentro?exito=true");
+				} else {
+					response.sendRedirect("registroCentro?exito=false");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

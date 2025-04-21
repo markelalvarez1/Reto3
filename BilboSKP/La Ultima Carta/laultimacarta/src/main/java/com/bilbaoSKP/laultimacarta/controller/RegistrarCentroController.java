@@ -36,40 +36,7 @@ public class RegistrarCentroController extends HttpServlet {
 		
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		UsuarioDTO dto = new UsuarioDTO();
-	    dto.setNombre(request.getParameter("nombre"));
-	    dto.setApellidos(request.getParameter("apellidos"));
-	    dto.setDni(request.getParameter("dni"));
-	    dto.setCorreo(request.getParameter("correo"));
-	    dto.setContrasena(request.getParameter("contrasena"));
-	    dto.setRepetirContrasena(request.getParameter("repetirContrasena"));
-	    dto.setTelefono(request.getParameter("telefono"));
-		
-		CentroDTO dtoCentro = new CentroDTO();
-		dtoCentro.setCIF(request.getParameter("cif"));
-		dtoCentro.setNombre(request.getParameter("nombreCentro"));
-		dtoCentro.setCorreo(request.getParameter("correoCentro"));
-		dtoCentro.setCiudad(request.getParameter("ciudad"));
-		dtoCentro.setNumeroAlumnos(request.getParameter("numeroAlumnos"));
-		dtoCentro.setTelefono(request.getParameter("telefonoCentro"));
-		dtoCentro.setEtapaEducativa(request.getParameter("etapaEducativa"));
-		
-		try {
-			Responsable r = (Responsable) usuarioService.validarYCrearUsuario(dto, RolEnum.RESPONSABLE);
-			CentroEscolar c = centroEscolarservice.validarYCrearCentro(dtoCentro);
-			r.setCentroEscolar(c);
-			if(usuarioService.registrarCentro(r)) {
-				response.sendRedirect("registroCentro?exito=true");
-			} else {
-				response.sendRedirect("registroCentro?exito=false");
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			response.sendRedirect("registroCentro?exito=false");
-		}
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
 
