@@ -14,7 +14,7 @@ CREATE TABLE usuario (
     apellidos VARCHAR(100) NOT NULL,
     telefono VARCHAR(20),
     correo VARCHAR(100) NOT NULL,
-    contrasena VARCHAR(255) NOT NULL,
+    contraseña VARCHAR(255) NOT NULL,
     rol_id INT NOT NULL,
     FOREIGN KEY (rol_id) REFERENCES rol(id)
 );
@@ -54,12 +54,11 @@ CREATE TABLE suscripcionTipo (
 CREATE TABLE suscripcion (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT NOT NULL UNIQUE,
-    fechaAlta DATE NOT NULL,
+    fechaInicio DATE NOT NULL,
     estado ENUM('PENDIENTE','ACTIVA','CANCELADA') NOT NULL,
-    codigoActivacion VARCHAR(100),
     tipo ENUM('NORMAL','ESPECIAL') NOT NULL,
     suscripcion_tipo_id INT NOT NULL,
-    codigoAcceso VARCHAR(50),
+    codigoVerificacion VARCHAR(50),
     FOREIGN KEY (usuario_id) REFERENCES usuario(id),
     FOREIGN KEY (suscripcion_tipo_id) REFERENCES suscripcionTipo(id)
 );

@@ -25,4 +25,17 @@ public class SuscripcionService {
 		return suscripcionDAO.registrarSuscripcion(usuarioId, s, con);
 	}
 
+	public boolean activarSuscripcion(String codigo) throws Exception {
+		String codigoDescodificado = CodificadorService.decodificar(codigo);	
+		String[] myArray =codigoDescodificado.split(";");
+		String idSuscripcion=myArray [0];
+		String codigoVerificacion=myArray [1];
+		Suscripcion s = suscripcionDAO.getSuscripcionByID(idSuscripcion);
+		System.out.println(s.getEstado().name());
+		if(s != null) {
+			s.activar(codigoVerificacion);
+		}
+		return suscripcionDAO.updateEstadoSuscripcion(s);
+	}
+
 } 

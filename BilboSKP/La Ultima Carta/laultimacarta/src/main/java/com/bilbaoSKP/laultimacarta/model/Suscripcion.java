@@ -64,13 +64,14 @@ public class Suscripcion {
 		this.tipoSuscripcion = tipoSuscripcion;
 	}
 
-	public void activar(String codigoAcceso) {
-
-		if (this.estado == EstadoSuscripcionEnum.PENDIENTE) {
-			if (codigoAcceso != null && this.codigoAcceso.equals(codigoAcceso)) {
-				this.estado = EstadoSuscripcionEnum.ACTIVA;
-			}
+	public void activar(String codigoAcceso) throws Exception {
+		if (!EstadoSuscripcionEnum.PENDIENTE.equals(this.estado)) {
+			throw new Exception("Estado no pendiente");
 		}
+		if (codigoAcceso == null || !this.codigoAcceso.equals(codigoAcceso)) {
+			throw new Exception("Codigo no valido");
+		}
+		this.estado = EstadoSuscripcionEnum.ACTIVA;
 	}
 
 	public void cancelar() {

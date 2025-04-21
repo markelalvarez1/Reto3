@@ -9,6 +9,7 @@ import java.sql.Statement;
 import com.bilbaoSKP.laultimacarta.model.Suscripcion;
 import com.bilbaoSKP.laultimacarta.model.TipoSuscripcion;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
+import com.bilbaoSKP.laultimacarta.model.enums.EstadoSuscripcionEnum;
 
 public class SuscripcionDAO {
 
@@ -42,32 +43,22 @@ public class SuscripcionDAO {
 		return suscripcionID;
 	}
 	
-	public boolean consultarEstadoSuscripcion (int suscripcionId, String codigoAcceso, Connection conexion) {
-		Connection con= conexion;
-		PreparedStatement ps =null;
-		ResultSet rs=null;
-		return false;
-		
-		try {
-			String sql = "SELECT suscripcion COUNT (*) = WHERE"
-			
-		}
-		
-	}
-
-	public boolean cambiarEstadoSuscripcion(int suscripcionId, int codigoAcceso, Connection conexion) {
-		Connection con = conexion;
+	public boolean updateEstadoSuscripcion(Suscripcion s) {
+		Connection con = AccesoBD.getConnection();
 		PreparedStatement ps = null;
 		boolean exito = false;
 
 		try {
-			String sql = "UPDATE suscripcion set estado = 'activo' WHERE suscripcion_id AND suscripcion_codigoacceso = ?";
+			String sql = "UPDATE suscripcion set estado = ? WHERE id = ?";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, "activa");
-			ps.setInt(2, suscripcionId);
+			ps.setString(1, s.getEstado().name());
+			ps.setInt(2, s.getId());
 
-			int filasActualizadas = ps.executeUpdate();
-			exito = (filasActualizadas > 0);
+			if(ps.executeUpdate() > 0) {
+				return true;
+			}else {
+				return false;
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -101,5 +92,33 @@ public class SuscripcionDAO {
 		}
 		
 		return ts;
+	}
+
+	public Suscripcion getSuscripcionByID(String idSuscripcion) {
+		Connection con = AccesoBD.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Suscripcion s = null;
+		try {
+			String sql = "SELECT id, suscripcion_tipo_id, fechaInicio, codigoVerificacion, estado FROM suscripcion WHERE id = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, idSuscripcion);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				s = new Suscripcion();
+				TipoSuscripcion ts = new TipoSuscripcion();
+				s.setId(rs.getInt("id"));
+				ts.setId(rs.getInt("suscripcion_tipo_id"));
+				s.setTipoSuscripcion(ts);
+				s.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+				s.setCodigoAcceso(rs.getString("codigoVerificacion"));
+				s.setEstado(EstadoSuscripcionEnum.fromString(rs.getString("estado")));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			AccesoBD.closeConnection(rs, ps, con);
+		}
+		return s;
 	}
 }
