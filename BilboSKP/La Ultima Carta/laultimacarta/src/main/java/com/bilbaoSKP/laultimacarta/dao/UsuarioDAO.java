@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import com.bilbaoSKP.laultimacarta.dto.LoginUsuarioDTO;
+import com.bilbaoSKP.laultimacarta.dto.UsuarioDTO;
 import com.bilbaoSKP.laultimacarta.model.Rol;
 import com.bilbaoSKP.laultimacarta.model.Suscripcion;
 import com.bilbaoSKP.laultimacarta.model.TipoSuscripcion;
@@ -14,7 +15,7 @@ import com.bilbaoSKP.laultimacarta.model.enums.EstadoSuscripcionEnum;
 
 public class UsuarioDAO {
 
-	public boolean existeUsuario(Usuario u) {
+	public boolean existeUsuario(UsuarioDTO usuarioDTO) {
 		Connection con = AccesoBD.getConnection();
 		ResultSet rs = null;
 		PreparedStatement ps = null;
@@ -25,8 +26,8 @@ public class UsuarioDAO {
 					+ "WHERE u.dni = ? OR u.correo = ?";
 			
 			ps = con.prepareStatement(sql);
-			ps.setString(1, u.getDni());
-			ps.setString(2, u.getCorreo());
+			ps.setString(1, usuarioDTO.getDni());
+			ps.setString(2, usuarioDTO.getCorreo());
 			
 			rs = ps.executeQuery();
 			if(rs.next()) {
@@ -40,7 +41,7 @@ public class UsuarioDAO {
 		return false;
 	}
 
-	public int registrarUsuario(Usuario u, Connection conexion) {
+	public int registrarUsuario(UsuarioDTO usuarioDTO, Connection conexion) {
 		Connection con = conexion;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -50,13 +51,13 @@ public class UsuarioDAO {
 			String sql = "INSERT INTO usuario (nombre, apellidos, dni, correo, contraseña, telefono, rol_id) "
 					+ "VALUES (?, ?, ?, ?, ?, ?, ?)";
 			ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			ps.setString(1, u.getNombre());
-			ps.setString(2, u.getApellidos());
-			ps.setString(3, u.getDni());
-			ps.setString(4, u.getCorreo());
-			ps.setString(5, u.getContrasena());
-			ps.setInt(6, u.getTelefono());
-			ps.setInt(7, u.getRol().getId());
+			ps.setString(1, usuarioDTO.getNombre());
+			ps.setString(2, usuarioDTO.getApellidos());
+			ps.setString(3, usuarioDTO.getDni());
+			ps.setString(4, usuarioDTO.getCorreo());
+			ps.setString(5, usuarioDTO.getContrasena());
+			ps.setInt(6, Integer.parseInt(usuarioDTO.getTelefono()));
+			ps.setInt(7, Integer.parseInt(usuarioDTO.getRolID()));
 			
 			ps.execute();
 			rs = ps.getGeneratedKeys();

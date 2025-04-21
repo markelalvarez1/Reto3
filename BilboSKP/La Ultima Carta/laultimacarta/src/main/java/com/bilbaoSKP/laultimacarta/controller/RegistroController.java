@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bilbaoSKP.laultimacarta.dto.RegistroUsuarioDTO;
+import com.bilbaoSKP.laultimacarta.dto.UsuarioDTO;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
 import com.bilbaoSKP.laultimacarta.model.enums.RolEnum;
 import com.bilbaoSKP.laultimacarta.service.StripeService;
@@ -38,7 +38,7 @@ public class RegistroController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-        RegistroUsuarioDTO dto = new RegistroUsuarioDTO();
+        UsuarioDTO dto = new UsuarioDTO();
         dto.setNombre(request.getParameter("nombre"));
         dto.setApellidos(request.getParameter("apellidos"));
         dto.setDni(request.getParameter("dni"));

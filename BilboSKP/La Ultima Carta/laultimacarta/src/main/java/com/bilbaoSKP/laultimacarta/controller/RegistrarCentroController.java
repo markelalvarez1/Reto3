@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bilbaoSKP.laultimacarta.dto.RegistroCentroDTO;
-import com.bilbaoSKP.laultimacarta.dto.RegistroUsuarioDTO;
+import com.bilbaoSKP.laultimacarta.dto.CentroDTO;
+import com.bilbaoSKP.laultimacarta.dto.UsuarioDTO;
 import com.bilbaoSKP.laultimacarta.model.CentroEscolar;
 import com.bilbaoSKP.laultimacarta.model.Responsable;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
@@ -37,7 +37,7 @@ public class RegistrarCentroController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		RegistroUsuarioDTO dto = new RegistroUsuarioDTO();
+		UsuarioDTO dto = new UsuarioDTO();
 	    dto.setNombre(request.getParameter("nombre"));
 	    dto.setApellidos(request.getParameter("apellidos"));
 	    dto.setDni(request.getParameter("dni"));
@@ -46,7 +46,7 @@ public class RegistrarCentroController extends HttpServlet {
 	    dto.setRepetirContrasena(request.getParameter("repetirContrasena"));
 	    dto.setTelefono(request.getParameter("telefono"));
 		
-		RegistroCentroDTO dtoCentro = new RegistroCentroDTO();
+		CentroDTO dtoCentro = new CentroDTO();
 		dtoCentro.setCIF(request.getParameter("cif"));
 		dtoCentro.setNombre(request.getParameter("nombreCentro"));
 		dtoCentro.setCorreo(request.getParameter("correoCentro"));

@@ -52,23 +52,13 @@ public class Suscripcion {
 	public void setTipoSuscripcion(TipoSuscripcion tipoSuscripcion) {
 		this.tipoSuscripcion = tipoSuscripcion;
 	}
-	public static Suscripcion nuevaSuscripcion() {
+	public static Suscripcion nuevaSuscripcion(int tipoSuscripcionID) {
 		Suscripcion s = new Suscripcion();
 		TipoSuscripcion ts = new TipoSuscripcion();
 		s.setEstado(EstadoSuscripcionEnum.PENDIENTE);
 		s.setFechaInicio(LocalDate.now());
 		s.setCodigoAcceso(generarCodigoAcceso());
-		ts.setId(TipoSuscripcionEnum.NORMAL.getCodigo());
-		s.setTipoSuscripcion(ts);
-		return s;
-	}
-	
-	public static Suscripcion nuevaSuscripcionGratuita() {
-		Suscripcion s = new Suscripcion();
-		TipoSuscripcion ts = new TipoSuscripcion();
-		s.setEstado(EstadoSuscripcionEnum.PENDIENTE);
-		s.setFechaInicio(LocalDate.now());
-		ts.setId(TipoSuscripcionEnum.GRATUITA.getCodigo());
+		ts.setId(tipoSuscripcionID);
 		s.setTipoSuscripcion(ts);
 		return s;
 	}

@@ -1,6 +1,6 @@
 package com.bilbaoSKP.laultimacarta.dto;
 
-public class RegistroUsuarioDTO {
+public class UsuarioDTO {
     private String nombre;
     private String apellidos;
     private String dni;
@@ -8,6 +8,7 @@ public class RegistroUsuarioDTO {
     private String contrasena;
     private String repetirContrasena;
     private String telefono;
+    private String rolID;
 
     // Getters and setters
     public String getNombre() {
@@ -52,4 +53,10 @@ public class RegistroUsuarioDTO {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+	public String getRolID() {
+		return rolID;
+	}
+	public void setRolID(String rolID) {
+		this.rolID = rolID;
+	}
 }

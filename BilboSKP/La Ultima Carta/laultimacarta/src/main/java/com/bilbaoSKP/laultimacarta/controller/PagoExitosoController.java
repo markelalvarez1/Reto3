@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bilbaoSKP.laultimacarta.dto.RegistroDTO;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
 import com.bilbaoSKP.laultimacarta.service.UsuarioService;
 
@@ -23,15 +24,14 @@ public class PagoExitosoController extends HttpServlet {
     	usuarioService = new UsuarioService();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Usuario u = (Usuario) request.getSession().getAttribute("usuarioTemporal");
+		RegistroDTO dto = (RegistroDTO) request.getSession().getAttribute("registroDTO");
 		
-		if (u == null) {
+		if (dto == null) {
 			response.sendRedirect("registro?error=sesionCaducada");
 			return;
 		}
 		
-		boolean exito = usuarioService.registrarUsuario(u);
-		if (exito) {
+		if (usuarioService.finalizarRegistro(dto)) {
 			request.getSession().removeAttribute("usuarioTemporal");
 			request.getSession().removeAttribute("tipoSuscripcion");
 			response.sendRedirect("registro?exito=true");
