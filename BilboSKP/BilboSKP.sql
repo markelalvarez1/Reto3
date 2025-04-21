@@ -70,7 +70,7 @@ CREATE TABLE cupon (
     fechaCompra DATE NOT NULL,
     fechaCaducidad DATE NOT NULL,
     precio DECIMAL(10,2) NOT NULL,
-    estado ENUM('DISPONIBLE','PROGRAMADO','USADO','CADUCADO') NOT NULL,
+    estado ENUM('ACTIVO','PROGRAMADO','USADO','CADUCADO') NOT NULL,
     FOREIGN KEY (suscripcion_id) REFERENCES suscripcion(id)
 );
 
