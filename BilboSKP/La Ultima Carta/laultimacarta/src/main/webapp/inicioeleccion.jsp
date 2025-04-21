@@ -1,4 +1,5 @@
 <%@ include file="/WEB-INF/includes/idioma.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
