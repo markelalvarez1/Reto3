@@ -19,7 +19,7 @@ public class SuscripcionDAO {
 		ResultSet rs = null;
 		int suscripcionID = 0;
 		try {
-			String sql = "INSERT INTO suscripcion (usuario_id, fechaInicio, estado, codigoacceso, suscripcion_tipo_id) "
+			String sql = "INSERT INTO suscripcion (usuario_id, fechaInicio, estado, codigoVerificacion, suscripcion_tipo_id) "
 					+ "VALUES (?, ?, ?, ?, ?)";
 			ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, usuarioId);

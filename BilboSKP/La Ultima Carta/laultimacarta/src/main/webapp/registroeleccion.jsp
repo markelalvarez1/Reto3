@@ -21,7 +21,7 @@
 			</h1>
 
 			<div class="registration-options">
-				<a href="registroindividual.jsp" class="registration-option">
+				<a href="registro" class="registration-option">
 					<div class="registration-box">
 						<div class="icon-container">
 							<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
@@ -40,7 +40,7 @@
 							<fmt:message key="registro_individual_descripcion" />
 						</p>
 					</div>
-				</a> <a href="registrocentro.jsp" class="registration-option">
+				</a> <a href="registroCentro" class="registration-option">
 					<div class="registration-box">
 						<div class="icon-container">
 							<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"

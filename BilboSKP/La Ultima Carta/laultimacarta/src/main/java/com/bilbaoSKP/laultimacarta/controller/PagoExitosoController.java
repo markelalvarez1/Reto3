@@ -32,8 +32,7 @@ public class PagoExitosoController extends HttpServlet {
 		}
 		
 		if (usuarioService.finalizarRegistro(dto)) {
-			request.getSession().removeAttribute("usuarioTemporal");
-			request.getSession().removeAttribute("tipoSuscripcion");
+			request.getSession().removeAttribute("registroDTO");
 			response.sendRedirect("registro?exito=true");
 		} else {
 			response.sendRedirect("registro?error=falloRegistro");

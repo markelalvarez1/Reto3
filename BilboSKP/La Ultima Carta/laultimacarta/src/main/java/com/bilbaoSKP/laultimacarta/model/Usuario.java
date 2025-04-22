@@ -63,6 +63,12 @@ public class Usuario {
 	public void setSuscripcion(Suscripcion suscripcion) {
 		this.suscripcion = suscripcion;
 	}
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", telefono=" + telefono + ", nombre=" + nombre + ", apellidos=" + apellidos
+				+ ", dni=" + dni + ", correo=" + correo + ", contrasena=" + contrasena + ", rol=" + rol
+				+ ", suscripcion=" + suscripcion + "]";
+	}
 	public Partida organizarPartida(EscapeRoom escapeRoom, Date fechaInicio, int cantidadCupones) {
 		return null;
 	}

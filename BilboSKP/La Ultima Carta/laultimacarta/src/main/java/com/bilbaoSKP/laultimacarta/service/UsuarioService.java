@@ -3,6 +3,7 @@ package com.bilbaoSKP.laultimacarta.service;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -148,6 +149,16 @@ public class UsuarioService {
 		}
 
 		return u;
+	}
+
+	public Usuario getUsuarioByID(String idUsuario) {
+		// TODO Auto-generated method stub
+		return usuarioDAO.getUsuarioByID(idUsuario);
+	}
+
+	public ArrayList<Usuario> getAllUsuarios() {
+		// TODO Auto-generated method stub
+		return usuarioDAO.getAllUsuarios();
 	}
 
 }

@@ -56,7 +56,6 @@ CREATE TABLE suscripcion (
     usuario_id INT NOT NULL UNIQUE,
     fechaInicio DATE NOT NULL,
     estado ENUM('PENDIENTE','ACTIVA','CANCELADA') NOT NULL,
-    tipo ENUM('NORMAL','ESPECIAL') NOT NULL,
     suscripcion_tipo_id INT NOT NULL,
     codigoVerificacion VARCHAR(50),
     FOREIGN KEY (usuario_id) REFERENCES usuario(id),
@@ -124,5 +123,33 @@ CREATE TABLE cupon_partida (
     FOREIGN KEY (partida_id) REFERENCES partida(id)
 );
 
-INSERT INTO rol (tipo) VALUES ('Admin'), ('Usuario'), ('Responsable'), ('Jugador');
-INSERT INTO suscripcionTipo (tipo, precio) VALUES ('PAGO', 5.0), ('GRATUITA', 0);
+INSERT INTO rol (tipo) VALUES ('ADMINISTRADOR'), ('USUARIO'), ('RESPONSABLE');
+INSERT INTO suscripcionTipo (tipo, precio) VALUES ('INDIVIDUAL', 5.0), ('CENTRO ESCOLAR', 0);
+INSERT INTO usuario (dni, nombre, apellidos, telefono, correo, contraseña, rol_id)
+VALUES 
+('12345678A', 'Admin', 'Admin', '600123456', 'admin@gmail.com', '12345', 1),
+('87654321B', 'María', 'López Fernández', '610654321', 'maria.lopez@example.com', 'contraseña2', 2),
+('11223344C', 'Ana', 'Martínez Díaz', '620112233', 'ana.martinez@example.com', 'contraseña3', 2),
+('44332211D', 'Luis', 'González Romero', '630443322', 'luis.gonzalez@example.com', 'contraseña4', 3),
+('99887766E', 'Laura', 'Jiménez Ruiz', '640998877', 'laura.jimenez@example.com', 'contraseña5', 2),
+('77665544F', 'Carlos', 'Hernández Torres', '650776655', 'carlos.hernandez@example.com', 'contraseña6', 3),
+('66554433G', 'Sofía', 'Ramírez Morales', '660665544', 'sofia.ramirez@example.com', 'contraseña7', 1),
+('55443322H', 'Pedro', 'Sánchez Gómez', '670554433', 'pedro.sanchez@example.com', 'contraseña8', 3),
+('33221100I', 'Marta', 'Navarro Ortega', '680332211', 'marta.navarro@example.com', 'contraseña9', 1),
+('11110000J', 'Andrés', 'Castro Velázquez', '690111100', 'andres.castro@example.com', 'contraseña10', 2);
+
+INSERT INTO suscripcion (usuario_id, fechaInicio, estado, suscripcion_tipo_id, codigoVerificacion)
+VALUES 
+(1, '2025-04-01', 'ACTIVA', 1, 'ABC123'),
+(2, '2025-04-02', 'PENDIENTE', 2, 'DEF456'),
+(3, '2025-03-25', 'CANCELADA', 1, 'GHI789'),
+(4, '2025-03-20', 'ACTIVA', 2, 'JKL012'),
+(5, '2025-04-10', 'PENDIENTE', 1, 'MNO345'),
+(6, '2025-04-05', 'ACTIVA', 2, 'PQR678'),
+(7, '2025-03-15', 'CANCELADA', 1, 'STU901'),
+(8, '2025-04-12', 'PENDIENTE', 2, 'VWX234'),
+(9, '2025-04-08', 'ACTIVA', 1, 'YZA567'),
+(10, '2025-03-30', 'CANCELADA', 2, 'BCD890');
+
+
+
