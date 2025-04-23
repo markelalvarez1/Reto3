@@ -52,7 +52,6 @@ CREATE TABLE clase (
 	FOREIGN KEY (etapaEducativa_id) REFERENCES etapaEducativa(id)
 );
 
-
 CREATE TABLE clase_centroEscolar(
 	id_clase INT,
 	id_centroEscolar INT,
@@ -116,6 +115,39 @@ CREATE TABLE cupon_partida (
     FOREIGN KEY (partida_id) REFERENCES partida(id)
 );
 
+CREATE TABLE ranking_clase (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    clase_id INT NOT NULL,
+    centro_escolar_id INT NOT NULL,
+    puntuacion_total INT NOT NULL DEFAULT 0,
+    fecha_actualizacion DATETIME NOT NULL,
+    FOREIGN KEY (clase_id) REFERENCES clase(id),
+    FOREIGN KEY (centro_escolar_id) REFERENCES centroEscolar(id),
+    UNIQUE KEY (clase_id, centro_escolar_id)
+);
+
+CREATE TABLE ranking_reset (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha_reset DATETIME NOT NULL,
+    tipo VARCHAR(20) NOT NULL, -- 'automatico' o 'manual'
+    usuario_id INT,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+);
+
+CREATE TABLE resultado_partida (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    partida_id INT NOT NULL,
+    aciertos INT NOT NULL,
+    pistas_usadas INT NOT NULL,
+    tiempo_segundos INT NOT NULL,
+    puntuacion INT NOT NULL,
+    clase_id INT,
+    centro_escolar_id INT,
+    FOREIGN KEY (partida_id) REFERENCES partida(id),
+    FOREIGN KEY (clase_id) REFERENCES clase(id),
+    FOREIGN KEY (centro_escolar_id) REFERENCES centroEscolar(id)
+);
+
 INSERT INTO rol (tipo)
 VALUES 
 ("Admin"),
@@ -136,6 +168,21 @@ VALUES
 ('Formación Profesional Básica'),
 ('Ciclo Formativo de Grado Medio'),
 ('Ciclo Formativo de Grado Superior');
+
+INSERT INTO rol (tipo) VALUES ('ADMINISTRADOR'), ('USUARIO'), ('RESPONSABLE');
+INSERT INTO suscripcionTipo (tipo, precio) VALUES ('INDIVIDUAL', 5.0), ('CENTRO ESCOLAR', 0);
+INSERT INTO usuario (dni, nombre, apellidos, telefono, correo, contraseña, rol_id)
+VALUES 
+('12345678A', 'Admin', 'Admin', '600123456', 'admin@gmail.com', '12345', 1),
+('87654321B', 'María', 'López Fernández', '610654321', 'maria.lopez@example.com', 'contraseña2', 2),
+('11223344C', 'Ana', 'Martínez Díaz', '620112233', 'ana.martinez@example.com', 'contraseña3', 2),
+('44332211D', 'Luis', 'González Romero', '630443322', 'luis.gonzalez@example.com', 'contraseña4', 3),
+('99887766E', 'Laura', 'Jiménez Ruiz', '640998877', 'laura.jimenez@example.com', 'contraseña5', 2),
+('77665544F', 'Carlos', 'Hernández Torres', '650776655', 'carlos.hernandez@example.com', 'contraseña6', 3),
+('66554433G', 'Sofía', 'Ramírez Morales', '660665544', 'sofia.ramirez@example.com', 'contraseña7', 1),
+('55443322H', 'Pedro', 'Sánchez Gómez', '670554433', 'pedro.sanchez@example.com', 'contraseña8', 3),
+('33221100I', 'Marta', 'Navarro Ortega', '680332211', 'marta.navarro@example.com', 'contraseña9', 1),
+('11110000J', 'Andrés', 'Castro Velázquez', '690111100', 'andres.castro@example.com', 'contraseña10', 2);
 
 -- Educación Infantil (etapaEducativa_id = 1)
 INSERT INTO clase (nombre, etapaEducativa_id) VALUES

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bilbaoSKP.laultimacarta.dto.LoginUsuarioDTO;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
@@ -35,14 +36,27 @@ public class LoginController extends HttpServlet {
 		try {
 			Usuario u = usuarioService.getUsuario(usuarioDTO);
 			if (u != null) {
-				request.getSession().setAttribute("usuario", u);
-				response.sendRedirect("inicio");
+				HttpSession session = request.getSession();
+				session.setAttribute("usuario", u);
+				
+				// Verificar si hay una URL solicitada previamente
+				String urlSolicitada = (String) session.getAttribute("urlSolicitada");
+				if (urlSolicitada != null) {
+					session.removeAttribute("urlSolicitada");
+					response.sendRedirect(urlSolicitada);
+				} else {
+					// Redirigir a la página principal
+					response.sendRedirect("inicio");
+				}
+			} else {
+				// Login fallido
+				request.setAttribute("error", "Correo o contraseña incorrectos");
+				request.getRequestDispatcher("iniciosesionindividual.jsp").forward(request, response);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("inicioSesion");
+			request.setAttribute("error", "Error al iniciar sesión: " + e.getMessage());
+			request.getRequestDispatcher("iniciosesionindividual.jsp").forward(request, response);
 		}
-		
 	}
-
 }
