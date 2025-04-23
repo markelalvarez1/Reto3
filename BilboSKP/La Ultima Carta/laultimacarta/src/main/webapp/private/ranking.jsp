@@ -17,6 +17,7 @@
 	<%@ include file="/WEB-INF/includes/header.jsp"%>
 
 	<main>
+		<%@ include file="/WEB-INF/includes/sidebar.jsp"%>
 		<div class="max-width">
 			<div class="page-header">
 				<h1>
