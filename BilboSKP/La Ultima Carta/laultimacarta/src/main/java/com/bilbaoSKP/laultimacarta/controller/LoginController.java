@@ -8,6 +8,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bilbaoSKP.laultimacarta.dto.LoginUsuarioDTO;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
@@ -38,6 +39,24 @@ public class LoginController extends HttpServlet {
 		try {
 			Usuario u = usuarioService.getUsuario(usuarioDTO);
 			if (u != null) {
+<<<<<<< HEAD
+				HttpSession session = request.getSession();
+				session.setAttribute("usuario", u);
+				
+				// Verificar si hay una URL solicitada previamente
+				String urlSolicitada = (String) session.getAttribute("urlSolicitada");
+				if (urlSolicitada != null) {
+					session.removeAttribute("urlSolicitada");
+					response.sendRedirect(urlSolicitada);
+				} else {
+					// Redirigir a la página principal
+					response.sendRedirect("inicio");
+				}
+			} else {
+				// Login fallido
+				request.setAttribute("error", "Correo o contraseña incorrectos");
+				request.getRequestDispatcher("iniciosesionindividual.jsp").forward(request, response);
+=======
 				request.getSession().setAttribute("usuario", u);
 				if(usuarioDTO.getRecuerdame() != null) {
 					String idCodificado = CodificadorService.codificar(String.valueOf(u.getId()));
@@ -46,12 +65,12 @@ public class LoginController extends HttpServlet {
 					response.addCookie(c);
 				}
 				response.sendRedirect("inicio");
+>>>>>>> eed91d3f20a17eb28d8b6194cb32f4af5c8677e8
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("inicioSesion");
+			request.setAttribute("error", "Error al iniciar sesión: " + e.getMessage());
+			request.getRequestDispatcher("iniciosesionindividual.jsp").forward(request, response);
 		}
-		
 	}
-
 }
