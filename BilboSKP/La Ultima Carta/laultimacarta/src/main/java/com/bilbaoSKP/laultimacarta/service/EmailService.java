@@ -2,6 +2,7 @@ package com.bilbaoSKP.laultimacarta.service;
 
 import java.util.Properties;
 
+import com.bilbaoSKP.laultimacarta.dto.UsuarioDTO;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
 
 import jakarta.mail.Authenticator;
@@ -20,7 +21,7 @@ public class EmailService {
 	 private final String remitente = "dcraftdevelopment@gmail.com"; // Aqui correo que va a enviar el mensaje
      private final String password = "uacqktobqxkphlca";  // Contrasena configurada desde Google (No es la contrase�a del correo)
      
-     public boolean enviarCorreoVerificacion(Usuario u) {
+     public boolean enviarCorreoVerificacion(int suscripcionID, UsuarioDTO usuarioDTO, String codigoAcceso) {
     	
          // 1. Configuracion de propiedades SMTP
          Properties propiedades = getProperties();
@@ -32,10 +33,10 @@ public class EmailService {
              // 3. Crear el mensaje
              Message message = new MimeMessage(session);
              message.setFrom(new InternetAddress(remitente));
-             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(u.getCorreo()));
+             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(usuarioDTO.getCorreo()));
              message.setSubject("Correo de verificación");
-             String codigoVerificacion = codificador(u);
-             String html = crearHtmlVerificacion(u, codigoVerificacion);
+             String codigoVerificacion = codificador(suscripcionID, codigoAcceso);
+             String html = crearHtmlVerificacion(usuarioDTO, codigoVerificacion);
              message.setContent(html, "text/html");
 
              // 4. Enviar el mensaje
@@ -52,9 +53,9 @@ public class EmailService {
 		return true;
      }
 
-	private String codificador(Usuario u) {
+	private String codificador(int suscripcionID, String codigoAcceso) {
 		StringBuilder str = new StringBuilder();
-		str.append(u.getSuscripcion().getId()).append(";").append(u.getSuscripcion().getCodigoAcceso());
+		str.append(suscripcionID).append(";").append(codigoAcceso);
 		return CodificadorService.codificar(str.toString());
 	}
 
@@ -76,7 +77,7 @@ public class EmailService {
 		return props;
 	}
 	
-	private String crearHtmlVerificacion(Usuario u, String codigoVerificacion) {
+	private String crearHtmlVerificacion(UsuarioDTO usuarioDTO, String codigoVerificacion) {
 		String html = "<html>"
 		         + "  <head>"
 		         + "    <meta charset='UTF-8'>"
@@ -131,7 +132,7 @@ public class EmailService {
 		         + "        <h1>Verificación de Cuenta</h1>"
 		         + "      </div>"
 		         + "      <div class='content'>"
-		         + "        <p>Hola, <strong>" + u.getNombre() + "</strong>!</p>"
+		         + "        <p>Hola, <strong>" + usuarioDTO.getNombre() + "</strong>!</p>"
 		         + "        <p>Gracias por solicitar la suscripción. Para activar tu cuenta, por favor pulsa el botón de abajo:</p>"
 		         + "        <p style='text-align: center;'>"
 		         + "          <a class='button' href='http://localhost:8080/laultimacarta/verificar?codigo=" + codigoVerificacion + "' target='_blank'>Verificar mi cuenta</a>"  

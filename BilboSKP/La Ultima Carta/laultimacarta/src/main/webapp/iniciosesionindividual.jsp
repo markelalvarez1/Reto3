@@ -1,4 +1,5 @@
 <%@ include file="/WEB-INF/includes/idioma.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,8 @@
 				</h1>
 
 				<div class="form-content">
-					<form action="inicioSesion" method="post" id="individual-form" class="form-fields">
+					<form action="inicioSesion" method="post" id="individual-form"
+						class="form-fields">
 						<div class="form-group">
 							<label for="email"><fmt:message key="correo_electronico" /></label>
 							<input type="email" id="email" name="correo"
@@ -32,9 +34,15 @@
 						<div class="form-group">
 							<label for="password"><fmt:message key="contrasena" /></label> <input
 								type="password" id="password" name="contrasena"
-								placeholder="<fmt:message key='placeholder_contrasena' />" required>
+								placeholder="<fmt:message key='placeholder_contrasena' />"
+								required>
 						</div>
-
+						<div class="form-group">
+							<label class="checkbox-option"> <input type="checkbox"
+								id="recuerdame" name="recuerdame"> <span><fmt:message
+										key="mantener_sesion_iniciada" /></span>
+							</label>
+						</div>
 						<button type="submit" class="submit-btn">
 							<fmt:message key="boton_enviar" />
 						</button>
@@ -45,8 +53,8 @@
 	</main>
 
 	<%@ include file="/WEB-INF/includes/footer.jsp"%>
-	
+
 	<%@ include file="/WEB-INF/includes/headerScripts.jsp"%>
-	
+
 </body>
 </html>

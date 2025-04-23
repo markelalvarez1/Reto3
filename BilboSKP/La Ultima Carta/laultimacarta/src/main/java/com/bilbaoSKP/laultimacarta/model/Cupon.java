@@ -2,65 +2,78 @@ package com.bilbaoSKP.laultimacarta.model;
 
 import java.time.LocalDate;
 
+import com.bilbaoSKP.laultimacarta.model.enums.EstadoCuponEnum;
+
 public class Cupon {
 
-	private int id, tipoCupon;
-	private LocalDate fechaCompra, fechaCaducidad;
-	private double precio;
-	private String estado;
-	
-	public Cupon() {
-		
+    private int id;
+    private int suscripcionId;
+    private LocalDate fechaCompra;
+    private LocalDate fechaCaducidad;
+    private double precio;
+    private EstadoCuponEnum estadoCupon;
+    
+    public Cupon() {
+        
+    }
+    
+    public static Cupon nuevoCupon(int suscripcionId, double precio, String tipo) {
+        Cupon cupon = new Cupon();
+        cupon.setSuscripcionId(suscripcionId);
+        cupon.setFechaCompra(LocalDate.now());
+        cupon.setFechaCaducidad(LocalDate.now().plusYears(1)); // Validez de 1 año
+        cupon.setPrecio(precio);
+        cupon.setEstadoCupon(EstadoCuponEnum.ACTIVO);
+        return cupon;
+    }
+    
+    public int getId() {
+        return id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public int getSuscripcionId() {
+        return suscripcionId;
+    }
+    
+    public void setSuscripcionId(int suscripcionId) {
+        this.suscripcionId = suscripcionId;
+    }
+    
+    public LocalDate getFechaCompra() {
+        return fechaCompra;
+    }
+    
+    public void setFechaCompra(LocalDate fechaCompra) {
+        this.fechaCompra = fechaCompra;
+    }
+    
+    public LocalDate getFechaCaducidad() {
+        return fechaCaducidad;
+    }
+    
+    public void setFechaCaducidad(LocalDate fechaCaducidad) {
+        this.fechaCaducidad = fechaCaducidad;
+    }
+    
+    public double getPrecio() {
+        return precio;
+    }
+    
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+	public EstadoCuponEnum getEstadoCupon() {
+		return estadoCupon;
 	}
 
-	public int getId() {
-		return id;
+	public void setEstadoCupon(EstadoCuponEnum estadoCupon) {
+		this.estadoCupon = estadoCupon;
 	}
+    
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getTipoCupon() {
-		return tipoCupon;
-	}
-
-	public void setTipoCupon(int tipoCupon) {
-		this.tipoCupon = tipoCupon;
-	}
-
-	public LocalDate getFechaCompra() {
-		return fechaCompra;
-	}
-
-	public void setFechaCompra(LocalDate fechaCompra) {
-		this.fechaCompra = fechaCompra;
-	}
-
-	public LocalDate getFechaCaducidad() {
-		return fechaCaducidad;
-	}
-
-	public void setFechaCaducidad(LocalDate fechaCaducidad) {
-		this.fechaCaducidad = fechaCaducidad;
-	}
-
-	public double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-	
-	
-	
 }

@@ -14,24 +14,37 @@
 			<!-- Navigation Menu -->
 			<nav>
 				<ul>
-					<li><a href="jugar.jsp"><fmt:message key="menu_jugar" /></a></li>
-					<li><a href="gestion.jsp"><fmt:message key="menu_gestion" /></a></li>
-					<li><a href="Index.jsp#opinions"><fmt:message key="menu_opiniones" /></a></li>
-					<li><a href="contacto.jsp"><fmt:message
+					<li><a href="jugar"><fmt:message key="menu_jugar" /></a></li>
+					<c:if test="${not empty sessionScope.usuario}">
+						<li><a href="gestion.jsp"><fmt:message key="menu_gestion" /></a></li>
+						<li><a href="ranking"><fmt:message key="menu_ranking" /></a></li>
+					</c:if>
+					<li><a href="inicio#opinions"><fmt:message
+								key="menu_opiniones" /></a></li>
+					<li><a href="contacto"><fmt:message
 								key="menu_contacto" /></a></li>
-					<li><a href="ranking.jsp"><fmt:message key="menu_ranking" /></a></li>
+
 				</ul>
 			</nav>
 
 			<!-- Header Buttons -->
 			<div class="header-buttons">
-				<button class="btn-primary">
-					<a href="inicioeleccion.jsp"><fmt:message key="boton_iniciar" /></a>
-				</button>
-				<button class="btn-secondary">
-					<a href="registroeleccion.jsp"><fmt:message
-							key="boton_registrar" /></a>
-				</button>
+				<c:choose>
+					<c:when test="${not empty sessionScope.usuario}">
+						<button class="btn-primary">
+							<a href="cerrarSesion"><fmt:message key="boton_cerrar" /></a>
+						</button>
+					</c:when>
+					<c:otherwise>
+						<button class="btn-primary">
+							<a href="inicioSesion"><fmt:message key="boton_iniciar" /></a>
+						</button>
+						<button class="btn-secondary">
+							<a href="registroEleccion"><fmt:message
+									key="boton_registrar" /></a>
+						</button>
+					</c:otherwise>
+				</c:choose>
 				<button class="btn-tertiary">
 					<a href="?lang=${sessionScope.lang eq 'en' ? 'es' : 'en'}"> <fmt:message
 							key="boton_idioma" />

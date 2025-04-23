@@ -36,7 +36,7 @@
 				<fmt:message key="descripcion_ultima_carta" />
 			</p>
 			<button class="btn-primary">
-				<a href="jugar.jsp"><fmt:message key="menu_jugar" /></a>
+				<a href="jugar"><fmt:message key="menu_jugar" /></a>
 			</button>
 		</div>
 	</section>

@@ -1,6 +1,6 @@
 package com.bilbaoSKP.laultimacarta.dto;
 
-public class RegistroCentroDTO {
+public class CentroDTO {
 
 	private String CIF, nombre, correo, telefono, numeroAlumnos, etapaEducativa, ciudad;
 

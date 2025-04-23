@@ -67,6 +67,7 @@
 					</h1>
 					<form action="registro" method="POST">
 						<fieldset class="user-data">
+						<input type="hidden" name="tipoSuscripcion" value="1">
 							<legend><fmt:message key="datos_acceso"/></legend>
 							<div class="form-group">
 								<label for="email"><fmt:message key="form_email" /></label>

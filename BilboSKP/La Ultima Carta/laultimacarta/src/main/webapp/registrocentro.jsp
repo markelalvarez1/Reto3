@@ -62,9 +62,10 @@
 						<h1>
 							<fmt:message key="formulario_registro_titulo" />
 						</h1>
-						<form action="registroCentro" method="post">
+						<form action="registro" method="post">
 							<fieldset class="user-data">
 								<legend><fmt:message key="datos_acceso"/></legend>
+								<input type="hidden" name="tipoSuscripcion" value="2">
 								<div class="form-group">
 									<label for="email"><fmt:message key="form_email" /></label> <input
 										type="email" id="email" name="correo"

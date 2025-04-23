@@ -1,14 +1,18 @@
 package com.bilbaoSKP.laultimacarta.controller;
 
 import java.io.IOException;
+<<<<<<< HEAD
 import java.util.List;
 
 import javax.servlet.ServletConfig;
+=======
+>>>>>>> eed91d3f20a17eb28d8b6194cb32f4af5c8677e8
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
 import javax.servlet.http.HttpSession;
 
 import com.bilbaoSKP.laultimacarta.model.RankingClase;
@@ -63,3 +67,24 @@ public class RankingController extends HttpServlet {
         request.getRequestDispatcher("ranking.jsp").forward(request, response);
     }
 }
+=======
+
+/**
+ * Servlet implementation class RankingController
+ */
+@WebServlet("/ranking")
+public class RankingController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.getRequestDispatcher("private/ranking.jsp").forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	}
+
+}
+>>>>>>> eed91d3f20a17eb28d8b6194cb32f4af5c8677e8

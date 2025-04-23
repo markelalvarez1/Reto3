@@ -558,6 +558,55 @@ legend {
   margin-bottom: 10px;
 }
 
+/* === Checkbox centrado y a juego con inputs === */
+.checkbox-option {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-option input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  position: relative;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.checkbox-option input[type="checkbox"]:hover {
+  border-color: #1b19a5;
+}
+
+.checkbox-option input[type="checkbox"]:checked {
+  background-color: #1b19a5;
+  border-color: #1b19a5;
+}
+
+.checkbox-option input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -60%) rotate(45deg);
+}
+
+.checkbox-option span {
+  display: inline-block;
+  font-weight: 600;
+  margin: 0;  /* evita márgenes inesperados */
+}
+
 
 .submit-btn {
     width: 100%;

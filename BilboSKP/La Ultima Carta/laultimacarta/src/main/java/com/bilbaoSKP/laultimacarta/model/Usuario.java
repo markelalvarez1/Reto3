@@ -1,5 +1,7 @@
 package com.bilbaoSKP.laultimacarta.model;
 
+import java.sql.Date;
+
 public class Usuario {
 
 	private int id, telefono;
@@ -61,5 +63,15 @@ public class Usuario {
 	public void setSuscripcion(Suscripcion suscripcion) {
 		this.suscripcion = suscripcion;
 	}
-	
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", telefono=" + telefono + ", nombre=" + nombre + ", apellidos=" + apellidos
+				+ ", dni=" + dni + ", correo=" + correo + ", contrasena=" + contrasena + ", rol=" + rol
+				+ ", suscripcion=" + suscripcion + "]";
+	}
+	public Partida organizarPartida(EscapeRoom escapeRoom, Date fechaInicio, int cantidadCupones) {
+		return null;
+	}
+	public void cancelarPartida(Partida partida) {	
+	}
 }

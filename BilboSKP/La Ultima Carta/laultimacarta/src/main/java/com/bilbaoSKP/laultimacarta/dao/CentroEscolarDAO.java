@@ -4,12 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.bilbaoSKP.laultimacarta.dto.CentroDTO;
 import com.bilbaoSKP.laultimacarta.model.CentroEscolar;
 import com.bilbaoSKP.laultimacarta.model.Responsable;
 
 public class CentroEscolarDAO {
 
-	public boolean existeCentro(CentroEscolar c) {
+	public boolean existeCentro(CentroDTO centroDTO) {
 		Connection con = AccesoBD.getConnection();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -17,7 +18,7 @@ public class CentroEscolarDAO {
 		try {
 			String sql = "SELECT cif FROM centroescolar WHERE cif = ? ";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, c.getCIF());
+			ps.setString(1, centroDTO.getCIF());
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				return true;
@@ -32,7 +33,7 @@ public class CentroEscolarDAO {
 		return false;
 	}
 
-	public static boolean registrarCentroEscolar(Responsable r, Connection conexion) {
+	public boolean registrarCentroEscolar(int usuarioId, CentroDTO centroDTO, Connection conexion) {
 		Connection con = conexion;
 		PreparedStatement ps = null;
 		
@@ -40,14 +41,14 @@ public class CentroEscolarDAO {
 			String sql = "INSERT INTO centroescolar(cif, nombre, telefono, correo, ciudad, etapaEducativa, numeroAlumnos, id_usuario) "
 					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, r.getCentroEscolar().getCIF());
-			ps.setString(2, r.getCentroEscolar().getNombre());
-			ps.setInt(3, r.getCentroEscolar().getTelefono());
-			ps.setString(4, r.getCentroEscolar().getCorreo());
-			ps.setString(5, r.getCentroEscolar().getCiudad());
-			ps.setString(6, r.getCentroEscolar().getEtapaEducativa());
-			ps.setInt(7, r.getCentroEscolar().getNumeroAlumnos());
-			ps.setInt(8, r.getId());
+			ps.setString(1, centroDTO.getCIF());
+			ps.setString(2, centroDTO.getNombre());
+			ps.setInt(3, Integer.valueOf(centroDTO.getTelefono()));
+			ps.setString(4, centroDTO.getCorreo());
+			ps.setString(5, centroDTO.getCiudad());
+			ps.setString(6, centroDTO.getEtapaEducativa());
+			ps.setInt(7, Integer.valueOf(centroDTO.getNumeroAlumnos()));
+			ps.setInt(8, usuarioId);
 			
 			if(ps.executeUpdate() > 0) {
 				return true;
