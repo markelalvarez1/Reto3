@@ -1,7 +1,6 @@
 package com.bilbaoSKP.laultimacarta.filther;
 
 import java.io.IOException;
-import java.util.Iterator;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

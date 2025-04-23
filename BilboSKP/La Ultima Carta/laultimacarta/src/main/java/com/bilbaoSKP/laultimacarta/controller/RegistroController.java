@@ -56,7 +56,7 @@ public class RegistroController extends HttpServlet {
 		dto.setTipoSuscripcionID(tipoSuscripcionID);
 		dto.setUsuarioDTO(usuarioDTO);
 		
-		if(TipoSuscripcionEnum.GRATUITA.getCodigo() == tipoSuscripcionID) {
+		if(TipoSuscripcionEnum.CENTRO_ESCOLAR.getCodigo() == tipoSuscripcionID) {
 			dtoCentro = new CentroDTO();
 			dtoCentro.setCIF(request.getParameter("cif"));
 			dtoCentro.setNombre(request.getParameter("nombreCentro"));

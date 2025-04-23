@@ -19,13 +19,13 @@ CREATE TABLE usuario (
     FOREIGN KEY (rol_id) REFERENCES rol(id)
 );
 
-CREATE TABLE centroEducativo (
+CREATE TABLE centroEscolar (
     id INT AUTO_INCREMENT PRIMARY KEY,
     cif VARCHAR(20) UNIQUE,
     nombre VARCHAR(100) NOT NULL,
-    localidad VARCHAR(100),
-    etapasEducativas VARCHAR(255),
-    numAlumnos INT,
+    ciudad VARCHAR(100),
+    etapaEducativa VARCHAR(255),
+    numeroAlumnos INT,
     id_usuario INT NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id)
 );
@@ -37,12 +37,12 @@ CREATE TABLE clase (
     seccion VARCHAR(50)
 );
 
-CREATE TABLE clase_centroEducativo (
+CREATE TABLE clase_centroEscolar (
     id_clase INT,
     centroEducativo_id INT,
     PRIMARY KEY (id_clase, centroEducativo_id),
     FOREIGN KEY (id_clase) REFERENCES clase(id),
-    FOREIGN KEY (centroEducativo_id) REFERENCES centroEducativo(id)
+    FOREIGN KEY (centroEducativo_id) REFERENCES centroEscolar(id)
 );
 
 CREATE TABLE suscripcionTipo (
@@ -128,9 +128,9 @@ INSERT INTO suscripcionTipo (tipo, precio) VALUES ('INDIVIDUAL', 5.0), ('CENTRO 
 INSERT INTO usuario (dni, nombre, apellidos, telefono, correo, contraseña, rol_id)
 VALUES 
 ('12345678A', 'Admin', 'Admin', '600123456', 'admin@gmail.com', '12345', 1),
-('87654321B', 'María', 'López Fernández', '610654321', 'maria.lopez@example.com', 'contraseña2', 2),
+('87654321B', 'Usuario', 'Usuario', '610654321', 'usuario@gmail.com', '12345', 2),
 ('11223344C', 'Ana', 'Martínez Díaz', '620112233', 'ana.martinez@example.com', 'contraseña3', 2),
-('44332211D', 'Luis', 'González Romero', '630443322', 'luis.gonzalez@example.com', 'contraseña4', 3),
+('44332211D', 'Responsable', 'Responsable', '630443322', 'responsable@gmail.com', '12345', 3),
 ('99887766E', 'Laura', 'Jiménez Ruiz', '640998877', 'laura.jimenez@example.com', 'contraseña5', 2),
 ('77665544F', 'Carlos', 'Hernández Torres', '650776655', 'carlos.hernandez@example.com', 'contraseña6', 3),
 ('66554433G', 'Sofía', 'Ramírez Morales', '660665544', 'sofia.ramirez@example.com', 'contraseña7', 1),
@@ -141,7 +141,7 @@ VALUES
 INSERT INTO suscripcion (usuario_id, fechaInicio, estado, suscripcion_tipo_id, codigoVerificacion)
 VALUES 
 (1, '2025-04-01', 'ACTIVA', 1, 'ABC123'),
-(2, '2025-04-02', 'PENDIENTE', 2, 'DEF456'),
+(2, '2025-04-02', 'ACTIVA', 2, 'DEF456'),
 (3, '2025-03-25', 'CANCELADA', 1, 'GHI789'),
 (4, '2025-03-20', 'ACTIVA', 2, 'JKL012'),
 (5, '2025-04-10', 'PENDIENTE', 1, 'MNO345'),
@@ -151,5 +151,10 @@ VALUES
 (9, '2025-04-08', 'ACTIVA', 1, 'YZA567'),
 (10, '2025-03-30', 'CANCELADA', 2, 'BCD890');
 
+INSERT INTO centroEscolar (cif, nombre, ciudad, etapaEducativa, numeroAlumnos, id_usuario)
+VALUES 
+  ('A12345678', 'Colegio San Juan', 'Bilbao', 'Primaria y Secundaria', 800, 4),
+  ('B87654321', 'Instituto Vasco', 'San Sebastián', 'Secundaria', 600, 6),
+  ('C98765432', 'CEIP Arriaga', 'Bilbao', 'Infantil y Primaria', 300, 8);
 
 

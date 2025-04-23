@@ -2,8 +2,8 @@ package com.bilbaoSKP.laultimacarta.model.enums;
 
 public enum TipoSuscripcionEnum {
 
-	PAGO(1),
-	GRATUITA(2);
+	INDIVIDUAL(1),
+	CENTRO_ESCOLAR(2);
 
 	private final int codigo;
 	

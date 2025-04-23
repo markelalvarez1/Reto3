@@ -14,7 +14,8 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 	rel="stylesheet">
-<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+	rel="stylesheet">
 </head>
 <body>
 	<%@ include file="/WEB-INF/includes/header.jsp"%>
@@ -134,7 +135,8 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="usuario" items="${listaUsuarios}" varStatus="status">
+							<c:forEach var="usuario" items="${listaUsuarios}"
+								varStatus="status">
 								<tr>
 									<td>${status.index + 1}</td>
 									<td>${usuario.nombre}</td>
@@ -143,20 +145,20 @@
 									<td>${usuario.rol.tipo}</td>
 									<td><span id="estado-${usuario.id}">${usuario.suscripcion.estado}</span></td>
 									<td>${usuario.suscripcion.fechaInicio}</td>
-									<td>
-										<div class="botones-accion">
-											<button class="btn-editar"
-												onclick="redirigirEditarUsuario(1)">
-												<i class="fas fa-edit"></i>
-											</button>
-											<button class="btn-ver" onclick="verDetalles(1)">
-												<i class="fas fa-eye"></i>
-											</button>
-											<button class="btn-eliminar" onclick="confirmarEliminar(1)">
-												<i class="fas fa-trash"></i>
-											</button>
-										</div>
-									</td>
+									<td><form action="gestionUsuarios" method="post">
+											<div class="botones-accion">
+												<button class="btn-editar"
+													onclick="redirigirEditarUsuario(1)">
+													<i class="fas fa-edit"></i>
+												</button>
+												<button class="btn-ver" onclick="verDetalles(1)">
+													<i class="fas fa-eye"></i>
+												</button>
+												<button class="btn-eliminar" onclick="confirmarEliminar(1)">
+													<i class="fas fa-trash"></i>
+												</button>
+											</div>
+										</form></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -224,20 +226,7 @@
 			}
 		});
 	</script>
-
-
-
 	<script>
-		// Función para redirigir a la página de edición de usuario
-		function redirigirEditarUsuario(userId) {
-			window.location.href = 'editar-usuario.jsp?id=' + userId;
-		}
-
-		// Funciones para ver detalles y confirmar eliminación
-		function verDetalles(userId) {
-			// Redirigir a página de detalles
-			window.location.href = 'detalles-usuario.jsp?id=' + userId;
-		}
 
 		function confirmarEliminar(userId) {
 			document.getElementById('deleteUserId').value = userId;
