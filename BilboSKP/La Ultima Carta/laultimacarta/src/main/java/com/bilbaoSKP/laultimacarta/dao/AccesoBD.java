@@ -10,10 +10,10 @@ public class AccesoBD {
 	
 	private static final String URL = "jdbc:mysql://localhost:3306/EscapeRoomBilboSKP";
 	private static final String USER = "root";
-	private static final String PASSWORD = "1234";
+	private static final String PASSWORD = "";
 	
 	public static Connection getConnection() {
-		Connection con = null;
+		Connection con = null; 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(URL, USER, PASSWORD);
