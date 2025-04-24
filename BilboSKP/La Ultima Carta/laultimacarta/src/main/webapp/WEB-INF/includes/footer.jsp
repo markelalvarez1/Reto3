@@ -14,7 +14,7 @@
 
 			<!-- Footer Text and Links -->
 			<div class="footer-text">
-				<a href="contacto.jsp"><p>
+				<a href="contacto"><p>
 						<fmt:message key="footer_contacto" />
 					</p></a>
 				<p class="copyright">

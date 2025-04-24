@@ -17,7 +17,10 @@
 					<li><a href="jugar"><fmt:message key="menu_jugar" /></a></li>
 					<c:if test="${not empty sessionScope.usuario}">
 						<li><a href="gestion"><fmt:message key="menu_gestion" /></a></li>
-						<li><a href="ranking"><fmt:message key="menu_ranking" /></a></li>
+						<!-- Only show ranking menu to administrators -->
+						<c:if test="${sessionScope.usuario.rol.id == 1}">
+							<li><a href="ranking"><fmt:message key="menu_ranking" /></a></li>
+						</c:if>
 					</c:if>
 					<li><a href="inicio#opinions"><fmt:message
 								key="menu_opiniones" /></a></li>

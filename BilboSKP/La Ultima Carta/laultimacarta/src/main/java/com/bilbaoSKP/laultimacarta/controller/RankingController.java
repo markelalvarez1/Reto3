@@ -1,7 +1,6 @@
 package com.bilbaoSKP.laultimacarta.controller;
 
 import java.io.IOException;
-
 import java.util.List;
 
 import javax.servlet.ServletConfig;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import com.bilbaoSKP.laultimacarta.model.RankingClase;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
-import com.bilbaoSKP.laultimacarta.model.enums.RolEnum;
 import com.bilbaoSKP.laultimacarta.service.RankingService;
 
 @WebServlet("/ranking")
@@ -36,7 +34,7 @@ public class RankingController extends HttpServlet {
         String tipo = request.getParameter("tipo");
         HttpSession session = request.getSession();
         
-        // Si es ranking de clases, verificar permisos
+        // Si es ranking de clases, obtener los datos
         if ("clases".equals(tipo)) {
             // Verificar que el usuario está autenticado
             Usuario usuario = (Usuario) session.getAttribute("usuario");
@@ -48,19 +46,12 @@ public class RankingController extends HttpServlet {
                 return;
             }
             
-            // Verificar si el usuario es administrador
-            if (usuario.getRol().getId() != RolEnum.ADMINISTRADOR.getCodigo()) {
-                request.setAttribute("error", "No tienes permisos suficientes para acceder al ranking de clases.");
-                request.getRequestDispatcher("error.jsp").forward(request, response);
-                return;
-            }
-            
-            // El usuario es administrador, obtener datos del ranking
+            // Obtener datos del ranking de clases (para todos los usuarios autenticados)
             List<RankingClase> ranking = rankingService.obtenerRankingPorCentro(0); // 0 para obtener todos los centros
             request.setAttribute("rankingClases", ranking);
         }
         
         // Redirigir a la página de ranking (ahora maneja ambos tipos)
-        request.getRequestDispatcher("private/ranking.jsp").forward(request, response);
+        request.getRequestDispatcher("ranking.jsp").forward(request, response);
     }
 }

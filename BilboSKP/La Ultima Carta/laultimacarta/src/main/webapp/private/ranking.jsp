@@ -34,12 +34,12 @@
 					<fmt:message key="clasificacion_actual" />
 				</p>
 				
-				<!-- Links for switching between rankings - Only show Class Ranking tab to administrators -->
+				<!-- Links for switching between rankings - Show Class Ranking tab to all authenticated users -->
 				<div class="tabs-list">
 					<a href="ranking" class="${param.tipo != 'clases' ? 'active' : ''}">
 						<fmt:message key="ranking_nacional" />
 					</a>
-					<c:if test="${usuario != null && usuario.rol.id == 1}">
+					<c:if test="${usuario != null}">
 						<a href="ranking?tipo=clases" class="${param.tipo == 'clases' ? 'active' : ''}">
 							<fmt:message key="ranking_clases" />
 						</a>
