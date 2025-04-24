@@ -155,7 +155,7 @@
 
 					<!-- Tarjetas de cupones -->
 					<div class="coupons-grid">
-						<!-- Cupón Escape Room -->
+						<!-- CupÃ³n Escape Room -->
 						<div class="coupon-card">
 							<div class="coupon-tag"><fmt:message key="cupon_tag_general" /></div>
 							<div class="coupon-content">
@@ -170,13 +170,13 @@
     <input type="number" min="1" value="1" class="coupon-qty-input"
         data-id="escape-room"
         data-name="<fmt:message key='cupon_escape_room_titulo' />"
-        data-price="16.99"
+        data-price="5-00"
         title="Cantidad" />
         
     <button class="coupon-add-btn"
         data-id="escape-room"
         data-name="<fmt:message key='cupon_escape_room_titulo' />"
-        data-price="16.99">
+        data-price="5.00">
         <i class='bx bx-cart-add'></i>
         <fmt:message key="cupon_anadir" />
     </button>
@@ -204,13 +204,13 @@
 						</div>
 						
 						<div class="cart-items">
-						    <!-- Los items del carrito se añadirán dinámicamente con JavaScript -->
+						    <!-- Los items del carrito se aÃ±adirÃ¡n dinÃ¡micamente con JavaScript -->
 						</div>
 						
 						<div class="cart-summary">
 						    <div class="cart-total">
 						        <span><fmt:message key="carrito_total" /></span>
-						        <span class="total-amount">0.00€</span>
+						        <span class="total-amount">0.00</span>
 						    </div>
 						    <button class="checkout-btn">
 						        <i class='bx bx-check'></i>
@@ -348,7 +348,7 @@
 					</div>
 				</div>
 
-				<!-- Información sobre cupones -->
+				<!-- InformaciÃ³n sobre cupones -->
 				<div class="block coupons-info">
 					<h2>
 						<fmt:message key="info_titulo" />
@@ -407,7 +407,7 @@
 				<div class="footer-logos">
 					<a href="https://appstac.ebizkaia.eus/es/inicio" target="_blank">
 						<img class="diputacion" src="Img/DiputacionBZK.png"
-						alt="Diputación">
+						alt="Diputacionn">
 					</a> <a href="../../Pagina/castellano/index.html" target="_blank">
 						<img class="logo" src="Img/DCDlogo.png" alt="DCD Logo">
 					</a>
@@ -427,7 +427,7 @@
     });
 
     document.addEventListener('DOMContentLoaded', function() {
-        // Menú móvil toggle
+        // MenÃº mÃ³vil toggle
         document.querySelector('.hamburger-menu').addEventListener('click', function() {
             this.classList.toggle('active');
             document.querySelector('.nav-container').classList.toggle('active');
@@ -485,11 +485,11 @@
                     const cartItem = document.createElement('div');
                     cartItem.className = 'cart-item';
 
-                    // Aquí usamos innerHTML sin backticks para evitar conflicto con JSP
+                    // AquÃ­ usamos innerHTML sin backticks para evitar conflicto con JSP
                     cartItem.innerHTML =
                         '<div class="cart-item-details">' +
                             '<div class="cart-item-title">' + item.title + ' x' + item.quantity + '</div>' +
-                            '<div class="cart-item-price">' + itemTotal.toFixed(2) + '€</div>' +
+                            '<div class="cart-item-price">' + itemTotal.toFixed(2) + '</div>' +
                         '</div>' +
                         '<button class="cart-item-remove" data-index="' + index + '">' +
                             "<i class='bx bx-trash'></i>" +
@@ -498,7 +498,7 @@
                     cartItemsContainer.appendChild(cartItem);
                 });
 
-                totalAmount.textContent = total.toFixed(2) + '€';
+                totalAmount.textContent = total.toFixed(2) + 'â¬';
 
                 document.querySelectorAll('.cart-item-remove').forEach(btn => {
                     btn.addEventListener('click', function() {
@@ -517,7 +517,7 @@
             updateCart();
         }
 
-        // Botón de añadir al carrito (con cantidad)
+        // BotÃ³n de aÃ±adir al carrito (con cantidad)
         document.querySelectorAll('.coupon-add-btn').forEach(btn => {
             btn.addEventListener('click', function () {
                 const id = this.getAttribute('data-id');

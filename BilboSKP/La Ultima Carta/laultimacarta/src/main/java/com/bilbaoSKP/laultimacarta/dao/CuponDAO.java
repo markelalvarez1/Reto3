@@ -14,6 +14,7 @@ import java.util.List;
 import com.bilbaoSKP.laultimacarta.model.Cupon;
 import com.bilbaoSKP.laultimacarta.model.CuponBienvenida;
 import com.bilbaoSKP.laultimacarta.model.Suscripcion;
+import com.bilbaoSKP.laultimacarta.model.enums.EstadoCuponEnum;
 
 public class CuponDAO {
 
@@ -28,12 +29,11 @@ public class CuponDAO {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, s.getId());
-			System.out.println(c.getTipoCupon());
-			ps.setInt(2, c.getTipoCupon());
+
 			ps.setDate(3, Date.valueOf(c.getFechaCompra().format(formatter)));
 			ps.setDate(4, Date.valueOf(c.getFechaCaducidad().format(formatter)));
 			ps.setDouble(5, c.getPrecio());
-			ps.setString(6, c.getEstado());
+			ps.setString(6, c.getEstadoCupon().name());
 			
 			if(ps.executeUpdate() > 0) {
 				return true;
@@ -63,7 +63,7 @@ public class CuponDAO {
             ps.setDate(2, Date.valueOf(cupon.getFechaCompra()));
             ps.setDate(3, Date.valueOf(cupon.getFechaCaducidad()));
             ps.setDouble(4, cupon.getPrecio());
-            ps.setString(5, cupon.getEstado());
+            ps.setString(5, cupon.getEstadoCupon().name());
             
             ps.execute();
             rs = ps.getGeneratedKeys();
@@ -100,7 +100,7 @@ public class CuponDAO {
                 cupon.setFechaCompra(rs.getDate("fechaCompra").toLocalDate());
                 cupon.setFechaCaducidad(rs.getDate("fechaCaducidad").toLocalDate());
                 cupon.setPrecio(rs.getDouble("precio"));
-                cupon.setEstado(rs.getString("estado"));
+                cupon.setEstadoCupon(EstadoCuponEnum.valueOf(rs.getString("estado")));
                 
                 cupones.add(cupon);
             }
@@ -133,7 +133,7 @@ public class CuponDAO {
                 cupon.setFechaCompra(rs.getDate("fechaCompra").toLocalDate());
                 cupon.setFechaCaducidad(rs.getDate("fechaCaducidad").toLocalDate());
                 cupon.setPrecio(rs.getDouble("precio"));
-                cupon.setEstado(rs.getString("estado"));
+                cupon.setEstadoCupon(EstadoCuponEnum.valueOf(rs.getString("estado")));
                 
                 cupones.add(cupon);
             }

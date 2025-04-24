@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bilbaoSKP.laultimacarta.dto.ComprarCuponDTO;
 import com.bilbaoSKP.laultimacarta.model.Cupon;
 import com.bilbaoSKP.laultimacarta.model.Suscripcion;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
@@ -35,33 +36,9 @@ public class CuponController extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        
-        // Verificar si el usuario está autenticado
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        if (usuario == null) {
-            // Si no está autenticado, redirigir a la página de inicio de sesión
-            response.sendRedirect(request.getContextPath() + "/inicioeleccion.jsp");
-            return;
-        }
-        
-        // Obtener los datos del formulario de pago
-        String nombreTitular = request.getParameter("nombreTitular");
-        String numeroTarjeta = request.getParameter("numeroTarjeta");
-        String fechaExpiracion = request.getParameter("fechaExpiracion");
-        String cvv = request.getParameter("cvv");
-        
-        // Validar los datos de la tarjeta
-        if (nombreTitular == null || nombreTitular.trim().isEmpty() ||
-            numeroTarjeta == null || numeroTarjeta.trim().isEmpty() ||
-            fechaExpiracion == null || fechaExpiracion.trim().isEmpty() ||
-            cvv == null || cvv.trim().isEmpty()) {
-            
-            request.setAttribute("error", "Por favor, completa todos los campos del formulario de pago");
-            request.getRequestDispatcher("/Pago.jsp").forward(request, response);
-            return;
-        }
-        
+      
+     ComprarCuponDTO dto = new ComprarCupon
+
         // Obtener los items del carrito
         String cartItemsJson = request.getParameter("cartItems");
         if (cartItemsJson == null || cartItemsJson.trim().isEmpty()) {
