@@ -1,9 +1,8 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=64700575420437513a48cd4f7ad42d10c0cf8f87
 eclipse.preferences.version=1
 encoding//src/main/java/com/bilbaoSKP/laultimacarta/service/CuponService.java=UTF-8
 encoding//src/main/java/com/bilbaoSKP/laultimacarta/service/EmailService.java=UTF-8
-<<<<<<< HEAD
-encoding//src/main/webapp/cupones.jsp=UTF-8
-=======
 encoding//src/main/webapp/gestionCupones.jsp=UTF-8
 encoding//src/main/webapp/gestionUsuarios.jsp=UTF-8
->>>>>>> 64700575420437513a48cd4f7ad42d10c0cf8f87

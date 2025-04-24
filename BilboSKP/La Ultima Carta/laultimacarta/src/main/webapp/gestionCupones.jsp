@@ -98,7 +98,7 @@
 						<h2>
 							<fmt:message key="comprar_cupones" />
 						</h2>
-						<form action="comprarCupones" method="post">
+						<form action="cupones" method="post">
 							<!-- Información del cupón fijo -->
 							<div class="cupon-fijo-info">
 								<h3>
@@ -111,8 +111,8 @@
 								<p class="cupon-precio-fijo" data-price="2.50">
 									2,50 &#x20AC; /
 									<fmt:message key="unidad" />
+									<input type="Hidden" name="precioIndividual" value ="2.50">
 								</p>
-								<input type="hidden" name="cuponId" value="123">
 							</div>
 
 							<div class="form-group">
@@ -136,7 +136,7 @@
 							</div>
 
 							<div class="form-actions">
-								<button type="submit" class="btn-action">
+								<button type="submit" name ="action" value="compra" class="btn-action">
 									<i class="fas fa-shopping-cart"></i>
 									<fmt:message key="anadir_al_carrito" />
 								</button>
@@ -150,30 +150,30 @@
 							<fmt:message key="carrito_compra" />
 						</h2>
 						<div class="carrito-items">
-							<c:forEach var="item" items="${carritoItems}" varStatus="status">
+							<c:if test="${not empty cantidad}">
 								<div class="carrito-item">
 									<div class="item-info">
-										<h3>${item.cupon.nombre}</h3>
+										<h3>cupon</h3>
 										<p class="item-cantidad">
 											<fmt:message key="cantidad" />
-											: ${item.cantidad}
+											: ${cantidad}
 										</p>
-										<p class="item-precio">${item.precio}€</p>
+										
 									</div>
 									<div class="item-actions">
-										<form action="eliminarDelCarrito" method="post"
+										<form action="cupones" method="post"
 											class="form-eliminar">
 											<input type="hidden" name="itemId" value="${item.id}">
-											<button type="submit" class="btn-eliminar">
+											<button type="submit" name = "action" value = "eliminar" class="btn-eliminar">
 												<i class="fas fa-trash"></i>
 											</button>
 										</form>
 									</div>
 								</div>
-							</c:forEach>
+							</c:if>
 
 							<!-- Mostrar mensaje si no hay items en el carrito -->
-							<c:if test="${empty carritoItems}">
+							<c:if test="${empty cantidad}">
 								<div class="carrito-vacio">
 									<p>
 										<fmt:message key="carrito_vacio" />
@@ -186,12 +186,12 @@
 							<div class="carrito-total">
 								<p>
 									<fmt:message key="total" />
-									: <span>${carritoTotal}</span> €
+									: <span>${cantidad * precio}</span> &#x20AC
 								</p>
 							</div>
 							<form action="procesarCompra" method="post">
 								<button type="submit" class="btn-comprar"
-									${empty carritoItems ? 'disabled' : ''}>
+									${empty cantidad ? 'disabled' : ''}>
 									<i class="fas fa-credit-card"></i>
 									<fmt:message key="finalizar_compra" />
 								</button>
