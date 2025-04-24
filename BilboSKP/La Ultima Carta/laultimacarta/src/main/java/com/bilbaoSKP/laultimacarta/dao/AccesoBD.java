@@ -10,7 +10,7 @@ public class AccesoBD {
 	
 	private static final String URL = "jdbc:mysql://localhost:3306/EscapeRoomBilboSKP";
 	private static final String USER = "root";
-	private static final String PASSWORD = "";
+	private static final String PASSWORD = "1234";
 	
 	public static Connection getConnection() {
 		Connection con = null; 

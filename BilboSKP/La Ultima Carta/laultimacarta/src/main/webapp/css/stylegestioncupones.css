@@ -433,31 +433,69 @@ main {
     color: #6b7280;
 }
 
-/* Sección para comprar cupones */
-.compra-cupones-section {
-    margin-top: 2rem;
-}
-
-.compra-container {
+/* Estructura de contenido en dos columnas */
+.content-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
 }
 
-.compra-cupones, .carrito-compra {
+.left-column, .right-column {
+    width: 100%;
+}
+
+/* Encabezados de sección */
+.section-header {
+    margin-bottom: 1.25rem;
+}
+
+.section-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.75rem;
+}
+
+.section-divider {
+    height: 1px;
+    background-color: #e2e8f0;
+    width: 100%;
+}
+
+/* Tarjeta de compra */
+.purchase-card {
     background-color: white;
     border-radius: 0.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     padding: 1.5rem;
 }
 
-.compra-cupones h2, .carrito-compra h2 {
-    font-size: 1.25rem;
+.cupon-fijo-info {
+    margin-bottom: 1.5rem;
+}
+
+.cupon-fijo-info h3 {
+    font-size: 1.125rem;
     font-weight: 600;
     color: #333;
-    margin-bottom: 1.25rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 0.5rem;
+}
+
+.cupon-description {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+}
+
+.cupon-precio-fijo {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1b19a5;
+}
+
+/* Formulario de compra */
+.purchase-form {
+    margin-top: 1rem;
 }
 
 .form-group {
@@ -472,14 +510,7 @@ main {
     margin-bottom: 0.5rem;
 }
 
-.form-group select, .form-group input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 0.375rem;
-    font-size: 0.875rem;
-}
-
+/* Control de cantidad */
 .cantidad-control {
     display: flex;
     align-items: center;
@@ -497,6 +528,8 @@ main {
     font-size: 1.25rem;
     font-weight: 600;
     transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-cantidad:hover {
@@ -507,6 +540,9 @@ main {
     width: 60px;
     text-align: center;
     margin: 0 0.5rem;
+    padding: 0.75rem 0.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
     -moz-appearance: textfield;
 }
 
@@ -516,6 +552,7 @@ main {
     margin: 0;
 }
 
+/* Precio total */
 .precio-total {
     font-size: 1.125rem;
     font-weight: 600;
@@ -526,6 +563,7 @@ main {
     color: #1b19a5;
 }
 
+/* Botones de acción */
 .form-actions {
     display: flex;
     justify-content: center;
@@ -541,6 +579,8 @@ main {
     border-radius: 0.375rem;
     font-weight: 600;
     transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-action:hover {
@@ -552,6 +592,13 @@ main {
 }
 
 /* Carrito de compra */
+.carrito-compra {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+}
+
 .carrito-items {
     display: flex;
     flex-direction: column;
@@ -582,15 +629,9 @@ main {
     margin-bottom: 0.25rem;
 }
 
-.item-cantidad, .item-precio {
+.item-cantidad {
     font-size: 0.75rem;
     color: #6b7280;
-}
-
-.item-precio {
-    font-weight: 700;
-    color: #1b19a5;
-    margin-top: 0.25rem;
 }
 
 .item-actions {
@@ -611,6 +652,8 @@ main {
     background-color: #fee2e2;
     color: #dc2626;
     transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-eliminar:hover {
@@ -653,6 +696,8 @@ main {
     border-radius: 0.375rem;
     font-weight: 600;
     transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-comprar:hover {
@@ -666,6 +711,13 @@ main {
 
 .btn-comprar i {
     font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .content-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Footer Styles */
