@@ -23,13 +23,19 @@
 				</a>
 			</li>
 			<li>
-				<a href="cupones.jsp" class="sidebar-link">
+				<a href="cupones" class="sidebar-link">
 					<i class='bx bx-ticket'></i>
 					<span><fmt:message key="menu_obtener_cupones" /></span>
 				</a>
 			</li>
 			<li>
-				<a href="#" class="sidebar-link logout">
+				<a href="gestionUsuarios" class="sidebar-link">
+					<i class='bx bx-ticket'></i>
+					<span>Gestion Usuario</span>
+				</a>
+			</li>
+			<li>
+				<a href="cerrarSesion" class="sidebar-link logout">
 					<i class='bx bx-log-out'></i>
 					<span><fmt:message key="menu_cerrar_sesion" /></span>
 				</a>
