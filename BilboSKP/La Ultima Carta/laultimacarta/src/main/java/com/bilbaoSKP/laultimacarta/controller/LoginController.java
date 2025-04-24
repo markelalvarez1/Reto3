@@ -8,6 +8,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bilbaoSKP.laultimacarta.dto.LoginUsuarioDTO;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
@@ -34,10 +35,10 @@ public class LoginController extends HttpServlet {
 		usuarioDTO.setCorreo(request.getParameter("correo"));
 		usuarioDTO.setContrasena(request.getParameter("contrasena"));
 		usuarioDTO.setRecuerdame(request.getParameter("recuerdame"));
-		
 		try {
 			Usuario u = usuarioService.getUsuario(usuarioDTO);
 			if (u != null) {
+
 				request.getSession().setAttribute("usuario", u);
 				if(usuarioDTO.getRecuerdame() != null) {
 					String idCodificado = CodificadorService.codificar(String.valueOf(u.getId()));
@@ -49,9 +50,8 @@ public class LoginController extends HttpServlet {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("inicioSesion");
+			request.setAttribute("error", "Error al iniciar sesión: " + e.getMessage());
+			request.getRequestDispatcher("iniciosesionindividual.jsp").forward(request, response);
 		}
-		
 	}
-
 }

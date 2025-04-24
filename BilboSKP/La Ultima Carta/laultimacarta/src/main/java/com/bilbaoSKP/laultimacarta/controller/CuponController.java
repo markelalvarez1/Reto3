@@ -1,18 +1,13 @@
 package com.bilbaoSKP.laultimacarta.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+<<<<<<< HEAD
 import com.bilbaoSKP.laultimacarta.dto.ComprarCuponDTO;
 import com.bilbaoSKP.laultimacarta.model.Cupon;
 import com.bilbaoSKP.laultimacarta.model.Suscripcion;
@@ -131,5 +126,26 @@ public class CuponController extends HttpServlet {
             return matcher.group(1);
         }
         return null;
+=======
+/**
+ * Servlet implementation class CuponController
+ */
+@WebServlet("/cupones")
+public class CuponController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public CuponController() {
+        super();
+        // TODO Auto-generated constructor stub
+>>>>>>> 64700575420437513a48cd4f7ad42d10c0cf8f87
     }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("gestionCupones.jsp").forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	}
+
 }

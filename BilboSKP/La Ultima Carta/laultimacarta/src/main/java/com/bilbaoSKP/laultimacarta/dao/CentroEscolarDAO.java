@@ -64,4 +64,32 @@ public class CentroEscolarDAO {
 		return false;
 	}
 
+	public CentroEscolar getCentroEscolarByUsuarioID(int id) {
+		Connection con = AccesoBD.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		CentroEscolar cs = null;
+		try {
+			String sql = "SELECT * FROM centroEscolar WHERE id_usuario = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				cs = new CentroEscolar();
+				cs.setId(rs.getInt("id"));
+				cs.setCIF(rs.getString("cif"));
+				cs.setNombre(rs.getString("nombre"));
+				cs.setCiudad(rs.getString("ciudad"));
+				cs.setEtapaEducativa(rs.getString("etapaEducativa"));
+				cs.setNumeroAlumnos(rs.getInt("numeroAlumnos"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			AccesoBD.closeConnection(rs, ps, con);
+		}
+		
+		return cs;
+	}
+
 }

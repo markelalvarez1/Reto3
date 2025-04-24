@@ -16,7 +16,7 @@
 				<ul>
 					<li><a href="jugar"><fmt:message key="menu_jugar" /></a></li>
 					<c:if test="${not empty sessionScope.usuario}">
-						<li><a href="gestion.jsp"><fmt:message key="menu_gestion" /></a></li>
+						<li><a href="gestion"><fmt:message key="menu_gestion" /></a></li>
 						<li><a href="ranking"><fmt:message key="menu_ranking" /></a></li>
 					</c:if>
 					<li><a href="inicio#opinions"><fmt:message

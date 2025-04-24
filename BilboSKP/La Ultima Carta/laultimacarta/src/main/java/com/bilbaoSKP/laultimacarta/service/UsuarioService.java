@@ -15,6 +15,7 @@ import com.bilbaoSKP.laultimacarta.dto.RegistroDTO;
 import com.bilbaoSKP.laultimacarta.dto.CentroDTO;
 import com.bilbaoSKP.laultimacarta.dto.UsuarioDTO;
 import com.bilbaoSKP.laultimacarta.model.CentroEscolar;
+import com.bilbaoSKP.laultimacarta.model.Cupon;
 import com.bilbaoSKP.laultimacarta.model.Responsable;
 import com.bilbaoSKP.laultimacarta.model.Rol;
 import com.bilbaoSKP.laultimacarta.model.Suscripcion;
@@ -30,6 +31,7 @@ public class UsuarioService {
 	UsuarioDAO usuarioDAO;
 	SuscripcionService suscripcionService;
 	CentroEscolarService centroEscolarService;
+	CuponService cuponService;
 	EmailService emailService;
 
 	public UsuarioService() {
@@ -37,6 +39,7 @@ public class UsuarioService {
 		usuarioDAO = new UsuarioDAO();
 		suscripcionService = new SuscripcionService();
 		centroEscolarService = new CentroEscolarService();
+		cuponService = new CuponService();
 		emailService = new EmailService();
 	}
 

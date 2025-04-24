@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><fmt:message key="dashboard_usuarios_titulo" /></title>
 <link rel="icon" href="Img/baldosa.png" type="image/x-icon">
-<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/stylegestionusuarios.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"
@@ -14,7 +13,8 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 	rel="stylesheet">
-<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+	rel="stylesheet">
 </head>
 <body>
 	<%@ include file="/WEB-INF/includes/header.jsp"%>
@@ -78,7 +78,7 @@
 				</div>
 			</section>
 
-			<!-- Accesos Rápidos -->
+			<!-- Accesos RÃ¡pidos -->
 			<section class="quick-actions">
 				<button class="btn-action"
 					onclick="window.location.href='crear-usuario.jsp'">
@@ -88,7 +88,7 @@
 
 			</section>
 
-			<!-- Filtros y Búsqueda -->
+			<!-- Filtros y BÃºsqueda -->
 			<section class="filters-section">
 				<div class="search-box">
 					<input type="text" id="buscarUsuario"
@@ -134,7 +134,8 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="usuario" items="${listaUsuarios}" varStatus="status">
+							<c:forEach var="usuario" items="${listaUsuarios}"
+								varStatus="status">
 								<tr>
 									<td>${status.index + 1}</td>
 									<td>${usuario.nombre}</td>
@@ -143,27 +144,27 @@
 									<td>${usuario.rol.tipo}</td>
 									<td><span id="estado-${usuario.id}">${usuario.suscripcion.estado}</span></td>
 									<td>${usuario.suscripcion.fechaInicio}</td>
-									<td>
-										<div class="botones-accion">
-											<button class="btn-editar"
-												onclick="redirigirEditarUsuario(1)">
-												<i class="fas fa-edit"></i>
-											</button>
-											<button class="btn-ver" onclick="verDetalles(1)">
-												<i class="fas fa-eye"></i>
-											</button>
-											<button class="btn-eliminar" onclick="confirmarEliminar(1)">
-												<i class="fas fa-trash"></i>
-											</button>
-										</div>
-									</td>
+									<td><form action="gestionUsuarios" method="post">
+											<div class="botones-accion">
+												<button class="btn-editar"
+													onclick="redirigirEditarUsuario(1)">
+													<i class="fas fa-edit"></i>
+												</button>
+												<button class="btn-ver" onclick="verDetalles(1)">
+													<i class="fas fa-eye"></i>
+												</button>
+												<button class="btn-eliminar" onclick="confirmarEliminar(1)">
+													<i class="fas fa-trash"></i>
+												</button>
+											</div>
+										</form></td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
 				</div>
 
-				<!-- Paginación -->
+				<!-- PaginaciÃ³n -->
 				<div class="paginacion">
 					<button class="pagina-btn prev">
 						<i class="fas fa-chevron-left"></i>
@@ -178,7 +179,7 @@
 			</section>
 		</div>
 
-		<!-- Modal Confirmar Eliminación - Se mantiene porque es para confirmar acción -->
+		<!-- Modal Confirmar EliminaciÃ³n - Se mantiene porque es para confirmar acciÃ³n -->
 		<div id="confirmarEliminarModal" class="modal">
 			<div class="modal-content modal-small">
 				<div class="modal-header">
@@ -212,9 +213,9 @@
 
 	<script>
 		document.querySelectorAll('[id^="estado-"]').forEach(function(estado) {
-			const valor = estado.textContent.trim(); // Obtener el contenido dinámico del span
+			const valor = estado.textContent.trim(); // Obtener el contenido dinÃ¡mico del span
 
-			// Cambiar la clase según el valor
+			// Cambiar la clase segÃºn el valor
 			if (valor === "ACTIVA") {
 				estado.className = "estado-activo";
 			} else if (valor === "PENDIENTE") {
@@ -224,20 +225,7 @@
 			}
 		});
 	</script>
-
-
-
 	<script>
-		// Función para redirigir a la página de edición de usuario
-		function redirigirEditarUsuario(userId) {
-			window.location.href = 'editar-usuario.jsp?id=' + userId;
-		}
-
-		// Funciones para ver detalles y confirmar eliminación
-		function verDetalles(userId) {
-			// Redirigir a página de detalles
-			window.location.href = 'detalles-usuario.jsp?id=' + userId;
-		}
 
 		function confirmarEliminar(userId) {
 			document.getElementById('deleteUserId').value = userId;

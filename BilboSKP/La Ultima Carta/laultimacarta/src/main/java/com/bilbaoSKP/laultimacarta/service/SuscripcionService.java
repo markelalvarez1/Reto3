@@ -6,9 +6,11 @@ import com.bilbaoSKP.laultimacarta.dao.SuscripcionDAO;
 import com.bilbaoSKP.laultimacarta.model.Suscripcion;
 import com.bilbaoSKP.laultimacarta.model.TipoSuscripcion;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
+import com.bilbaoSKP.laultimacarta.model.enums.TipoSuscripcionEnum;
 
 public class SuscripcionService {
 	SuscripcionDAO suscripcionDAO;
+	CuponService cuponService;
 
 	public SuscripcionService() {
 		super();
@@ -35,7 +37,12 @@ public class SuscripcionService {
 		if(s != null) {
 			s.activar(codigoVerificacion);
 		}
-		return suscripcionDAO.updateEstadoSuscripcion(s);
+		suscripcionDAO.updateEstadoSuscripcion(s);
+		if(s.getTipoSuscripcion().getTipo() == TipoSuscripcionEnum.CENTRO_ESCOLAR.toString()) {
+			
+		}
+		boolean exito = cuponService.anadirCuponesBySuscripcion(s);
+		return exito;
 	}
 
 } 
