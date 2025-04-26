@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import com.bilbaoSKP.laultimacarta.dto.CentroDTO;
 import com.bilbaoSKP.laultimacarta.model.CentroEscolar;
 import com.bilbaoSKP.laultimacarta.model.Responsable;
+import com.bilbaoSKP.laultimacarta.model.Suscripcion;
 
 public class CentroEscolarDAO {
 
@@ -89,6 +90,37 @@ public class CentroEscolarDAO {
 			AccesoBD.closeConnection(rs, ps, con);
 		}
 		
+		return cs;
+	}
+
+	public CentroEscolar getCentroEscolarBySuscripcion(Suscripcion s) {
+		Connection con = AccesoBD.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		CentroEscolar cs = null;
+		
+		try {
+			String sql = "SELECT cs.* FROM centroescolar cs.* "
+					+ "INNER JOIN usuario u ON u.id = cs.id "
+					+ "INNER JOIN suscripcion s ON s.usuario_id = u.id "
+					+ "WHERE s.id = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, s.getId());
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				cs = new CentroEscolar();
+				cs.setId(rs.getInt("id"));
+				cs.setCIF(rs.getString("cif"));
+				cs.setNombre(rs.getString("nombre"));
+				cs.setCiudad(rs.getString("ciudad"));
+				cs.setEtapaEducativa(rs.getString("etapaEducativa"));
+				cs.setNumeroAlumnos(rs.getInt("numeroAlumnos"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			AccesoBD.closeConnection(rs, ps, con);
+		}
 		return cs;
 	}
 

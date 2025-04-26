@@ -17,13 +17,12 @@ public class Cupon {
         
     }
     
-    public static Cupon nuevoCupon(int suscripcionId, double precio, String tipo) {
+    public static Cupon nuevoCupon(double precio) {
         Cupon cupon = new Cupon();
-        cupon.setSuscripcionId(suscripcionId);
         cupon.setFechaCompra(LocalDate.now());
         cupon.setFechaCaducidad(LocalDate.now().plusYears(1)); // Validez de 1 año
         cupon.setPrecio(precio);
-        cupon.setEstadoCupon(EstadoCuponEnum.ACTIVO);
+        cupon.setEstadoCupon(EstadoCuponEnum.DISPONIBLE);
         return cupon;
     }
     

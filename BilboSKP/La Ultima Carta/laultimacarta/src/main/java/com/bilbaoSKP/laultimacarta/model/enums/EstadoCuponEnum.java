@@ -2,7 +2,7 @@ package com.bilbaoSKP.laultimacarta.model.enums;
 
 public enum EstadoCuponEnum {
 
-	ACTIVO,
+	DISPONIBLE,
 	PROGRAMADO,
 	USADO,
 	CADUCADO,

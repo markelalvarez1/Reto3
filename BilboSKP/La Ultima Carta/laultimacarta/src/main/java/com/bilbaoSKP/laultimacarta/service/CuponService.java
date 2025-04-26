@@ -16,11 +16,7 @@ public class CuponService {
     public CuponService() {
         this.cuponDAO = new CuponDAO();
     }
-	public boolean anadirCuponBienvenida(Suscripcion s, Connection con) {
-		
-		return cuponDAO.anadirCuponBienvenida(s, con);
-		
-	} 
+    
     public List<Cupon> obtenerCuponesPorUsuario(Usuario usuario) {
         Connection con = null;
         List<Cupon> cupones = new ArrayList<>();
@@ -130,7 +126,6 @@ public class CuponService {
                     suscripcion.getId(), 
                     item.getPrecio(), 
                     item.getCantidad(), 
-                    item.getTipo(), 
                     con
                 );
                 
@@ -196,4 +191,9 @@ public class CuponService {
             return cantidad;
         }
     }
+
+	public boolean anadirCuponesToSuscripcion(Suscripcion s, Connection con) {
+		// TODO Auto-generated method stub
+		return cuponDAO.anadirCuponesToSuscripcion(s, con);
+	}
 }

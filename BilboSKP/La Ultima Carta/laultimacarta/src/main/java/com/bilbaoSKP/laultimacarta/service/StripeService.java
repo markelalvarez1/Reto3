@@ -36,34 +36,5 @@ public class StripeService {
 
         return Session.create(params);
     }
-
-	public Session crearSesionDePago( ts, Long precio) throws StripeException {
-        Stripe.apiKey = "sk_test_51RCd3SGPspIiCzVgdDo1XdK3ZhnWiE5ZMP3jBVKOgDqJPPIa5ryCVhZqI4qeMeqq3aQCIvRvU7IRodLRab5nrmcL00YZL80HmV";
-
-        SessionCreateParams params = SessionCreateParams.builder()
-            .setMode(SessionCreateParams.Mode.PAYMENT)
-            .setSuccessUrl("http://localhost:8080/laultimacarta/pagoExitoso")
-            .setCancelUrl("http://localhost:8080/laultimacarta/registro?error=errorpago")
-            .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
-            .addLineItem(
-                SessionCreateParams.LineItem.builder()
-                    .setQuantity(1L)
-                    .setPriceData(
-                        SessionCreateParams.LineItem.PriceData.builder()
-                            .setCurrency("eur")
-                            .setUnitAmount(precio)
-                            .setProductData(
-                                SessionCreateParams.LineItem.PriceData.ProductData.builder()
-                                    .setName("Suscripción " + ts.getTipo())
-                                    .build()
-                            )
-                            .build()
-                    )
-                    .build()
-            )
-            .build();
-
-        return Session.create(params);
-    }
 	
 }

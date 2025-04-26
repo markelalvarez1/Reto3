@@ -344,6 +344,13 @@ main {
     flex-shrink: 0;
 }
 
+.secstyle{
+ height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /* Cupones activos */
 .stat-icon.active {
     background-color: #dcfce7; /* verde pálido */

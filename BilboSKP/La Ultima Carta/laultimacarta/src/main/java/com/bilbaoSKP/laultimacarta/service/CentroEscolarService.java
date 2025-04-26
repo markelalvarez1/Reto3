@@ -5,6 +5,7 @@ import java.sql.Connection;
 import com.bilbaoSKP.laultimacarta.dao.CentroEscolarDAO;
 import com.bilbaoSKP.laultimacarta.dto.CentroDTO;
 import com.bilbaoSKP.laultimacarta.model.CentroEscolar;
+import com.bilbaoSKP.laultimacarta.model.Suscripcion;
 
 public class CentroEscolarService {
 	
@@ -41,6 +42,11 @@ public class CentroEscolarService {
 	public CentroEscolar getCentroEscolarByUsuarioID(int id) {
 		// TODO Auto-generated method stub
 		return centroEscolarDAO.getCentroEscolarByUsuarioID(id);
+	}
+
+	public CentroEscolar getCentroEscolarBySuscripcion(Suscripcion s) {
+		// TODO Auto-generated method stub
+		return centroEscolarDAO.getCentroEscolarBySuscripcion(s);
 	}
 
 	

@@ -28,18 +28,19 @@ public class VerificarController extends HttpServlet {
 		String codigo = request.getParameter("codigo");
 		if(codigo == null || codigo.isBlank()) {
 			request.getRequestDispatcher("verificar.jsp?exito=false").forward(request, response);
-		}
-		
-		try {
-			if(suscripcionService.activarSuscripcion(codigo)) {
-				request.getRequestDispatcher("verificar.jsp?exito=true").forward(request, response);
-			} else {
+		}else {
+			try {
+				if(suscripcionService.activarSuscripcion(codigo)) {
+					request.getRequestDispatcher("verificar.jsp?exito=true").forward(request, response);
+				} else {
+					request.getRequestDispatcher("verificar.jsp?exito=false").forward(request, response);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 				request.getRequestDispatcher("verificar.jsp?exito=false").forward(request, response);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.getRequestDispatcher("verificar.jsp?exito=false").forward(request, response);
 		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -43,8 +43,8 @@ public class SuscripcionDAO {
 		return suscripcionID;
 	}
 	
-	public boolean updateEstadoSuscripcion(Suscripcion s) {
-		Connection con = AccesoBD.getConnection();
+	public boolean updateEstadoSuscripcion(Suscripcion s, Connection conexion) {
+		Connection con = conexion;
 		PreparedStatement ps = null;
 		boolean exito = false;
 
@@ -100,7 +100,10 @@ public class SuscripcionDAO {
 		ResultSet rs = null;
 		Suscripcion s = null;
 		try {
-			String sql = "SELECT id, suscripcion_tipo_id, fechaInicio, codigoVerificacion, estado FROM suscripcion WHERE id = ?";
+			String sql = "SELECT s.id, s.suscripcion_tipo_id, s.fechaInicio, s.codigoVerificacion, s.estado, st.tipo, st.precio "
+					+ "FROM suscripcion s "
+					+ "INNER JOIN suscripciontipo st ON st.id = s.suscripcion_tipo_id "
+					+ "WHERE s.id = ?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, idSuscripcion);
 			rs = ps.executeQuery();
@@ -109,6 +112,8 @@ public class SuscripcionDAO {
 				TipoSuscripcion ts = new TipoSuscripcion();
 				s.setId(rs.getInt("id"));
 				ts.setId(rs.getInt("suscripcion_tipo_id"));
+				ts.setTipo(rs.getString("st.tipo"));
+				ts.setPrecio(rs.getDouble("st.precio"));
 				s.setTipoSuscripcion(ts);
 				s.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
 				s.setCodigoAcceso(rs.getString("codigoVerificacion"));
