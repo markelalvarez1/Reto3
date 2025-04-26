@@ -5,265 +5,205 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><fmt:message key="organizarpartida_titulo" /></title>
+<link rel="icon" href="Img/baldosa.png" type="image/x-icon">
 <link rel="stylesheet" href="css/stylesorganizarpartida.css">
-<link
-	href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap"
-	rel="stylesheet">
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
-	rel='stylesheet'>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
 	<%@ include file="/WEB-INF/includes/header.jsp"%>
 
 	<main>
-		<div class="container organize-game-container">
-			<%@ include file="/WEB-INF/includes/sidebar.jsp"%>
+		<%@ include file="/WEB-INF/includes/sidebar.jsp"%>
+		<div class="dashboard-container">
+			<!-- Título principal -->
+			<h1>Organizar Partida</h1>
 
-			<!-- Contenido de Organizar Partida -->
-			<div class="organize-content">
-				<div class="page-header">
-					<h1>
-						<fmt:message key="organizar_partida_titulo" />
-					</h1>
-					<p>
-						<fmt:message key="organizar_partida_descripcion" />
-					</p>
+			<!-- Tarjetas de resumen -->
+			<div class="stats-grid">
+				<!-- Partidas disponibles -->
+				<div class="stat-card">
+					<div class="stat-icon">
+						<i class="fas fa-gamepad"></i>
+					</div>
+					<div class="stat-info">
+						<h3>Partidas disponibles</h3>
+						<p class="stat-number">4</p>
+					</div>
 				</div>
 
-				<div class="organize-grid">
-					<!-- Formulario para crear partida -->
-					<div class="block create-game-block">
-						<h2>
-							<fmt:message key="crear_nueva_partida" />
-						</h2>
-
-						<form class="game-form">
-							<div class="form-group">
-								<label for="game-title"><fmt:message
-										key="titulo_partida" /></label> <input type="text" id="game-title"
-									placeholder="<fmt:message key="ejemplo_partida" />" required>
-							</div>
-
-							<div class="form-row">
-								<div class="form-group">
-									<label for="game-date"><fmt:message key="fecha_hora" /></label>
-									<div class="input-icon">
-										<i class='bx bx-calendar'></i> <input type="text"
-											id="game-date"
-											placeholder="<fmt:message key="selecciona_fecha_hora" />"
-											required>
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label for="game-duration"><fmt:message
-											key="duracion_horas" /></label>
-									<div class="input-icon">
-										<i class='bx bx-time'></i> <input type="number"
-											id="game-duration" min="1" max="8" value="2" required>
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="game-type"><fmt:message key="tipo_juego" /></label>
-								<select id="game-type" required>
-									<option value="" disabled selected><fmt:message
-											key="selecciona_tipo_juego" /></option>
-									<option value="casual"><fmt:message key="casual" /> -
-										<fmt:message key="para_principiantes" /></option>
-									<option value="intermediate"><fmt:message
-											key="intermedio" /> -
-										<fmt:message key="jugadores_experiencia" /></option>
-									<option value="competitive"><fmt:message
-											key="competitivo" /> -
-										<fmt:message key="nivel_avanzado" /></option>
-									<option value="tournament"><fmt:message key="torneo" />
-										-
-										<fmt:message key="formato_eliminatorio" /></option>
-								</select>
-							</div>
-
-							<div class="form-group">
-								<label for="max-players"><fmt:message
-										key="numero_maximo_jugadores" /></label>
-								<div class="player-selector">
-									<button type="button" class="player-btn decrease">-</button>
-									<input type="number" id="max-players" min="2" max="12"
-										value="4" readonly>
-									<button type="button" class="player-btn increase">+</button>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="game-description"><fmt:message
-										key="descripcion_opcional" /></label>
-								<textarea id="game-description" rows="3"
-									placeholder="<fmt:message key="añadir_detalles_partida" />"></textarea>
-							</div>
-
-							<div class="form-group">
-								<label class="checkbox-container"> <input
-									type="checkbox" id="private-game"> <span
-									class="checkmark"></span> <fmt:message key="partida_privada" />
-								</label>
-							</div>
-
-							<div class="form-actions">
-								<button type="button" class="secondary-button">
-									<fmt:message key="cancelar" />
-								</button>
-								<button type="submit" class="primary-button">
-									<fmt:message key="crear_partida" />
-								</button>
-							</div>
-						</form>
+				<!-- Historial de partidas -->
+				<div class="stat-card">
+					<div class="stat-icon active">
+						<i class="fas fa-history"></i>
 					</div>
+					<div class="stat-info">
+						<h3>Historial de Partidas</h3>
+						<p class="stat-number">2</p>
+					</div>
+				</div>
 
-					<!-- Bloque de información y consejos -->
-					<div class="info-section">
-						<!-- Mis partidas -->
-						<div class="block my-games-block">
-							<div class="block-header">
-								<h2>
-									<fmt:message key="mis_partidas" />
-								</h2>
-								<a href="#" class="view-all-link"><fmt:message
-										key="ver_todas" /></a>
-							</div>
-
-							<div class="games-list">
-								<div class="game-card">
-									<div class="game-date">
-										<span class="day">15</span> <span class="month">JUN</span>
-									</div>
-									<div class="game-info">
-										<h3>
-											<fmt:message key="torneo_verano" />
-										</h3>
-										<p>
-											<i class='bx bx-time'></i> 18:00 - 20:30
-										</p>
-										<p>
-											<i class='bx bx-group'></i> 8/8
-											<fmt:message key="jugadores" />
-										</p>
-									</div>
-									<div class="game-status completed">
-										<span><fmt:message key="completada" /></span>
-									</div>
-								</div>
-
-								<div class="game-card">
-									<div class="game-date">
-										<span class="day">22</span> <span class="month">JUN</span>
-									</div>
-									<div class="game-info">
-										<h3>
-											<fmt:message key="partida_amistosa" />
-										</h3>
-										<p>
-											<i class='bx bx-time'></i> 17:30 - 19:30
-										</p>
-										<p>
-											<i class='bx bx-group'></i> 3/6
-											<fmt:message key="jugadores" />
-										</p>
-									</div>
-									<div class="game-status upcoming">
-										<span><fmt:message key="proxima" /></span>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Consejos -->
-						<div class="block tips-block">
-							<h2>
-								<fmt:message key="consejos_organizadores" />
-							</h2>
-
-							<div class="tips-list">
-								<div class="tip-item">
-									<div class="tip-icon">
-										<i class='bx bx-bulb'></i>
-									</div>
-									<div class="tip-content">
-										<h3>
-											<fmt:message key="planifica_tiempo" />
-										</h3>
-										<p>
-											<fmt:message key="crear_partida_48_horas" />
-										</p>
-									</div>
-								</div>
-
-								<div class="tip-item">
-									<div class="tip-icon">
-										<i class='bx bx-user-voice'></i>
-									</div>
-									<div class="tip-content">
-										<h3>
-											<fmt:message key="comunica_reglas" />
-										</h3>
-										<p>
-											<fmt:message key="asegura_reglas" />
-										</p>
-									</div>
-								</div>
-
-								<div class="tip-item">
-									<div class="tip-icon">
-										<i class='bx bx-medal'></i>
-									</div>
-									<div class="tip-content">
-										<h3>
-											<fmt:message key="incentivos" />
-										</h3>
-										<p>
-											<fmt:message key="premios_emocionantes" />
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
+				<!-- Crear partida -->
+				<div class="stat-card">
+					<div class="stat-icon pending">
+						<i class="fas fa-calendar-plus"></i>
+					</div>
+					<div class="stat-info">
+						<h3>Crear nueva partida</h3>
+						<p class="stat-description">Organiza una nueva sesión de juego</p>
 					</div>
 				</div>
 			</div>
+
+			<!-- Sección de Escape Rooms disponibles -->
+			<section class="scaperooms-section">
+				<div class="section-header">
+					<h2>Scaperooms disponibles</h2>
+					<div class="section-divider"></div>
+				</div>
+
+				<!-- Lista de Escape Rooms -->
+				<div class="scaperooms-grid">
+					<!-- Escape Room 1: La Última Carta -->
+					<div class="scaperoom-card">
+						<div class="scaperoom-header">
+							<h3>La Última Carta</h3>
+							<div class="badges">
+								<span class="badge difficulty-medium">Dificultad media</span>
+								<span class="badge players"><i class="fas fa-users"></i> 2-5</span>
+								<span class="badge duration"><i class="far fa-clock"></i> 60 min</span>
+							</div>
+						</div>
+						<div class="scaperoom-content">
+							<p class="scaperoom-description">Una aventura llena de misterio y decisiones importantes. ¿Serás capaz de resolver todos los acertijos y encontrar la última carta a tiempo?</p>
+							<div class="scaperoom-details">
+								<div class="detail-item">
+									<span class="detail-label"><i class="fas fa-star"></i> Valoración:</span>
+									<span class="detail-value">4.8/5</span>
+								</div>
+								<div class="detail-item">
+									<span class="detail-label"><i class="fas fa-trophy"></i> Tasa de éxito:</span>
+									<span class="detail-value">67%</span>
+								</div>
+							</div>
+							<a href="crearpartida.jsp?room=ultima-carta" class="btn-organizar">
+								<i class="fas fa-calendar-check"></i>
+								Organizar Partida
+							</a>
+						</div>
+					</div>
+
+					<!-- Escape Room 2: El Misterio de Bilbao -->
+					<div class="scaperoom-card">
+						<div class="scaperoom-header">
+							<h3>El Misterio de Bilbao</h3>
+							<div class="badges">
+								<span class="badge difficulty-hard">Dificultad alta</span>
+								<span class="badge players"><i class="fas fa-users"></i> 3-6</span>
+								<span class="badge duration"><i class="far fa-clock"></i> 75 min</span>
+							</div>
+						</div>
+						<div class="scaperoom-content">
+							<p class="scaperoom-description">Adéntrate en las calles de Bilbao para resolver un antiguo misterio. Una experiencia desafiante que pondrá a prueba tu ingenio y trabajo en equipo.</p>
+							<div class="scaperoom-details">
+								<div class="detail-item">
+									<span class="detail-label"><i class="fas fa-star"></i> Valoración:</span>
+									<span class="detail-value">4.6/5</span>
+								</div>
+								<div class="detail-item">
+									<span class="detail-label"><i class="fas fa-trophy"></i> Tasa de éxito:</span>
+									<span class="detail-value">42%</span>
+								</div>
+							</div>
+							<a href="crearpartida.jsp?room=misterio-bilbao" class="btn-organizar">
+								<i class="fas fa-calendar-check"></i>
+								Organizar Partida
+							</a>
+						</div>
+					</div>
+
+					<!-- Escape Room 3: El Secreto de la Ría -->
+					<div class="scaperoom-card">
+						<div class="scaperoom-header">
+							<h3>El Secreto de la Ría</h3>
+							<div class="badges">
+								<span class="badge difficulty-easy">Dificultad baja</span>
+								<span class="badge players"><i class="fas fa-users"></i> 2-4</span>
+								<span class="badge duration"><i class="far fa-clock"></i> 45 min</span>
+							</div>
+						</div>
+						<div class="scaperoom-content">
+							<p class="scaperoom-description">Embárcate en una aventura familiar para descubrir los secretos que esconde la Ría de Bilbao. Una experiencia ideal para principiantes.</p>
+							<div class="scaperoom-details">
+								<div class="detail-item">
+									<span class="detail-label"><i class="fas fa-star"></i> Valoración:</span>
+									<span class="detail-value">4.5/5</span>
+								</div>
+								<div class="detail-item">
+									<span class="detail-label"><i class="fas fa-trophy"></i> Tasa de éxito:</span>
+									<span class="detail-value">78%</span>
+								</div>
+							</div>
+							<a href="crearpartida.jsp?room=secreto-ria" class="btn-organizar">
+								<i class="fas fa-calendar-check"></i>
+								Organizar Partida
+							</a>
+						</div>
+					</div>
+
+					<!-- Escape Room 4: La Catedral Olvidada -->
+					<div class="scaperoom-card">
+						<div class="scaperoom-header">
+							<h3>La Catedral Olvidada</h3>
+							<div class="badges">
+								<span class="badge difficulty-medium">Dificultad media</span>
+								<span class="badge players"><i class="fas fa-users"></i> 3-8</span>
+								<span class="badge duration"><i class="far fa-clock"></i> 90 min</span>
+							</div>
+						</div>
+						<div class="scaperoom-content">
+							<p class="scaperoom-description">Explora una antigua catedral abandonada llena de enigmas y misterios. Una experiencia inmersiva para grupos más grandes.</p>
+							<div class="scaperoom-details">
+								<div class="detail-item">
+									<span class="detail-label"><i class="fas fa-star"></i> Valoración:</span>
+									<span class="detail-value">4.9/5</span>
+								</div>
+								<div class="detail-item">
+									<span class="detail-label"><i class="fas fa-trophy"></i> Tasa de éxito:</span>
+									<span class="detail-value">52%</span>
+								</div>
+							</div>
+							<a href="crearpartida.jsp?room=catedral-olvidada" class="btn-organizar">
+								<i class="fas fa-calendar-check"></i>
+								Organizar Partida
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Sección de Mis Partidas Recientes -->
+			<section class="mis-partidas-section">
+				<div class="section-header">
+					<h2>Mis partidas recientes</h2>
+					<div class="section-divider"></div>
+				</div>
+
+				<div class="partidas-container">
+					<div class="partidas-empty">
+						<i class="fas fa-calendar-times"></i>
+						<p>No tienes partidas disponibles</p>
+						<a href="crearpartida.jsp" class="btn-crear-partida">
+							<i class="fas fa-plus-circle"></i>
+							Crear tu primera partida
+						</a>
+					</div>
+				</div>
+			</section>
 		</div>
 	</main>
-	
 	<%@ include file="/WEB-INF/includes/footer.jsp"%>
-	
 	<%@ include file="/WEB-INF/includes/headerScripts.jsp"%>
-
-	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-	<script>            
-            // Inicializar selector de fecha y hora
-            flatpickr("#game-date", {
-                enableTime: true,
-                dateFormat: "Y-m-d H:i",
-                minDate: "today",
-                time_24hr: true
-            });
-            
-            // Controles para el selector de nÃºmero de jugadores
-            document.querySelector('.player-btn.decrease').addEventListener('click', function() {
-                const input = document.getElementById('max-players');
-                if (parseInt(input.value) > parseInt(input.min)) {
-                    input.value = parseInt(input.value) - 1;
-                }
-            });
-            
-            document.querySelector('.player-btn.increase').addEventListener('click', function() {
-                const input = document.getElementById('max-players');
-                if (parseInt(input.value) < parseInt(input.max)) {
-                    input.value = parseInt(input.value) + 1;
-                }
-            });
-        });
-    </script>
 </body>
 </html>
