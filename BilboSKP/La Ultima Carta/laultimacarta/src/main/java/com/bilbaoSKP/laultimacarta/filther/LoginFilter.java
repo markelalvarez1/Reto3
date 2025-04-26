@@ -20,7 +20,7 @@ import com.bilbaoSKP.laultimacarta.model.enums.RolEnum;
 import com.bilbaoSKP.laultimacarta.service.CentroEscolarService;
 
 
-@WebFilter( urlPatterns = {"/private/*"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
+@WebFilter( urlPatterns = {"/*"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
 public class LoginFilter implements Filter {
 	CentroEscolarService centroEscolarService;
 	

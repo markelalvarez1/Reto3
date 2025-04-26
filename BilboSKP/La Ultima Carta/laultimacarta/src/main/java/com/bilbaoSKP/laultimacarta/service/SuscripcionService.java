@@ -63,7 +63,6 @@ public class SuscripcionService {
 				ArrayList<Cupon> cupones = CuponCyberbullying.obtenerCupones(cs.getNumeroAlumnos());
 				s.setCupones(cupones);
 			} else if(TipoSuscripcionEnum.INDIVIDUAL.toString().equals(s.getTipoSuscripcion().getTipo())) {
-				System.out.println("Pasando");
 				CuponBienvenida cupon = CuponBienvenida.nuevoCupon();
 				ArrayList<Cupon> cupones = new ArrayList<Cupon>();
 				cupones.add(cupon);

@@ -234,7 +234,7 @@ button {
 main {
     display: flex;
     min-height: calc(100vh - 80px - 200px); /* Viewport height minus header and footer */
-	padding: 1.5rem;
+    padding: 1.5rem;
 }
 
 /* Sidebar Styles */
@@ -308,203 +308,41 @@ main {
     font-weight: 700;
 }
 
-/* Cupones Grid */
-.cupones-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+/* Formulario de perfil */
+.profile-form-container {
+    margin-top: 2rem;
+}
+
+.profile-form {
+    width: 100%;
+}
+
+.form-section {
     margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e2e8f0;
 }
 
-.cupones-card {
-    display: flex;
-    align-items: flex-start;
-    padding: 1.25rem;
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease;
+.form-section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
-.cupones-card:hover {
-    transform: translateY(-3px);
-}
-
-.stat-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 0.5rem;
-    background-color: #eef2ff;
-    color: #1b19a5;
-    font-size: 1.5rem;
-    margin-right: 1rem;
-    flex-shrink: 0;
-}
-
-.secstyle{
- height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Cupones activos */
-.stat-icon.active {
-    background-color: #dcfce7; /* verde pálido */
-    color:            #16a34a; /* verde intenso */
-}
-
-/* Historial de compra */
-.stat-icon.pending {
-    background-color: #e0f2fe; /* azul muy claro */
-    color:            #0284c7; /* azul medio-oscuro */
-}
-
-/* Devoluciones */
-.stat-icon.inactive {
-    background-color: #fee2e2; /* rojo pálido */
-    color:            #dc2626; /* rojo intenso */
-}
-
-
-.stat-info {
-    flex: 1;
-}
-
-.stat-info h3 {
-    font-size: 1.025rem;
-    font-weight: 600;
-    color: #6b7280;
-}
-
-.cupones-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.cupon-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    background-color: #f8fafc;
-    border: 1px solid #e2e8f0;
-}
-
-.cupon-info {
-    flex: 1;
-}
-
-.cupon-info h4 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 0.25rem;
-}
-
-.cupon-description {
-    font-size: 0.875rem;
-    color: #6b7280;
-}
-
-.cupon-precio {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: #1b19a5;
-}
-
-.cupon-actions {
-    margin-left: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.cupon-valid-until, .cupon-fecha-inicio {
-    font-size: 0.75rem;
-    color: #6b7280;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    background-color: #edf2f7;
-}
-
-.no-cupones {
-    color: #6b7280;
-}
-
-/* Estructura de contenido en dos columnas */
-.content-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-}
-
-.left-column, .right-column {
-    width: 100%;
-}
-
-/* Encabezados de sección */
-.section-header {
-    margin-bottom: 1.25rem;
-}
-
-.section-header h2 {
+.form-section h2 {
     font-size: 1.25rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 0.75rem;
-}
-
-.section-divider {
-    height: 1px;
-    background-color: #e2e8f0;
-    width: 100%;
-}
-
-/* Tarjeta de compra */
-.purchase-card {
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    padding: 1.5rem;
-}
-
-.cupon-fijo-info {
+    color: #4b5563;
     margin-bottom: 1.5rem;
 }
 
-.cupon-fijo-info h3 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 0.5rem;
-}
-
-.cupon-description {
-    font-size: 0.875rem;
-    color: #6b7280;
-}
-
-.cupon-precio-fijo {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: #1b19a5;
-}
-
-/* Formulario de compra */
-.purchase-form {
-    margin-top: 1rem;
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
 }
 
 .form-group {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
 }
 
 .form-group label {
@@ -515,63 +353,42 @@ main {
     margin-bottom: 0.5rem;
 }
 
-/* Control de cantidad */
-.cantidad-control {
-    display: flex;
-    align-items: center;
-}
-
-.btn-cantidad {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: #eef2ff;
-    color: #1b19a5;
-    border-radius: 0.375rem;
-    font-size: 1.25rem;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-cantidad:hover {
-    background-color: #dbeafe;
-}
-
-.form-group input[type="number"] {
-    width: 60px;
-    text-align: center;
-    margin: 0 0.5rem;
-    padding: 0.75rem 0.5rem;
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
     border: 1px solid #e2e8f0;
     border-radius: 0.375rem;
-    -moz-appearance: textfield;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.875rem;
+    transition: border-color 0.2s ease;
 }
 
-.form-group input[type="number"]::-webkit-outer-spin-button,
-.form-group input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #1b19a5;
+    box-shadow: 0 0 0 2px rgba(27, 25, 165, 0.1);
 }
 
-/* Precio total */
-.precio-total {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
+.form-group input:read-only {
+    background-color: #f8fafc;
+    cursor: not-allowed;
 }
 
-.precio-total span {
-    color: #1b19a5;
+.password-hint {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+    font-style: italic;
 }
 
 /* Botones de acción */
 .form-actions {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
 .btn-action {
@@ -579,150 +396,32 @@ main {
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.25rem;
-    background-color: #1b19a5;
-    color: white;
     border-radius: 0.375rem;
     font-weight: 600;
     transition: all 0.2s ease;
-    border: none;
     cursor: pointer;
 }
 
-.btn-action:hover {
+.btn-save {
+    background-color: #1b19a5;
+    color: white;
+}
+
+.btn-save:hover {
     background-color: #0f0e73;
+}
+
+.btn-cancel {
+    background-color: #e5e7eb;
+    color: #4b5563;
+}
+
+.btn-cancel:hover {
+    background-color: #d1d5db;
 }
 
 .btn-action i {
     font-size: 1rem;
-}
-
-/* Carrito de compra */
-.carrito-compra {
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    padding: 1.5rem;
-}
-
-.carrito-items {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-height: 300px;
-    overflow-y: auto;
-    margin-bottom: 1.5rem;
-}
-
-.carrito-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem;
-    border-radius: 0.375rem;
-    background-color: #f8fafc;
-    border: 1px solid #e2e8f0;
-}
-
-.item-info {
-    flex: 1;
-}
-
-.item-info h3 {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 0.25rem;
-}
-
-.item-cantidad {
-    font-size: 0.75rem;
-    color: #6b7280;
-}
-
-.item-actions {
-    margin-left: 1rem;
-}
-
-.form-eliminar {
-    margin: 0;
-}
-
-.btn-eliminar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 0.375rem;
-    background-color: #fee2e2;
-    color: #dc2626;
-    transition: all 0.2s ease;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-eliminar:hover {
-    background-color: #fecaca;
-}
-
-.carrito-vacio {
-    padding: 2rem;
-    text-align: center;
-    color: #6b7280;
-}
-
-.carrito-resumen {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #e2e8f0;
-}
-
-.carrito-total {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.125rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.carrito-total span {
-    color: #1b19a5;
-}
-
-.btn-comprar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 0.75rem 1.25rem;
-    background-color: #16a34a;
-    color: white;
-    border-radius: 0.375rem;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-comprar:hover {
-    background-color: #15803d;
-}
-
-.btn-comprar:disabled {
-    background-color: #d1d5db;
-    cursor: not-allowed;
-}
-
-.btn-comprar i {
-    font-size: 1rem;
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-    .content-container {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* Footer Styles */
@@ -807,18 +506,52 @@ footer {
     height: 2.5rem;
 }
 
+/* Mensajes de alerta */
+.alert {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: #dcfce7;
+    color: #16a34a;
+    border: 1px solid #86efac;
+}
+
+.alert-error {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+}
+
+.alert-warning {
+    background-color: #fff7ed;
+    color: #ea580c;
+    border: 1px solid #fdba74;
+}
+
 /* Responsive Styles */
 @media (max-width: 992px) {
-    .cupones-grid {
-        grid-template-columns: 1fr;
+    #main-header nav ul {
+        margin-left: 3rem;
     }
     
-    .compra-container {
+    .cupones-grid {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 850px) {
+    #main-header nav {
+        display: none;
+    }
+    
+    .hamburger-menu {
+        display: block;
+    }
+    
     main {
         flex-direction: column;
     }
@@ -827,6 +560,26 @@ footer {
         width: 100%;
         margin-right: 0;
         margin-bottom: 1.5rem;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .footer-scontent {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .footer-logos {
+        justify-content: center;
     }
 }
 
@@ -839,11 +592,13 @@ footer {
         flex-direction: column;
     }
     
-    .form-actions button {
+    .form-actions button, 
+    .form-actions a {
         width: 100%;
+        justify-content: center;
     }
     
-    .btn-action {
-        justify-content: center;
+    #main-header .header-buttons {
+        display: none;
     }
 }

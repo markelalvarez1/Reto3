@@ -290,6 +290,7 @@ main {
 /* Dashboard Container */
 .dashboard-container {
     flex: 1;
+    width: 100%;
     padding: 1.5rem;
     background-color: white;
     border-radius: 0.5rem;
@@ -344,6 +345,373 @@ main {
     flex-shrink: 0;
 }
 
+.secstyle{
+ height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Cupones activos */
+.stat-icon.active {
+    background-color: #dcfce7; /* verde pálido */
+    color:            #16a34a; /* verde intenso */
+}
+
+/* Historial de compra */
+.stat-icon.pending {
+    background-color: #e0f2fe; /* azul muy claro */
+    color:            #0284c7; /* azul medio-oscuro */
+}
+
+/* Devoluciones */
+.stat-icon.inactive {
+    background-color: #fee2e2; /* rojo pálido */
+    color:            #dc2626; /* rojo intenso */
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-info h3 {
+    font-size: 1.025rem;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.cupones-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.cupon-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+
+.cupon-info {
+    flex: 1;
+}
+
+.cupon-info h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.cupon-description {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.cupon-precio {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1b19a5;
+}
+
+.cupon-actions {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.cupon-valid-until, .cupon-fecha-inicio {
+    font-size: 0.75rem;
+    color: #6b7280;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    background-color: #edf2f7;
+}
+
+.no-cupones {
+    color: #6b7280;
+}
+
+/* Estructura de contenido en dos columnas */
+.content-container {
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.left-column, .right-column {
+    width: 100%;
+}
+
+/* Encabezados de sección */
+.section-header {
+    margin-bottom: 1.25rem;
+}
+
+.section-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.75rem;
+}
+
+.section-divider {
+    height: 1px;
+    background-color: #e2e8f0;
+    width: 100%;
+}
+
+/* Tarjeta de compra */
+.purchase-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+}
+
+.cupon-fijo-info {
+    margin-bottom: 1.5rem;
+}
+
+.cupon-fijo-info h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.cupon-precio-fijo {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1b19a5;
+}
+
+/* Formulario de compra */
+.purchase-form {
+    margin-top: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+}
+
+/* Control de cantidad */
+.cantidad-control {
+    display: flex;
+    align-items: center;
+}
+
+.btn-cantidad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #eef2ff;
+    color: #1b19a5;
+    border-radius: 0.375rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-cantidad:hover {
+    background-color: #dbeafe;
+}
+
+.form-group input[type="number"] {
+    width: 60px;
+    text-align: center;
+    margin: 0 0.5rem;
+    padding: 0.75rem 0.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
+    -moz-appearance: textfield;
+}
+
+.form-group input[type="number"]::-webkit-outer-spin-button,
+.form-group input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Precio total */
+.precio-total {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.precio-total span {
+    color: #1b19a5;
+}
+
+/* Botones de acción */
+.form-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-action {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background-color: #1b19a5;
+    color: white;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-action:hover {
+    background-color: #0f0e73;
+}
+
+.btn-action i {
+    font-size: 1rem;
+}
+
+/* Carrito de compra */
+.carrito-compra {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+}
+
+.carrito-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1.5rem;
+}
+
+.carrito-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-info h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.item-cantidad {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.item-actions {
+    margin-left: 1rem;
+}
+
+.form-eliminar {
+    margin: 0;
+}
+
+.btn-eliminar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.375rem;
+    background-color: #fee2e2;
+    color: #dc2626;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-eliminar:hover {
+    background-color: #fecaca;
+}
+
+.carrito-vacio {
+    padding: 2rem;
+    text-align: center;
+    color: #6b7280;
+}
+
+.carrito-resumen {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.carrito-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.carrito-total span {
+    color: #1b19a5;
+}
+
+.btn-comprar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    background-color: #16a34a;
+    color: white;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-comprar:hover {
+    background-color: #15803d;
+}
+
+.btn-comprar:disabled {
+    background-color: #d1d5db;
+    cursor: not-allowed;
+}
+
+.btn-comprar i {
+    font-size: 1rem;
+}
 
 .btn-filter:hover {
     background-color: #0f0e73;
@@ -367,7 +735,9 @@ main {
     background-color: #e5e7eb;
 }
 
+/* Table Styles with Width Fix */
 .historial-tabla-container {
+    width: 100%;
     background-color: white;
     border-radius: 0.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -386,6 +756,7 @@ main {
 }
 
 .table-responsive {
+    width: 100%;
     overflow-x: auto;
     margin-bottom: 1.5rem;
 }
@@ -394,6 +765,7 @@ main {
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
+    table-layout: fixed; /* Added to ensure consistent column widths */
 }
 
 .historial-tabla th,
@@ -401,6 +773,7 @@ main {
     padding: 1rem;
     text-align: left;
     border-bottom: 1px solid #e2e8f0;
+    word-wrap: break-word; /* Allow text to wrap */
 }
 
 .historial-tabla th {
@@ -613,6 +986,10 @@ footer {
     }
     
     .compra-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .content-container {
         grid-template-columns: 1fr;
     }
     

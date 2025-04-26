@@ -144,13 +144,13 @@
 									<td>${usuario.rol.tipo}</td>
 									<td><span id="estado-${usuario.id}">${usuario.suscripcion.estado}</span></td>
 									<td>${usuario.suscripcion.fechaInicio}</td>
-									<td><form action="gestionUsuarios" method="post">
+									<td><form action="edicionUsuario" method="get">
 											<div class="botones-accion">
 												<button class="btn-editar"
 													onclick="redirigirEditarUsuario(1)">
 													<i class="fas fa-edit"></i>
 												</button>
-												<button class="btn-ver" onclick="verDetalles(1)">
+												<button type="submit" class="btn-ver" onclick="verDetalles(1)">
 													<i class="fas fa-eye"></i>
 												</button>
 												<button class="btn-eliminar" onclick="confirmarEliminar(1)">
