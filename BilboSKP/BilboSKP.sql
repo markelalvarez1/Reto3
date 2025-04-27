@@ -175,7 +175,7 @@ CREATE TABLE resultado_partida (
 
 -- Inserts de datos básicos
 INSERT INTO rol (tipo) VALUES ('ADMINISTRADOR'), ('USUARIO'), ('RESPONSABLE');
-INSERT INTO suscripcionTipo (tipo, precio) VALUES ('INDIVIDUAL', 5.0), ('CENTRO ESCOLAR', 0);
+INSERT INTO suscripcionTipo (tipo, precio) VALUES ('INDIVIDUAL', 5.0), ('CENTRO_ESCOLAR', 0);
 INSERT INTO usuario (dni, nombre, apellidos, telefono, correo, contrasena, rol_id)
 VALUES 
 ('12345678A', 'Admin', 'Admin', '600123456', 'admin@gmail.com', '12345', 1),
@@ -185,7 +185,7 @@ VALUES
 ('99887766E', 'Laura', 'Jiménez Ruiz', '640998877', 'laura.jimenez@example.com', 'contraseña5', 2),
 ('77665544F', 'Carlos', 'Hernández Torres', '650776655', 'carlos.hernandez@example.com', 'contraseña6', 3),
 ('66554433G', 'Sofía', 'Ramírez Morales', '660665544', 'sofia.ramirez@example.com', 'contraseña7', 1),
-('55443322H', 'Pedro', 'Sánchez Gómez', '670554433', 'unai.carbajo.amundarain@gmail.com', 'contraseña8', 3),
+('55443322H', 'Pedro', 'Sánchez Gómez', '670554433', 'marta.navarro.amundarain@gmail.com', 'contraseña8', 3),
 ('33221100I', 'Marta', 'Navarro Ortega', '680332211', 'marta.navarro@example.com', 'contraseña9', 1),
 ('11110000J', 'Andrés', 'Castro Velázquez', '690111100', 'andres.castro@example.com', 'contraseña10', 2);
 

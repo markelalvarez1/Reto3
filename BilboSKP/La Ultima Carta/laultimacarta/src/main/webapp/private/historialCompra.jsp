@@ -57,17 +57,15 @@
 
 						<!-- Comprar cupones -->
 						<a href="cupones" class="cupones-card stat-card">
-							<div class="stat-icon pending">
-								<i class="fas fa-calendar-alt"></i>
+							<div class="stat-icon buy">
+								<i class="fas fa-shopping-cart"></i>
 							</div>
 							<div class="stat-info">
 								<h3>
 									<fmt:message key="comprar_cupon" />
 								</h3>
 								<div class="cupon-info">
-									<p class="cupon-description">
-										<fmt:message key="comprar_cupon_descripcion" />
-									</p>
+									<p class="cupon-description"><fmt:message key="comprar_cupon_descripcion" /></p>
 								</div>
 							</div>
 						</a>
@@ -136,7 +134,7 @@
 										<!-- Datos ficticios para la tabla -->
 										<tr>
 											<td>24/04/2025</td>
-											<td>Cupón</td>
+											<td>Cup&oacute;n</td>
 											<td>3</td>
 											<td>7,50 &#x20AC;</td>
 											<td>
@@ -147,7 +145,7 @@
 										</tr>
 										<tr>
 											<td>20/04/2025</td>
-											<td>Cupón</td>
+											<td>Cup&oacute;n</td>
 											<td>1</td>
 											<td>2,50 &#x20AC;</td>
 											<td>
@@ -158,7 +156,7 @@
 										</tr>
 										<tr>
 											<td>15/04/2025</td>
-											<td>Cupón</td>
+											<td>Cup&oacute;n</td>
 											<td>5</td>
 											<td>12,50 &#x20AC;</td>
 											<td>
@@ -169,7 +167,7 @@
 										</tr>
 										<tr>
 											<td>08/04/2025</td>
-											<td>Cupón</td>
+											<td>Cup&oacute;n</td>
 											<td>2</td>
 											<td>5,00 &#x20AC;</td>
 											<td>

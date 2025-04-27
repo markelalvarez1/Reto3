@@ -1,6 +1,7 @@
 package com.bilbaoSKP.laultimacarta.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +9,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.bilbaoSKP.laultimacarta.dto.LoginUsuarioDTO;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
@@ -46,7 +46,7 @@ public class LoginController extends HttpServlet {
 					c.setMaxAge(60*60*24*30);
 					response.addCookie(c);
 				}
-				response.sendRedirect("inicio");
+				response.sendRedirect("gestion");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

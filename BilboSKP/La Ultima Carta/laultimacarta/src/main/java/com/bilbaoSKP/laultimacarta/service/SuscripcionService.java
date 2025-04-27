@@ -60,12 +60,12 @@ public class SuscripcionService {
 				con.rollback();
 				return false;
 			}
-			
 			CentroEscolar cs = null;
 			if(TipoSuscripcionEnum.CENTRO_ESCOLAR.toString().equals(s.getTipoSuscripcion().getTipo())) {
 				centroEscolarService = new CentroEscolarDAO();
 				cs = centroEscolarService.getCentroEscolarBySuscripcion(s);
-				ArrayList<Cupon> cupones = CuponCyberbullying.obtenerCupones(cs.getNumeroAlumnos());
+				ArrayList<Cupon> cupones = new ArrayList<Cupon>();
+				cupones = CuponCyberbullying.obtenerCupones(cs.getNumeroAlumnos());
 				s.setCupones(cupones);
 			} else if(TipoSuscripcionEnum.INDIVIDUAL.toString().equals(s.getTipoSuscripcion().getTipo())) {
 				CuponBienvenida cupon = CuponBienvenida.nuevoCupon();

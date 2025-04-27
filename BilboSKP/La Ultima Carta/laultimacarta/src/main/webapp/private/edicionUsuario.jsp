@@ -56,7 +56,30 @@
 									${usuarioEditar.apellidos}</p>
 							</div>
 						</div>
+						<div class="cupones-card stat-card">
+							<div class="stat-icon active">
+								<i class="fas fa-ticket-alt"></i>
+							</div>
+							<div class="stat-info">
+								<h3>
+									<fmt:message key="cupones_disponibles" />
+								</h3>
 
+								<div class="cupones-list">
+									<c:if test="${fn:length(usuarioEditar.suscripcion.cupones) != 0}">
+										<p>${fn:length(usuarioEditar.suscripcion.cupones)}</p>
+									</c:if>
+									<!-- Mostrar mensaje si no hay cupones disponibles  -->
+									<c:if test="${fn:length(usuarioEditar.suscripcion.cupones) == 0}">
+										<div class="cupon-info">
+											<p>
+												0
+											</p>
+										</div>
+									</c:if>
+								</div>
+							</div>
+						</div>
 
 					</div>
 				</section>
@@ -96,6 +119,12 @@
 										<label for="ciudad"><fmt:message key="ciudad" /></label> <input
 											type="text" id="ciudad" name="ciudad"
 											value="${usuarioEditar.centroEscolar.ciudad}">
+									</div>
+									
+									<div class="form-group">
+										<label for="correo"><fmt:message key="correo" /></label> <input
+											type="email" id="correo" name="correo"
+											value="${usuarioEditar.centroEscolar.correo}" required>
 									</div>
 
 									<!-- Etapa Educativa -->

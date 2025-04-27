@@ -58,8 +58,8 @@
 
 						<!-- Comprar cupones -->
 						<a href="cupones" class="cupones-card stat-card">
-							<div class="stat-icon pending">
-								<i class="fas fa-calendar-alt"></i>
+							<div class="stat-icon buy">
+								<i class="fas fa-shopping-cart"></i>
 							</div>
 							<div class="stat-info">
 								<h3>

@@ -137,116 +137,138 @@ public class UsuarioDAO {
 	}
 
 	public Usuario getUsuarioByID(String idUsuario) {
-	    Connection con = AccesoBD.getConnection();
-	    PreparedStatement ps = null;
-	    ResultSet rs = null;
+	    String sql =
+	        "SELECT "
+	      + "  u.id               AS uid, "
+	      + "  u.dni              AS udni, "
+	      + "  u.nombre           AS unombre, "
+	      + "  u.apellidos        AS uapellidos, "
+	      + "  u.telefono         AS utelefono, "
+	      + "  u.correo           AS ucorreo, "
+	      + "  u.contrasena       AS ucontrasena, "
+	      + "  r.id               AS rid, "
+	      + "  r.tipo             AS rtipo, "
+	      + "  ce.id              AS ceid, "
+	      + "  ce.cif             AS cecif, "
+	      + "  ce.nombre          AS cenombre, "
+	      + "  ce.correo          AS ce_correo, "
+	      + "  ce.ciudad          AS ceciu, "
+	      + "  ce.etapaEducativa  AS ceetapa, "
+	      + "  ce.numeroAlumnos   AS cenum, "
+	      + "  s.id               AS sid, "
+	      + "  s.fechaInicio      AS sfechaInicio, "
+	      + "  s.estado           AS sestado, "
+	      + "  s.codigoVerificacion AS scodigo, "
+	      + "  st.id              AS stid, "
+	      + "  st.tipo            AS sttipo, "
+	      + "  st.precio          AS stprecio, "
+	      + "  c.id               AS cid, "
+	      + "  c.fechaCompra      AS cfechaCompra, "
+	      + "  c.fechaCaducidad   AS cfechaCaducidad, "
+	      + "  c.precio           AS cprecio "
+	      + "FROM usuario u "
+	      + "LEFT JOIN rol r               ON u.rol_id              = r.id "
+	      + "LEFT JOIN centroEscolar ce    ON ce.id_usuario         = u.id "
+	      + "LEFT JOIN suscripcion s       ON s.usuario_id          = u.id "
+	      + "LEFT JOIN suscripcionTipo st  ON s.suscripcion_tipo_id = st.id "
+	      + "LEFT JOIN cupon c             ON c.suscripcion_id      = s.id "
+	      + "                               AND c.estado = 'DISPONIBLE' "
+	      + "WHERE u.id = ?";
+
 	    Usuario u = null;
-	    try {
-	        String sql =
-	            "SELECT "
-	          + "  u.id               AS uid, "
-	          + "  u.dni              AS udni, "
-	          + "  u.nombre           AS unombre, "
-	          + "  u.apellidos        AS uapellidos, "
-	          + "  u.telefono         AS utelefono, "
-	          + "  u.correo           AS ucorreo, "
-	          + "  u.contrasena       AS ucontrasena, "
-	          + "  u.rol_id           AS urol_id, "
-	          + "  r.id               AS rid, "
-	          + "  r.tipo             AS rtipo, "
-	          + "  s.id               AS sid, "
-	          + "  s.fechaInicio      AS sfechaInicio, "
-	          + "  s.estado           AS sestado, "
-	          + "  s.codigoVerificacion AS scodigo, "
-	          + "  s.suscripcion_tipo_id AS sst_id, "
-	          + "  st.id              AS stid, "
-	          + "  st.tipo            AS sttipo, "
-	          + "  st.precio          AS stprecio, "
-	          + "  ce.id              AS ceid, "
-	          + "  ce.cif             AS cecif, "
-	          + "  ce.nombre          AS cenombre, "
-	          + "  ce.correo          AS ce_correo, "
-	          + "  ce.ciudad          AS ceciu, "
-	          + "  ce.etapaEducativa  AS ceetapa, "
-	          + "  ce.numeroAlumnos   AS cenum "
-	          + "FROM usuario u "
-	          + "LEFT JOIN rol r               ON u.rol_id              = r.id "
-	          + "LEFT JOIN suscripcion s       ON s.usuario_id          = u.id "
-	          + "LEFT JOIN suscripcionTipo st  ON s.suscripcion_tipo_id = st.id "
-	          + "LEFT JOIN centroEscolar ce    ON ce.id_usuario         = u.id "
-	          + "WHERE u.id = ?";
-	        
-	        ps = con.prepareStatement(sql);
+	    try (Connection con = AccesoBD.getConnection();
+	         PreparedStatement ps = con.prepareStatement(sql)) {
+
 	        ps.setString(1, idUsuario);
-	        rs = ps.executeQuery();
-	        
-	        if (rs.next()) {
-	            // ¿Viene centro?
-	            int ceid = rs.getInt("ceid");
-	            boolean tieneCentro = !rs.wasNull();
-	            // Instanciamos Usuario o Responsable
-	            if (tieneCentro) {
-	                Responsable resp = new Responsable();
-	                // CentroEscolar
-	                CentroEscolar centro = new CentroEscolar();
-	                
-	                centro.setId(ceid);
-	                centro.setCIF(rs.getString("cecif"));
-	                centro.setNombre(rs.getString("cenombre"));
-	                centro.setCorreo(rs.getString("ce_correo"));
-	                centro.setCiudad(rs.getString("ceciu"));
-	                centro.setEtapaEducativa(rs.getString("ceetapa"));
-	                centro.setNumeroAlumnos(rs.getInt("cenum"));
-	                resp.setCentroEscolar(centro);
-	                u = resp;
-	            } else {
-	                u = new Usuario();
-	            }
-	            
-	            // Campos de Usuario
-	            u.setId(rs.getInt("uid"));
-	            u.setDni(rs.getString("udni"));
-	            u.setNombre(rs.getString("unombre"));
-	            u.setApellidos(rs.getString("uapellidos"));
-	            u.setTelefono(rs.getInt("utelefono"));
-	            u.setCorreo(rs.getString("ucorreo"));
-	            u.setContrasena(rs.getString("ucontrasena"));
-	            
-	            // Rol
-	            Rol rol = new Rol();
-	            rol.setId(rs.getInt("rid"));
-	            rol.setTipo(rs.getString("rtipo"));
-	            u.setRol(rol);
-	            
-	            // Suscripción (si existe)
-	            Integer sid = (Integer) rs.getObject("sid");
-	            if (sid != null) {
-	                Suscripcion sus = new Suscripcion();
-	                sus.setId(sid);
-	                sus.setFechaInicio(rs.getDate("sfechaInicio").toLocalDate());
-	                sus.setEstado(EstadoSuscripcionEnum.fromString(rs.getString("sestado")));
-	                sus.setCodigoAcceso(rs.getString("scodigo"));
-	                // TipoSuscripcion
-	                Integer stid = (Integer) rs.getObject("stid");
-	                if (stid != null) {
-	                    TipoSuscripcion tst = new TipoSuscripcion();
-	                    tst.setId(stid);
-	                    tst.setTipo(rs.getString("sttipo"));
-	                    tst.setPrecio(rs.getDouble("stprecio"));
-	                    sus.setTipoSuscripcion(tst);
+	        try (ResultSet rs = ps.executeQuery()) {
+
+	            Suscripcion sus = null;
+	            ArrayList<Cupon> listaCupones = new ArrayList<>();
+
+	            while (rs.next()) {
+	                // Primera fila: mapeo básico de Usuario + Centro + Rol + Suscripción
+	                if (u == null) {
+	                    // --- Usuario vs Responsable ---
+	                    int ceid = rs.getInt("ceid");
+	                    boolean tieneCentro = !rs.wasNull();
+	                    if (tieneCentro) {
+	                        Responsable resp = new Responsable();
+	                        CentroEscolar centro = new CentroEscolar();
+	                        centro.setId(ceid);
+	                        centro.setCIF(rs.getString("cecif"));
+	                        centro.setNombre(rs.getString("cenombre"));
+	                        centro.setCorreo(rs.getString("ce_correo"));
+	                        centro.setCiudad(rs.getString("ceciu"));
+	                        centro.setEtapaEducativa(rs.getString("ceetapa"));
+	                        centro.setNumeroAlumnos(rs.getInt("cenum"));
+	                        resp.setCentroEscolar(centro);
+	                        u = resp;
+	                    } else {
+	                        u = new Usuario();
+	                    }
+
+	                    // Campos de Usuario
+	                    u.setId(rs.getInt("uid"));
+	                    u.setDni(rs.getString("udni"));
+	                    u.setNombre(rs.getString("unombre"));
+	                    u.setApellidos(rs.getString("uapellidos"));
+	                    u.setTelefono(rs.getInt("utelefono"));
+	                    u.setCorreo(rs.getString("ucorreo"));
+	                    u.setContrasena(rs.getString("ucontrasena"));
+
+	                    // Rol
+	                    Rol rol = new Rol();
+	                    rol.setId(rs.getInt("rid"));
+	                    rol.setTipo(rs.getString("rtipo"));
+	                    u.setRol(rol);
+
+	                    // Suscripción
+	                    Integer sid = (Integer) rs.getObject("sid");
+	                    if (sid != null) {
+	                        sus = new Suscripcion();
+	                        sus.setId(sid);
+	                        sus.setFechaInicio(rs.getDate("sfechaInicio").toLocalDate());
+	                        sus.setEstado(EstadoSuscripcionEnum.fromString(rs.getString("sestado")));
+	                        sus.setCodigoAcceso(rs.getString("scodigo"));
+
+	                        // TipoSuscripcion
+	                        Integer stid = (Integer) rs.getObject("stid");
+	                        if (stid != null) {
+	                            TipoSuscripcion tst = new TipoSuscripcion();
+	                            tst.setId(stid);
+	                            tst.setTipo(rs.getString("sttipo"));
+	                            tst.setPrecio(rs.getDouble("stprecio"));
+	                            sus.setTipoSuscripcion(tst);
+	                        }
+	                    }
 	                }
+
+	                // En cada fila (incluyendo la primera) miramos si hay cupon disponible
+	                Integer cid = (Integer) rs.getObject("cid");
+	                if (cid != null && sus != null) {
+	                    Cupon cup = new Cupon();
+	                    cup.setId(cid);
+	                    cup.setFechaCompra(rs.getDate("cfechaCompra").toLocalDate());
+	                    cup.setFechaCaducidad(rs.getDate("cfechaCaducidad").toLocalDate());
+	                    cup.setPrecio(rs.getDouble("cprecio"));
+	                    cup.setEstadoCupon(EstadoCuponEnum.DISPONIBLE);
+	                    listaCupones.add(cup);
+	                }
+	            }
+
+	            // Asignamos la lista de cupones a la suscripción (si la hubo)
+	            if (u != null && sus != null) {
+	                sus.setCupones(listaCupones);
 	                u.setSuscripcion(sus);
 	            }
 	        }
+
 	    } catch (SQLException e) {
 	        e.printStackTrace();
-	    } finally {
-	        AccesoBD.closeConnection(rs, ps, con);
 	    }
+
 	    return u;
 	}
-
-
 
 
 	public ArrayList<Usuario> getAllUsuariosSinCentroEscolar() {
