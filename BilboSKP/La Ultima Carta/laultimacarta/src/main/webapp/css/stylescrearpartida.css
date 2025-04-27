@@ -294,6 +294,7 @@ h4 {
 main {
     display: flex;
     min-height: calc(100vh - 80px);
+    padding: 1.5rem;
 }
 
 /* Sidebar Styles */

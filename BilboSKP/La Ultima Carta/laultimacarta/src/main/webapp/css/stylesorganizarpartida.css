@@ -458,6 +458,7 @@ main {
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
+    justify-content: space-between;
 }
 
 .scaperoom-card {
@@ -466,6 +467,7 @@ main {
     border: 1px solid #e1e4e8;
     overflow: hidden;
     transition: box-shadow 0.3s;
+    width: 30%;
 }
 
 .scaperoom-card:hover {

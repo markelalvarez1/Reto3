@@ -71,6 +71,7 @@
 					<!-- Lista de Escape Rooms -->
 					<div class="scaperooms-grid">
 						<!-- Escape Room 1: La Última Carta -->
+					<c:if test="${sessionScope.usuario.rol.id == 1 || sessionScope.usuario.rol.id == 3}">	
 						<div class="scaperoom-card">
 							<div class="scaperoom-header">
 								<h3>La Última Carta</h3>
@@ -89,8 +90,10 @@
 								</a>
 							</div>
 						</div>
+						</c:if>
 
 						<!-- Escape Room 2: El Misterio de Bilbao -->
+					<c:if test="${sessionScope.usuario.rol.id == 1 || sessionScope.usuario.rol.id == 2}">
 						<div class="scaperoom-card">
 							<div class="scaperoom-header">
 								<h3>El Misterio de Bilbao</h3>
@@ -149,6 +152,7 @@
 								</a>
 							</div>
 						</div>
+						</c:if>
 					</div>
 				</section>
 			</div>
