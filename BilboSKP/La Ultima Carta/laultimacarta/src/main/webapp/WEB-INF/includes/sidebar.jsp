@@ -26,21 +26,21 @@
 			</li>
 			<li>
 				<a href="cupones" class="sidebar-link">
-					<i class='bx bx-ticket'></i>
+					<i class='bx bx-purchase-tag-alt'></i>
 					<span><fmt:message key="menu_obtener_cupones" /></span>
 				</a>
 			</li>
 			<c:if test="${sessionScope.usuario.rol.id == 1}">
 				<li>
 					<a href="gestionUsuarios" class="sidebar-link">
-						<i class='bx bx-ticket'></i>
-						<span>Gestion Usuario</span>
+						<i class='bx bx-user-circle'></i>
+						<span><fmt:message key="menu_gestion_usuario" /></span>
 					</a>
 				</li>
 				<li>
 					<a href="gestionCentros" class="sidebar-link">
-						<i class='bx bx-ticket'></i>
-						<span>Gestion Centros Escolares</span>
+						<i class='bx bx-buildings'></i>
+						<span><fmt:message key="gestion_centro" /></span>
 				</a>
 			</li>
 			

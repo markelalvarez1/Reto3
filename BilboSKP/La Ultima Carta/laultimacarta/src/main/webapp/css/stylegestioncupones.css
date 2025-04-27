@@ -368,7 +368,10 @@ main {
     background-color: #fee2e2; /* rojo pálido */
     color:            #dc2626; /* rojo intenso */
 }
-
+.stat-icon.buy {
+	background-color: #fef3c7;
+  	color: #d97706;
+}
 
 .stat-info {
     flex: 1;

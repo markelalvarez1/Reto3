@@ -124,18 +124,19 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="usuario" items="${listaUsuarios}"
+							<c:forEach var="user" items="${listaUsuarios}"
 								varStatus="status">
 								<tr>
 									<td>${status.index + 1}</td>
-									<td>${usuario.nombre}</td>
-									<td>${usuario.apellidos}</td>
-									<td>${usuario.correo}</td>
-									<td>${usuario.rol.tipo}</td>
-									<td><span id="estado-${usuario.id}">${usuario.suscripcion.estado}</span></td>
-									<td>${usuario.suscripcion.fechaInicio}</td>
+									<td>${user.nombre}</td>
+									<td>${user.apellidos}</td>
+									<td>${user.correo}</td>
+									<td>${user.rol.tipo}</td>
+									<td><span id="estado-${user.id}">${user.suscripcion.estado}</span></td>
+									<td>${user.suscripcion.fechaInicio}</td>
 									<td><form action="edicionUsuario" method="get">
 											<div class="botones-accion">
+											<input type="hidden" name="id" value="${user.id }" >
 												<button class="btn-editar"
 													onclick="redirigirEditarUsuario(1)">
 													<i class="fas fa-edit"></i>
