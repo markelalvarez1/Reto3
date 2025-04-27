@@ -109,6 +109,12 @@ public class CuponService {
         return exito;
     }
     
+    /**
+     * Procesa la compra de cupones para un usuario
+     * @param usuario El usuario que compra los cupones
+     * @param cupones Lista de cupones a procesar
+     * @return true si el proceso fue exitoso, false en caso contrario
+     */
     public boolean procesarCompraCupones(Usuario usuario, List<Cupon> cupones) {
         Connection conexion = null;
         boolean resultado = false;
@@ -134,11 +140,21 @@ public class CuponService {
                 return false;
             }
             
+            // Asignar el ID de suscripción a cada cupón si no se ha hecho ya
+            for (Cupon cupon : cupones) {
+                if (cupon.getSuscripcionId() <= 0) {
+                    cupon.setSuscripcionId(suscripcion.getId());
+                }
+            }
+            
             // Llamar al método del DAO para añadir todos los cupones
             resultado = cuponDAO.agregarCuponesUsuario(suscripcion.getId(), cupones, conexion);
             
             if (resultado) {
                 conexion.commit();
+                
+               
+                
             } else {
                 conexion.rollback();
             }
@@ -167,7 +183,7 @@ public class CuponService {
         return resultado;
     }
 
-    // Método nuevo para verificar si una suscripción existe
+    // Método para verificar si una suscripción existe
     private boolean verificarSuscripcion(int suscripcionId, Connection conexion) {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -190,7 +206,53 @@ public class CuponService {
         
         return existe;
     }
+    
     public boolean anadirCuponesToSuscripcion(Suscripcion s, Connection con) {
         return cuponDAO.anadirCuponesToSuscripcion(s, con);
+    }
+    
+    /**
+     * Crea cupones masivos para una suscripción
+     * @param suscripcionId ID de la suscripción
+     * @param precio Precio de cada cupón
+     * @param cantidad Cantidad de cupones a crear
+     * @return Lista de cupones creados
+     */
+    public List<Cupon> crearCuponesMasivos(int suscripcionId, double precio, int cantidad) {
+        Connection con = null;
+        List<Cupon> cupones = new ArrayList<>();
+        
+        try {
+            con = AccesoBD.getConnection();
+            con.setAutoCommit(false);
+            
+            cupones = cuponDAO.crearCuponesMasivos(suscripcionId, precio, cantidad, con);
+            
+            if (cupones != null && !cupones.isEmpty()) {
+                con.commit();
+            } else {
+                con.rollback();
+            }
+        } catch (Exception e) {
+            if (con != null) {
+                try {
+                    con.rollback();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+            e.printStackTrace();
+        } finally {
+            if (con != null) {
+                try {
+                    con.setAutoCommit(true);
+                    AccesoBD.closeConnection(null, null, con);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        
+        return cupones;
     }
 }
