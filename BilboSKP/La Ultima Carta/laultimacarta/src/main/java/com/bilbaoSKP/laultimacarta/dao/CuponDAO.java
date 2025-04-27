@@ -180,4 +180,60 @@ public class CuponDAO {
 		}
 		return false;
 	}
+	
+	public boolean agregarCuponesUsuario(int suscripcionId, List<Cupon> cupones, Connection conexion) {
+	    Connection con = conexion;
+	    PreparedStatement ps = null;
+	    boolean exito = true;
+	    
+	    try {
+	        // Primero verificamos si la suscripción existe
+	        PreparedStatement checkPs = con.prepareStatement("SELECT id FROM suscripcion WHERE id = ?");
+	        checkPs.setInt(1, suscripcionId);
+	        ResultSet rs = checkPs.executeQuery();
+	        
+	        if (!rs.next()) {
+	            System.out.println("Error: El ID de suscripción " + suscripcionId + " no existe en la base de datos");
+	            rs.close();
+	            checkPs.close();
+	            return false;
+	        }
+	        
+	        rs.close();
+	        checkPs.close();
+	        
+	        String sql = "INSERT INTO cupon (suscripcion_id, fechaCompra, fechaCaducidad, precio, estado) " +
+	                     "VALUES (?, ?, ?, ?, ?)";
+	        
+	        ps = con.prepareStatement(sql);
+	        
+	        for (Cupon cupon : cupones) {
+	            ps.setInt(1, suscripcionId);
+	            ps.setDate(2, Date.valueOf(cupon.getFechaCompra()));
+	            ps.setDate(3, Date.valueOf(cupon.getFechaCaducidad()));
+	            ps.setDouble(4, cupon.getPrecio());
+	            ps.setString(5, cupon.getEstadoCupon().name());
+	            
+	            ps.addBatch();
+	        }
+	        
+	        int[] resultados = ps.executeBatch();
+	        
+	        // Verificar que todos los cupones se insertaron correctamente
+	        for (int resultado : resultados) {
+	            if (resultado <= 0) {
+	                exito = false;
+	                break;
+	            }
+	        }
+	        
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        exito = false;
+	    } finally {
+	        AccesoBD.closeConnection(null, ps, null);
+	    }
+	    
+	    return exito;
+	}
 }

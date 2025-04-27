@@ -1,6 +1,8 @@
 package com.bilbaoSKP.laultimacarta.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -107,93 +109,88 @@ public class CuponService {
         return exito;
     }
     
-    public List<Cupon> comprarCupones(Usuario usuario, List<ItemCarrito> items) {
-        Connection con = null;
-        List<Cupon> cuponesComprados = new ArrayList<>();
+    public boolean procesarCompraCupones(Usuario usuario, List<Cupon> cupones) {
+        Connection conexion = null;
+        boolean resultado = false;
         
         try {
-            con = AccesoBD.getConnection();
-            con.setAutoCommit(false);
+            conexion = AccesoBD.getConnection();
+            conexion.setAutoCommit(false);
             
             Suscripcion suscripcion = usuario.getSuscripcion();
-            if (suscripcion == null) {
-                con.rollback();
-                return cuponesComprados;
-            }
-            
-            for (ItemCarrito item : items) {
-                List<Cupon> cupones = cuponDAO.crearCuponesMasivos(
-                    suscripcion.getId(), 
-                    item.getPrecio(), 
-                    item.getCantidad(), 
-                    con
-                );
-                
-                if (!cupones.isEmpty()) {
-                    cuponesComprados.addAll(cupones);
-                } else {
-                    con.rollback();
-                    return new ArrayList<>();
+            if (suscripcion == null || suscripcion.getId() <= 0) {
+                System.out.println("Error: Suscripción inválida o con ID nulo");
+                if (conexion != null) {
+                    conexion.rollback();
                 }
+                return false;
             }
             
-            con.commit();
+            // Verificar que la suscripción existe en la base de datos
+            boolean suscripcionExiste = verificarSuscripcion(suscripcion.getId(), conexion);
+            if (!suscripcionExiste) {
+                System.out.println("Error: La suscripción con ID " + suscripcion.getId() + " no existe en la base de datos");
+                conexion.rollback();
+                return false;
+            }
+            
+            // Llamar al método del DAO para añadir todos los cupones
+            resultado = cuponDAO.agregarCuponesUsuario(suscripcion.getId(), cupones, conexion);
+            
+            if (resultado) {
+                conexion.commit();
+            } else {
+                conexion.rollback();
+            }
+            
         } catch (Exception e) {
-            if (con != null) {
-                try {
-                    con.rollback();
-                } catch (Exception e1) {
-                    e1.printStackTrace();
+            try {
+                if (conexion != null) {
+                    conexion.rollback();
                 }
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
             e.printStackTrace();
+            resultado = false;
         } finally {
-            if (con != null) {
+            if (conexion != null) {
                 try {
-                    con.setAutoCommit(true);
-                    AccesoBD.closeConnection(null, null, con);
+                    conexion.setAutoCommit(true);
+                    conexion.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }
         
-        return cuponesComprados;
-    }
-    
-    // Clase interna para representar un item del carrito
-    public static class ItemCarrito {
-        private String id;
-        private String tipo;
-        private double precio;
-        private int cantidad;
-        
-        public ItemCarrito(String id, String tipo, double precio, int cantidad) {
-            this.id = id;
-            this.tipo = tipo;
-            this.precio = precio;
-            this.cantidad = cantidad;
-        }
-        
-        public String getId() {
-            return id;
-        }
-        
-        public String getTipo() {
-            return tipo;
-        }
-        
-        public double getPrecio() {
-            return precio;
-        }
-        
-        public int getCantidad() {
-            return cantidad;
-        }
+        return resultado;
     }
 
-	public boolean anadirCuponesToSuscripcion(Suscripcion s, Connection con) {
-		// TODO Auto-generated method stub
-		return cuponDAO.anadirCuponesToSuscripcion(s, con);
-	}
+    // Método nuevo para verificar si una suscripción existe
+    private boolean verificarSuscripcion(int suscripcionId, Connection conexion) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        boolean existe = false;
+        
+        try {
+            String sql = "SELECT id FROM suscripcion WHERE id = ?";
+            ps = conexion.prepareStatement(sql);
+            ps.setInt(1, suscripcionId);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                existe = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            AccesoBD.closeConnection(rs, ps, null);
+        }
+        
+        return existe;
+    }
+    public boolean anadirCuponesToSuscripcion(Suscripcion s, Connection con) {
+        return cuponDAO.anadirCuponesToSuscripcion(s, con);
+    }
 }

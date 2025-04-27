@@ -16,7 +16,7 @@ CREATE TABLE usuario (
     apellidos VARCHAR(100) NOT NULL,
     telefono VARCHAR(20),
     correo VARCHAR(100) NOT NULL,
-    contraseña VARCHAR(255) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
     rol_id INT NOT NULL,
     FOREIGN KEY (rol_id) REFERENCES rol(id)
 );
@@ -177,7 +177,7 @@ INSERT INTO rol (tipo) VALUES ('ADMINISTRADOR'), ('USUARIO'), ('RESPONSABLE');
 
 INSERT INTO suscripcionTipo (tipo, precio) VALUES ('INDIVIDUAL', 5.0), ('CENTRO ESCOLAR', 0);
 
-INSERT INTO usuario (dni, nombre, apellidos, telefono, correo, contraseña, rol_id)
+INSERT INTO usuario (dni, nombre, apellidos, telefono, correo, contrasena, rol_id)
 VALUES 
 ('12345678A', 'Admin', 'Admin', '600123456', 'admin@gmail.com', '12345', 1),
 ('87654321B', 'Usuario', 'Usuario', '610654321', 'usuario@gmail.com', '12345', 2),
