@@ -2,11 +2,13 @@ DROP DATABASE IF EXISTS EscapeRoomBilboSKP;
 CREATE DATABASE EscapeRoomBilboSKP;
 USE EscapeRoomBilboSKP;
 
+-- Tabla de roles de usuario
 CREATE TABLE rol (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tipo VARCHAR(50) NOT NULL
 );
 
+-- Tabla de usuarios
 CREATE TABLE usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     dni VARCHAR(20) NOT NULL,
@@ -19,19 +21,19 @@ CREATE TABLE usuario (
     FOREIGN KEY (rol_id) REFERENCES rol(id)
 );
 
+-- Centro escolar
 CREATE TABLE centroEscolar (
     id INT AUTO_INCREMENT PRIMARY KEY,
     cif VARCHAR(20) UNIQUE,
     nombre VARCHAR(100) NOT NULL,
     ciudad VARCHAR(100),
-    correo VARCHAR(100),
-    telefono INT(20),
     etapaEducativa VARCHAR(255),
     numeroAlumnos INT,
     id_usuario INT NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id)
 );
 
+-- Clases
 CREATE TABLE clase (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -39,20 +41,23 @@ CREATE TABLE clase (
     seccion VARCHAR(50)
 );
 
+-- Relación clase - centro escolar
 CREATE TABLE clase_centroEscolar (
     id_clase INT,
-    centroEducativo_id INT,
-    PRIMARY KEY (id_clase, centroEducativo_id),
+    id_centroEscolar INT,
+    PRIMARY KEY (id_clase, id_centroEscolar),
     FOREIGN KEY (id_clase) REFERENCES clase(id),
-    FOREIGN KEY (centroEducativo_id) REFERENCES centroEscolar(id)
+    FOREIGN KEY (id_centroEscolar) REFERENCES centroEscolar(id)
 );
 
+-- Tipos de suscripciones
 CREATE TABLE suscripcionTipo (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tipo VARCHAR(50) NOT NULL,
     precio DECIMAL(10,2) NOT NULL
 );
 
+-- Suscripciones
 CREATE TABLE suscripcion (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT NOT NULL UNIQUE,
@@ -64,6 +69,7 @@ CREATE TABLE suscripcion (
     FOREIGN KEY (suscripcion_tipo_id) REFERENCES suscripcionTipo(id)
 );
 
+-- Cupones
 CREATE TABLE cupon (
     id INT AUTO_INCREMENT PRIMARY KEY,
     suscripcion_id INT NOT NULL,
@@ -74,6 +80,7 @@ CREATE TABLE cupon (
     FOREIGN KEY (suscripcion_id) REFERENCES suscripcion(id)
 );
 
+-- Escape rooms
 CREATE TABLE escapeRoom (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -81,6 +88,7 @@ CREATE TABLE escapeRoom (
     tipo ENUM('CYBERBULLYING','GENERICO') NOT NULL
 );
 
+-- Partidas
 CREATE TABLE partida (
     id INT AUTO_INCREMENT PRIMARY KEY,
     fechaProgramada DATETIME NOT NULL,
@@ -95,6 +103,7 @@ CREATE TABLE partida (
     FOREIGN KEY (clase_id) REFERENCES clase(id)
 );
 
+-- Sesiones de partida
 CREATE TABLE sesionPartida (
     id INT AUTO_INCREMENT PRIMARY KEY,
     codigoSesion VARCHAR(50) NOT NULL,
@@ -109,6 +118,7 @@ CREATE TABLE sesionPartida (
     FOREIGN KEY (partida_id) REFERENCES partida(id)
 );
 
+-- Ranking general y especial
 CREATE TABLE ranking (
     id INT AUTO_INCREMENT PRIMARY KEY,
     fechaCreacion DATETIME NOT NULL,
@@ -117,6 +127,7 @@ CREATE TABLE ranking (
     FOREIGN KEY (creadoPor) REFERENCES usuario(id)
 );
 
+-- Relación cupon - partida
 CREATE TABLE cupon_partida (
     id INT AUTO_INCREMENT PRIMARY KEY,
     cupon_id INT NOT NULL,
@@ -125,17 +136,50 @@ CREATE TABLE cupon_partida (
     FOREIGN KEY (partida_id) REFERENCES partida(id)
 );
 
+-- Ranking por clase
+CREATE TABLE ranking_clase (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    clase_id INT NOT NULL,
+    centro_escolar_id INT NOT NULL,
+    puntuacion_total INT NOT NULL DEFAULT 0,
+    fecha_actualizacion DATETIME NOT NULL,
+    FOREIGN KEY (clase_id) REFERENCES clase(id),
+    FOREIGN KEY (centro_escolar_id) REFERENCES centroEscolar(id),
+    UNIQUE KEY (clase_id, centro_escolar_id)
+);
+
+-- Resets de ranking
+CREATE TABLE ranking_reset (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha_reset DATETIME NOT NULL,
+    tipo VARCHAR(20) NOT NULL, -- 'automatico' o 'manual'
+    usuario_id INT,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+);
+
+-- Resultados de partidas
+CREATE TABLE resultado_partida (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    partida_id INT NOT NULL,
+    aciertos INT NOT NULL,
+    pistas_usadas INT NOT NULL,
+    tiempo_segundos INT NOT NULL,
+    puntuacion INT NOT NULL,
+    clase_id INT,
+    centro_escolar_id INT,
+    FOREIGN KEY (partida_id) REFERENCES partida(id),
+    FOREIGN KEY (clase_id) REFERENCES clase(id),
+    FOREIGN KEY (centro_escolar_id) REFERENCES centroEscolar(id)
+);
+
+-- Inserts de datos básicos
 INSERT INTO rol (tipo) VALUES ('ADMINISTRADOR'), ('USUARIO'), ('RESPONSABLE');
-<<<<<<< HEAD
 
 INSERT INTO suscripcionTipo (tipo, precio) VALUES ('INDIVIDUAL', 5.0), ('CENTRO ESCOLAR', 0);
 
-=======
-INSERT INTO suscripcionTipo (tipo, precio) VALUES ('INDIVIDUAL', 5.0), ('CENTRO_ESCOLAR', 0);
->>>>>>> 0312204d6dd451b2093ed1c4641338f21c1202d6
 INSERT INTO usuario (dni, nombre, apellidos, telefono, correo, contrasena, rol_id)
 VALUES 
-('12345678Z', 'Admin', 'Admin', '600123456', 'admin@gmail.com', '12345', 1),
+('12345678A', 'Admin', 'Admin', '600123456', 'admin@gmail.com', '12345', 1),
 ('87654321B', 'Usuario', 'Usuario', '610654321', 'usuario@gmail.com', '12345', 2),
 ('11223344C', 'Ana', 'Martínez Díaz', '620112233', 'ana.martinez@example.com', 'contraseña3', 2),
 ('44332211D', 'Responsable', 'Responsable', '630443322', 'responsable@gmail.com', '12345', 3),
@@ -150,7 +194,7 @@ INSERT INTO suscripcion (usuario_id, fechaInicio, estado, suscripcion_tipo_id, c
 VALUES 
 (1, '2025-04-01', 'ACTIVA', 1, 'ABC123'),
 (2, '2025-04-02', 'ACTIVA', 2, 'DEF456'),
-(3, '2025-03-25', 'CANCELADA', 1, 'GHI7escaperoombilboskp89'),
+(3, '2025-03-25', 'CANCELADA', 1, 'GHI789'),
 (4, '2025-03-20', 'ACTIVA', 2, 'JKL012'),
 (5, '2025-04-10', 'PENDIENTE', 1, 'MNO345'),
 (6, '2025-04-05', 'ACTIVA', 2, 'PQR678'),
@@ -159,12 +203,8 @@ VALUES
 (9, '2025-04-08', 'ACTIVA', 1, 'YZA567'),
 (10, '2025-03-30', 'CANCELADA', 2, 'BCD890');
 
-INSERT INTO centroEscolar (cif, nombre, ciudad, correo, etapaEducativa, numeroAlumnos, id_usuario)
+INSERT INTO centroEscolar (cif, nombre, ciudad, etapaEducativa, numeroAlumnos, id_usuario)
 VALUES 
-  ('A12345678', 'Colegio San Juan', 'Bilbao', 'CentroSanJuan@gmail.com' , 'Primaria y Secundaria', 800, 4),
-  ('B87654321', 'Instituto Vasco', 'San Sebastián', 'InstituoVasco@gmail.com', 'Secundaria', 600, 6),
-  ('C98765432', 'CEIP Arriaga', 'Bilbao', 'CentroSanJuan@gmail.com', 'Infantil y Primaria', 300, 8);
-
-INSERT INTO cupon (suscripcion_id, fechaCompra, fechaCaducidad, precio, estado) VALUES (1, '2025-06-30', '2025-07-30', 9.99, 'DISPONIBLE'), (1, '2025-06-30', '2025-07-30', 12.99, 'PROGRAMADO');
-
-
+  ('A12345678', 'Colegio San Juan', 'Bilbao', 'Primaria y Secundaria', 800, 4),
+  ('B87654321', 'Instituto Vasco', 'San Sebastián', 'Secundaria', 600, 6),
+  ('C98765432', 'CEIP Arriaga', 'Bilbao', 'Infantil y Primaria', 300, 8);
