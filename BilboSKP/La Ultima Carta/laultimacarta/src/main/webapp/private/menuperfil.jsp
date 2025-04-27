@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><fmt:message key="menuperfil_titulo" /></title>
 <link rel="icon" href="Img/baldosa.png" type="image/x-icon">
-<link rel="stylesheet" href="../css/stylesmenu.css">
+<link rel="stylesheet" href="css/stylesmenu.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"
 	rel="stylesheet">
@@ -38,20 +38,23 @@
 					<div class="block profile-card">
 						<div class="profile-header">
 							<div class="profile-avatar-large">
-								<img src="https://via.placeholder.com/200"
+								<img src="img/perfil.png"
 									alt="<fmt:message key='avatar_usuario' />">
-								<button class="change-avatar-btn">
-									<i class='bx bx-camera'></i>
-								</button>
 							</div>
 							<div class="profile-info-main">
-								<h2>Carlos Rodríguez</h2>
-								<p class="username">@carlos_r</p>
+								<c:choose>
+									<c:when test="${not empty usuario.centroEscolar }">
+										<h2>${usuario.centroEscolar.nombre}</h2>
+									</c:when>
+									<c:otherwise>
+										<h2>${usuario.nombre}</h2>
+									</c:otherwise>
+								</c:choose>
+								
 								<div class="profile-badges">
-									<span class="badge level-badge"><fmt:message key="nivel" />
-										5</span> <span class="badge rank-badge"><fmt:message
-											key="ranking" /> #8</span> <span class="badge member-badge"><fmt:message
-											key="miembro_desde" /> 2023</span>
+									<span class="badge level-badge"><fmt:message key="nivel" /> 5</span> 
+									<span class="badge rank-badge"><fmt:message key="ranking" /> #8</span> 
+									<span class="badge member-badge"><fmt:message key="miembro_desde" /> ${usuario.suscripcion.fechaInicio}</span>
 								</div>
 							</div>
 						</div>
@@ -82,15 +85,6 @@
 								</div>
 							</div>
 						</div>
-
-						<div class="profile-bio">
-							<h3>
-								<fmt:message key="sobre_mi" />
-							</h3>
-							<p>
-								<fmt:message key="bio_usuario" />
-							</p>
-						</div>
 					</div>
 
 					<!-- Sección de logros -->
@@ -114,34 +108,6 @@
 									</h3>
 									<p>
 										<fmt:message key="gana_tu_primera_partida" />
-									</p>
-								</div>
-							</div>
-
-							<div class="achievement-card">
-								<div class="achievement-icon unlocked">
-									<i class='bx bx-group'></i>
-								</div>
-								<div class="achievement-info">
-									<h3>
-										<fmt:message key="organizador" />
-									</h3>
-									<p>
-										<fmt:message key="organiza_5_partidas" />
-									</p>
-								</div>
-							</div>
-
-							<div class="achievement-card">
-								<div class="achievement-icon unlocked">
-									<i class='bx bx-trophy'></i>
-								</div>
-								<div class="achievement-info">
-									<h3>
-										<fmt:message key="competidor" />
-									</h3>
-									<p>
-										<fmt:message key="participa_10_partidas" />
 									</p>
 								</div>
 							</div>

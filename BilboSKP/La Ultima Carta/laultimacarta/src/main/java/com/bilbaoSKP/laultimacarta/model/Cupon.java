@@ -20,7 +20,7 @@ public class Cupon {
     public static Cupon nuevoCupon(double precio) {
         Cupon cupon = new Cupon();
         cupon.setFechaCompra(LocalDate.now());
-        cupon.setFechaCaducidad(LocalDate.now().plusYears(1)); // Validez de 1 año
+        cupon.setFechaCaducidad(LocalDate.now().plusYears(100));
         cupon.setPrecio(precio);
         cupon.setEstadoCupon(EstadoCuponEnum.DISPONIBLE);
         return cupon;

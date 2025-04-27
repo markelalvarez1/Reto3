@@ -52,6 +52,6 @@ public class RankingController extends HttpServlet {
         }
         
         // Redirigir a la página de ranking (ahora maneja ambos tipos)
-        request.getRequestDispatcher("ranking.jsp").forward(request, response);
+        request.getRequestDispatcher("private/ranking.jsp").forward(request, response);
     }
 }

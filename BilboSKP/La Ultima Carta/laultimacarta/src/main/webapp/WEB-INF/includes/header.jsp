@@ -18,7 +18,7 @@
 					<c:if test="${not empty sessionScope.usuario}">
 						<li><a href="gestion"><fmt:message key="menu_gestion" /></a></li>
 						<!-- Only show ranking menu to administrators -->
-						<c:if test="${sessionScope.usuario.rol.id == 1}">
+						<c:if test="${sessionScope.usuario.rol.id != 2}">
 							<li><a href="ranking"><fmt:message key="menu_ranking" /></a></li>
 						</c:if>
 					</c:if>

@@ -10,48 +10,50 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bilbaoSKP.laultimacarta.model.Responsable;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
 import com.bilbaoSKP.laultimacarta.model.enums.EstadoSuscripcionEnum;
 import com.bilbaoSKP.laultimacarta.service.UsuarioService;
 
 /**
- * Servlet implementation class GestionUsuariosController
+ * Servlet implementation class GestionCentrosController
  */
-@WebServlet("/gestionUsuarios")
-public class GestionUsuariosController extends HttpServlet {
+@WebServlet("/gestionCentros")
+public class GestionCentrosController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    UsuarioService usuarioService; 
+    UsuarioService usuarioService;   
 	
-	@Override
-		public void init(ServletConfig config) throws ServletException {
-			super.init(config);
-			usuarioService = new UsuarioService();
-		}
-
+    @Override
+    	public void init(ServletConfig config) throws ServletException {
+    		super.init(config);
+    		usuarioService = new UsuarioService();
+    	}
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Usuario> listaUsuarios = usuarioService.getAllUsuariosSinCentroEscolar();
-		int usuariosTotal = listaUsuarios.size();
-		int usuariosActivos = obtenerActivos(listaUsuarios);
-		int usuariosPendientes = obtenerPendientes(listaUsuarios);
-		int usuariosCancelados = obtenerCancelados(listaUsuarios);
+		ArrayList<Responsable> listaResponasbles = usuarioService.getAllUsuariosConCentroEscolar();
+		int usuariosTotal = listaResponasbles.size();
+		int usuariosActivos = obtenerActivos(listaResponasbles);
+		int usuariosPendientes = obtenerPendientes(listaResponasbles);
+		int usuariosCancelados = obtenerCancelados(listaResponasbles);
 		
 		request.setAttribute("usuariosTotal", usuariosTotal);
 		request.setAttribute("usuariosActivos", usuariosActivos);
 		request.setAttribute("usuariosPendientes", usuariosPendientes);
 		request.setAttribute("usuariosCancelados", usuariosCancelados);
-	
-		request.setAttribute("listaUsuarios", listaUsuarios);
-//		request.setAttribute("paginaActiva", "gestionUsuarios");
-		request.getRequestDispatcher("private/gestionUsuarios.jsp").forward(request, response);
+		
+		request.setAttribute("listaUsuarios", listaResponasbles);
+		
+		request.getRequestDispatcher("private/gestionCentro.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+
+		
 	}
-	
-	private int obtenerCancelados(ArrayList<Usuario> listaUsuarios) {
+
+	private int obtenerCancelados(ArrayList<Responsable> listaUsuarios) {
 		int usuarios = 0;
-		for(Usuario u : listaUsuarios) {
+		for(Responsable u : listaUsuarios) {
 			if(u.getSuscripcion().getEstado() == EstadoSuscripcionEnum.CANCELADA) {
 				usuarios++;
 			}
@@ -59,9 +61,9 @@ public class GestionUsuariosController extends HttpServlet {
 		return usuarios;
 	}
 
-	private int obtenerPendientes(ArrayList<Usuario> listaUsuarios) {
+	private int obtenerPendientes(ArrayList<Responsable> listaUsuarios) {
 		int usuarios = 0;
-		for(Usuario u : listaUsuarios) {
+		for(Responsable u : listaUsuarios) {
 			if(u.getSuscripcion().getEstado() == EstadoSuscripcionEnum.PENDIENTE) {
 				usuarios++;
 			}
@@ -69,13 +71,14 @@ public class GestionUsuariosController extends HttpServlet {
 		return usuarios;
 	}
 
-	private int obtenerActivos(ArrayList<Usuario> listaUsuarios) {
+	private int obtenerActivos(ArrayList<Responsable> listaUsuarios) {
 		int usuarios = 0;
-		for(Usuario u : listaUsuarios) {
+		for(Responsable u : listaUsuarios) {
 			if(u.getSuscripcion().getEstado() == EstadoSuscripcionEnum.ACTIVA) {
 				usuarios++;
 			}
 		}
 		return usuarios;
 	}
+	
 }

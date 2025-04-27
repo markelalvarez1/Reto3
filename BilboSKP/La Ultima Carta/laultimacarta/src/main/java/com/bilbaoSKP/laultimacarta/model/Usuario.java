@@ -9,6 +9,10 @@ public class Usuario {
 	private Rol rol;
 	private Suscripcion suscripcion;
 	
+	public CentroEscolar getCentroEscolar() {
+		return null;
+	}
+	
 	public int getId() {
 		return id;
 	}

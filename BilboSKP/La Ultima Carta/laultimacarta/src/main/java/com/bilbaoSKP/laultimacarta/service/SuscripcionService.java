@@ -84,4 +84,9 @@ public class SuscripcionService {
 		return true;
 	}
 
+	public Suscripcion getSuscripcionByID(String idSuscripcion) {
+		// TODO Auto-generated method stub
+		return suscripcionDAO.getSuscripcionByID(idSuscripcion);
+	}
+
 } 

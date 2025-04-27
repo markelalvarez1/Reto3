@@ -159,9 +159,14 @@ public class UsuarioService {
 		return usuarioDAO.getUsuarioByID(idUsuario);
 	}
 
-	public ArrayList<Usuario> getAllUsuarios() {
+	public ArrayList<Usuario> getAllUsuariosSinCentroEscolar() {
 		// TODO Auto-generated method stub
-		return usuarioDAO.getAllUsuarios();
+		return usuarioDAO.getAllUsuariosSinCentroEscolar();
+	}
+
+	public ArrayList<Responsable> getAllUsuariosConCentroEscolar() {
+		// TODO Auto-generated method stub
+		return usuarioDAO.getAllUsuariosConCentroEscolar();
 	}
 
 }

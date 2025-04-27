@@ -80,6 +80,7 @@ public class CentroEscolarDAO {
 				cs.setId(rs.getInt("id"));
 				cs.setCIF(rs.getString("cif"));
 				cs.setNombre(rs.getString("nombre"));
+				cs.setCorreo(rs.getString("correo"));
 				cs.setCiudad(rs.getString("ciudad"));
 				cs.setEtapaEducativa(rs.getString("etapaEducativa"));
 				cs.setNumeroAlumnos(rs.getInt("numeroAlumnos"));
@@ -100,18 +101,21 @@ public class CentroEscolarDAO {
 		CentroEscolar cs = null;
 		
 		try {
-			String sql = "SELECT cs.* FROM centroescolar cs.* "
-					+ "INNER JOIN usuario u ON u.id = cs.id "
+			String sql = "SELECT cs.* "
+					+ "FROM centroescolar cs "
+					+ "INNER JOIN usuario u ON u.id = cs.id_usuario "
 					+ "INNER JOIN suscripcion s ON s.usuario_id = u.id "
 					+ "WHERE s.id = ?";
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, s.getId());
 			rs = ps.executeQuery();
 			if(rs.next()) {
+				System.out.println("tengo centro");
 				cs = new CentroEscolar();
 				cs.setId(rs.getInt("id"));
 				cs.setCIF(rs.getString("cif"));
 				cs.setNombre(rs.getString("nombre"));
+				cs.setCorreo(rs.getString("correo"));
 				cs.setCiudad(rs.getString("ciudad"));
 				cs.setEtapaEducativa(rs.getString("etapaEducativa"));
 				cs.setNumeroAlumnos(rs.getInt("numeroAlumnos"));

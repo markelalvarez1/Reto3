@@ -24,7 +24,6 @@ html {
 
 .container {
     width: 100%;
-    max-width: 100em; /* 1600px */
     margin: 0 auto;
     padding: 0 1.25em; /* 20px */
 }
@@ -369,7 +368,7 @@ footer {
 .profile-container {
     display: flex;
     gap: 1.5rem;
-    padding: 1.5rem 0;
+    padding: 1.5rem;
 }
 
 .sidebar {
@@ -378,7 +377,7 @@ footer {
     background-color: white;
     border-radius: 0.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
+    padding: 1.5rem 1rem;
 }
 
 .sidebar-link {

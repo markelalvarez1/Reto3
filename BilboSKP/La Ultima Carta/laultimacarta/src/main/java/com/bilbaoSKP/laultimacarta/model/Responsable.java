@@ -6,6 +6,10 @@ public class Responsable extends Usuario {
 
 	private CentroEscolar centroEscolar;
 
+	public Responsable() {
+		super();
+	}
+
 	public Responsable(Usuario u) {
 		 this.setId(u.getId());
 	     this.setTelefono(u.getTelefono());
@@ -18,6 +22,7 @@ public class Responsable extends Usuario {
 	     this.setSuscripcion(u.getSuscripcion());
 	}
 
+	@Override
 	public CentroEscolar getCentroEscolar() {
 		return centroEscolar;
 	}
