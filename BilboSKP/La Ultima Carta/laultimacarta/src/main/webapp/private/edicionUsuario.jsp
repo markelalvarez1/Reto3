@@ -208,8 +208,7 @@
 									<label for="fechaInicio"><fmt:message
 											key="fecha_inicio" /></label> <input type="date" id="fechaInicio"
 										name="fechaInicio"
-										value="${usuarioEditar.suscripcion.fechaInicio}"
-										${usuarioEditar.suscripcion.estado == 'ACTIVA' ? 'readonly' : ''}>
+										value="${usuarioEditar.suscripcion.fechaInicio}" readonly>
 								</div>
 							</div>
 

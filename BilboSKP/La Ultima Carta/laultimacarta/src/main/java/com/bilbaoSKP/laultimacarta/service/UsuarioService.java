@@ -1,45 +1,38 @@
 package com.bilbaoSKP.laultimacarta.service;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.bilbaoSKP.laultimacarta.dao.AccesoBD;
+import com.bilbaoSKP.laultimacarta.dao.CentroEscolarDAO;
+import com.bilbaoSKP.laultimacarta.dao.CuponDAO;
+import com.bilbaoSKP.laultimacarta.dao.SuscripcionDAO;
 import com.bilbaoSKP.laultimacarta.dao.UsuarioDAO;
 import com.bilbaoSKP.laultimacarta.dto.LoginUsuarioDTO;
 import com.bilbaoSKP.laultimacarta.dto.RegistroDTO;
-import com.bilbaoSKP.laultimacarta.dto.CentroDTO;
 import com.bilbaoSKP.laultimacarta.dto.UsuarioDTO;
-import com.bilbaoSKP.laultimacarta.model.CentroEscolar;
-import com.bilbaoSKP.laultimacarta.model.Cupon;
 import com.bilbaoSKP.laultimacarta.model.Responsable;
-import com.bilbaoSKP.laultimacarta.model.Rol;
 import com.bilbaoSKP.laultimacarta.model.Suscripcion;
 import com.bilbaoSKP.laultimacarta.model.TipoSuscripcion;
 import com.bilbaoSKP.laultimacarta.model.Usuario;
 import com.bilbaoSKP.laultimacarta.model.enums.EstadoSuscripcionEnum;
 import com.bilbaoSKP.laultimacarta.model.enums.RolEnum;
-import com.bilbaoSKP.laultimacarta.model.enums.TipoSuscripcionEnum;
-import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
 
 public class UsuarioService {
 	UsuarioDAO usuarioDAO;
-	SuscripcionService suscripcionService;
-	CentroEscolarService centroEscolarService;
-	CuponService cuponService;
+	SuscripcionDAO suscripcionService;
+	CentroEscolarDAO centroEscolarService;
+	CuponDAO cuponService;
 	EmailService emailService;
 
 	public UsuarioService() {
 		super();
 		usuarioDAO = new UsuarioDAO();
-		suscripcionService = new SuscripcionService();
-		centroEscolarService = new CentroEscolarService();
-		cuponService = new CuponService();
+		suscripcionService = new SuscripcionDAO();
+		centroEscolarService = new CentroEscolarDAO();
+		cuponService = new CuponDAO();
 		emailService = new EmailService();
 	}
 

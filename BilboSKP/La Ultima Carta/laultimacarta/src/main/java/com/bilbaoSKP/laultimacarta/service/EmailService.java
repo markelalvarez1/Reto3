@@ -19,14 +19,14 @@ public class EmailService {
 	 // PARA CONFIGURAR LA CONTRASENA ESPECIAL PARA ESTE CORREO ACCEDER A
 	 // https://myaccount.google.com/security 
 	 private final String remitente = "dcraftdevelopment@gmail.com"; // Aqui correo que va a enviar el mensaje
-     private final String password = "uacqktobqxkphlca";  // Contrasena configurada desde Google (No es la contrase�a del correo)
+     private final String password = "uacqktobqxkphlca";  // Contrasena configurada desde Google (No es la contrase a del correo)
      
      public boolean enviarCorreoVerificacion(int suscripcionID, UsuarioDTO usuarioDTO, String codigoAcceso) {
     	
          // 1. Configuracion de propiedades SMTP
          Properties propiedades = getProperties();
 
-         // 2. Crear la sesion con autenticaci�n
+         // 2. Crear la sesion con autenticaci n
          Session session = getSessionInstance(propiedades);
 
          try {
@@ -53,6 +53,37 @@ public class EmailService {
 		return true;
      }
 
+     public boolean enviarCorreoActivacion(String correo) {
+     	
+         // 1. Configuracion de propiedades SMTP
+         Properties propiedades = getProperties();
+
+         // 2. Crear la sesion con autenticaci n
+         Session session = getSessionInstance(propiedades);
+
+         try {
+             // 3. Crear el mensaje
+             Message message = new MimeMessage(session);
+             message.setFrom(new InternetAddress(remitente));
+             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correo));
+             message.setSubject("Correo de verificación");
+             String html = crearHtmlActivacion();
+             message.setContent(html, "text/html");
+
+             // 4. Enviar el mensaje
+             Transport.send(message);
+
+         } catch (MessagingException e) {
+             e.printStackTrace();
+             return false;
+         } catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+    	 
+		return true;
+     }
+     
 	private String codificador(int suscripcionID, String codigoAcceso) {
 		StringBuilder str = new StringBuilder();
 		str.append(suscripcionID).append(";").append(codigoAcceso);
@@ -148,4 +179,62 @@ public class EmailService {
 		         + "</html>";
 		return html;
 	}
-}
+	private String crearHtmlActivacion() {
+		 String html =
+			        "<html>"
+			      + "  <head>"
+			      + "    <meta charset='UTF-8'>"
+			      + "    <style type='text/css'>"
+			      + "      body {"
+			      + "        font-family: Arial, sans-serif;"
+			      + "        background-color: #f4f4f4;"
+			      + "        color: #333;"
+			      + "        margin: 0;"
+			      + "        padding: 0;"
+			      + "      }"
+			      + "      .container {"
+			      + "        max-width: 600px;"
+			      + "        margin: 30px auto;"
+			      + "        background-color: #fff;"
+			      + "        padding: 20px;"
+			      + "        border-radius: 8px;"
+			      + "        box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
+			      + "      }"
+			      + "      .header {"
+			      + "        text-align: center;"
+			      + "        background-color: #4CAF50;"
+			      + "        padding: 20px;"
+			      + "        color: #fff;"
+			      + "        border-radius: 8px 8px 0 0;"
+			      + "      }"
+			      + "      .content {"
+			      + "        margin-top: 20px;"
+			      + "        line-height: 1.6;"
+			      + "      }"
+			      + "      .footer {"
+			      + "        font-size: 12px;"
+			      + "        color: #777;"
+			      + "        text-align: center;"
+			      + "        margin-top: 30px;"
+			      + "      }"
+			      + "    </style>"
+			      + "  </head>"
+			      + "  <body>"
+			      + "    <div class='container'>"
+			      + "      <div class='header'>"
+			      + "        <h1>Suscripción Activada</h1>"
+			      + "      </div>"
+			      + "      <div class='content'>"
+			      + "        <p>Tu suscripción ha sido activada correctamente.</p>"
+			      + "        <p>¡Gracias por confiar en nosotros!</p>"
+			      + "      </div>"
+			      + "      <div class='footer'>"
+			      + "        <p>¿Necesitas ayuda? Contáctanos en <a href='http://localhost:8080/laultimacarta/contacto.jsp'>Contacto</a></p>"
+			      + "        <p>&copy; 2025 BilboSKP. Todos los derechos reservados.</p>"
+			      + "      </div>"
+			      + "    </div>"
+			      + "  </body>"
+			      + "</html>";
+			    return html;
+			}
+	}
