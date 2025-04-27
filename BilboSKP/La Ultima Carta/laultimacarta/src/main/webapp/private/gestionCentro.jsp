@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><fmt:message key="dashboard_usuarios_titulo" /></title>
+<title><fmt:message key="dashboard_centros_titulo" /></title>
 <link rel="icon" href="Img/baldosa.png" type="image/x-icon">
 <link rel="stylesheet" href="css/stylegestionusuarios.css">
 <link
@@ -24,7 +24,7 @@
 			<!-- Resumen General -->
 			<section class="dashboard-summary">
 				<h1>
-					<fmt:message key="dashboard_usuarios_titulo" />
+					<fmt:message key="dashboard_centros_titulo" />
 				</h1>
 
 				<div class="stats-grid">
@@ -34,7 +34,7 @@
 						</div>
 						<div class="stat-info">
 							<h3>
-								<fmt:message key="usuarios_totales" />
+								<fmt:message key="centros_totales" />
 							</h3>
 							<p class="stat-number">${usuariosTotal }</p>
 						</div>
@@ -46,7 +46,7 @@
 						</div>
 						<div class="stat-info">
 							<h3>
-								<fmt:message key="usuarios_activos" />
+								<fmt:message key="centros_activos" />
 							</h3>
 							<p class="stat-number">${usuariosActivos }</p>
 						</div>
@@ -70,7 +70,7 @@
 						</div>
 						<div class="stat-info">
 							<h3>
-								<fmt:message key="usuarios_inactivos" />
+								<fmt:message key="centros_inactivos" />
 							</h3>
 							<p class="stat-number">${usuariosCancelados }</p>
 						</div>
@@ -82,7 +82,7 @@
 			<section class="filters-section">
 				<div class="search-box">
 					<input type="text" id="buscarUsuario"
-						placeholder="<fmt:message key="buscar_usuario" />">
+						placeholder="<fmt:message key="buscar_centro" />">
 					<button>
 						<i class="fas fa-search"></i>
 					</button>

@@ -46,7 +46,7 @@ public class ReiniciarRankingController extends HttpServlet {
         }
         
         // Mostrar la página de confirmación
-        request.getRequestDispatcher("confirmarReinicioRanking.jsp").forward(request, response);
+        request.getRequestDispatcher("private/confirmarReinicioRanking.jsp").forward(request, response);
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -15,7 +15,7 @@ public class MenuPerfilController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("private/gestion.jsp").forward(request, response);
+		request.getRequestDispatcher("private/menuperfil.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

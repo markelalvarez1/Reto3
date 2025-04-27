@@ -101,14 +101,16 @@ public class CentroEscolarDAO {
 		CentroEscolar cs = null;
 		
 		try {
-			String sql = "SELECT cs.* FROM centroescolar cs.* "
-					+ "INNER JOIN usuario u ON u.id = cs.id "
+			String sql = "SELECT cs.* "
+					+ "FROM centroescolar cs "
+					+ "INNER JOIN usuario u ON u.id = cs.id_usuario "
 					+ "INNER JOIN suscripcion s ON s.usuario_id = u.id "
 					+ "WHERE s.id = ?";
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, s.getId());
 			rs = ps.executeQuery();
 			if(rs.next()) {
+				System.out.println("tengo centro");
 				cs = new CentroEscolar();
 				cs.setId(rs.getInt("id"));
 				cs.setCIF(rs.getString("cif"));

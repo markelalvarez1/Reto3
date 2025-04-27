@@ -25,6 +25,7 @@ CREATE TABLE centroEscolar (
     nombre VARCHAR(100) NOT NULL,
     ciudad VARCHAR(100),
     correo VARCHAR(100),
+    telefono INT(20),
     etapaEducativa VARCHAR(255),
     numeroAlumnos INT,
     id_usuario INT NOT NULL,

@@ -75,23 +75,14 @@
 							<div class="scaperoom-header">
 								<h3>La Última Carta</h3>
 								<div class="badges">
-									<span class="badge difficulty-medium">Dificultad media</span>
+									<span class="badge difficulty-medium">Normal</span>
 									<span class="badge players"><i class="fas fa-users"></i> 2-5</span>
 									<span class="badge duration"><i class="far fa-clock"></i> 60 min</span>
 								</div>
 							</div>
 							<div class="scaperoom-content">
 								<p class="scaperoom-description">Una aventura llena de misterio y decisiones importantes. ¿Serás capaz de resolver todos los acertijos y encontrar la última carta a tiempo?</p>
-								<div class="scaperoom-details">
-									<div class="detail-item">
-										<span class="detail-label"><i class="fas fa-star"></i> Valoración:</span>
-										<span class="detail-value">4.8/5</span>
-									</div>
-									<div class="detail-item">
-										<span class="detail-label"><i class="fas fa-trophy"></i> Tasa de éxito:</span>
-										<span class="detail-value">67%</span>
-									</div>
-								</div>
+								
 								<a href="crearpartida.jsp?room=ultima-carta" class="btn-organizar">
 									<i class="fas fa-calendar-check"></i>
 									Organizar Partida
@@ -104,23 +95,14 @@
 							<div class="scaperoom-header">
 								<h3>El Misterio de Bilbao</h3>
 								<div class="badges">
-									<span class="badge difficulty-hard">Dificultad alta</span>
+									<span class="badge difficulty-hard">Difícil</span>
 									<span class="badge players"><i class="fas fa-users"></i> 3-6</span>
 									<span class="badge duration"><i class="far fa-clock"></i> 75 min</span>
 								</div>
 							</div>
 							<div class="scaperoom-content">
 								<p class="scaperoom-description">Adéntrate en las calles de Bilbao para resolver un antiguo misterio. Una experiencia desafiante que pondrá a prueba tu ingenio y trabajo en equipo.</p>
-								<div class="scaperoom-details">
-									<div class="detail-item">
-										<span class="detail-label"><i class="fas fa-star"></i> Valoración:</span>
-										<span class="detail-value">4.6/5</span>
-									</div>
-									<div class="detail-item">
-										<span class="detail-label"><i class="fas fa-trophy"></i> Tasa de éxito:</span>
-										<span class="detail-value">42%</span>
-									</div>
-								</div>
+								
 								<a href="crearpartida.jsp?room=misterio-bilbao" class="btn-organizar">
 									<i class="fas fa-calendar-check"></i>
 									Organizar Partida
@@ -133,23 +115,14 @@
 							<div class="scaperoom-header">
 								<h3>El Secreto de la Ría</h3>
 								<div class="badges">
-									<span class="badge difficulty-easy">Dificultad baja</span>
+									<span class="badge difficulty-easy">Fácil</span>
 									<span class="badge players"><i class="fas fa-users"></i> 2-4</span>
 									<span class="badge duration"><i class="far fa-clock"></i> 45 min</span>
 								</div>
 							</div>
 							<div class="scaperoom-content">
 								<p class="scaperoom-description">Embárcate en una aventura familiar para descubrir los secretos que esconde la Ría de Bilbao. Una experiencia ideal para principiantes.</p>
-								<div class="scaperoom-details">
-									<div class="detail-item">
-										<span class="detail-label"><i class="fas fa-star"></i> Valoración:</span>
-										<span class="detail-value">4.5/5</span>
-									</div>
-									<div class="detail-item">
-										<span class="detail-label"><i class="fas fa-trophy"></i> Tasa de éxito:</span>
-										<span class="detail-value">78%</span>
-									</div>
-								</div>
+								
 								<a href="crearpartida.jsp?room=secreto-ria" class="btn-organizar">
 									<i class="fas fa-calendar-check"></i>
 									Organizar Partida
@@ -162,23 +135,14 @@
 							<div class="scaperoom-header">
 								<h3>La Catedral Olvidada</h3>
 								<div class="badges">
-									<span class="badge difficulty-medium">Dificultad media</span>
+									<span class="badge difficulty-medium">Normal</span>
 									<span class="badge players"><i class="fas fa-users"></i> 3-8</span>
 									<span class="badge duration"><i class="far fa-clock"></i> 90 min</span>
 								</div>
 							</div>
 							<div class="scaperoom-content">
 								<p class="scaperoom-description">Explora una antigua catedral abandonada llena de enigmas y misterios. Una experiencia inmersiva para grupos más grandes.</p>
-								<div class="scaperoom-details">
-									<div class="detail-item">
-										<span class="detail-label"><i class="fas fa-star"></i> Valoración:</span>
-										<span class="detail-value">4.9/5</span>
-									</div>
-									<div class="detail-item">
-										<span class="detail-label"><i class="fas fa-trophy"></i> Tasa de éxito:</span>
-										<span class="detail-value">52%</span>
-									</div>
-								</div>
+								
 								<a href="crearpartida.jsp?room=catedral-olvidada" class="btn-organizar">
 									<i class="fas fa-calendar-check"></i>
 									Organizar Partida

@@ -74,7 +74,7 @@
                   <fmt:message key="cupones_programados" />
                 </h3>
                 <div class="cupon-info">
-                  <p class="cupon-description">Descripción historial</p>
+                  <p class="cupon-description"><fmt:message key="historial_cupon_descripcion" /></p>
                 </div>
               </div>
             </a>
@@ -89,7 +89,7 @@
                   <fmt:message key="devoluciones" />
                 </h3>
                 <div class="cupon-info">
-                  <p class="cupon-description">Descripción devolver</p>
+                  <p class="cupon-description"><fmt:message key="devolver_cupon" /></p>
                 </div>
               </div>
             </a>

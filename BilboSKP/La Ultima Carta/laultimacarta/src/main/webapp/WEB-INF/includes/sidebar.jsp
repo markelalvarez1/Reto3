@@ -12,7 +12,7 @@
 			</li>
 			<c:if test="${sessionScope.usuario.rol.id != 2}">
 				<li>
-					<a href="ranking.jsp" class="sidebar-link">
+					<a href="ranking" class="sidebar-link">
 						<i class='bx bx-trophy'></i>
 						<span><fmt:message key="menu_ranking" /></span>
 					</a>
