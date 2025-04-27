@@ -87,7 +87,7 @@
 								</div>
 							</fieldset>
 							<fieldset class="personal-data">
-								<legend><fmt:message key="datos_personales"/></legend>
+								<legend><fmt:message key="datos_personalesdos"/></legend>
 								<div class="form-group">
 									<label for="nombre"><fmt:message key="form_nombre" /></label>
 									<input type="text" id="nombre" name="nombre"

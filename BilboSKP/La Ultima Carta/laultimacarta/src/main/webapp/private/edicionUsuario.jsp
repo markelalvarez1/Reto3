@@ -123,7 +123,7 @@
 					<section class="profile-section secstyle">
 						<div class="section-header">
 							<h2>
-								<fmt:message key="datos_personales" />
+								<fmt:message key="datos_personalesdos" />
 							</h2>
 							<div class="section-divider"></div>
 						</div>
