@@ -362,6 +362,37 @@ public class UsuarioDAO {
 	    return listaResponsables;
 	}
 
+	public Usuario getUsuarioBySuscripcionID(String idSuscripcion) {
+		 Connection con = AccesoBD.getConnection();
+		 PreparedStatement ps = null;
+		 ResultSet rs = null;
+		 Usuario u = null;
+		 try {
+			String sql = "SELECT u.* "
+					+ "FROM usuario u "
+					+ "INNER JOIN suscripcion s ON u.id = s.usuario_id  "
+					+ "WHERE s.id = ?";
+			
+			ps = con.prepareStatement(sql);
+			ps.setString(1, idSuscripcion);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				u = new Usuario();
+				u.setDni(rs.getString("dni"));
+				u.setNombre(rs.getString("nombre"));
+				u.setApellidos(rs.getString("apellidos"));
+				u.setTelefono(rs.getInt("telefono"));
+				u.setCorreo(rs.getString("correo"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			AccesoBD.closeConnection(rs, ps, con);
+		}
+		 
+		return u;
+	}
+
 
 
 }

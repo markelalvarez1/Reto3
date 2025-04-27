@@ -38,7 +38,7 @@
 					<div class="block profile-card">
 						<div class="profile-header">
 							<div class="profile-avatar-large">
-								<img src="img/perfil.png"
+								<img src="Img/perfil.png"
 									alt="<fmt:message key='avatar_usuario' />">
 							</div>
 							<div class="profile-info-main">
@@ -85,6 +85,14 @@
 								</div>
 							</div>
 						</div>
+						<div class="profile-bio">
+							<h3>
+								<fmt:message key="sobre_mi" />
+							</h3>
+							<p>
+								<fmt:message key="bio_usuario" />
+							</p>
+						</div>
 					</div>
 
 					<!-- Sección de logros -->
@@ -129,6 +137,33 @@
 										</div>
 										<span>15/20</span>
 									</div>
+								</div>
+							</div>
+							<div class="achievement-card">
+								<div class="achievement-icon unlocked">
+									<i class='bx bx-group'></i>
+								</div>
+								<div class="achievement-info">
+									<h3>
+										<fmt:message key="organizador" />
+									</h3>
+									<p>
+										<fmt:message key="organiza_5_partidas" />
+									</p>
+								</div>
+							</div>
+ 
+							<div class="achievement-card">
+								<div class="achievement-icon unlocked">
+									<i class='bx bx-trophy'></i>
+								</div>
+								<div class="achievement-info">
+									<h3>
+										<fmt:message key="competidor" />
+									</h3>
+									<p>
+										<fmt:message key="participa_10_partidas" />
+									</p>
 								</div>
 							</div>
 						</div>

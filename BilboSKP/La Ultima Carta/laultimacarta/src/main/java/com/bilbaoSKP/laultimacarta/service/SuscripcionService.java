@@ -2,10 +2,12 @@ package com.bilbaoSKP.laultimacarta.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.bilbaoSKP.laultimacarta.dao.AccesoBD;
+import com.bilbaoSKP.laultimacarta.dao.CentroEscolarDAO;
+import com.bilbaoSKP.laultimacarta.dao.CuponDAO;
 import com.bilbaoSKP.laultimacarta.dao.SuscripcionDAO;
+import com.bilbaoSKP.laultimacarta.dao.UsuarioDAO;
 import com.bilbaoSKP.laultimacarta.model.CentroEscolar;
 import com.bilbaoSKP.laultimacarta.model.Cupon;
 import com.bilbaoSKP.laultimacarta.model.CuponBienvenida;
@@ -17,13 +19,17 @@ import com.bilbaoSKP.laultimacarta.model.enums.TipoSuscripcionEnum;
 
 public class SuscripcionService {
 	SuscripcionDAO suscripcionDAO;
-	CuponService cuponService;
-	CentroEscolarService centroEscolarService;
+	CuponDAO cuponService;
+	CentroEscolarDAO centroEscolarService;
+	UsuarioDAO usuarioService;
+	EmailService emailService;
 
 	public SuscripcionService() {
 		super();
 		suscripcionDAO = new SuscripcionDAO();
-		cuponService = new CuponService();
+		cuponService = new CuponDAO();
+		usuarioService = new UsuarioDAO();
+		emailService = new EmailService();
 	}
 
 	public TipoSuscripcion getTipoSuscripcionByID(int tipoSuscripcionID) {
@@ -42,8 +48,6 @@ public class SuscripcionService {
 		String idSuscripcion=myArray [0];
 		String codigoVerificacion=myArray [1];
 		
-		
-		
 		Suscripcion s = suscripcionDAO.getSuscripcionByID(idSuscripcion);
 		if(s != null) {
 			s.activar(codigoVerificacion);
@@ -57,9 +61,10 @@ public class SuscripcionService {
 				return false;
 			}
 			
+			CentroEscolar cs = null;
 			if(TipoSuscripcionEnum.CENTRO_ESCOLAR.toString().equals(s.getTipoSuscripcion().getTipo())) {
-				centroEscolarService = new CentroEscolarService();
-				CentroEscolar cs = centroEscolarService.getCentroEscolarBySuscripcion(s);
+				centroEscolarService = new CentroEscolarDAO();
+				cs = centroEscolarService.getCentroEscolarBySuscripcion(s);
 				ArrayList<Cupon> cupones = CuponCyberbullying.obtenerCupones(cs.getNumeroAlumnos());
 				s.setCupones(cupones);
 			} else if(TipoSuscripcionEnum.INDIVIDUAL.toString().equals(s.getTipoSuscripcion().getTipo())) {
@@ -73,6 +78,19 @@ public class SuscripcionService {
 				con.rollback();
 				return false;
 			}
+			
+			Usuario u = usuarioService.getUsuarioBySuscripcionID(idSuscripcion);
+			if(!emailService.enviarCorreoActivacion(u.getCorreo())){
+				con.rollback();
+				return false;
+			}
+			if(cs != null) {
+				if(!emailService.enviarCorreoActivacion(cs.getCorreo())) {
+					con.rollback();
+					return false;
+				}
+			}
+
 			con.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

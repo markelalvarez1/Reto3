@@ -136,7 +136,7 @@ VALUES
 ('99887766E', 'Laura', 'Jiménez Ruiz', '640998877', 'laura.jimenez@example.com', 'contraseña5', 2),
 ('77665544F', 'Carlos', 'Hernández Torres', '650776655', 'carlos.hernandez@example.com', 'contraseña6', 3),
 ('66554433G', 'Sofía', 'Ramírez Morales', '660665544', 'sofia.ramirez@example.com', 'contraseña7', 1),
-('55443322H', 'Pedro', 'Sánchez Gómez', '670554433', 'pedro.sanchez@example.com', 'contraseña8', 3),
+('55443322H', 'Pedro', 'Sánchez Gómez', '670554433', 'unai.carbajo.amundarain@gmail.com', 'contraseña8', 3),
 ('33221100I', 'Marta', 'Navarro Ortega', '680332211', 'marta.navarro@example.com', 'contraseña9', 1),
 ('11110000J', 'Andrés', 'Castro Velázquez', '690111100', 'andres.castro@example.com', 'contraseña10', 2);
 
@@ -157,7 +157,7 @@ INSERT INTO centroEscolar (cif, nombre, ciudad, correo, etapaEducativa, numeroAl
 VALUES 
   ('A12345678', 'Colegio San Juan', 'Bilbao', 'CentroSanJuan@gmail.com' , 'Primaria y Secundaria', 800, 4),
   ('B87654321', 'Instituto Vasco', 'San Sebastián', 'InstituoVasco@gmail.com', 'Secundaria', 600, 6),
-  ('C98765432', 'CEIP Arriaga', 'Bilbao', 'CentroSanJuan@gmail.com', 'Infantil y Primaria', 300, 8);
+  ('C98765432', 'CEIP Arriaga', 'Bilbao', 'unai.carbajo.amundarain@gmail.com', 'Infantil y Primaria', 300, 8);
 
 INSERT INTO cupon (suscripcion_id, fechaCompra, fechaCaducidad, precio, estado) VALUES (1, '2025-06-30', '2025-07-30', 9.99, 'DISPONIBLE'), (1, '2025-06-30', '2025-07-30', 12.99, 'PROGRAMADO');
 
