@@ -78,17 +78,7 @@
 				</div>
 			</section>
 
-			<!-- Accesos RÃ¡pidos -->
-			<section class="quick-actions">
-				<button class="btn-action"
-					onclick="window.location.href='crear-usuario.jsp'">
-					<i class="fas fa-user-plus"></i>
-					<fmt:message key="crear_usuario" />
-				</button>
-
-			</section>
-
-			<!-- Filtros y BÃºsqueda -->
+			<!-- Filtros y Búsqueda -->
 			<section class="filters-section">
 				<div class="search-box">
 					<input type="text" id="buscarUsuario"
@@ -124,10 +114,9 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th><fmt:message key="nombre" /></th>
-								<th><fmt:message key="apellidos" /></th>
+								<th><fmt:message key="centro_escolar" /></th>
 								<th><fmt:message key="email" /></th>
-								<th><fmt:message key="rol" /></th>
+								<th><fmt:message key="responsable" /></th>
 								<th><fmt:message key="estado" /></th>
 								<th><fmt:message key="fecha_registro" /></th>
 								<th><fmt:message key="acciones" /></th>
@@ -138,14 +127,14 @@
 								varStatus="status">
 								<tr>
 									<td>${status.index + 1}</td>
+									<td>${usuario.centroEscolar.nombre}</td>
+									<td>${usuario.centroEscolar.correo}</td>
 									<td>${usuario.nombre}</td>
-									<td>${usuario.apellidos}</td>
-									<td>${usuario.correo}</td>
-									<td>${usuario.rol.tipo}</td>
 									<td><span id="estado-${usuario.id}">${usuario.suscripcion.estado}</span></td>
 									<td>${usuario.suscripcion.fechaInicio}</td>
 									<td><form action="edicionUsuario" method="get">
 											<div class="botones-accion">
+											<input type="hidden" name="id" value="${usuario.id }" >
 												<button class="btn-editar"
 													onclick="redirigirEditarUsuario(1)">
 													<i class="fas fa-edit"></i>
@@ -164,7 +153,7 @@
 					</table>
 				</div>
 
-				<!-- PaginaciÃ³n -->
+				<!-- Paginación -->
 				<div class="paginacion">
 					<button class="pagina-btn prev">
 						<i class="fas fa-chevron-left"></i>
@@ -179,7 +168,7 @@
 			</section>
 		</div>
 
-		<!-- Modal Confirmar EliminaciÃ³n - Se mantiene porque es para confirmar acciÃ³n -->
+		<!-- Modal Confirmar Eliminación - Se mantiene porque es para confirmar acción -->
 		<div id="confirmarEliminarModal" class="modal">
 			<div class="modal-content modal-small">
 				<div class="modal-header">
@@ -213,9 +202,9 @@
 
 	<script>
 		document.querySelectorAll('[id^="estado-"]').forEach(function(estado) {
-			const valor = estado.textContent.trim(); // Obtener el contenido dinÃ¡mico del span
+			const valor = estado.textContent.trim(); // Obtener el contenido dinámico del span
 
-			// Cambiar la clase segÃºn el valor
+			// Cambiar la clase según el valor
 			if (valor === "ACTIVA") {
 				estado.className = "estado-activo";
 			} else if (valor === "PENDIENTE") {

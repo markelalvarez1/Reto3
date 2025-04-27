@@ -33,7 +33,7 @@ public class CuponController extends HttpServlet {
 				}
 			}
 		}
-		request.getRequestDispatcher("gestionCupones.jsp").forward(request, response);
+		request.getRequestDispatcher("private/gestionCupones.jsp").forward(request, response);
 
 	}
 

@@ -19,7 +19,7 @@
       <div class="dashboard-container">
         <!-- Título de historial de compras -->
         <section class="dashboard-summary">
-          <h1><fmt:message key="dashboard_historial_titulo" /></h1>
+          <h1><fmt:message key="dashboard_cupones_titulo" /></h1>
 
           <!-- Estructura de tres tarjetas como en el primer archivo -->
           <div class="cupones-grid stats-grid">
@@ -65,7 +65,7 @@
 						</a>	
 
             <!-- Historial de compras -->
-            <a href="historialCompra.jsp" class="cupones-card stat-card">
+            <a href="historialCompra" class="cupones-card stat-card">
               <div class="stat-icon pending">
                 <i class="fas fa-calendar-alt"></i>
               </div>
@@ -78,7 +78,7 @@
             </a>
 
             <!-- Devolver cupones -->
-            <a href="devolucionCupones.jsp" class="cupones-card stat-card">
+            <a href="devolucion" class="cupones-card stat-card">
               <div class="stat-icon inactive">
                 <i class="fas fa-share-square"></i>
               </div>

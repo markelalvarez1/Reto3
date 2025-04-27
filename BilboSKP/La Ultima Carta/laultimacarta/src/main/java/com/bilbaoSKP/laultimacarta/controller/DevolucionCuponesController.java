@@ -8,18 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class GestionController
+ * Servlet implementation class DevolucionCuponesController
  */
-@WebServlet("/gestion")
-public class MenuPerfilController extends HttpServlet {
+@WebServlet("/devolucion")
+public class DevolucionCuponesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("private/gestion.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("private/devolucionCupones.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+
 		
 	}
 

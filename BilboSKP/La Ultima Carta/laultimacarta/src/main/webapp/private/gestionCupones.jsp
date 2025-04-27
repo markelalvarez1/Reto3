@@ -73,7 +73,7 @@
 						
 
 						<!-- Historial de compras -->
-						<a href="historialCompra.jsp" class="cupones-card stat-card">
+						<a href="historialCompra" class="cupones-card stat-card">
 							<div class="stat-icon pending">
 								<i class="fas fa-calendar-alt"></i>
 							</div>
@@ -88,7 +88,7 @@
 						</a>
 
 						<!-- Devolver cupones -->
-						<a href="devolucionCupones.jsp" class="cupones-card stat-card">
+						<a href="devolucion" class="cupones-card stat-card">
 							<div class="stat-icon inactive">
 								<i class="fas fa-share-square"></i>
 							</div>

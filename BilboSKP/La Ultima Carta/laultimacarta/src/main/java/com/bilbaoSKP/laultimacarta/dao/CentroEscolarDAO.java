@@ -80,6 +80,7 @@ public class CentroEscolarDAO {
 				cs.setId(rs.getInt("id"));
 				cs.setCIF(rs.getString("cif"));
 				cs.setNombre(rs.getString("nombre"));
+				cs.setCorreo(rs.getString("correo"));
 				cs.setCiudad(rs.getString("ciudad"));
 				cs.setEtapaEducativa(rs.getString("etapaEducativa"));
 				cs.setNumeroAlumnos(rs.getInt("numeroAlumnos"));
@@ -112,6 +113,7 @@ public class CentroEscolarDAO {
 				cs.setId(rs.getInt("id"));
 				cs.setCIF(rs.getString("cif"));
 				cs.setNombre(rs.getString("nombre"));
+				cs.setCorreo(rs.getString("correo"));
 				cs.setCiudad(rs.getString("ciudad"));
 				cs.setEtapaEducativa(rs.getString("etapaEducativa"));
 				cs.setNumeroAlumnos(rs.getInt("numeroAlumnos"));
