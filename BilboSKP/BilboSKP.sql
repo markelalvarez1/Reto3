@@ -27,6 +27,7 @@ CREATE TABLE centroEscolar (
     cif VARCHAR(20) UNIQUE,
     nombre VARCHAR(100) NOT NULL,
     ciudad VARCHAR(100),
+   correo VARCHAR(100),
     etapaEducativa VARCHAR(255),
     numeroAlumnos INT,
     id_usuario INT NOT NULL,
@@ -174,13 +175,7 @@ CREATE TABLE resultado_partida (
 
 -- Inserts de datos básicos
 INSERT INTO rol (tipo) VALUES ('ADMINISTRADOR'), ('USUARIO'), ('RESPONSABLE');
-<<<<<<< HEAD
-
 INSERT INTO suscripcionTipo (tipo, precio) VALUES ('INDIVIDUAL', 5.0), ('CENTRO ESCOLAR', 0);
-
-=======
-INSERT INTO suscripcionTipo (tipo, precio) VALUES ('INDIVIDUAL', 5.0), ('CENTRO_ESCOLAR', 0);
->>>>>>> e2e96ac88ba58da7f97c61efb0e2f8a2726397bc
 INSERT INTO usuario (dni, nombre, apellidos, telefono, correo, contrasena, rol_id)
 VALUES 
 ('12345678A', 'Admin', 'Admin', '600123456', 'admin@gmail.com', '12345', 1),
@@ -207,18 +202,11 @@ VALUES
 (9, '2025-04-08', 'ACTIVA', 1, 'YZA567'),
 (10, '2025-03-30', 'CANCELADA', 2, 'BCD890');
 
-INSERT INTO centroEscolar (cif, nombre, ciudad, etapaEducativa, numeroAlumnos, id_usuario)
+INSERT INTO centroEscolar (cif, nombre, ciudad, correo, etapaEducativa, numeroAlumnos, id_usuario)
 VALUES 
-<<<<<<< HEAD
-  ('A12345678', 'Colegio San Juan', 'Bilbao', 'Primaria y Secundaria', 800, 4),
-  ('B87654321', 'Instituto Vasco', 'San Sebastián', 'Secundaria', 600, 6),
-  ('C98765432', 'CEIP Arriaga', 'Bilbao', 'Infantil y Primaria', 300, 8);
-=======
-  ('A12345678', 'Colegio San Juan', 'Bilbao', 'CentroSanJuan@gmail.com' , 'Primaria y Secundaria', 800, 4),
-  ('B87654321', 'Instituto Vasco', 'San Sebastián', 'InstituoVasco@gmail.com', 'Secundaria', 600, 6),
-  ('C98765432', 'CEIP Arriaga', 'Bilbao', 'unai.carbajo.amundarain@gmail.com', 'Infantil y Primaria', 300, 8);
+  ('A12345678', 'Colegio San Juan', 'Bilbao', 'centro-sanjuan@gmail.com', 'Primaria y Secundaria', 800, 4),
+  ('B87654321', 'Instituto Vasco', 'San Sebastián', 'institutovasco@gmail.com', 'Secundaria', 600, 6),
+  ('C98765432', 'CEIP Arriaga', 'Bilbao', 'centro-arriaga@gmail.com', 'Infantil y Primaria', 300, 8);
 
 INSERT INTO cupon (suscripcion_id, fechaCompra, fechaCaducidad, precio, estado) VALUES (1, '2025-06-30', '2025-07-30', 9.99, 'DISPONIBLE'), (1, '2025-06-30', '2025-07-30', 12.99, 'PROGRAMADO');
 
-
->>>>>>> 4b397e65e9de34106e91f05898d09cb4a73eb53e
