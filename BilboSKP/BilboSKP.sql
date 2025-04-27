@@ -126,13 +126,7 @@ CREATE TABLE cupon_partida (
 );
 
 INSERT INTO rol (tipo) VALUES ('ADMINISTRADOR'), ('USUARIO'), ('RESPONSABLE');
-<<<<<<< HEAD
-
-INSERT INTO suscripcionTipo (tipo, precio) VALUES ('INDIVIDUAL', 5.0), ('CENTRO ESCOLAR', 0);
-
-=======
 INSERT INTO suscripcionTipo (tipo, precio) VALUES ('INDIVIDUAL', 5.0), ('CENTRO_ESCOLAR', 0);
->>>>>>> 0312204d6dd451b2093ed1c4641338f21c1202d6
 INSERT INTO usuario (dni, nombre, apellidos, telefono, correo, contrasena, rol_id)
 VALUES 
 ('12345678Z', 'Admin', 'Admin', '600123456', 'admin@gmail.com', '12345', 1),
