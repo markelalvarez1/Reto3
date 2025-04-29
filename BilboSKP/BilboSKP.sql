@@ -27,7 +27,8 @@ CREATE TABLE centroEscolar (
     cif VARCHAR(20) UNIQUE,
     nombre VARCHAR(100) NOT NULL,
     ciudad VARCHAR(100),
-   correo VARCHAR(100),
+    telefono VARCHAR(20),
+    correo VARCHAR(100),
     etapaEducativa VARCHAR(255),
     numeroAlumnos INT,
     id_usuario INT NOT NULL,
@@ -178,7 +179,7 @@ INSERT INTO rol (tipo) VALUES ('ADMINISTRADOR'), ('USUARIO'), ('RESPONSABLE');
 INSERT INTO suscripcionTipo (tipo, precio) VALUES ('INDIVIDUAL', 5.0), ('CENTRO_ESCOLAR', 0);
 INSERT INTO usuario (dni, nombre, apellidos, telefono, correo, contrasena, rol_id)
 VALUES 
-('12345671A', 'Admin', 'Admin', '600123456', 'admin@gmail.com', '12345', 1),
+('12345671Z', 'Admin', 'Admin', '600123456', 'admin@gmail.com', '12345', 1),
 ('87654321B', 'Usuario', 'Usuario', '610654321', 'usuario@gmail.com', '12345', 2),
 ('11223344C', 'Ana', 'Martínez Díaz', '620112233', 'ana.martinez@example.com', 'contraseña3', 2),
 ('44332211D', 'Responsable', 'Responsable', '630443322', 'responsable@gmail.com', '12345', 3),
@@ -204,7 +205,7 @@ VALUES
 
 INSERT INTO centroEscolar (cif, nombre, ciudad, correo, etapaEducativa, numeroAlumnos, id_usuario)
 VALUES 
-  ('A12345678', 'Colegio San Juan', 'Bilbao', 'centro-sanjuan@gmail.com', 'Primaria y Secundaria', 800, 4),
+  ('A12345600', 'Colegio San Juan', 'Bilbao', 'centro-sanjuan@gmail.com', 'Primaria y Secundaria', 800, 4),
   ('B87654321', 'Instituto Vasco', 'San Sebastián', 'institutovasco@gmail.com', 'Secundaria', 600, 6),
   ('C98765432', 'CEIP Arriaga', 'Bilbao', 'centro-arriaga@gmail.com', 'Infantil y Primaria', 300, 8);
 
